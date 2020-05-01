@@ -14,8 +14,6 @@ class Agenzia
 
     public function removeCliente($Cliente):void{
 
-
-
     }
 
     public function addAgenteImmobiliare($AgenteImmobiliare):void{
