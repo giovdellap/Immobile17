@@ -1,7 +1,8 @@
 # Default ignored files
 /workspace.xml
-/AgenziaImmobiliare(PHPStorm).iml
+/AgenziaImmobiliare.iml
 /misc.xml
 /modules.xml
 /php.xml
 /vcs.xml
+/project.iml
