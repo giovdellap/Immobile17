@@ -14,6 +14,24 @@ class Immobile
     private int    $grandezza;
     private array  $list_appuntamenti;
 
+    public function __construct()
+    {
+        $this->list_appuntamenti = array();
+        $this->immagini = array();
+    }
+    
+    /**
+     * @param int $id
+     * @param array $appuntamenti
+     * @param array $immagini
+     */
+    public function fromFoundation(int $id, array $appuntamenti, array $immagini)
+    {
+        $this->id = $id;
+        $this->list_appuntamenti = $appuntamenti;
+        $this->immagini = $immagini;
+    }
+    
     /**
      * @return String
      */
@@ -159,14 +177,32 @@ class Immobile
     }
 
 
-    public function addAppuntamento($appuntamento): void{
-
-        ////
+    /**
+     * @return mixed
+     */
+    public function getList_appuntamenti()
+    {
+        return $this->list_appuntamenti;
+    }
+    
+    
+    /**
+     * Aggiunge l'appuntamento alla lista dell'immobile
+     * @param Appuntamento $appuntamento
+     */
+    public function addAppuntamento(Appuntamento $appuntamento): void
+    {
+        $this->list_appuntamenti[] = $appuntamento;    
     }
 
-    public function deleteAppuntamento($appuntamento): void{
-
-        ////
+    /**
+     * Elimina l'appuntamento dalla lista dell'immobile
+     * @param Appuntamento $appuntamento
+     */
+    public function deleteAppuntamento(Appuntamento $appuntamento): void
+    {
+        if(in_array($appuntamento, $this->list_appuntamenti))
+            unset($this->list_appuntamenti[array_search($appuntamento, $$this->list_appuntamenti)]);
     }
 
 
