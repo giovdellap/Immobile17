@@ -24,8 +24,14 @@ class Calendario
      */
     public function addAppuntamento(Appuntamento $appuntamento): bool
     {
-        $valido = true;//false
         //controlli
+        $context = new ValidatorContext($appuntamento);
+        $valido = $context->validateAppuntamento(new ValidatorImmobile());
+        if($valido)
+            $valido = $context->validateAppuntamento(new ValidatorAgenteImmobiliare());
+        if($valido)
+            $valido = $context->validateAppuntamento(new ValidatorCliente());
+
         if($valido)
         {
             $this->appuntamenti[] = $appuntamento;
