@@ -8,6 +8,22 @@ class Agenzia
     private array      $list_Immobili;
     private Calendario $calendario;
 
+    /**
+     * @return mixed
+     */
+    public function getCalendario()
+    {
+        return $this->calendario;
+    }
+
+    /**
+     * @param mixed $calendario
+     */
+    public function setCalendario($calendario)
+    {
+        $this->calendario = $calendario;
+    }
+
     public function addCliente($Cliente):void{
 
     }
@@ -35,4 +51,6 @@ class Agenzia
 
 
     }
+    
+    
 }
