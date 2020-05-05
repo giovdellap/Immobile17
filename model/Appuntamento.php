@@ -4,9 +4,8 @@
 class Appuntamento
 {
     private String $id;
-    private String $orario_inizio;
-    private String $orario_fine;
-
+    private Data $orario_inizio;
+    private Data $orario_fine;
     private Cliente $cliente;
     private Immobile $immobile;
     private AgenteImmobiliare $agenteImmobiliare;
@@ -25,38 +24,6 @@ class Appuntamento
     public function setId(String $id): void
     {
         $this->id = $id;
-    }
-
-    /**
-     * @return String
-     */
-    public function getOrarioInizio(): String
-    {
-        return $this->orario_inizio;
-    }
-
-    /**
-     * @param String $orario_inizio
-     */
-    public function setOrarioInizio(String $orario_inizio): void
-    {
-        $this->orario_inizio = $orario_inizio;
-    }
-
-    /**
-     * @return String
-     */
-    public function getOrarioFine(): String
-    {
-        return $this->orario_fine;
-    }
-
-    /**
-     * @param String $orario_fine
-     */
-    public function setOrarioFine(String $orario_fine): void
-    {
-        $this->orario_fine = $orario_fine;
     }
 
     /**
@@ -107,6 +74,37 @@ class Appuntamento
         $this->agenteImmobiliare = $agenteImmobiliare;
     }
 
+    /**
+     * @return Data
+     */
+    public function getOrarioInizio(): Data
+    {
+        return $this->orario_inizio;
+    }
+
+    /**
+     * @param Data $orario_inizio
+     */
+    public function setOrarioInizio(Data $orario_inizio): void
+    {
+        $this->orario_inizio = $orario_inizio;
+    }
+
+    /**
+     * @return Data
+     */
+    public function getOrarioFine(): Data
+    {
+        return $this->orario_fine;
+    }
+
+    /**
+     * @param Data $orario_fine
+     */
+    public function setOrarioFine(Data $orario_fine): void
+    {
+        $this->orario_fine = $orario_fine;
+    }
 
 
 }

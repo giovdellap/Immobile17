@@ -105,11 +105,17 @@ class Amministratore
         $this->agenzia = $agenzia;
     }
 
+    /**
+     * @return Calendario
+     */
     public function getCalendarioAgenzia(): Calendario
     {
         return $this->agenzia->getCalendario();
     }
 
+    /**
+     * @param Calendario $calendario
+     */
     public function setCalendarioAgenzia(Calendario $calendario): void
     {
         $this->agenzia->setCalendario($calendario);
