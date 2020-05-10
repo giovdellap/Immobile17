@@ -24,31 +24,68 @@ class Agenzia
         $this->calendario = $calendario;
     }
 
-    public function addCliente($Cliente):void{
+    public function addCliente(Cliente $Cliente):bool{
+
+        if(!in_array($Cliente, $this ->list_Clienti) )
+        {
+
+            $this->list_Clienti[] = $Cliente;
+
+        }
+
+        else return false;
 
     }
 
-    public function removeCliente($Cliente):void{
+    public function removeCliente(Cliente $Cliente):void{
+
+        if(in_array($Cliente, $this ->list_Clienti) )
+        {
+            unset($this->list_Clienti[array_search($Cliente, $this->list_Clienti)]);
+        }
+    }
+
+
+
+    public function addAgenteImmobiliare(AgenteImmobiliare $AgenteImmobiliare):bool{
+
+        if(!in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
+        {
+
+            $this->list_AgentiImmobiliari[] = $AgenteImmobiliare;
+
+        }
+        else return false;
 
     }
 
-    public function addAgenteImmobiliare($AgenteImmobiliare):void{
+    public function removeAgenteImmobiliare(AgenteImmobiliare $AgenteImmobiliare):void{
 
-
-    }
-
-    public function removeAgenteImmobiliare($AgenteImmobiliare):void{
-
-
-    }
-
-    public function addImmobile($Immobile):void{
-
+        if(in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
+        {
+            unset($this->list_Clienti[array_search($AgenteImmobiliare, $this->list_AgentiImmobiliari)]);
+        }
 
     }
 
-    public function removeImmobile($Immobile):void{
+    public function addImmobile(Immobile $Immobile):bool{
+        if(!in_array($Immobile, $this ->list_Immobili) )
+        {
 
+            $this->list_Clienti[] = $Immobile;
+
+        }
+
+        else return false;
+
+    }
+
+    public function removeImmobile(Immobile $Immobile):void{
+
+        if(in_array($Immobile, $this ->list_Immobilii) )
+        {
+            unset($this->list_Clienti[array_search($Immobile, $this->list_Immobili)]);
+        }
 
     }
     

@@ -125,14 +125,23 @@ class Utente
         $this->attivato = $attivato;
     }
 
-    public function addAppuntamento($appuntamento): void{
+    public function addAppuntamento(Appuntamento $appuntamento): bool{
 
-        ////
+        if(!in_array($appuntamento , $this->list_Appuntamenti))
+        {
+
+            $this->list_Appuntamenti[] = $appuntamento;
+
+        }
+        else return false;
+
     }
 
-    public function deleteAppuntamento($appuntamento): void{
-
-        ////
+    public function deleteAppuntamento(Appuntamento $appuntamento): void{
+        if(in_array($appuntamento, $this ->list_Appuntamenti) )
+        {
+            unset($this->list_Appuntamenti[array_search($appuntamento, $this->list_Appuntamenti)]);
+        }
     }
 
 

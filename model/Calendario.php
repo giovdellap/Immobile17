@@ -35,8 +35,8 @@ class Calendario
         if($valido)
         {
             $this->appuntamenti[] = $appuntamento;
-            $appuntamento->getAgenteImmobiliare()->addAppuntamento($appuntamento);
-            $appuntamento->getCliente()->addAppuntamento($appuntamento);
+            $appuntamento->getAgenteImmobiliare()->addAppuntamento($appuntamento);     //aggiunge l'appuntamento alle liste appuntamenti di agente,
+            $appuntamento->getCliente()->addAppuntamento($appuntamento);               //cliente,immobile
             $appuntamento->getImmobile()->addAppuntamento($appuntamento);
             return true;
         }
@@ -50,7 +50,7 @@ class Calendario
     public function deleteAppuntamento(Appuntamento $appuntamento): void
     {
         if(in_array($appuntamento, $this->appuntamenti))
-            unset($this->appuntamenti[array_search($appuntamento, $$this->appuntamenti)]);
+            unset($this->appuntamenti[array_search($appuntamento, $this->appuntamenti)]);
         $appuntamento->getAgenteImmobiliare()->deleteAppuntamento($appuntamento);
         $appuntamento->getCliente()->deleteAppuntamento($appuntamento);
         $appuntamento->getImmobile()->deleteAppuntamento($appuntamento);
