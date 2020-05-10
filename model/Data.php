@@ -8,6 +8,15 @@ class Data
     private int $anno;
     private float $orario;
 
+
+    public function __construct(int $anno, int $mese, int $giorno, float $orario)
+    {
+        $this->anno = $anno;
+        $this->mese = $mese;
+        $this->giorno = $giorno;
+        $this->orario = $orario;
+    }
+
     /**
      * @return float
      */
