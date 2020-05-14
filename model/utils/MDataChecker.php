@@ -1,17 +1,17 @@
 <?php
 
 
-class DataChecker
+class MDataChecker
 {
     /**
      * Controlla se l'orario $toCheck si trova nel lasso di tempo compreso fra $orarioInizio e $orarioFine
      * In caso affermativo, ritorna True
-     * @param Data $orarioInizio
-     * @param Data $orarioFine
-     * @param Data $toCheck
+     * @param MData $orarioInizio
+     * @param MData $orarioFine
+     * @param MData $toCheck
      * @return bool
      */
-    public function sovrapposizione(Data $orarioInizio, Data $orarioFine, Data $toCheck): bool
+    public function sovrapposizione(MData $orarioInizio, MData $orarioFine, MData $toCheck): bool
     {
         if($toCheck->getAnno() == $orarioInizio->getAnno()
             && $toCheck->getMese() == $orarioInizio->getMese()
@@ -26,12 +26,12 @@ class DataChecker
      * Controlla che l'orario $toCheck si trovi nel lasso di tempo compreso fra $orarioInizio - 30 minuti
      * e $orarioFine + 30 minuti
      * In caso affermativo, ritorna True
-     * @param Data $orarioInizio
-     * @param Data $orarioFine
-     * @param Data $toCheck
+     * @param MData $orarioInizio
+     * @param MData $orarioFine
+     * @param MData $toCheck
      * @return bool
      */
-    public function SovrapposizioneEstesa(Data $orarioInizio, Data $orarioFine, Data $toCheck): bool
+    public function SovrapposizioneEstesa(MData $orarioInizio, MData $orarioFine, MData $toCheck): bool
     {
         if($toCheck->getAnno() == $orarioInizio->getAnno()
             && $toCheck->getMese() == $orarioInizio->getMese()

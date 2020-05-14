@@ -1,7 +1,7 @@
 <?php
 
 
-class Data
+class MData
 {
     private int $giorno;
     private int $mese;

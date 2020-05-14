@@ -1,12 +1,12 @@
 <?php
 
 
-class Agenzia
+class MAgenzia
 {
     private array      $list_Clienti;
     private array      $list_AgentiImmobiliari;
     private array      $list_Immobili;
-    private Calendario $calendario;
+    private MCalendario $calendario;
 
     /**
      * @return mixed

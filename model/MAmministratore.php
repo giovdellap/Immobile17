@@ -1,13 +1,13 @@
 <?php
 
-class Amministratore
+class MAmministratore
 {
     private String $mail;
     private String $password;
     private String $id;
     private String $nome;
     private String $cognome;
-    private Agenzia $agenzia;
+    private MAgenzia $agenzia;
 
     /**
      * @return String
@@ -90,33 +90,33 @@ class Amministratore
     }
 
     /**
-     * @return Agenzia
+     * @return MAgenzia
      */
-    public function getAgenzia(): Agenzia
+    public function getAgenzia(): MAgenzia
     {
         return $this->agenzia;
     }
 
     /**
-     * @param Agenzia $agenzia
+     * @param MAgenzia $agenzia
      */
-    public function setAgenzia(Agenzia $agenzia): void
+    public function setAgenzia(MAgenzia $agenzia): void
     {
         $this->agenzia = $agenzia;
     }
 
     /**
-     * @return Calendario
+     * @return MCalendario
      */
-    public function getCalendarioAgenzia(): Calendario
+    public function getCalendarioAgenzia(): MCalendario
     {
         return $this->agenzia->getCalendario();
     }
 
     /**
-     * @param Calendario $calendario
+     * @param MCalendario $calendario
      */
-    public function setCalendarioAgenzia(Calendario $calendario): void
+    public function setCalendarioAgenzia(MCalendario $calendario): void
     {
         $this->agenzia->setCalendario($calendario);
     }

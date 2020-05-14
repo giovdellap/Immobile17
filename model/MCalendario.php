@@ -1,6 +1,6 @@
 <?php
 
-class Calendario
+class MCalendario
 {
     private array $appuntamenti;
     
@@ -19,18 +19,18 @@ class Calendario
      * Controlla se un appuntamento da aggiungere è compatibile con lo stato del calendario.
      * In caso affermativo, lo aggiunge al calendario e agli appuntamenti di immobile, agente immobiliare e cliente coinvolti.
      * 
-     * @param Appuntamento $appuntamento
+     * @param MAppuntamento $appuntamento
      * @return bool
      */
-    public function addAppuntamento(Appuntamento $appuntamento): bool
+    public function addAppuntamento(MAppuntamento $appuntamento): bool
     {
         //controlli
-        $context = new ValidatorContext($appuntamento);
-        $valido = $context->validateAppuntamento(new ValidatorImmobile());
+        $context = new MValidatorContext($appuntamento);
+        $valido = $context->validateAppuntamento(new MValidatorImmobile());
         if($valido)
-            $valido = $context->validateAppuntamento(new ValidatorAgenteImmobiliare());
+            $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
         if($valido)
-            $valido = $context->validateAppuntamento(new ValidatorCliente());
+            $valido = $context->validateAppuntamento(new MValidatorCliente());
 
         if($valido)
         {
@@ -45,9 +45,9 @@ class Calendario
     
     /**
      * Elimina un appuntamento dal calendario e dagli appuntamenti dei soggetti coinvolti.
-     * @param Appuntamento $appuntamento
+     * @param MAppuntamento $appuntamento
      */
-    public function deleteAppuntamento(Appuntamento $appuntamento): void
+    public function deleteAppuntamento(MAppuntamento $appuntamento): void
     {
         if(in_array($appuntamento, $this->appuntamenti))
             unset($this->appuntamenti[array_search($appuntamento, $this->appuntamenti)]);

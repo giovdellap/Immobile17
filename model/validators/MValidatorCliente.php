@@ -1,20 +1,20 @@
 <?php
 
 
-class ValidatorCliente implements Validator
+class MValidatorCliente implements MValidator
 {
     /**
      * Controlla se l'appuntamento può essere inserito in calendario secondo i parametri per i clienti
-     * @param Appuntamento $appuntamento
+     * @param MAppuntamento $appuntamento
      * @return bool
      */
-    public function validate(Appuntamento $appuntamento): bool
+    public function validate(MAppuntamento $appuntamento): bool
     {
         $valido = true;
         $cliente = $appuntamento->getCliente();
         foreach ($cliente->getListAppuntamenti() as &$appAgente)
         {
-            $checker = new DataChecker();
+            $checker = new MDataChecker();
             $valido = !$checker->SovrapposizioneEstesa($appAgente->getOrarioInizio(), $appAgente->getOrarioFine(), $appuntamento->getOrarioInizio());
             if(!$valido) return $valido;
         }
