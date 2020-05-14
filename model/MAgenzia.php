@@ -11,7 +11,7 @@ class MAgenzia
     /**
      * @return mixed
      */
-    public function getCalendario()
+    public function getCalendario(): MCalendario
     {
         return $this->calendario;
     }
@@ -19,12 +19,12 @@ class MAgenzia
     /**
      * @param mixed $calendario
      */
-    public function setCalendario($calendario)
+    public function setCalendario(MCalendario $calendario)
     {
         $this->calendario = $calendario;
     }
 
-    public function addCliente(Cliente $Cliente):bool{
+    public function addCliente(MCliente $Cliente):bool{
 
         if(!in_array($Cliente, $this ->list_Clienti) )
         {
@@ -37,7 +37,7 @@ class MAgenzia
 
     }
 
-    public function removeCliente(Cliente $Cliente):void{
+    public function removeCliente(MCliente $Cliente):void{
 
         if(in_array($Cliente, $this ->list_Clienti) )
         {
@@ -47,7 +47,7 @@ class MAgenzia
 
 
 
-    public function addAgenteImmobiliare(AgenteImmobiliare $AgenteImmobiliare):bool{
+    public function addAgenteImmobiliare(MAgenteImmobiliare $AgenteImmobiliare):bool{
 
         if(!in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
         {
@@ -59,7 +59,7 @@ class MAgenzia
 
     }
 
-    public function removeAgenteImmobiliare(AgenteImmobiliare $AgenteImmobiliare):void{
+    public function removeAgenteImmobiliare(MAgenteImmobiliare $AgenteImmobiliare):void{
 
         if(in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
         {
@@ -68,7 +68,7 @@ class MAgenzia
 
     }
 
-    public function addImmobile(Immobile $Immobile):bool{
+    public function addImmobile(MImmobile $Immobile):bool{
         if(!in_array($Immobile, $this ->list_Immobili) )
         {
 
@@ -80,13 +80,39 @@ class MAgenzia
 
     }
 
-    public function removeImmobile(Immobile $Immobile):void{
+    public function removeImmobile(MImmobile $Immobile):void{
 
         if(in_array($Immobile, $this ->list_Immobilii) )
         {
             unset($this->list_Clienti[array_search($Immobile, $this->list_Immobili)]);
         }
 
+    }
+
+    public function checkDisponibilità(MData $orarioinizio, MData $orarioFine): array
+    {
+        $completed = false;
+        $inizio = $orarioinizio;
+        $toReturn = array();
+        while(!$completed)
+        {
+            ////
+        }
+
+        return $toReturn;
+    }
+
+    public function newInizio(MData $inizio): MData
+    {
+        $newInizio = $inizio;
+        if ($inizio >=19.45)
+        {
+            $newInizio->nextDay();
+            $newInizio->setOrario(8.00);
+        }
+        else $newInizio->incrementoOrario(15);
+
+        return $newInizio;
     }
     
     

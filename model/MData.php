@@ -81,4 +81,40 @@ class MData
         $this->anno = $anno;
     }
 
+    /**
+     * Cambia la data al giorno successivo
+     */
+    public function nextDay() : void
+    {
+        $numDays = cal_days_in_month(CAL_GREGORIAN, $this->mese, $this->anno);
+        if($this->giorno == $numDays)
+        {
+            if($this->mese == 12)
+            {
+                ++$this->anno;
+                $this->mese = 1;
+                $this->giorno = 1;
+            }
+            else
+            {
+                ++$this->mese;
+                $this->giorno = 1;
+            }
+        }
+        else ++$this->giorno;
+    }
+
+    public function incrementoOrario(int $incremento): void
+    {
+        $ora = intval($this->orario);
+        $minuto = ($this->getOrario() - $ora)*100;
+        $minuto = $minuto + $incremento;
+        if($minuto > 60)
+        {
+            $minuto = $minuto - 60;
+            ++$ora;
+        }
+        $this->orario = $ora + $minuto/100;
+    }
+
 }
