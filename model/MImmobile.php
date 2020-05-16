@@ -14,6 +14,12 @@ class MImmobile
     private int    $grandezza;
     private array  $list_appuntamenti;
 
+    public function __construct()
+    {
+        $this->immagini = array();
+        $this->list_appuntamenti = array();
+    }
+
     /**
      * @return String
      */
@@ -159,21 +165,20 @@ class MImmobile
     }
 
 
-    public function addAppuntamento(Appuntamento $appuntamento): bool {
+    public function addAppuntamento(MAppuntamento $appuntamento): bool {
 
-        if(!in_array($appuntamento , $this->list_Appuntamenti))
+        if(!in_array($appuntamento , $this->list_appuntamenti))
         {
-
-            $this->list_Appuntamenti[] = $appuntamento;
-
+            $this->list_appuntamenti[] = $appuntamento;
+            return true;
         }
         else return false;
     }
 
-    public function deleteAppuntamento(Appuntamento $appuntamento): void{
-        if(in_array($appuntamento, $this ->list_Appuntamenti) )
+    public function deleteAppuntamento(MAppuntamento $appuntamento): void{
+        if(in_array($appuntamento, $this ->list_appuntamenti) )
         {
-            unset($this->list_Appuntamenti[array_search($appuntamento, $this->list_Appuntamenti)]);
+            unset($this->list_Appuntamenti[array_search($appuntamento, $this->list_appuntamenti)]);
         }
     }
 

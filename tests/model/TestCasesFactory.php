@@ -18,6 +18,34 @@ class TestCasesFactory
         return $cliente;
     }
 
+    public function createImmobile1(): MImmobile
+    {
+        return new MImmobile();
+    }
+
+    public function createImmobile2(): MImmobile
+    {
+        $immobile = new MImmobile();
+        $appuntamento = $this->createEmptyAppuntamento(13.30);
+        $appuntamento->setImmobile($immobile);
+        $immobile->addAppuntamento($appuntamento);
+        return $immobile;
+    }
+
+    public function createAgente1()
+    {
+        return new MAgenteImmobiliare();
+    }
+
+    public function createAgente2()
+    {
+        $agente = new MAgenteImmobiliare();
+        $appuntamento = $this->createEmptyAppuntamento(13.30);
+        $appuntamento->setAgenteImmobiliare($agente);
+        $agente->addAppuntamento($appuntamento);
+        return $agente;
+    }
+
     public function createEmptyAppuntamento(float $orario): MAppuntamento
     {
         $appuntamento = new MAppuntamento(1);

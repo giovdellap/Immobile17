@@ -10,13 +10,13 @@ class MValidatorImmobile implements MValidator
      */
     public function validate(MAppuntamento $appuntamento): bool
     {
-        $valido = true;
+        $notValido = false;
         $immobile = $appuntamento->getImmobile();
         foreach ($immobile->getListAppuntamenti() as &$appImmobile)
         {
             $checker = new MDataChecker();
-            $valido = !$checker->sovrapposizione($appImmobile->getOrarioInizio(), $appImmobile->getOrarioFine(), $appuntamento->getOrarioInizio());
-            if(!$valido) return $valido;
+            $notValido = $checker->sovrapposizione($appImmobile->getOrarioInizio(), $appImmobile->getOrarioFine(), $appuntamento->getOrarioInizio());
+            if($notValido) return false;
         }
 
         return true;
