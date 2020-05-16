@@ -10,13 +10,14 @@ class MValidatorCliente implements MValidator
      */
     public function validate(MAppuntamento $appuntamento): bool
     {
-        $valido = true;
+        $notValido = false;
         $cliente = $appuntamento->getCliente();
         foreach ($cliente->getListAppuntamenti() as &$appCliente)
         {
             $checker = new MDataChecker();
-            $valido = !$checker->SovrapposizioneEstesa($appCliente->getOrarioInizio(), $appCliente->getOrarioFine(), $appuntamento->getOrarioInizio());
-            if(!$valido) return $valido;
+            if ($checker->SovrapposizioneEstesa($appCliente->getOrarioInizio(), $appCliente->getOrarioFine(), $appuntamento->getOrarioInizio()))
+                return false;
+
         }
 
         return true;

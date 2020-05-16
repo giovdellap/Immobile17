@@ -13,6 +13,7 @@ class TestCasesFactory
     {
         $cliente = new MCliente();
         $appuntamento_1 = $this->createEmptyAppuntamento(13.30);
+        $appuntamento_1->setCliente($cliente);
         $cliente->addAppuntamento($appuntamento_1);
         return $cliente;
     }
@@ -22,7 +23,7 @@ class TestCasesFactory
         $appuntamento = new MAppuntamento(1);
         $inizio = new MData(2020, 5, 15, $orario);
         $appuntamento->setOrarioInizio($inizio);
-        $fine = $inizio;
+        $fine = new MData(2020, 5, 15, $orario);
         $fine->incrementoOrario(30);
         $appuntamento->setOrarioFine($fine);
         return $appuntamento;

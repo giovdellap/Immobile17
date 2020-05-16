@@ -130,19 +130,18 @@ class MUtente
         $this->attivato = $attivato;
     }
 
-    public function addAppuntamento(Appuntamento $appuntamento): bool{
+    public function addAppuntamento(MAppuntamento $appuntamento): bool{
 
         if(!in_array($appuntamento , $this->list_Appuntamenti))
         {
-
             $this->list_Appuntamenti[] = $appuntamento;
-
+            return true;
         }
         else return false;
 
     }
 
-    public function deleteAppuntamento(Appuntamento $appuntamento): void{
+    public function deleteAppuntamento(MAppuntamento $appuntamento): void{
         if(in_array($appuntamento, $this ->list_Appuntamenti) )
         {
             unset($this->list_Appuntamenti[array_search($appuntamento, $this->list_Appuntamenti)]);

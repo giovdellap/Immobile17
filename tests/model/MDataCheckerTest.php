@@ -6,7 +6,7 @@ require (dirname(__FILE__, 3) . '/autoload.php');
 
 
 
-class DataCheckerTest extends TestCase
+class MDataCheckerTest extends TestCase
 {
     /**
      * Dati in ingresso: orari che si sovrappongono
@@ -39,6 +39,22 @@ class DataCheckerTest extends TestCase
         $dataChecker = new MDataChecker();
         $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheck);
         $this->assertEquals($toReturn, false);
+    }
+
+    /**
+     * Dati in ingresso: orari d'inizio che coincidono
+     * Funzione testata: sovrapposizione()
+     * Dati da ritornare: true
+     */
+    public function testSovrapposizioneTrue_2()
+    {
+        $dataInizio = new MData(2020, 5, 10, 12.30);
+        $dataFine = new MData(2020, 5, 10, 13.00);
+        $toCheck = new MData(2020, 5, 10, 12.30);
+
+        $dataChecker = new MDataChecker();
+        $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheck);
+        $this->assertTrue($toReturn);
     }
 
     /**
@@ -99,6 +115,22 @@ class DataCheckerTest extends TestCase
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
         $toCheck = new MData(2020, 5, 10, 13.15);
+
+        $dataChecker = new MDataChecker();
+        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheck);
+        $this->assertEquals($toReturn, true);
+    }
+
+    /**
+     * Dati in ingresso: orari d'inizio che si sovrappongono
+     * Funzione Testata: sovrapposizioneEstesa()
+     * Dati da ritornare: true
+     */
+    public function testSovrapposizioneEstesa_5()
+    {
+        $dataInizio = new MData(2020, 5, 10, 12.30);
+        $dataFine = new MData(2020, 5, 10, 13.00);
+        $toCheck = new MData(2020, 5, 10, 12.30);
 
         $dataChecker = new MDataChecker();
         $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheck);

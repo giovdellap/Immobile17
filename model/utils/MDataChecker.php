@@ -16,7 +16,7 @@ class MDataChecker
         if($toCheck->getAnno() == $orarioInizio->getAnno()
             && $toCheck->getMese() == $orarioInizio->getMese()
             && $toCheck->getGiorno() == $orarioInizio->getGiorno())
-            if($toCheck->getOrario() > $orarioInizio->getOrario()
+            if($toCheck->getOrario() >= $orarioInizio->getOrario()
                 && $toCheck->getOrario() < $orarioFine->getOrario())
                 return true;
             else return false;
