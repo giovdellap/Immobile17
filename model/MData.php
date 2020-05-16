@@ -104,12 +104,16 @@ class MData
         else ++$this->giorno;
     }
 
+    /**
+     * Incrementa l'orario di $incremento
+     * @param int $incremento (minuti)
+     */
     public function incrementoOrario(int $incremento): void
     {
         $ora = intval($this->orario);
         $minuto = ($this->getOrario() - $ora)*100;
         $minuto = $minuto + $incremento;
-        if($minuto > 60)
+        while($minuto > 60)
         {
             $minuto = $minuto - 60;
             ++$ora;

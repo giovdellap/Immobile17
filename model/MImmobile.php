@@ -1,7 +1,7 @@
 <?php
 
 
-class Immobile
+class MImmobile
 {
     private String $id;
     private String $indirizzo;

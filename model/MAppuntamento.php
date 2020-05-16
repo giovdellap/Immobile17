@@ -10,6 +10,20 @@ class MAppuntamento
     private MImmobile $immobile;
     private MAgenteImmobiliare $agenteImmobiliare;
 
+    public function __construct(int $id)
+    {
+        $this->id = $id;
+    }
+
+    public function setAppuntamento(MData $inizio, MData $fine, MCliente $cliente, MImmobile $immobile, MAgenteImmobiliare $agente): void
+    {
+        $this->orario_inizio = $inizio;
+        $this->orario_fine = $fine;
+        $this->immobile = $immobile;
+        $this->cliente = $cliente;
+        $this->agenteImmobiliare = $agente;
+    }
+
     /**
      * @return String
      */

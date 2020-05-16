@@ -13,6 +13,11 @@ class MUtente
     private bool   $attivato;
     private array  $list_Appuntamenti;
 
+    public function __construct()
+    {
+        $this->list_Appuntamenti = array();
+    }
+
     /**
      * @return String
      */
@@ -144,5 +149,9 @@ class MUtente
         }
     }
 
+    public function getListAppuntamenti() : array
+    {
+        return $this->list_Appuntamenti;
+    }
 
 }
