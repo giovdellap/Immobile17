@@ -19,6 +19,22 @@ class MUtente
     }
 
     /**
+     * @return array
+     */
+    public function getListAppuntamenti(): array
+    {
+        return $this->list_Appuntamenti;
+    }
+
+    /**
+     * @param array $list_Appuntamenti
+     */
+    public function setListAppuntamenti(array $list_Appuntamenti): void
+    {
+        $this->list_Appuntamenti = $list_Appuntamenti;
+    }
+
+    /**
      * @return String
      */
     public function getNome(): String
@@ -148,9 +164,5 @@ class MUtente
         }
     }
 
-    public function getListAppuntamenti() : array
-    {
-        return $this->list_Appuntamenti;
-    }
 
 }

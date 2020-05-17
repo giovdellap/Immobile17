@@ -3,9 +3,9 @@
 
 class MAgenzia
 {
-    private array      $list_Clienti;
-    private array      $list_AgentiImmobiliari;
-    private array      $list_Immobili;
+    private array       $list_Clienti;
+    private array       $list_AgentiImmobiliari;
+    private array       $list_Immobili;
     private MCalendario $calendario;
 
     /**
@@ -89,18 +89,37 @@ class MAgenzia
 
     }
 
-    public function checkDisponibilità(MData $orarioinizio, MData $orarioFine): array
+    public function checkDisponibilità(MCliente $cliente, MImmobile $immobile, MData $orarioinizio, MData $orariofine): array
     {
-        $completed = false;
-        $inizio = $orarioinizio;
         $toReturn = array();
-        while(!$completed)
-        {
-            ////
-        }
+        $Dispon = $orarioinizio;
 
-        return $toReturn;
+        while ($Dispon != $orariofine) {
+            $fine = $Dispon;
+            $fine->incrementoOrario(30);
+            foreach ($this->list_AgentiImmobiliari as $agenti) {
+                $AppDisp = new MAppuntamento(0000);
+
+                $AppDisp->setAppuntamento($Dispon, $fine, $cliente, $immobile, $agenti);
+                $context = new MValidatorContext($AppDisp);
+                $valido = $context->validateAppuntamento(new MValidatorImmobile());
+                if ($valido)
+                    $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
+                if ($valido)
+                    $valido = $context->validateAppuntamento(new MValidatorCliente());
+                if ($valido) {
+                    $toReturn[] = $AppDisp;
+                }
+
+            }
+            $Dispon->incrementoOrario(30);
+            $fine->incrementoOrario(30);
+            return $toReturn;
+
+        }
     }
+
+
 
     public function newInizio(MData $inizio): MData
     {
