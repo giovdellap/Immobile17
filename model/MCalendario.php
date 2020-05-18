@@ -55,5 +55,14 @@ class MCalendario
         $appuntamento->getCliente()->deleteAppuntamento($appuntamento);
         $appuntamento->getImmobile()->deleteAppuntamento($appuntamento);
     }
+
+    /**
+     * @return array
+     */
+    public function getAppuntamenti(): array
+    {
+        return $this->appuntamenti;
+    }
+
 }
 

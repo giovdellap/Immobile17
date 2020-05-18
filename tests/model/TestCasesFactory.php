@@ -4,6 +4,9 @@
 
 class TestCasesFactory
 {
+
+    //---CLIENTI----
+
     public function createCliente1(): MCliente
     {
         return new MCliente();
@@ -17,6 +20,8 @@ class TestCasesFactory
         $cliente->addAppuntamento($appuntamento_1);
         return $cliente;
     }
+
+    //---IMMOBILI----
 
     public function createImmobile1(): MImmobile
     {
@@ -32,6 +37,8 @@ class TestCasesFactory
         return $immobile;
     }
 
+    //---AGENTI----
+
     public function createAgente1()
     {
         return new MAgenteImmobiliare();
@@ -46,6 +53,8 @@ class TestCasesFactory
         return $agente;
     }
 
+    //---APPUNTAMENTO----
+
     public function createEmptyAppuntamento(float $orario): MAppuntamento
     {
         $appuntamento = new MAppuntamento(1);
@@ -55,6 +64,35 @@ class TestCasesFactory
         $fine->incrementoOrario(30);
         $appuntamento->setOrarioFine($fine);
         return $appuntamento;
+    }
+
+    public function setAppuntamento(MAppuntamento $appuntamento, MCliente $cliente, MAgenteImmobiliare $agente, MImmobile $immobile): MAppuntamento
+    {
+        $appuntamento->setAgenteImmobiliare($agente);
+        $appuntamento->setCliente($cliente);
+        $appuntamento->setImmobile($immobile);
+        return $appuntamento;
+    }
+    //---CALENDARIO----
+
+    public function createEmptyCalendario(): MCalendario
+    {
+        return new MCalendario();
+
+    }
+
+    public function createCalendario1(): MCalendario
+    {
+        $cliente_1 = $this->createCliente1();
+        $agente = $this->createAgente1();
+        $immobile = $this->createImmobile1();
+        $appuntamento = $this->createEmptyAppuntamento(13.30);
+        $appuntamento->setCliente($cliente_1);
+        $appuntamento->setAgenteImmobiliare($agente);
+        $appuntamento->setImmobile($immobile);
+        $calendario = new MCalendario();
+        $calendario->addAppuntamento($appuntamento);
+        return $calendario;
     }
 
 }

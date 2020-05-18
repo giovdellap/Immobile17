@@ -178,7 +178,7 @@ class MImmobile
     public function deleteAppuntamento(MAppuntamento $appuntamento): void{
         if(in_array($appuntamento, $this ->list_appuntamenti) )
         {
-            unset($this->list_Appuntamenti[array_search($appuntamento, $this->list_appuntamenti)]);
+            unset($this->list_appuntamenti[array_search($appuntamento, $this->list_appuntamenti)]);
         }
     }
 
