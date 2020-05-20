@@ -121,4 +121,10 @@ class MData
         $this->orario = $ora + $minuto/100;
     }
 
+    public function getCopy(): MData
+    {
+        return new MData($this->anno, $this->mese, $this->giorno, $this->orario);
+
+    }
+
 }

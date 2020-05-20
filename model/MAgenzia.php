@@ -8,6 +8,14 @@ class MAgenzia
     private array       $list_Immobili;
     private MCalendario $calendario;
 
+    public function __construct()
+    {
+        $this->list_AgentiImmobiliari = array();
+        $this->list_Clienti = array();
+        $this->list_Immobili = array();
+        $this->calendario = new MCalendario();
+    }
+
     /**
      * @return mixed
      */
@@ -26,15 +34,11 @@ class MAgenzia
 
     public function addCliente(MCliente $Cliente):bool{
 
-        if(!in_array($Cliente, $this ->list_Clienti) )
-        {
-
+        if(!in_array($Cliente, $this ->list_Clienti) ) {
             $this->list_Clienti[] = $Cliente;
-
+            return true;
         }
-
         else return false;
-
     }
 
     public function removeCliente(MCliente $Cliente):void{
@@ -51,9 +55,8 @@ class MAgenzia
 
         if(!in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
         {
-
             $this->list_AgentiImmobiliari[] = $AgenteImmobiliare;
-
+            return true;
         }
         else return false;
 
@@ -71,9 +74,8 @@ class MAgenzia
     public function addImmobile(MImmobile $Immobile):bool{
         if(!in_array($Immobile, $this ->list_Immobili) )
         {
-
             $this->list_Clienti[] = $Immobile;
-
+            return true;
         }
 
         else return false;
@@ -92,31 +94,45 @@ class MAgenzia
     public function checkDisponibilità(MCliente $cliente, MImmobile $immobile, MData $orarioinizio, MData $orariofine): array
     {
         $toReturn = array();
-        $Dispon = $orarioinizio;
+        $dispon = $orarioinizio->getCopy();
+        $fine = $orarioinizio->getCopy();
+        $fine->incrementoOrario(30);
 
-        while ($Dispon != $orariofine) {
-            $fine = $Dispon;
-            $fine->incrementoOrario(30);
-            foreach ($this->list_AgentiImmobiliari as $agenti) {
-                $AppDisp = new MAppuntamento(0000);
+        while ($dispon->getOrario() <= $orariofine->getOrario()) {
 
-                $AppDisp->setAppuntamento($Dispon, $fine, $cliente, $immobile, $agenti);
-                $context = new MValidatorContext($AppDisp);
+            foreach ($this->list_AgentiImmobiliari as &$agenti)
+            {
+                $appDisp = new MAppuntamento(0000);
+                $appDisp->setAppuntamento($dispon, $fine, $cliente, $immobile, $agenti);
+
+                echo ("\n");
+                echo ("INIZIO: ".$appDisp->getOrarioInizio()->getOrario()."\n");
+                echo ("FINE: ".$appDisp->getOrarioFine()->getOrario()."\n");
+                echo ("AGENTE: ".$appDisp->getAgenteImmobiliare()->getNome()."\n");
+                echo ("CLIENTE: ".$appDisp->getCliente()->getNome()."\n");
+                echo ("IMMOBILE: ".$appDisp->getImmobile()->getId()."\n");
+
+                $context = new MValidatorContext($appDisp);
                 $valido = $context->validateAppuntamento(new MValidatorImmobile());
                 if ($valido)
                     $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
                 if ($valido)
                     $valido = $context->validateAppuntamento(new MValidatorCliente());
-                if ($valido) {
-                    $toReturn[] = $AppDisp;
-                }
+                if ($valido)
+                    $toReturn[] = $appDisp;
+
+                echo ("ValidatorAgente: ". $context->validateAppuntamento(new MValidatorAgenteImmobiliare())."\n");
+                echo ("ValidatorImmobile: ".$context->validateAppuntamento(new MValidatorImmobile())."\n");
+                echo ("ValidatorCliente: ".$context->validateAppuntamento(new MValidatorCliente())."\n");
+                echo ("\n-------------------------------------------------");
+
 
             }
-            $Dispon->incrementoOrario(30);
-            $fine->incrementoOrario(30);
-            return $toReturn;
+            $dispon->incrementoOrario(15);
+            $fine->incrementoOrario(15);
 
         }
+        return $toReturn;
     }
 
 
