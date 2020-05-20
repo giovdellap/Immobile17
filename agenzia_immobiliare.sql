@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 19, 2020 alle 18:08
+-- Creato il: Mag 20, 2020 alle 12:06
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.6
 
@@ -24,13 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `agente_immobiliare`
+--
+
+CREATE TABLE `agente_immobiliare` (
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(30) NOT NULL,
+  `cognome` varchar(30) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `datanascita` date NOT NULL,
+  `iscrizione` datetime NOT NULL,
+  `verifica` tinyint(1) NOT NULL,
+  `id_agenzia` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `agenzia`
 --
 
 CREATE TABLE `agenzia` (
   `id` varchar(10) NOT NULL,
   `nome` varchar(20) NOT NULL,
-  `città` varchar(30) NOT NULL,
+  `citta` varchar(30) NOT NULL,
   `CAP` int(5) NOT NULL,
   `provincia` varchar(2) NOT NULL,
   `indirizzo` varchar(30) NOT NULL
@@ -95,7 +113,7 @@ CREATE TABLE `cliente` (
 CREATE TABLE `immobile` (
   `id` varchar(10) NOT NULL,
   `CAP` int(5) NOT NULL,
-  `città` varchar(30) NOT NULL,
+  `citta` varchar(30) NOT NULL,
   `indirizzo` varchar(40) NOT NULL,
   `tipologia` varchar(20) NOT NULL,
   `dimensione` varchar(15) NOT NULL,
@@ -160,9 +178,30 @@ CREATE TABLE `media_cliente` (
   `id_cliente` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `media_immobile`
+--
+
+CREATE TABLE `media_immobile` (
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `immagine` blob NOT NULL,
+  `id_immobile` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indici per le tabelle scaricate
 --
+
+--
+-- Indici per le tabelle `agente_immobiliare`
+--
+ALTER TABLE `agente_immobiliare`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_agenzia` (`id_agenzia`);
 
 --
 -- Indici per le tabelle `agenzia`
@@ -226,8 +265,21 @@ ALTER TABLE `media_cliente`
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
+-- Indici per le tabelle `media_immobile`
+--
+ALTER TABLE `media_immobile`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_immobile` (`id_immobile`);
+
+--
 -- Limiti per le tabelle scaricate
 --
+
+--
+-- Limiti per la tabella `agente_immobiliare`
+--
+ALTER TABLE `agente_immobiliare`
+  ADD CONSTRAINT `agente_immobiliare_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `amministratore`
@@ -278,6 +330,12 @@ ALTER TABLE `media_agenzia`
 --
 ALTER TABLE `media_cliente`
   ADD CONSTRAINT `media_cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `media_immobile`
+--
+ALTER TABLE `media_immobile`
+  ADD CONSTRAINT `media_immobile_ibfk_1` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
