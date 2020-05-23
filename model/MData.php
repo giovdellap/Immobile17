@@ -22,7 +22,7 @@ class MData
      */
     public function getOrario(): float
     {
-        return $this->orario;
+        return round($this->orario, 2);
     }
 
     /**
@@ -30,7 +30,7 @@ class MData
      */
     public function setOrario(float $orario): void
     {
-        $this->orario = $orario;
+        $this->orario = round($orario,2);
     }
 
     /**
@@ -111,7 +111,7 @@ class MData
     public function incrementoOrario(int $incremento): void
     {
         $ora = intval($this->orario);
-        $minuto = ($this->getOrario() - $ora)*100;
+        $minuto = ($this->orario - $ora)*100;
         $minuto = $minuto + $incremento;
         while($minuto > 60)
         {
@@ -121,10 +121,5 @@ class MData
         $this->orario = $ora + $minuto/100;
     }
 
-    public function getCopy(): MData
-    {
-        return new MData($this->anno, $this->mese, $this->giorno, $this->orario);
-
-    }
 
 }

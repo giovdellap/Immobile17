@@ -124,6 +124,7 @@ class TestCasesFactory
         $agenzia->addCliente($cliente2);
 
         //APPUNTAMENTO 1
+        echo ("Appuntamento1\n");
         $appuntamento1 = $this->createEmptyAppuntamento(8.15);
         $appuntamento1->setImmobile($immobile1);
         $appuntamento1->setAgenteImmobiliare($agente1);
@@ -131,6 +132,7 @@ class TestCasesFactory
         $agenzia->getCalendario()->addAppuntamento($appuntamento1);
 
         //APPUNTAMENTO 2
+        echo("Appuntamento2\n");
         $appuntamento2 = $this->createEmptyAppuntamento(10.15);
         $appuntamento2->setImmobile($immobile2);
         $appuntamento2->setAgenteImmobiliare($agente1);
@@ -138,6 +140,7 @@ class TestCasesFactory
         $agenzia->getCalendario()->addAppuntamento($appuntamento2);
 
         //APPUNTAMENTO 3
+        echo("Appuntamento3\n");
         $appuntamento3 = $this->createEmptyAppuntamento(10.15);
         $appuntamento3->setImmobile($immobile1);
         $appuntamento3->setAgenteImmobiliare($agente2);

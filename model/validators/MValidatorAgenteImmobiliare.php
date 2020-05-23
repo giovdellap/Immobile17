@@ -10,13 +10,14 @@ class MValidatorAgenteImmobiliare implements MValidator
      */
     public function validate(MAppuntamento $appuntamento): bool
     {
-        $notValido = false;
         $agenteImmobiliare = $appuntamento->getAgenteImmobiliare();
+        $checker = new MDataChecker();
         foreach ($agenteImmobiliare->getListAppuntamenti() as &$appAgente)
         {
-            $checker = new MDataChecker();
-            $notValido = $checker->SovrapposizioneEstesa($appAgente->getOrarioInizio(), $appAgente->getOrarioFine(), $appuntamento->getOrarioInizio());
+            $notValido = $checker->SovrapposizioneEstesa($appAgente->getOrarioInizio(), $appAgente->getOrarioFine(), $appuntamento->getOrarioInizio(), $appuntamento->getOrarioFine());
+            echo("1notValido Agente: ".$notValido."\n");
             if($notValido) return false;
+
         }
 
         return true;

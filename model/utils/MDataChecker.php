@@ -8,18 +8,34 @@ class MDataChecker
      * In caso affermativo, ritorna True
      * @param MData $orarioInizio
      * @param MData $orarioFine
-     * @param MData $toCheck
+     * @param MData $toCheckInizio
+     * @param MData $toCheckFine
      * @return bool
      */
-    public function sovrapposizione(MData $orarioInizio, MData $orarioFine, MData $toCheck): bool
+    public function sovrapposizione(MData $orarioInizio, MData $orarioFine, MData $toCheckInizio, MData $toCheckFine): bool
     {
-        if($toCheck->getAnno() == $orarioInizio->getAnno()
-            && $toCheck->getMese() == $orarioInizio->getMese()
-            && $toCheck->getGiorno() == $orarioInizio->getGiorno())
-            if($toCheck->getOrario() >= $orarioInizio->getOrario()
-                && $toCheck->getOrario() < $orarioFine->getOrario())
+        echo ("orarioInizio: ".$orarioInizio->getOrario()."\n");
+        echo ("orarioFine: ".$orarioFine->getOrario()."\n");
+        echo ("toCheckInizio: ".$toCheckInizio->getOrario()."\n");
+        echo ("tocheckFine: ".$toCheckFine->getOrario()."\n");
+
+        if(($toCheckInizio->getAnno() == $orarioInizio->getAnno()) && ($orarioFine->getAnno() == $toCheckFine->getAnno())
+            && ($toCheckInizio->getMese() == $orarioInizio->getMese()) && ($orarioFine->getMese() == $toCheckFine->getMese())
+            && ($toCheckInizio->getGiorno() == $orarioInizio->getGiorno()) && ($orarioFine->getGiorno() == $toCheckFine->getGiorno()))
+        {
+            echo("if1: ".($orarioInizio->getOrario() <= $toCheckInizio->getOrario() && $orarioFine->getOrario() >= $toCheckFine->getOrario())."\n");
+            echo("if2: ".($toCheckFine->getOrario() > $orarioInizio->getOrario() && $toCheckFine->getOrario() < $orarioFine->getOrario())."\n");
+            echo("if21: ".($toCheckFine->getOrario() >$orarioInizio->getOrario())."\n");
+            echo("if22: ".($toCheckFine->getOrario() <$orarioFine->getOrario())."\n");
+            echo("if3: ".($toCheckInizio->getOrario() > $orarioInizio->getOrario() && $toCheckInizio->getOrario() < $orarioFine->getOrario())."\n");
+
+            if(($orarioInizio->getOrario() <= $toCheckInizio->getOrario() && $orarioFine->getOrario() >= $toCheckFine->getOrario()) ||
+                ($toCheckFine->getOrario() > $orarioInizio->getOrario() && $toCheckFine->getOrario() < $orarioFine->getOrario()) ||
+                ($toCheckInizio->getOrario() > $orarioInizio->getOrario() && $toCheckInizio->getOrario() < $orarioFine->getOrario()))
                 return true;
             else return false;
+        }
+        else return false;
     }
 
     /**
@@ -29,13 +45,14 @@ class MDataChecker
      * @param MData $orarioInizio
      * @param MData $orarioFine
      * @param MData $toCheck
+     * @param bool $inizio
      * @return bool
      */
-    public function SovrapposizioneEstesa(MData $orarioInizio, MData $orarioFine, MData $toCheck): bool
+    public function SovrapposizioneEstesa(MData $orarioInizio, MData $orarioFine, MData $toCheckInizio, MData $toCheckFine): bool
     {
-        if($toCheck->getAnno() == $orarioInizio->getAnno()
-            && $toCheck->getMese() == $orarioInizio->getMese()
-            && $toCheck->getGiorno() == $orarioInizio->getGiorno())
+        if(($toCheckInizio->getAnno() == $orarioInizio->getAnno()) && ($orarioFine->getAnno() == $toCheckFine->getAnno())
+            && ($toCheckInizio->getMese() == $orarioInizio->getMese()) && ($orarioFine->getMese() == $toCheckFine->getMese())
+            && ($toCheckInizio->getGiorno() == $orarioInizio->getGiorno()) && ($orarioFine->getGiorno() == $toCheckFine->getGiorno()))
         {
             $oraInizio = intval($orarioInizio->getOrario());
             $minutoInizio = ($orarioInizio->getOrario() - $oraInizio)*100;
@@ -45,7 +62,7 @@ class MDataChecker
                 $minutoInizio = 60 + $minutoInizio;
                 --$oraInizio;
             }
-            $newInizio = $orarioInizio;
+            $newInizio = clone $orarioInizio;
             $newInizio->setOrario($oraInizio + $minutoInizio/100);
 
             $oraFine = intval($orarioFine->getOrario());
@@ -56,10 +73,10 @@ class MDataChecker
                 $minutoFine = $minutoFine - 60;
                 ++$oraFine;
             }
-            $newFine = $orarioFine;
+            $newFine = clone $orarioFine;
             $newFine->setOrario($oraFine + $minutoFine/100);
 
-            return $this->sovrapposizione($newInizio, $newFine, $toCheck);
+            return $this->sovrapposizione($newInizio, $newFine, $toCheckInizio, $toCheckFine);
 
         }
     }
