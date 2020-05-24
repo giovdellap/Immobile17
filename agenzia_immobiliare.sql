@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 20, 2020 alle 12:06
+-- Creato il: Mag 24, 2020 alle 19:26
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `agente_immobiliare` (
   `id` varchar(10) NOT NULL,
-  `nome` varchar(30) NOT NULL,
+  `nome` varchar(50) NOT NULL,
   `cognome` varchar(30) NOT NULL,
   `mail` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -47,11 +47,11 @@ CREATE TABLE `agente_immobiliare` (
 
 CREATE TABLE `agenzia` (
   `id` varchar(10) NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `citta` varchar(30) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `citta` varchar(50) NOT NULL,
   `CAP` int(5) NOT NULL,
   `provincia` varchar(2) NOT NULL,
-  `indirizzo` varchar(30) NOT NULL
+  `indirizzo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,8 +62,8 @@ CREATE TABLE `agenzia` (
 
 CREATE TABLE `amministratore` (
   `id` varchar(10) NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `cognome` varchar(20) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cognome` varchar(50) NOT NULL,
   `datanascita` date NOT NULL,
   `mail` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -94,8 +94,8 @@ CREATE TABLE `appuntamento` (
 
 CREATE TABLE `cliente` (
   `id` varchar(10) NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `cognome` varchar(20) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cognome` varchar(50) NOT NULL,
   `datanascita` date NOT NULL,
   `mail` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -113,12 +113,13 @@ CREATE TABLE `cliente` (
 CREATE TABLE `immobile` (
   `id` varchar(10) NOT NULL,
   `CAP` int(5) NOT NULL,
-  `citta` varchar(30) NOT NULL,
-  `indirizzo` varchar(40) NOT NULL,
-  `tipologia` varchar(20) NOT NULL,
+  `citta` varchar(50) NOT NULL,
+  `indirizzo` varchar(50) NOT NULL,
+  `tipologia` varchar(50) NOT NULL,
   `dimensione` varchar(15) NOT NULL,
   `descrizione` varchar(5000) NOT NULL,
-  `prezzo` varchar(15) NOT NULL,
+  `prezzo` varchar(20) NOT NULL,
+  `attivo` tinyint(1) NOT NULL,
   `id_agenzia` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

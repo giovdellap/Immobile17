@@ -1,3 +1,4 @@
 /.project
 /.buildpath
+/phpunit.phar
 /.phpunit.result.cache
