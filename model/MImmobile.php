@@ -164,7 +164,11 @@ class MImmobile
         $this->grandezza = $grandezza;
     }
 
-
+    /**
+     * Aggiunge un appuntamento alla lista appuntamenti dell'Utente
+     * @param MAppuntamento $appuntamento
+     * @return bool esito dell'operazione
+     */
     public function addAppuntamento(MAppuntamento $appuntamento): bool {
 
         if(!in_array($appuntamento , $this->list_appuntamenti))
@@ -175,6 +179,10 @@ class MImmobile
         else return false;
     }
 
+    /**
+     * Se l'appuntamento è nella lista appuntamenti, lo elimina
+     * @param MAppuntamento $appuntamento
+     */
     public function deleteAppuntamento(MAppuntamento $appuntamento): void{
         if(in_array($appuntamento, $this ->list_appuntamenti) )
         {

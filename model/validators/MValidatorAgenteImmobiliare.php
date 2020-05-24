@@ -15,7 +15,6 @@ class MValidatorAgenteImmobiliare implements MValidator
         foreach ($agenteImmobiliare->getListAppuntamenti() as &$appAgente)
         {
             $notValido = $checker->SovrapposizioneEstesa($appAgente->getOrarioInizio(), $appAgente->getOrarioFine(), $appuntamento->getOrarioInizio(), $appuntamento->getOrarioFine());
-            echo("1notValido Agente: ".$notValido."\n");
             if($notValido) return false;
 
         }

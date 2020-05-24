@@ -2,8 +2,8 @@
 
 
 use PHPUnit\Framework\TestCase;
-include (dirname(__FILE__, 3) . '/autoload.php');
-require 'TestCasesFactory.php';
+include_once (dirname(__FILE__, 3) . '/autoload.php');
+require_once 'TestCasesFactory.php';
 
 class MValidatorAgenteImmobiliareTest extends TestCase
 {

@@ -3,7 +3,7 @@
 
 use PHPUnit\Framework\TestCase;
 include (dirname(__FILE__, 3) . '/autoload.php');
-require 'TestCasesFactory.php';
+require_once 'TestCasesFactory.php';
 
 class MAgenziaTest extends TestCase
 {
@@ -22,12 +22,10 @@ class MAgenziaTest extends TestCase
         $fine = new MData(2020, 5, 15, 11.30);
 
         $disponibili = $agenzia->checkDisponibilità($cliente3, $immobile, $inizio, $fine);
-        echo ("tt: ".sizeof($disponibili));
 
-        echo ("DISPONIBILI:\n\n");
         $factory->showListAppuntamenti($disponibili);
 
-        $this->assertTrue(true);
+        $this->assertEquals(sizeof($disponibili), 5);
 
     }
 }

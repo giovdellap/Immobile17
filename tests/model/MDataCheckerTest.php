@@ -2,8 +2,7 @@
 
 
 use PHPUnit\Framework\TestCase;
-require (dirname(__FILE__, 3) . '/autoload.php');
-
+include_once (dirname(__FILE__, 3) . '/autoload.php');
 
 
 class MDataCheckerTest extends TestCase
@@ -17,10 +16,10 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 12.45);
-
+        $toCheckInizio = new MData(2020, 5, 10, 12.45);
+        $toCheckFine = new MData(2020, 5, 10, 13.15);
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertEquals($toReturn, true);
 
     }
@@ -34,10 +33,11 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 11.45);
+        $toCheckInizio = new MData(2020, 5, 10, 11.45);
+        $toCheckFine = new MData(2020, 5, 10, 12.15);
 
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertEquals($toReturn, false);
     }
 
@@ -50,10 +50,11 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 12.30);
+        $toCheckInizio = new MData(2020, 5, 10, 12.30);
+        $toCheckFine = new MData(2020, 5, 10, 13.00);
 
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizione($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertTrue($toReturn);
     }
 
@@ -66,10 +67,11 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 12.45);
+        $toCheckInizio = new MData(2020, 5, 10, 12.45);
+        $toCheckFine = new MData(2020, 5, 10, 13.15);
 
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertEquals($toReturn, true);
     }
 
@@ -82,10 +84,11 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 10.45);
+        $toCheckInizio = new MData(2020, 5, 10, 10.45);
+        $toCheckFine = new MData(2020, 5, 10, 11.15);
 
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertEquals($toReturn, false);
     }
 
@@ -98,10 +101,11 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 12.15);
+        $toCheckInizio = new MData(2020, 5, 10, 12.15);
+        $toCheckFine = new MData(2020, 5, 10, 12.45);
 
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertEquals($toReturn, true);
     }
 
@@ -114,10 +118,11 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 13.15);
+        $toCheckInizio = new MData(2020, 5, 10, 13.15);
+        $toCheckFine = new MData(2020, 5, 10, 13.45);
 
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertEquals($toReturn, true);
     }
 
@@ -130,10 +135,11 @@ class MDataCheckerTest extends TestCase
     {
         $dataInizio = new MData(2020, 5, 10, 12.30);
         $dataFine = new MData(2020, 5, 10, 13.00);
-        $toCheck = new MData(2020, 5, 10, 12.30);
+        $toCheckInizio = new MData(2020, 5, 10, 12.30);
+        $toCheckFine = new MData(2020, 5, 10, 13.00);
 
         $dataChecker = new MDataChecker();
-        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheck);
+        $toReturn = $dataChecker->sovrapposizioneEstesa($dataInizio, $dataFine, $toCheckInizio, $toCheckFine);
         $this->assertEquals($toReturn, true);
     }
 

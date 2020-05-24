@@ -32,6 +32,11 @@ class MAgenzia
         $this->calendario = $calendario;
     }
 
+    /**
+     * Aggiunge il Cliente alla lista clienti
+     * @param MCliente $Cliente
+     * @return bool esito dell'operazione
+     */
     public function addCliente(MCliente $Cliente):bool{
 
         if(!in_array($Cliente, $this ->list_Clienti) ) {
@@ -41,6 +46,10 @@ class MAgenzia
         else return false;
     }
 
+    /**
+     * Elimina il Cliente dalla lista Clienti
+     * @param MCliente $Cliente
+     */
     public function removeCliente(MCliente $Cliente):void{
 
         if(in_array($Cliente, $this ->list_Clienti) )
@@ -49,8 +58,11 @@ class MAgenzia
         }
     }
 
-
-
+    /**
+     * Aggiunge l'Agente Immobiliare alla lista degli Agenti Immobiliari
+     * @param MAgenteImmobiliare $AgenteImmobiliare
+     * @return bool esito dell'operazione
+     */
     public function addAgenteImmobiliare(MAgenteImmobiliare $AgenteImmobiliare):bool{
 
         if(!in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
@@ -62,6 +74,10 @@ class MAgenzia
 
     }
 
+    /**
+     * elimina l'Agente Immobiliare dalla lista degli Agenti Immobiliari
+     * @param MAgenteImmobiliare $AgenteImmobiliare
+     */
     public function removeAgenteImmobiliare(MAgenteImmobiliare $AgenteImmobiliare):void{
 
         if(in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
@@ -71,6 +87,11 @@ class MAgenzia
 
     }
 
+    /**
+     * Aggiunge l'Immobile alla lista degli immobili
+     * @param MImmobile $Immobile
+     * @return bool esito dell'operazione
+     */
     public function addImmobile(MImmobile $Immobile):bool{
         if(!in_array($Immobile, $this ->list_Immobili) )
         {
@@ -82,15 +103,27 @@ class MAgenzia
 
     }
 
+    /**
+     * Elimina l'Immobile dalla lista degli Immobili
+     * @param MImmobile $Immobile
+     */
     public function removeImmobile(MImmobile $Immobile):void{
 
-        if(in_array($Immobile, $this ->list_Immobilii) )
+        if(in_array($Immobile, $this ->list_Immobilii))
         {
             unset($this->list_Clienti[array_search($Immobile, $this->list_Immobili)]);
         }
 
     }
 
+    /**
+     * Ritorna un array di Appuntamenti disponibili compresi fra $dataInizio e $dataFine
+     * @param MCliente $cliente
+     * @param MImmobile $immobile
+     * @param MData $orarioinizio
+     * @param MData $orariofine
+     * @return array
+     */
     public function checkDisponibilità(MCliente $cliente, MImmobile $immobile, MData $orarioinizio, MData $orariofine): array
     {
         $toReturn = array();
@@ -100,6 +133,7 @@ class MAgenzia
 
         while ($toCycleInizio->getOrario() <= $orariofine->getOrario()) {
 
+            $toAdd = new MAppuntamento(-1);
             foreach ($this->list_AgentiImmobiliari as &$agenti)
             {
                 $appDisp = new MAppuntamento(0000);
@@ -107,23 +141,23 @@ class MAgenzia
                 $fine = clone $toCycleFine;
                 $appDisp->setAppuntamento($inizio, $fine, $cliente, $immobile, $agenti);
 
-                echo ("\n");
-                echo ("INIZIO: ".$appDisp->getOrarioInizio()->getOrario()."\n");
-                echo ("FINE: ".$appDisp->getOrarioFine()->getOrario()."\n");
-                echo ("AGENTE: ".$appDisp->getAgenteImmobiliare()->getNome()."\n");
-                echo ("CLIENTE: ".$appDisp->getCliente()->getNome()."\n");
-                echo ("IMMOBILE: ".$appDisp->getImmobile()->getId()."\n");
-
                 $context = new MValidatorContext($appDisp);
                 $valido = $context->validateAppuntamento(new MValidatorImmobile());
                 if ($valido)
                     $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
                 if ($valido)
                     $valido = $context->validateAppuntamento(new MValidatorCliente());
-                if ($valido)
-                    $toReturn[] = $appDisp;
+                if ($valido) {
+                    if ($toAdd->getId() != -1) {
+                        if (sizeof($agenti->getListAppuntamenti()) < sizeof($toAdd->getAgenteImmobiliare()->getListAppuntamenti()))
+                            $toAdd = $appDisp;
+                    }
+                    else $toAdd = $appDisp;
+                }
 
             }
+            if($toAdd->getId() != -1)
+                $toReturn[] = $toAdd;
             $toCycleInizio->incrementoOrario(15);
             $toCycleFine->incrementoOrario(15);
 
@@ -131,20 +165,5 @@ class MAgenzia
         return $toReturn;
     }
 
-
-
-    public function newInizio(MData $inizio): MData
-    {
-        $newInizio = $inizio;
-        if ($inizio >=19.45)
-        {
-            $newInizio->nextDay();
-            $newInizio->setOrario(8.00);
-        }
-        else $newInizio->incrementoOrario(15);
-
-        return $newInizio;
-    }
-    
     
 }

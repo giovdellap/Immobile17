@@ -15,6 +15,14 @@ class MAppuntamento
         $this->id = $id;
     }
 
+    /**
+     * Imposta gli attributi della classe
+     * @param MData $inizio
+     * @param MData $fine
+     * @param MCliente $cliente
+     * @param MImmobile $immobile
+     * @param MAgenteImmobiliare $agente
+     */
     public function setAppuntamento(MData $inizio, MData $fine, MCliente $cliente, MImmobile $immobile, MAgenteImmobiliare $agente): void
     {
         $this->orario_inizio = $inizio;

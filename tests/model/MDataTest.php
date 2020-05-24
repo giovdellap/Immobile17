@@ -2,7 +2,7 @@
 
 
 use PHPUnit\Framework\TestCase;
-require (dirname(__FILE__, 3) . '/autoload.php');
+include_once (dirname(__FILE__, 3) . '/autoload.php');
 
 class MDataTest extends TestCase
 {
@@ -61,5 +61,16 @@ class MDataTest extends TestCase
         $data = new MData(2020, 12, 31, 13.30);
         $data->incrementoOrario(140);
         $this->assertEquals($data->getOrario(), 15.50);
+    }
+
+    /**
+     * Dati in ingresso: 13.30 - 140
+     * Dati da ritornare: 11.10
+     */
+    public function testIncremento_3()
+    {
+        $data = new MData(2020, 12, 31, 13.30);
+        $data->incrementoOrario(-140);
+        $this->assertEquals($data->getOrario(), 11.10);
     }
 }

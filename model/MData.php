@@ -112,13 +112,27 @@ class MData
     {
         $ora = intval($this->orario);
         $minuto = ($this->orario - $ora)*100;
-        $minuto = $minuto + $incremento;
-        while($minuto > 60)
+        if($incremento > 0)
         {
-            $minuto = $minuto - 60;
-            ++$ora;
+            $minuto = $minuto + $incremento;
+            while($minuto > 60)
+            {
+                $minuto = $minuto - 60;
+                ++$ora;
+            }
+        }
+        else
+        {
+            $modulo = $incremento*(-1);
+            $minuto = $minuto - $modulo;
+            while($minuto < 0)
+            {
+                $minuto = 60 + $minuto;
+                --$ora;
+            }
         }
         $this->orario = $ora + $minuto/100;
+
     }
 
 
