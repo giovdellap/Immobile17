@@ -1,0 +1,8 @@
+COSE DA FARE:
+
+UML FOUNDATION
+Booleano "DISABILITATO" Immobile/Agente e funzione per abilitare e disabilitare
+Metodi per modifica Appuntamento
+Vedere come fare modifiche Cliente, Immobile, Agente Immobiliare
+Eliminare datanascita, iscrizione, verifica amministratore dal DB
+Aggiungere tipoAnnuncio, grandezza al DB immobile

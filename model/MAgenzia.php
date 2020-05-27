@@ -3,6 +3,13 @@
 
 class MAgenzia
 {
+    private string $nome;
+    private string $citta;
+    private string $cap;
+    private string $provincia;
+    private string $indirizzo;
+    private array $immagini;
+
     private array       $list_Clienti;
     private array       $list_AgentiImmobiliari;
     private array       $list_Immobili;
@@ -14,7 +21,90 @@ class MAgenzia
         $this->list_Clienti = array();
         $this->list_Immobili = array();
         $this->calendario = new MCalendario();
+        $this->immagini = array();
     }
+
+    /**
+     * @return string
+     */
+    public function getNome(): string
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     */
+    public function setNome(string $nome): void
+    {
+        $this->nome = $nome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCitta(): string
+    {
+        return $this->citta;
+    }
+
+    /**
+     * @param string $citta
+     */
+    public function setCitta(string $citta): void
+    {
+        $this->citta = $citta;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCap(): string
+    {
+        return $this->cap;
+    }
+
+    /**
+     * @param string $cap
+     */
+    public function setCap(string $cap): void
+    {
+        $this->cap = $cap;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProvincia(): string
+    {
+        return $this->provincia;
+    }
+
+    /**
+     * @param string $provincia
+     */
+    public function setProvincia(string $provincia): void
+    {
+        $this->provincia = $provincia;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIndirizzo(): string
+    {
+        return $this->indirizzo;
+    }
+
+    /**
+     * @param string $indirizzo
+     */
+    public function setIndirizzo(string $indirizzo): void
+    {
+        $this->indirizzo = $indirizzo;
+    }
+
+
 
     /**
      * @return mixed
@@ -165,5 +255,28 @@ class MAgenzia
         return $toReturn;
     }
 
-    
+    /**
+     * @return array
+     */
+    public function getImmagini(): array
+    {
+        return $this->immagini;
+    }
+
+    /**
+     * @param array $immagini
+     */
+    public function setImmagini(array $immagini): void
+    {
+        $this->immagini = $immagini;
+    }
+
+    /**
+     * Aggiunta di un oggetto MMedia all'array immagini
+     * @param MMedia $immagine
+     */
+    public function addImmagine(MMedia $immagine): void
+    {
+        $this->immagini[] = $immagine;
+    }
 }

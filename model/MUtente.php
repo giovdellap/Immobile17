@@ -9,7 +9,9 @@ class MUtente
     private String $email;
     private String $id;
     private String $password;
-    private String $iscrizione;
+    private MData $dataNascita;
+    private MData $iscrizione;
+    private MMedia $immagine;
     private bool   $attivato;
     private array  $list_Appuntamenti;
 
@@ -32,6 +34,38 @@ class MUtente
     public function setListAppuntamenti(array $list_Appuntamenti): void
     {
         $this->list_Appuntamenti = $list_Appuntamenti;
+    }
+
+    /**
+     * @return MData
+     */
+    public function getDataNascita(): MData
+    {
+        return $this->dataNascita;
+    }
+
+    /**
+     * @param MData $dataNascita
+     */
+    public function setDataNascita(MData $dataNascita): void
+    {
+        $this->dataNascita = $dataNascita;
+    }
+
+    /**
+     * @return MMedia
+     */
+    public function getImmagine(): MMedia
+    {
+        return $this->immagine;
+    }
+
+    /**
+     * @param MMedia $immagine
+     */
+    public function setImmagine(MMedia $immagine): void
+    {
+        $this->immagine = $immagine;
     }
 
     /**
@@ -117,7 +151,7 @@ class MUtente
     /**
      * @return String
      */
-    public function getIscrizione(): String
+    public function getIscrizione(): MData
     {
         return $this->iscrizione;
     }
@@ -125,7 +159,7 @@ class MUtente
     /**
      * @param String $iscrizione
      */
-    public function setIscrizione(String $iscrizione): void
+    public function setIscrizione(MData $iscrizione): void
     {
         $this->iscrizione = $iscrizione;
     }

@@ -133,6 +133,15 @@ class MImmobile
     }
 
     /**
+     * Aggiunta di un oggetto MMedia all'array immagini
+     * @param MMedia $immagine
+     */
+    public function addImmagine(MMedia $immagine): void
+    {
+        $this->immagini[] = $immagine;
+    }
+
+    /**
      * @return int
      */
     public function getPrezzo(): int
