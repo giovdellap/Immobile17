@@ -32,4 +32,50 @@ class FDataBase
         }
         return self::$instance;
     }
+
+    /**  Metodo che chiude la connesione con il DB */
+    public function closeDbConnection ()
+    {
+        static::$instance = null;
+    }
+
+    public function storeDb ($foundation, $model):bool
+    {
+        try{
+              $this->db->beginTransaction();
+              $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
+              $stmt=$this->db->prepare($query);
+              $foundation::bind($stmt, $model);
+              $stmt->execute();
+              $id= $this->db->lastInsertId();
+              $this->db->commit();
+              $this->closeDbConnection();
+              return true;
+        } catch (PDOException $e) {
+        echo "ATTENTION ERROR: " . $e->getMessage();
+        $this->db->rollBack();
+        return false;
+        }
+    }
+
+    public function loadDB ($foundation, $field, $param)
+    {
+        try {
+            $query= "SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . "='" . $param . "';";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = array();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($row = $stmt->fetch())
+                $result[] = $row;
+
+            return $result;
+
+        }catch (PDOException $e) {
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
+
 }
