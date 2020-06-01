@@ -11,6 +11,7 @@ class MValidatorCliente implements MValidator
     public function validate(MAppuntamento $appuntamento): bool
     {
         $cliente = $appuntamento->getCliente();
+        if(!$cliente->isAttivato()) return false;
         $checker = new MDataChecker();
         foreach ($cliente->getListAppuntamenti() as &$appCliente)
         {

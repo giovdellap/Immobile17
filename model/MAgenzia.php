@@ -279,4 +279,32 @@ class MAgenzia
     {
         $this->immagini[] = $immagine;
     }
+
+    /**
+     * @param array $list_Clienti
+     */
+    public function setListClienti(array $list_Clienti): void
+    {
+        $this->list_Clienti = $list_Clienti;
+    }
+
+    /**
+     * @param array $list_AgentiImmobiliari
+     */
+    public function setListAgentiImmobiliari(array $list_AgentiImmobiliari): void
+    {
+        $this->list_AgentiImmobiliari = $list_AgentiImmobiliari;
+    }
+
+    /**
+     * @param array $list_Immobili
+     */
+    public function setListImmobili(array $list_Immobili): void
+    {
+        $this->list_Immobili = $list_Immobili;
+    }
+
+
+
+
 }

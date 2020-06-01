@@ -11,6 +11,7 @@ class MValidatorImmobile implements MValidator
     public function validate(MAppuntamento $appuntamento): bool
     {
         $immobile = $appuntamento->getImmobile();
+        if(!$immobile->isAttivo()) return false;
         $checker = new MDataChecker();
         foreach ($immobile->getListAppuntamenti() as &$appImmobile)
         {

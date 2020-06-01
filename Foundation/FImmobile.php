@@ -5,12 +5,11 @@ class FImmobile extends FObject
 {   private static string $table="immobile";
     private static string $values="(:id,:CAP,:citta,:indirizzo,:tipologia,:dimensione,
                                     :descrizione,:tipo_annuncio,:attivo,:id_agenzia)";
-    private static string $idString;
+    private static string $idString = "IM";
 
 
     public static function bind(PDOStatement $stmt, $obj, string $newId)
     {
-        // TODO: Implement bind() method.
         $stmt->bindValue(':id',$newId,PDO::PARAM_STR);
         $stmt->bindValue(':CAP',$obj->getCAP(),PDO::PARAM_STR);
         $stmt->bindValue(':citta',$obj->getComune(),PDO::PARAM_STR);
@@ -62,19 +61,52 @@ class FImmobile extends FObject
     public static function getImmobili()
     {
         $db=FDataBase::getInstance();
-        $db_result = $db->loadAll(self::class);
-        return $db_result;
-
+        return $db->loadAll(self::class);
     }
 
-    public static function disabilita(MImmobile $immobile){
-
+    public static function disabilita(MImmobile $immobile): bool
+    {
         $db=FDataBase::getInstance();
         return $db->updateDB(self::class,"attivo",false,"id",$immobile->getId());
-
     }
 
-    public static function modificaImmobile(MImmobile $immobile):bool {
+    public static function modificaImmobile(MImmobile $immobile):bool
+    {
+        $db = FDataBase::getInstance();
+        if($db->existDB(self::class, "id", $immobile->getId())) {
+
+            $oldImmobile = self::getImmobile($immobile->getId());
+            $mods = array();
+
+            if ($oldImmobile->getIndirizzo() != $immobile->getIndirizzo())
+                $mods["indirizzo"] = $immobile->getIndirizzo();
+            if ($oldImmobile->getCAP() != $immobile->getCAP())
+                $mods["CAP"] = $immobile->getCAP();
+            if ($oldImmobile->getComune() != $immobile->getComune())
+                $mods["comune"] = $immobile->getComune();
+            if ($oldImmobile->getTipologia() != $immobile->getTipologia())
+                $mods["tipologia"] = $immobile->getTipologia();
+            if ($oldImmobile->getTipoAnnuncio() != $immobile->getTipoAnnuncio())
+                $mods["tipo_annuncio"] = $immobile->getTipoAnnuncio();
+            if ($oldImmobile->getGrandezza() != $immobile->getGrandezza())
+                $mods["dimensione"] = $immobile->getGrandezza();
+            if ($oldImmobile->getPrezzo() != $immobile->getPrezzo())
+                $mods["prezzo"] = $immobile->getPrezzo();
+            if ($oldImmobile->getDescrizione() != $immobile->getDescrizione())
+                $mods["descrizione"] = $immobile->getDescrizione();
+            if ($oldImmobile->isAttivo() != $immobile->isAttivo())
+                $mods["attivo"] = $immobile->isAttivo();
+
+            foreach (array_keys($mods) as &$key)
+            {
+                $toReturn = $db->updateDB(self::class, $key, $mods[$key], "id", $immobile->getId());
+                if(!$toReturn)
+                    return false;
+            }
+            return true;
+
+        }
+        else return false;
 
     }
 
