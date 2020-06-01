@@ -84,5 +84,55 @@ class FDataBase
             return null;
         }
     }
+    public function deleteDB ($foundation, $field, $param)
+    {
+        try {
+            $result = null;
+            $this->db->beginTransaction();
+            $esiste = $this->existDB($foundation,$field,$param);
+            if($esiste){
+                $query = "DELETE FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "';";
+                $stmt = $this->db->prepare($query);
+                $stmt->execute();
+                $this->db->commit();
+                $this->closeDbConnection();
+                $result = true;
+            }
+        }catch (PDOException $e){
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            $this->db->rollBack();
+        }
+        return $result;
+    }
+    public function existDB($foundation, $field, $param)
+    {
+        try {
+            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "'";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($result) > 0) return true;
+            else
+                return false;
+        } catch (PDOException $e) {
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
 
+    public function updateDB ($foundation, $field, $newvalue, $searchfield, $searchparam){
+        try{
+            $this->db->beginTransaction();
+            $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam .  "';";
+            $stmt =$this->db->prepare($query);
+            $stmt->execute();
+            $this->db->commit();
+            $this->closeDbConnection();
+            return true;
+           }catch (PDOException $e){
+            echo " ATTENTION ERROR: " . $e->getMessage();
+            $this->db->rollBack();
+            return false;
+        }
+    }
 }
