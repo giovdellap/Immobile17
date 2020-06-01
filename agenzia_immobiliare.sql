@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 29, 2020 alle 17:18
+-- Creato il: Giu 01, 2020 alle 10:43
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.6
 
@@ -133,7 +133,7 @@ CREATE TABLE `media_admin` (
                                `id` varchar(10) NOT NULL,
                                `nome` varchar(50) NOT NULL,
                                `type` varchar(50) NOT NULL,
-                               `immagine` blob NOT NULL,
+                               `immagine` longblob NOT NULL,
                                `id_admin` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -147,7 +147,7 @@ CREATE TABLE `media_agenzia` (
                                  `id` varchar(10) NOT NULL,
                                  `nome` varchar(50) NOT NULL,
                                  `type` varchar(50) NOT NULL,
-                                 `immagine` blob NOT NULL,
+                                 `immagine` longblob NOT NULL,
                                  `id_agenzia` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -161,7 +161,7 @@ CREATE TABLE `media_cliente` (
                                  `id` varchar(10) NOT NULL,
                                  `nome` varchar(50) NOT NULL,
                                  `type` varchar(50) NOT NULL,
-                                 `immagine` blob NOT NULL,
+                                 `immagine` longblob NOT NULL,
                                  `id_cliente` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -175,7 +175,7 @@ CREATE TABLE `media_immobile` (
                                   `id` varchar(10) NOT NULL,
                                   `nome` varchar(50) NOT NULL,
                                   `type` varchar(50) NOT NULL,
-                                  `immagine` blob NOT NULL,
+                                  `immagine` longblob NOT NULL,
                                   `id_immobile` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
