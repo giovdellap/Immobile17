@@ -6,6 +6,7 @@ class MImmobile
     private String $id;
     private String $indirizzo;
     private String $comune;
+    private String $CAP;
     private String $tipologia;
     private String $tipoAnnuncio;
     private String $descrizione;
@@ -13,6 +14,7 @@ class MImmobile
     private int    $prezzo;
     private int    $grandezza;
     private array  $list_appuntamenti;
+    private bool   $attivo;
 
     public function __construct()
     {
@@ -26,6 +28,38 @@ class MImmobile
     public function getId(): String
     {
         return $this->id;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAttivo(): bool
+    {
+        return $this->attivo;
+    }
+
+    /**
+     * @param bool $attivo
+     */
+    public function setAttivo(bool $attivo): void
+    {
+        $this->attivo = $attivo;
+    }
+
+    /**
+     * @return String
+     */
+    public function getCAP(): string
+    {
+        return $this->CAP;
+    }
+
+    /**
+     * @param String $CAP
+     */
+    public function setCAP(string $CAP): void
+    {
+        $this->CAP = $CAP;
     }
 
     /**

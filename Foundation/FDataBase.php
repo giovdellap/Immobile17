@@ -134,5 +134,26 @@ class FDataBase
             $this->db->rollBack();
             return false;
         }
+
     }
+
+    public function loadAll($foundation)
+    {
+        try {
+            $query = "SELECT * FROM " . $foundation::getTable();
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = array();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            while ($row = $stmt->fetch())
+                $result[] = $row;
+            return $result;
+
+        } catch (PDOException $e) {
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }
+
 }
