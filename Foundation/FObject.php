@@ -31,4 +31,8 @@ abstract class FObject
         $number = $splitted[1]*10 + $splitted[2] + 1;
         return self::$idString . $number;
     }
+    public static function getDateString(MData $data): string
+    {
+            return $data->getAnno() . "-" . $data->getMese() . "-" . $data->getGiorno();
+    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 01, 2020 alle 10:43
+-- Creato il: Giu 02, 2020 alle 17:02
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.6
 
@@ -34,7 +34,7 @@ CREATE TABLE `agente_immobiliare` (
                                       `mail` varchar(50) NOT NULL,
                                       `password` varchar(20) NOT NULL,
                                       `datanascita` date NOT NULL,
-                                      `iscrizione` datetime NOT NULL,
+                                      `iscrizione` date NOT NULL,
                                       `verifica` tinyint(1) NOT NULL,
                                       `id_agenzia` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -98,7 +98,7 @@ CREATE TABLE `cliente` (
                            `datanascita` date NOT NULL,
                            `mail` varchar(50) NOT NULL,
                            `password` varchar(20) NOT NULL,
-                           `iscrizione` datetime NOT NULL,
+                           `iscrizione` date NOT NULL,
                            `verifica` tinyint(1) NOT NULL,
                            `id_agenzia` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
