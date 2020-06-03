@@ -20,7 +20,7 @@ class FPersistentManager
         {
             if(FAmministratore::emailEsistente($mail))
             {
-                if(FAmministratore::login($mail, $password))
+                if(FAmministratore::login($mail, $password,))
                     return "OK";
                 else
                     return "WRONG PASSWORD";
