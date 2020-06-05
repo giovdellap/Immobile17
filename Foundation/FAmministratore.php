@@ -90,16 +90,11 @@ class FAmministratore
         }
         else return false;
     }
-    //ho seri dubbi su questa funzione
-    public static function login(string $mail, string $password, FAmministratore $amministratore):string
-    {
-        $mail=FDataBase::getInstance();
-        $password=FDataBase::getInstance();
-        if($mail->existDB(self::class,"mail", $amministratore->getMail()) && $password->existDB(self::class,"password", $amministratore->getPassword()))
-            return "OK";
-        else
-            return "EMAIL OR PASSWORD ARE WRONG";
-    }
 
+    public static function login(string $mail, string $password): bool
+    {
+        $db = FDataBase::getInstance();
+        return $db->login(self::class, $mail, $password);
+    }
 }
 
