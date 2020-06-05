@@ -33,6 +33,16 @@ abstract class FObject
     }
     public static function getDateString(MData $data): string
     {
-            return $data->getAnno() . "-" . $data->getMese() . "-" . $data->getGiorno();
+        return $data->getAnno() . "-" . $data->getMese() . "-" . $data->getGiorno();
+    }
+
+    public static function getMDataFromString(string $str): MData
+    {
+        $data = new MData();
+        list($anno, $mese, $giorno) = explode("-", $str);
+        $data->setAnno($anno);
+        $data->setMese($mese);
+        $data->setGiorno($giorno);
+        return $data;
     }
 }

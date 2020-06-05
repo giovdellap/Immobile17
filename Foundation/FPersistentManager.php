@@ -68,4 +68,19 @@ class FPersistentManager
     {
         return FAgenzia::getAgenzia($id);
     }
+
+    public static function esisteUtente(string $id): bool
+    {
+        return FUtente::idEsistente($id);
+    }
+
+    public static function visualizzaUtente(string $id): MUtente
+    {
+        return FUtente::visualizzaUtente($id);
+    }
+
+    public static function modificaUtente(MUtente $utente): bool
+    {
+        return FUtente::modificaUtente($utente);
+    }
 }
