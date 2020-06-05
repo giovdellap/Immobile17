@@ -78,8 +78,8 @@ CREATE TABLE `amministratore` (
 CREATE TABLE `appuntamento` (
                                 `id` varchar(10) NOT NULL,
                                 `data` date NOT NULL,
-                                `ora_inizio` time NOT NULL,
-                                `ora_fine` time NOT NULL,
+                                `ora_inizio` float NOT NULL,
+                                `ora_fine` float NOT NULL,
                                 `id_cliente` varchar(10) NOT NULL,
                                 `id_agenteimm` varchar(10) NOT NULL,
                                 `id_immobile` varchar(10) NOT NULL
