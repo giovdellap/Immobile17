@@ -97,7 +97,7 @@ class FImmobile extends FObject
             if ($oldImmobile->isAttivo() != $immobile->isAttivo())
                 $mods["attivo"] = $immobile->isAttivo();
 
-            foreach (array_keys($mods) as &$key)
+            foreach (array_keys($mods) as $key)
             {
                 $toReturn = $db->updateDB(self::class, $key, $mods[$key], "id", $immobile->getId());
                 if(!$toReturn)
