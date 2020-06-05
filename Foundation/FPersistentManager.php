@@ -83,4 +83,34 @@ class FPersistentManager
     {
         return FUtente::modificaUtente($utente);
     }
+
+    public static function visualizzaAmministratore(string $id)
+    {
+        return FAmministratore::getAmministratore($id);
+    }
+
+    public static function modificaAmministratore(MAmministratore $amministratore): bool
+    {
+        return FAmministratore::modificaAmministratore($amministratore);
+    }
+
+    public static function addAppuntamento(MAppuntamento $appuntamento) :bool
+    {
+        return FAppuntamento::addAppuntamento($appuntamento);
+    }
+
+    public static function deleteAppuntamento(string $id) :bool
+    {
+        return FAppuntamento::deleteAppuntamento($id);
+    }
+
+    public static function visualizzaAppUtente(string $id): MUtente
+    {
+        return FUtente::visualizzaAppUtente($id);
+    }
+
+    public static function getBusyWeek(string $idImm, string $idCliente,MData $dataInizio,MData $dataFine): MAgenzia
+    {
+        return MAgenzia::getBusyWeek($idImm, $idCliente, $dataInizio. $dataFine);
+    }
 }

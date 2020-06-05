@@ -7,31 +7,6 @@ class FAmministratore
     private static string $idString= "AD";
     private static string $values="(:id, :nome, :cognome, :password, :id_agenzia)";
 
-    /**
-     * @return string
-     */
-    public static function getTable(): string
-    {
-        return self::$table;
-    }
-
-    /**
-     * @return string
-     */
-    public static function getIdString(): string
-    {
-        return self::$idString;
-    }
-
-    /**
-     * @return string
-     */
-    public static function getValues(): string
-    {
-        return self::$values;
-    }
-
-
 
     public static function bind(PDOStatement $stmt, $obj, string $newId)
     {
@@ -40,6 +15,7 @@ class FAmministratore
         $stmt->bindValue(':cognome', $obj->getCognome(), PDO::PARAM_STR);
         $stmt->bindValue(':mail', $obj->getMail(), PDO::PARAM_STR);
         $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);
+        $stmt->bindValue(':id_agenzia',$obj->getAgenzia()->getId(),PDO::PARAM_STR);
     }
     public static function getAmministratore(string $id)
     {

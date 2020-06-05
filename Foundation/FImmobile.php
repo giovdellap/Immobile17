@@ -2,7 +2,8 @@
 
 
 class FImmobile extends FObject
-{   private static string $table="immobile";
+{
+    private static string $table="immobile";
     private static string $values="(:id,:CAP,:citta,:indirizzo,:tipologia,:dimensione,
                                     :descrizione,:tipo_annuncio,:attivo,:id_agenzia)";
     private static string $idString = "IM";
@@ -20,14 +21,15 @@ class FImmobile extends FObject
         $stmt->bindValue(':tipo_annuncio',$obj->getTipoAnnuncio(),PDO::PARAM_STR);
         $stmt->bindValue(':attivo',$obj->getAttivo(),PDO::PARAM_STR);
         $stmt->bindValue(':prezzo',$obj->getPrezzo(),PDO::PARAM_STR);
+        $stmt->bindValue(':id_agenzia',$obj->getAgenzia()->getId(),PDO::PARAM_STR);
 
     }
 
-    public static function addImmobile (MImmobile $immobile){
+    public static function addImmobile (MImmobile $immobile) :bool
+    {
 
         $db= FDataBase::getInstance();
         return $db->storeDb(self::class,$immobile);
-
     }
 
     public static function getImmobile(string $id)

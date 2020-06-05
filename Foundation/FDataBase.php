@@ -149,7 +149,7 @@ class FDataBase
     public function updateDB ($foundation, $field, $newvalue, $searchfield, $searchparam){
         try{
             $this->db->beginTransaction();
-            $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam .  "';";
+            $query = " ALTER TABLE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam .  "';";
             $stmt =$this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();
