@@ -15,7 +15,6 @@ class FAgenzia extends FObject
         $stmt->bindValue(':CAP',       $obj->getCap(), PDO::PARAM_STR);
         $stmt->bindValue(':provincia', $obj->getProvincia(), PDO::PARAM_STR);
         $stmt->bindValue(':indirizzo', $obj->getIndirizzo(), PDO::PARAM_STR);
-
     }
 
     public static function getAgenzia(string $id)
@@ -80,7 +79,7 @@ class FAgenzia extends FObject
 
     }
 
-    public static function checkDisponibilita(string $idImm, string $idCliente, MData $inizio, MData $fine)
+    public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine)
     {
 
         //TO DO

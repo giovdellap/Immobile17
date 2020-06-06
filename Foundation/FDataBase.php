@@ -205,5 +205,27 @@ class FDataBase
             return false;
         }
     }
+    /**  BISOGNA VEDERE COME IMPOSTARLA PER IL NOSTRO DB
+     *
+     *
+    public function storeMedia ($foundation , $obj,$nome_file) {
+        try {
+            $lastID = $this->db->lastInsertId("id");
+            $this->db->beginTransaction();
+            $query = "INSERT INTO ".$foundation::getTable()." VALUES ".$foundation::getValues();
 
+            $stmt = $this->db->prepare($query);
+            $foundation::bind($stmt,$obj,$nome_file);
+            $stmt->execute();
+            $id=$this->db->lastInsertId();
+            $this->db->commit();
+            $this->closeDbConnection();
+            return $id;
+        }
+        catch(PDOException $e) {
+            echo "Attenzione errore: ".$e->getMessage();
+            $this->db->rollBack();
+            return null;
+        }
+    }**/
 }

@@ -72,5 +72,12 @@ class FAmministratore
         $db = FDataBase::getInstance();
         return $db->login(self::class, $mail, $password);
     }
+
+    public static function emailEsistente(string $mail): bool
+    {
+        $db=FDataBase::getInstance();
+        return $db->existDB(self::class, "mail", $mail);
+
+    }
 }
 

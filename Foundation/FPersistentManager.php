@@ -47,6 +47,9 @@ class FPersistentManager
         return FImmobile::addImmobile($immobile);
     }
 
+    public static function addUtente (MUtente $utente){
+        return FUtente::addUtente($utente);
+    }
     public static function visualizzaImmobile(string $id):MImmobile {
         return FImmobile::getImmobile($id);
     }
@@ -62,6 +65,10 @@ class FPersistentManager
 
     public static function modificaImmobile(MImmobile $immobile): bool{
         return FImmobile::modificaImmobile($immobile);
+    }
+
+    public static function modificaAgenzia(MAgenzia $agenzia): bool{
+        return FAgenzia::modificaAgenzia($agenzia);
     }
 
     public static function visualizzaAgenzia(string $id): MAgenzia
