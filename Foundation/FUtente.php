@@ -13,7 +13,7 @@ class FUtente extends FObject
      * @param $obj
      * @param string $newId
      */
-    public static function bind(PDOStatement $stmt, $obj, string $newId)
+    public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id', $newId, PDO::PARAM_STR);
         $stmt->bindValue(':nome', $obj->getNome(), PDO::PARAM_STR);
@@ -153,19 +153,22 @@ class FUtente extends FObject
             if(strpos($id, "CL"))
                 $utente = new MCliente();
             else $utente = new MAgenteImmobiliare();
-
-            $utente->setId($db_result["id"]);
-            $utente->setNome($db_result["nome"]);
-            $utente->setCognome($db_result["cognome"]);
-            $utente->setEmail($db_result["mail"]);
-            $utente->setPassword($db_result["password"]);
-            $utente->setDataNascita(self::getMDataFromString($db_result["datanascita"]));
-            $utente->setIscrizione(self::getMDataFromString($db_result["iscrizione"]));
-            $utente->setAttivato($db_result["verifica"]);
-
+            self::setAttributiUtente($utente, $db_result);
             return $utente;
         }
         else return null;
+    }
+
+    public static function setAttributiUtente(MUtente $utente, array $db_result)
+    {
+        $utente->setId($db_result["id"]);
+        $utente->setNome($db_result["nome"]);
+        $utente->setCognome($db_result["cognome"]);
+        $utente->setEmail($db_result["mail"]);
+        $utente->setPassword($db_result["password"]);
+        $utente->setDataNascita(self::getMDataFromString($db_result["datanascita"]));
+        $utente->setIscrizione(self::getMDataFromString($db_result["iscrizione"]));
+        $utente->setAttivato($db_result["verifica"]);
     }
 
     /**
@@ -216,5 +219,10 @@ class FUtente extends FObject
         return true;
     }
 
+    public static function visualizzaAppUtente(string $id): MUtente{
+        $utente = self::visualizzaUtente($id);
+        $utente->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
+        return $utente;
+    }
 
 }

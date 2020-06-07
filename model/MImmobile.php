@@ -241,5 +241,13 @@ class MImmobile
         return $this->list_appuntamenti;
     }
 
+    /**
+     * @param array $list_appuntamenti
+     */
+    public function setListAppuntamenti(array $list_appuntamenti): void
+    {
+        $this->list_appuntamenti = $list_appuntamenti;
+    }
+
 
 }

@@ -7,7 +7,8 @@ class FAgenzia extends FObject
     private static string $values= "(:id, :nome, :citta, :CAP, :provincia, :indirizzo)";
     private static string $idString = "AG";
 
-    public static function bind(PDOStatement $stmt, $obj, string $newId)
+
+    public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',        $newId, PDO::PARAM_STR);
         $stmt->bindValue(':nome',      $obj->getNome(), PDO::PARAM_STR);
@@ -17,7 +18,12 @@ class FAgenzia extends FObject
         $stmt->bindValue(':indirizzo', $obj->getIndirizzo(), PDO::PARAM_STR);
     }
 
-    public static function getAgenzia(string $id)
+    /**
+     * Ritorna un oggetto MAgenzia se l'id esiste, null altrimenti
+     * @param string $id
+     * @return MAgenzia|null
+     */
+    public static function getAgenzia(string $id): ?MAgenzia
     {
         $db= FDataBase::getInstance();
         if($db->existDB(self::class,"id",$id)) {
@@ -38,6 +44,11 @@ class FAgenzia extends FObject
         }
     }
 
+    /**
+     * Ritorna un'MAgenzia con la lista Immobili completa di tutti gli Immobili del DB
+     * @param string $id
+     * @return MAgenzia
+     */
     public static function getImmobili(string $id): MAgenzia
     {
         $agenzia = self::getAgenzia($id);
@@ -45,6 +56,12 @@ class FAgenzia extends FObject
         return $agenzia;
     }
 
+    /**
+     * Controlla quali argomenti differiscono fra l'MAgenzia passata come parametro e quella presente nel DB
+     * Aggiorna il DB con le modifiche
+     * @param MAgenzia $agenzia
+     * @return bool
+     */
     public static function modificaAgenzia(MAgenzia $agenzia):bool{
 
         $db = FDataBase::getInstance();
@@ -79,10 +96,14 @@ class FAgenzia extends FObject
 
     }
 
-    public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine)
+
+    public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine, string $idAgenzia)
     {
+        $agenzia = FAgenzia::getAgenzia($idAgenzia);
+        $agenzia->addImmobile(FImmobile::getAppImmobile($idImm));
+        $agenzia->setListAgentiImmobiliari(FAgenteImmobiliare::getAllAgenti());
+        $agenzia->addCliente(FUtente::visualizzaAppUtente($idCliente));
 
-        //TO DO
-
+        return $agenzia;
     }
 }

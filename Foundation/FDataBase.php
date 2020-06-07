@@ -190,7 +190,7 @@ class FDataBase
     public function login($foundation, string $mail, string $password): bool
     {
         try {
-            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail ='" . $mail . "' AND password ='" . $password . "';";
+            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail =" . $mail . " AND password =" . $password . ";";
             $stmt =$this->db->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);

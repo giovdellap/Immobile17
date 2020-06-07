@@ -9,7 +9,7 @@ class FImmobile extends FObject
     private static string $idString = "IM";
 
 
-    public static function bind(PDOStatement $stmt, $obj, string $newId)
+    public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',$newId,PDO::PARAM_STR);
         $stmt->bindValue(':CAP',$obj->getCAP(),PDO::PARAM_STR);
@@ -38,32 +38,37 @@ class FImmobile extends FObject
         if($db->existDB(self::class,"id",$id)) {
             $db_result = $db->loadDB(self::class, "id", $id);
             if($db_result =! null)
-                {
-                    $immobile= new MImmobile();
-                    $immobile->setId($db_result["id"]);
-                    $immobile->setCAP($db_result["CAP"]);
-                    $immobile->setComune($db_result["citta"]);
-                    $immobile->setIndirizzo($db_result["indirizzo"]);
-                    $immobile->setTipologia($db_result["tipologia"]);
-                    $immobile->setGrandezza($db_result["dimensione"]);
-                    $immobile->setTipoAnnuncio($db_result["tipo_annuncio"]);
-                    $immobile->setPrezzo($db_result["prezzo"]);
-                    $immobile->setAttivo($db_result["attivo"]);
-
-                    return $immobile;
-                }
+                return self::unBindImmobile($db_result);
             else return null;
         }
-
         else return null;
 
     }
 
+    public static function unBindImmobile(array $db_result): MImmobile
+    {
+        $immobile= new MImmobile();
+        $immobile->setId($db_result["id"]);
+        $immobile->setCAP($db_result["CAP"]);
+        $immobile->setComune($db_result["citta"]);
+        $immobile->setIndirizzo($db_result["indirizzo"]);
+        $immobile->setTipologia($db_result["tipologia"]);
+        $immobile->setGrandezza($db_result["dimensione"]);
+        $immobile->setTipoAnnuncio($db_result["tipo_annuncio"]);
+        $immobile->setPrezzo($db_result["prezzo"]);
+        $immobile->setAttivo($db_result["attivo"]);
+
+        return $immobile;
+    }
 
     public static function getImmobili()
     {
         $db=FDataBase::getInstance();
-        return $db->loadAll(self::class);
+        $db_result = $db->loadAll(self::class);
+        $immobili = array();
+        foreach ($db_result as &$item)
+            $immobili[] = self::unBindImmobile($item);
+        return $immobili;
     }
 
     public static function disabilita(MImmobile $immobile): bool
@@ -110,6 +115,13 @@ class FImmobile extends FObject
         }
         else return false;
 
+    }
+
+    public static function getAppImmobile(string $id): FImmobile
+    {
+        $immobile = self::getImmobile($id);
+        $immobile->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
+        return $immobile;
     }
 
 }

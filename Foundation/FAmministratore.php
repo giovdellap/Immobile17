@@ -8,7 +8,7 @@ class FAmministratore
     private static string $values="(:id, :nome, :cognome, :password, :id_agenzia)";
 
 
-    public static function bind(PDOStatement $stmt, $obj, string $newId)
+    public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id', $newId, PDO::PARAM_STR);
         $stmt->bindValue(':nome', $obj->getNome(), PDO::PARAM_STR);
@@ -17,6 +17,12 @@ class FAmministratore
         $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);
         $stmt->bindValue(':id_agenzia',$obj->getAgenzia()->getId(),PDO::PARAM_STR);
     }
+
+    /**
+     * Ritorna l'MAmministratore corrispondente all'Id passato come parametro
+     * @param string $id
+     * @return MAmministratore|null
+     */
     public static function getAmministratore(string $id)
     {
         $db= FDataBase::getInstance();
@@ -35,10 +41,15 @@ class FAmministratore
             }
             else return null;
         }
-
         else return null;
     }
 
+    /**
+     * Controlla quali argomenti differiscono fra l'MAmministratore passato come parametro e quello presente nel DB
+     * Aggiorna il DB con le modifiche
+     * @param MAmministratore $amministratore
+     * @return bool
+     */
     public static function modificaAmministratore(MAmministratore $amministratore):bool
     {
         $db = FDataBase::getInstance();
@@ -67,12 +78,23 @@ class FAmministratore
         else return false;
     }
 
+    /**
+     * Controlla il match fra i parametri e il DB
+     * @param string $mail
+     * @param string $password
+     * @return bool
+     */
     public static function login(string $mail, string $password): bool
     {
         $db = FDataBase::getInstance();
         return $db->login(self::class, $mail, $password);
     }
 
+    /**
+     * Controlla che la mail passata come parametro sia presente nel DB
+     * @param string $mail
+     * @return bool
+     */
     public static function emailEsistente(string $mail): bool
     {
         $db=FDataBase::getInstance();
