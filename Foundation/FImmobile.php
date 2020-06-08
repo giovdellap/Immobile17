@@ -117,11 +117,16 @@ class FImmobile extends FObject
 
     }
 
-    public static function getAppImmobile(string $id): FImmobile
+    public static function getAppImmobile(string $id): ?MImmobile
     {
         $immobile = self::getImmobile($id);
         $immobile->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
         return $immobile;
     }
-
+    public static function getAppImmobileInBetween(string $id, $inizio,$fine): ?MImmobile
+    {
+        $immobile = self::getImmobile($id);
+        $immobile->setListAppuntamenti(FAppuntamento::getAppInBetween($id,$inizio,$fine));
+        return $immobile;
+    }
 }

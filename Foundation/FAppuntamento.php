@@ -87,6 +87,23 @@ class FAppuntamento extends FObject
         return $to_return;
     }
 
+    public static function getAppInBetween(string $id, MData $inizio, MData $fine): array
+    {
+        $datainizio=self::getDateString($inizio);
+        $datafine=self::getDateString($fine);
+
+        $db= FDataBase::getInstance();
+        $to_return=array();
+        if(strpos($id, "CL"))
+            $row=$db->loadAppInBetween(self::class, "id_cliente", $id, $datainizio, $datafine);
+        if(strpos($id, "AG"))
+            $row=$db->loadAppInBetween(self::class, "id_agenteimm", $id, $datainizio, $datafine);
+        else
+            $row=$db->loadAppInBetween(self::class, "id_immobile", $id, $datainizio, $datafine);
+        foreach($row as &$item)
+            $to_return[]=self::unbindAppuntamento($item);
+        return $to_return;
+    }
 }
 
 

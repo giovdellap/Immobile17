@@ -225,4 +225,10 @@ class FUtente extends FObject
         return $utente;
     }
 
+    public static function AppUtenteInBetween(string $id, $inizio,$fine): MUtente{
+        $utente = self::visualizzaUtente($id);
+        $utente->setListAppuntamenti(FAppuntamento::getAppInBetween($id, $inizio, $fine));
+        return $utente;
+    }
+
 }

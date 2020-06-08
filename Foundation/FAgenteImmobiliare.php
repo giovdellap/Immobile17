@@ -11,13 +11,13 @@ class FAgenteImmobiliare extends FUtente
      * Ogni agente ha la propria lista degli appuntamenti completa
      * @return array
      */
-    public static function getAllAgenti(): array
+    public static function getAllAgenti($inizio,$fine): ?array
     {
         $db = FDataBase::getInstance();
         $db_result = $db->loadAll(self::class);
         $agenti = array();
         foreach ($db_result as &$item)
-            $agenti[] = self::visualizzaAppUtente($db_result["id"]);
+            $agenti[] = self::AppUtenteInBetween($db_result["id"], $inizio,$fine);
         return $agenti;
     }
 

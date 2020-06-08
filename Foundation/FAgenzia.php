@@ -100,10 +100,9 @@ class FAgenzia extends FObject
     public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine, string $idAgenzia)
     {
         $agenzia = FAgenzia::getAgenzia($idAgenzia);
-        $agenzia->addImmobile(FImmobile::getAppImmobile($idImm));
-        $agenzia->setListAgentiImmobiliari(FAgenteImmobiliare::getAllAgenti());
-        $agenzia->addCliente(FUtente::visualizzaAppUtente($idCliente));
-
+        $agenzia->addImmobile(FImmobile::getAppImmobileInBetween($idImm,$inizio,$fine));
+        $agenzia->setListAgentiImmobiliari(FAgenteImmobiliare::getAllAgenti($inizio,$fine));
+        $agenzia->addCliente(FUtente::AppUtenteInBetween($idCliente,$inizio,$fine));
         return $agenzia;
     }
 }

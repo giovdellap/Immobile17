@@ -73,9 +73,14 @@ class FDataBase
      */
     public function loadDB ($foundation, $field, $param)
     {
-        try {
 
             $query= "SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . "='" . $param . "';";
+            return $this->executeQuery($query);
+    }
+
+    private function executeQuery(string $query):?array
+    {
+        try {
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = array();
@@ -228,4 +233,11 @@ class FDataBase
             return null;
         }
     }**/
+
+    public function loadAppInBetween($foundation, $field, $param, $inizio,$fine)
+    {
+        $query= " SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . " ='" . $param . " AND " . "data" . " BETWEEN " . $inizio . " AND " . $fine . "';";
+        return $this->executeQuery($query);
+            //SELECT * FROM appuntamento WHERE $field= $param AND "ora_inizio" BETWEEN $inizio AND $fine
+    }
 }
