@@ -116,8 +116,8 @@ class FPersistentManager
         return FUtente::visualizzaAppUtente($id);
     }
 
-    public static function getBusyWeek(string $idImm, string $idCliente,MData $dataInizio,MData $dataFine): MAgenzia
+    public static function getBusyWeek(string $idImm, string $idCliente,MData $dataInizio,MData $dataFine, string $idAgenzia): MAgenzia
     {
-        return MAgenzia::getBusyWeek($idImm, $idCliente, $dataInizio. $dataFine);
+        return FAgenzia::getBusyWeek($idImm, $idCliente, $dataInizio, $dataFine, $idAgenzia);
     }
 }

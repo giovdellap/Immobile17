@@ -96,7 +96,17 @@ class FAgenzia extends FObject
 
     }
 
-
+    /**
+     * Ritorna l'Agenzia identificata dall'idagenzia
+     * Nell'Agenzia sono presenti il Cliente, l'Immobile e tutti gli agenti Immobiliari
+     * Ogni Elemento ha una lista appuntamenti completa di tutti gli appuntamenti compresi fra le due date
+     * @param string $idImm
+     * @param string $idCliente
+     * @param MData $inizio
+     * @param MData $fine
+     * @param string $idAgenzia
+     * @return MAgenzia|null
+     */
     public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine, string $idAgenzia)
     {
         $agenzia = FAgenzia::getAgenzia($idAgenzia);

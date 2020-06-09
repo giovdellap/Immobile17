@@ -8,10 +8,12 @@ class FAgenteImmobiliare extends FUtente
 
     /**
      * Ritorna un array con tutti gli agenti immobiliari presenti nel DB
-     * Ogni agente ha la propria lista degli appuntamenti completa
+     * Ogni agente ha la propria lista degli appuntamenti compresi fra $inizio e $fine
+     * @param MData $inizio
+     * @param Mdata $fine
      * @return array
      */
-    public static function getAllAgenti($inizio,$fine): ?array
+    public static function getAllAgenti(MData $inizio, Mdata $fine): ?array
     {
         $db = FDataBase::getInstance();
         $db_result = $db->loadAll(self::class);

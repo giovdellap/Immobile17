@@ -67,7 +67,7 @@ class FAppuntamento extends FObject
     }
 
     /**
-     * Ritorna la lista appuntamenti  dell'oggeto il cui Id viene passato come parametro
+     * Ritorna la lista appuntamenti dell'oggetto il cui Id viene passato come parametro
      * Riconosce la tipologia di oggetto dal formato dell'Id
      * @param string $id
      * @return array
@@ -87,6 +87,15 @@ class FAppuntamento extends FObject
         return $to_return;
     }
 
+    /**
+     * Ritorna la lista appuntamenti dell'oggetto il cui Id viene passato come parametro
+     * Riconosce la tipologia di oggetto dal formato dell'Id
+     * Gli appuntamenti sono compresi fra le due date
+     * @param string $id
+     * @param MData $inizio
+     * @param MData $fine
+     * @return array
+     */
     public static function getAppInBetween(string $id, MData $inizio, MData $fine): array
     {
         $datainizio=self::getDateString($inizio);

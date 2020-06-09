@@ -75,10 +75,16 @@ class FDataBase
     {
 
             $query= "SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . "='" . $param . "';";
-            return $this->executeQuery($query);
+            return $this->executeLoadQuery($query);
     }
 
-    private function executeQuery(string $query):?array
+    /**
+     * Esegue una query di tipo Load
+     * Ritorna un array di dati
+     * @param string $query
+     * @return array|null
+     */
+    private function executeLoadQuery(string $query):?array
     {
         try {
             $stmt = $this->db->prepare($query);
@@ -97,6 +103,13 @@ class FDataBase
         }
     }
 
+    /**
+     * Elimina dal DB tutti gli elementi dove $field = $param
+     * @param $foundation
+     * @param $field
+     * @param $param
+     * @return bool|null
+     */
     public function deleteDB ($foundation, $field, $param)
     {
         try {
@@ -192,6 +205,13 @@ class FDataBase
         }
     }
 
+    /**
+     * Controlla che $mail sia uguale a $password
+     * @param $foundation
+     * @param string $mail
+     * @param string $password
+     * @return bool
+     */
     public function login($foundation, string $mail, string $password): bool
     {
         try {
@@ -234,10 +254,19 @@ class FDataBase
         }
     }**/
 
-    public function loadAppInBetween($foundation, $field, $param, $inizio,$fine)
+    /**
+     * Ritorna tutti gli appuntamenti per i quali $field = $param e data è compresa fra $inizio e $fine
+     * @param $foundation
+     * @param string $field
+     * @param string $param
+     * @param string $inizio
+     * @param string $fine
+     * @return array|null
+     */
+    public function loadAppInBetween($foundation, string $field, string $param, string $inizio,string $fine)
     {
         $query= " SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . " ='" . $param . " AND " . "data" . " BETWEEN " . $inizio . " AND " . $fine . "';";
-        return $this->executeQuery($query);
+        return $this->executeLoadQuery($query);
             //SELECT * FROM appuntamento WHERE $field= $param AND "ora_inizio" BETWEEN $inizio AND $fine
     }
 }

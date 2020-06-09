@@ -25,13 +25,22 @@ class FImmobile extends FObject
 
     }
 
+    /**
+     * Aggiunge l'MImmobile passato come parametro al DB
+     * @param MImmobile $immobile
+     * @return bool esito dell'operazione
+     */
     public static function addImmobile (MImmobile $immobile) :bool
     {
-
         $db= FDataBase::getInstance();
         return $db->storeDb(self::class,$immobile);
     }
 
+    /**
+     * Ritorna l'Immobile con l'Id passato come paramentro se esiste, null altrimenti
+     * @param string $id
+     * @return MImmobile|null
+     */
     public static function getImmobile(string $id)
     {
         $db= FDataBase::getInstance();
@@ -45,6 +54,11 @@ class FImmobile extends FObject
 
     }
 
+    /**
+     * Ritorna un MImmobile dall'array di attributi $db_result
+     * @param array $db_result
+     * @return MImmobile
+     */
     public static function unBindImmobile(array $db_result): MImmobile
     {
         $immobile= new MImmobile();
@@ -61,6 +75,10 @@ class FImmobile extends FObject
         return $immobile;
     }
 
+    /**
+     * Ritorna tutti gli immobili presenti nel DB
+     * @return array
+     */
     public static function getImmobili()
     {
         $db=FDataBase::getInstance();
@@ -71,12 +89,23 @@ class FImmobile extends FObject
         return $immobili;
     }
 
+    /**
+     * Disabilita l'Immobile passato come parametro
+     * @param MImmobile $immobile
+     * @return bool esito dell'operazione
+     */
     public static function disabilita(MImmobile $immobile): bool
     {
         $db=FDataBase::getInstance();
         return $db->updateDB(self::class,"attivo",false,"id",$immobile->getId());
     }
 
+    /**
+     * Confronta l'Immobile passato come parametro con quello presente nel DB
+     * Aggiorna il DB con i campi aggiornati del nuovo Immobile
+     * @param MImmobile $immobile
+     * @return bool esito dell'operazione
+     */
     public static function modificaImmobile(MImmobile $immobile):bool
     {
         $db = FDataBase::getInstance();
@@ -117,13 +146,14 @@ class FImmobile extends FObject
 
     }
 
-    public static function getAppImmobile(string $id): ?MImmobile
-    {
-        $immobile = self::getImmobile($id);
-        $immobile->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
-        return $immobile;
-    }
-    public static function getAppImmobileInBetween(string $id, $inizio,$fine): ?MImmobile
+    /**
+     * Ritorna l'Immobile in questione con la lista appuntamenti contenente gli appuntamenti compresi fra le due date
+     * @param string $id
+     * @param MData $inizio
+     * @param MData $fine
+     * @return MImmobile|null
+     */
+    public static function getAppImmobileInBetween(string $id, MData $inizio, MData $fine): ?MImmobile
     {
         $immobile = self::getImmobile($id);
         $immobile->setListAppuntamenti(FAppuntamento::getAppInBetween($id,$inizio,$fine));

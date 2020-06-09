@@ -159,6 +159,11 @@ class FUtente extends FObject
         else return null;
     }
 
+    /**
+     * Imposta gli attributi di $utente con il contenuto di $db_result
+     * @param MUtente $utente
+     * @param array $db_result
+     */
     public static function setAttributiUtente(MUtente $utente, array $db_result)
     {
         $utente->setId($db_result["id"]);
@@ -175,7 +180,7 @@ class FUtente extends FObject
      * Modifica l'Utente con i valori dell'Utente passato come parametro
      * Chiama modifyUtente() su FCliente o FAgenteImmobiliare a seconda dell'Utente
      * @param MUtente $utente
-     * @return bool
+     * @return bool esito dell'operazione
      */
     public static function modificaUtente(MUtente $utente): bool
     {
@@ -188,7 +193,7 @@ class FUtente extends FObject
     /**
      * Modifica l'Utente con i valori del nuovo Utente
      * @param MUtente $utente
-     * @return bool
+     * @return bool esito dell'operazione
      */
     public static function modifyUtente(MUtente $utente)
     {
@@ -219,13 +224,25 @@ class FUtente extends FObject
         return true;
     }
 
+    /**
+     * Ritorna un MUtente con la lista appuntamenti completa
+     * @param string $id
+     * @return MUtente
+     */
     public static function visualizzaAppUtente(string $id): MUtente{
         $utente = self::visualizzaUtente($id);
         $utente->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
         return $utente;
     }
 
-    public static function AppUtenteInBetween(string $id, $inizio,$fine): MUtente{
+    /**
+     * Ritorna l'MUtente con la lista appuntamenti completa degli appuntamenti fra le due date
+     * @param string $id
+     * @param $inizio
+     * @param $fine
+     * @return MUtente
+     */
+    public static function AppUtenteInBetween(string $id, MData $inizio, MData $fine): MUtente{
         $utente = self::visualizzaUtente($id);
         $utente->setListAppuntamenti(FAppuntamento::getAppInBetween($id, $inizio, $fine));
         return $utente;
