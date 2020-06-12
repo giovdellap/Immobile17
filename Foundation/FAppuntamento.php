@@ -20,6 +20,31 @@ class FAppuntamento extends FObject
     }
 
     /**
+     * @return string
+     */
+    public static function getTable(): string
+    {
+        return self::$table;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getValues(): string
+    {
+        return self::$values;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getID():string
+    {
+        return self::$id;
+    }
+
+
+    /**
      * Aggiunge l'Appuntamento passato come parametro al DB
      * @param MAppuntamento $appuntamento
      * @return bool

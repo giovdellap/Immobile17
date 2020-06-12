@@ -13,7 +13,7 @@ class FDataBase
     private function __construct()
     {
         try {
-            $this->db= new PDO ("mysql:dbname="."agenzia_immobiliare".
+            $this->db= new PDO ("mysql:dbname="."agenzia immobiliare".
                 ";host=127.0.0.1;", "root", "");
         } catch (PDOException $e){
             echo "Errore costruttore FDatabase: ".$e->getMessage();
@@ -66,12 +66,12 @@ class FDataBase
     }
 
     public function getLastId(string $table):string
-    {
-        $query = "SELECT " . "id" . " FROM " . $table. " GROUP BY "."id" . " ORDER BY id";
+    {   echo $table;
+        $query = "SELECT id FROM " . $table. " GROUP BY " . "id" . " ORDER BY " . "id";
         $result = $this->executeLoadQuery($query);
 
-        echo($result[0]);
-        return $result[0];
+        //$a=$result[0]
+        return $result[0]["id"];
     }
 
     /**
@@ -100,6 +100,7 @@ class FDataBase
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = array();
+            echo $stmt->rowCount();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while ($row = $stmt->fetch())
                 $result[] = $row;

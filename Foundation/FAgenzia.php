@@ -61,7 +61,14 @@ class FAgenzia extends FObject
         $agenzia->setListImmobili(FImmobile::getImmobili());
         return $agenzia;
     }
-
+    public static function getTable(): string
+    {
+        return self::$table;
+    }
+    public static function getValues(): string
+    {
+        return self::$values;
+    }
     /**
      * Controlla quali argomenti differiscono fra l'MAgenzia passata come parametro e quella presente nel DB
      * Aggiorna il DB con le modifiche

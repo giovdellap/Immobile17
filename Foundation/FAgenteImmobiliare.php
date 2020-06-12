@@ -22,5 +22,19 @@ class FAgenteImmobiliare extends FUtente
             $agenti[] = self::AppUtenteInBetween($db_result["id"], $inizio,$fine);
         return $agenti;
     }
+    /**
+     * @return string
+     */
+    public static function getTable(): string
+    {
+        return self::$table;
+    }
 
+    /**
+     * @return string
+     */
+    public static function getID():string
+    {
+        return self::$idString;
+    }
 }

@@ -17,6 +17,29 @@ class FAmministratore
         $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);}
 
     /**
+     * @return string
+     */
+    public static function getTable(): string
+    {
+        return self::$table;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getValues(): string
+    {
+        return self::$values;
+    }
+
+    /**
+     * @return string
+     */
+    public static function getID():string
+    {
+        return self::$idString;
+    }
+    /**
      * Ritorna l'MAmministratore corrispondente all'Id passato come parametro
      * @param string $id
      * @return MAmministratore|null

@@ -2,8 +2,7 @@
 
 
 abstract class FObject
-{
-    private static string $table = "table";
+{   private static string $table="table";
     private static string $values = "values";
     private static string $idString = "id";
 
@@ -16,21 +15,6 @@ abstract class FObject
      */
     public static abstract function bind(PDOStatement $stmt, $obj, string $newId): void;
 
-    /**
-     * @return string
-     */
-    public static function getTable(): string
-    {
-        return self::$table;
-    }
-
-    /**
-     * @return string
-     */
-    public static function getValues(): string
-    {
-        return self::$values;
-    }
 
     /**
      * Incrementa $id di 1
@@ -40,9 +24,25 @@ abstract class FObject
     public static function calculateNewID(string $id): string
     {
         echo("ID: ".$id);
-        $splitted = str_split($id, 2);
-        $number = $splitted[1]*10 + $splitted[2] + 1;
-        return self::$idString . $number;
+        $splitted = str_split($id, 1);
+        if (strlen($id) <=3) {
+
+            $number = $splitted[2] + 1;
+
+        }
+        else if (strlen($id)==4)
+        {
+            $number = $splitted[2]*10 + $splitted[3]+1;
+        }
+        else if (strlen($id)==5)
+        {
+            $number = $splitted[2]*100 + $splitted[3]*10 + $splitted[4]+1;
+        }
+        else if (strlen($id)==6)
+            echo "Overflow Clients' IDs";
+        return $splitted[0] . $splitted[1] . $number;
+
+
     }
 
     /**

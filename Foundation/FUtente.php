@@ -25,6 +25,16 @@ class FUtente extends FObject
         $stmt->bindValue(':verifica', $obj->getAttivato(), PDO::PARAM_STR);
     }
 
+
+    /**
+     * @return string
+     */
+    public static function getValues(): string
+    {
+        return self::$values;
+    }
+
+
     /**
      * Chiama la di controllo dell'esistenza della mail nel DB su FCliente o FAgenteImmobiliare a seconda del formato della mail
      * @param string $mail
