@@ -3,9 +3,9 @@
 
 abstract class FObject
 {
-    private static string $table;
-    private static string $values;
-    private static string $idString;
+    private static string $table = "table";
+    private static string $values = "values";
+    private static string $idString = "id";
 
     /**
      * Efettua il bind degli attributi di $obj (Oggetto del model) nello statement PDO
@@ -39,6 +39,7 @@ abstract class FObject
      */
     public static function calculateNewID(string $id): string
     {
+        echo("ID: ".$id);
         $splitted = str_split($id, 2);
         $number = $splitted[1]*10 + $splitted[2] + 1;
         return self::$idString . $number;

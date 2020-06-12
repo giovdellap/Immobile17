@@ -4,7 +4,7 @@
 class FDataBase
 {
 
-    /** @var l'unica istanzaq della classe */
+    /** @var l'unica istanza della classe */
     private static $instance;
     /** oggetto PDO che effettua la connessione al DBMS */
     private $db;
@@ -14,9 +14,9 @@ class FDataBase
     {
         try {
             $this->db= new PDO ("mysql:dbname="."agenzia_immobiliare".
-                ";host=localhost; charset= utf8;", "root", "");
+                ";host=127.0.0.1;", "root", "");
         } catch (PDOException $e){
-            echo "Errore".$e->getMessage();
+            echo "Errore costruttore FDatabase: ".$e->getMessage();
             die;
         }
     }
@@ -48,7 +48,8 @@ class FDataBase
     public function storeDb ($foundation, $model):bool
     {
         try{
-            $lastID = $this->db->lastInsertId("id");
+            $lastID = $this->getLastId($foundation::getTable());
+            echo("lastId: ".$lastID."\n");
             $this->db->beginTransaction();
             $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
             $stmt=$this->db->prepare($query);
@@ -62,6 +63,15 @@ class FDataBase
         $this->db->rollBack();
         return false;
         }
+    }
+
+    public function getLastId(string $table):string
+    {
+        $query = "SELECT " . "id" . " FROM " . $table. " GROUP BY "."id" . " ORDER BY id";
+        $result = $this->executeLoadQuery($query);
+
+        echo($result[0]);
+        return $result[0];
     }
 
     /**

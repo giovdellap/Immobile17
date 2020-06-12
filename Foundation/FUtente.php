@@ -4,7 +4,7 @@
 class FUtente extends FObject
 {
     private static string $values="(:id, :nome, :cognome, :datanascita, :mail, 
-                                    :password, :iscrizione, :verifica, :id_agenzia)";
+                                    :password, :iscrizione, :verifica)";
 
 
 
@@ -23,7 +23,6 @@ class FUtente extends FObject
         $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);
         $stmt->bindValue(':iscrizione', self::getDateString($obj->getIscrizione()), PDO::PARAM_STR);
         $stmt->bindValue(':verifica', $obj->getAttivato(), PDO::PARAM_STR);
-        $stmt->bindValue(':id_agenzia',$obj->getAgenzia()->getId(),PDO::PARAM_STR);
     }
 
     /**

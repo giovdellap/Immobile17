@@ -18,6 +18,12 @@ class FAgenzia extends FObject
         $stmt->bindValue(':indirizzo', $obj->getIndirizzo(), PDO::PARAM_STR);
     }
 
+    public static function addAgenzia(MAgenzia $agenzia)
+    {
+        $db= FDataBase::getInstance();
+        return $db->storeDb(self::class,$agenzia);
+    }
+
     /**
      * Ritorna un oggetto MAgenzia se l'id esiste, null altrimenti
      * @param string $id

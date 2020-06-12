@@ -16,7 +16,8 @@ function my_autoloader($classname)
                 include_once('model/' . $classname . '.php');
             }
             break;
-
+        case 'F':
+            include_once('Foundation/' . $classname . '.php');
     }
 
 }

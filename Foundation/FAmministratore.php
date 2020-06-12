@@ -5,7 +5,7 @@ class FAmministratore
 {
     private static string $table= "amministatore";
     private static string $idString= "AD";
-    private static string $values="(:id, :nome, :cognome, :password, :id_agenzia)";
+    private static string $values="(:id, :nome, :cognome, :password)";
 
 
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
@@ -14,9 +14,7 @@ class FAmministratore
         $stmt->bindValue(':nome', $obj->getNome(), PDO::PARAM_STR);
         $stmt->bindValue(':cognome', $obj->getCognome(), PDO::PARAM_STR);
         $stmt->bindValue(':mail', $obj->getMail(), PDO::PARAM_STR);
-        $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);
-        $stmt->bindValue(':id_agenzia',$obj->getAgenzia()->getId(),PDO::PARAM_STR);
-    }
+        $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);}
 
     /**
      * Ritorna l'MAmministratore corrispondente all'Id passato come parametro
