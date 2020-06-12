@@ -9,12 +9,15 @@ class TestCasesFactory
 
     public function createCliente1(): MCliente
     {
-        return new MCliente();
+        $cliente = new MCliente();
+        $cliente->setAttivato(true);
+        return $cliente;
     }
 
     public function createCliente2(): MCliente
     {
         $cliente = new MCliente();
+        $cliente->setAttivato(true);
         $appuntamento_1 = $this->createEmptyAppuntamento(13.30);
         $appuntamento_1->setCliente($cliente);
         $cliente->addAppuntamento($appuntamento_1);
@@ -25,12 +28,15 @@ class TestCasesFactory
 
     public function createImmobile1(): MImmobile
     {
-        return new MImmobile();
+        $immobile = new MImmobile();
+        $immobile->setAttivo(true);
+        return $immobile;
     }
 
     public function createImmobile2(): MImmobile
     {
         $immobile = new MImmobile();
+        $immobile->setAttivo(true);
         $appuntamento = $this->createEmptyAppuntamento(13.30);
         $appuntamento->setImmobile($immobile);
         $immobile->addAppuntamento($appuntamento);
@@ -41,12 +47,15 @@ class TestCasesFactory
 
     public function createAgente1()
     {
-        return new MAgenteImmobiliare();
+        $agente = new MAgenteImmobiliare();
+        $agente->setAttivato(true);
+        return $agente;
     }
 
     public function createAgente2()
     {
         $agente = new MAgenteImmobiliare();
+        $agente->setAttivato(true);
         $appuntamento = $this->createEmptyAppuntamento(13.30);
         $appuntamento->setAgenteImmobiliare($agente);
         $agente->addAppuntamento($appuntamento);
@@ -102,25 +111,31 @@ class TestCasesFactory
         //AGENTI
         $agente1 = new MAgenteImmobiliare();
         $agente1->setNome("agente1");
+        $agente1->setAttivato(true);
         $agenzia->addAgenteImmobiliare($agente1);
         $agente2 = new MAgenteImmobiliare();
         $agente2->setNome("agente2");
+        $agente2->setAttivato(true);
         $agenzia->addAgenteImmobiliare($agente2);
 
         //IMMOBILI
         $immobile1 = new MImmobile();
         $immobile1->setId("immobile1");
+        $immobile1->setAttivo(true);
         $agenzia->addImmobile($immobile1);
         $immobile2 = new MImmobile();
         $immobile2->setId("immobile2");
+        $immobile2->setAttivo(true);
         $agenzia->addImmobile($immobile2);
 
         //CLIENTI
         $cliente1 = new MCliente();
         $cliente1->setNome("cliente1");
+        $cliente1->setAttivato(true);
         $agenzia->addCliente($cliente1);
         $cliente2 = new MCliente();
         $cliente2->setNome("cliente2");
+        $cliente2->setAttivato(true);
         $agenzia->addCliente($cliente2);
 
         //APPUNTAMENTO 1

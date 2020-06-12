@@ -13,7 +13,7 @@ class FDataBase
     private function __construct()
     {
         try {
-            $this->db= new PDO ("mysql:dbname="."agenzia immobiliare".
+            $this->db= new PDO ("mysql:dbname="."agenzia_immobiliare".
                 ";host=127.0.0.1;", "root", "");
         } catch (PDOException $e){
             echo "Errore costruttore FDatabase: ".$e->getMessage();

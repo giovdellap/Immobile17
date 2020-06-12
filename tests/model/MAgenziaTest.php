@@ -15,6 +15,7 @@ class MAgenziaTest extends TestCase
 
         $cliente3 = new MCliente();
         $cliente3->setNome("cliente3");
+        $cliente3->setAttivato(true);
         $agenzia->addCliente($cliente3);
 
         $immobile = $agenzia->getCalendario()->getAppuntamenti()[0]->getImmobile();
