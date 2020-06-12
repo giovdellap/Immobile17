@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 02, 2020 alle 17:02
+-- Creato il: Giu 12, 2020 alle 17:36
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.6
 
@@ -35,9 +35,16 @@ CREATE TABLE `agente_immobiliare` (
                                       `password` varchar(20) NOT NULL,
                                       `datanascita` date NOT NULL,
                                       `iscrizione` date NOT NULL,
-                                      `verifica` tinyint(1) NOT NULL,
-                                      `id_agenzia` varchar(10) NOT NULL
+                                      `verifica` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `agente_immobiliare`
+--
+
+INSERT INTO `agente_immobiliare` (`id`, `nome`, `cognome`, `mail`, `password`, `datanascita`, `iscrizione`, `verifica`) VALUES
+('AG001', 'Aldo', 'Rossi', 'aldorossi@info.it', 'pippo', '1975-12-25', '2020-06-11', 1),
+('AG002', 'Gabriele', 'Gatti', 'gabrielegatti@info.it', 'topolino', '1985-05-01', '2020-03-09', 1);
 
 -- --------------------------------------------------------
 
@@ -54,6 +61,13 @@ CREATE TABLE `agenzia` (
                            `indirizzo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `agenzia`
+--
+
+INSERT INTO `agenzia` (`id`, `nome`, `citta`, `CAP`, `provincia`, `indirizzo`) VALUES
+('A1', 'Immobile17', 'L\'Aquila', 67100, 'AQ', 'Via Enrico De Nicola 17');
+
 -- --------------------------------------------------------
 
 --
@@ -65,9 +79,15 @@ CREATE TABLE `amministratore` (
                                   `nome` varchar(50) NOT NULL,
                                   `cognome` varchar(50) NOT NULL,
                                   `mail` varchar(50) NOT NULL,
-                                  `password` varchar(20) NOT NULL,
-                                  `id_agenzia` varchar(10) NOT NULL
+                                  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `amministratore`
+--
+
+INSERT INTO `amministratore` (`id`, `nome`, `cognome`, `mail`, `password`) VALUES
+('AM001', 'Admin', 'Istrator', 'admin@admin.it', 'Ciro');
 
 -- --------------------------------------------------------
 
@@ -85,6 +105,14 @@ CREATE TABLE `appuntamento` (
                                 `id_immobile` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dump dei dati per la tabella `appuntamento`
+--
+
+INSERT INTO `appuntamento` (`id`, `data`, `ora_inizio`, `ora_fine`, `id_cliente`, `id_agenteimm`, `id_immobile`) VALUES
+('AP', '2020-07-27', 11.3, 12, 'CL002', 'AG002', 'IM002'),
+('AP001', '2020-07-31', 10.3, 11, 'CL001', 'AG001', 'IM001');
+
 -- --------------------------------------------------------
 
 --
@@ -99,9 +127,18 @@ CREATE TABLE `cliente` (
                            `mail` varchar(50) NOT NULL,
                            `password` varchar(20) NOT NULL,
                            `iscrizione` date NOT NULL,
-                           `verifica` tinyint(1) NOT NULL,
-                           `id_agenzia` varchar(10) NOT NULL
+                           `verifica` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nome`, `cognome`, `datanascita`, `mail`, `password`, `iscrizione`, `verifica`) VALUES
+('CL001', 'Giordano', 'Bruno', '1548-02-17', 'vadoafuoco@hotmail.com', 'campodeifiori', '1568-11-01', 1),
+('CL002', 'Marco ', 'Di Domenica', '1998-07-07', 'marcodido@hotmail.com', 'sabato', '2020-06-01', 1),
+('CL003', 'Gabriele', 'Foderà', '1998-08-19', 'gifold@gmail.com', 'hodor', '2020-06-01', 1),
+('CL004', 'Giovanni Nicola', 'Della Pelle', '1997-01-10', 'giovdellap@gmail.com', 'macchia', '2020-06-01', 1);
 
 -- --------------------------------------------------------
 
@@ -119,9 +156,16 @@ CREATE TABLE `immobile` (
                             `descrizione` varchar(5000) NOT NULL,
                             `tipo_annuncio` varchar(50) NOT NULL,
                             `prezzo` varchar(20) NOT NULL,
-                            `attivo` tinyint(1) NOT NULL,
-                            `id_agenzia` varchar(10) NOT NULL
+                            `attivo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `immobile`
+--
+
+INSERT INTO `immobile` (`id`, `CAP`, `citta`, `indirizzo`, `tipologia`, `dimensione`, `descrizione`, `tipo_annuncio`, `prezzo`, `attivo`) VALUES
+('IM001', 67100, 'L\'Aquila', 'Via Roma 1', 'Monolocale', '500 mq', 'spaziosa e accogliente', 'Vendita', '80000 ', 1),
+('IM002', 67100, 'L\'Aquila', 'via Cardinale Mazzarino 53', 'Bilocale', '5000 mq', 'Casa molto carina, senza soffitto, senza cucina, senza pavimento. Ma è bella, bella davvero', 'Vendita', '2', 1);
 
 -- --------------------------------------------------------
 
@@ -187,8 +231,7 @@ CREATE TABLE `media_immobile` (
 -- Indici per le tabelle `agente_immobiliare`
 --
 ALTER TABLE `agente_immobiliare`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_agenzia` (`id_agenzia`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `agenzia`
@@ -200,8 +243,7 @@ ALTER TABLE `agenzia`
 -- Indici per le tabelle `amministratore`
 --
 ALTER TABLE `amministratore`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_agenzia` (`id_agenzia`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `appuntamento`
@@ -216,15 +258,13 @@ ALTER TABLE `appuntamento`
 -- Indici per le tabelle `cliente`
 --
 ALTER TABLE `cliente`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_agenzia` (`id_agenzia`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `immobile`
 --
 ALTER TABLE `immobile`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_agenzia` (`id_agenzia`);
+    ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `media_admin`
@@ -257,36 +297,12 @@ ALTER TABLE `media_immobile`
 --
 
 --
--- Limiti per la tabella `agente_immobiliare`
---
-ALTER TABLE `agente_immobiliare`
-    ADD CONSTRAINT `agente_immobiliare_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limiti per la tabella `amministratore`
---
-ALTER TABLE `amministratore`
-    ADD CONSTRAINT `amministratore_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Limiti per la tabella `appuntamento`
 --
 ALTER TABLE `appuntamento`
     ADD CONSTRAINT `appuntamento_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
     ADD CONSTRAINT `appuntamento_ibfk_2` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
     ADD CONSTRAINT `appuntamento_ibfk_3` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limiti per la tabella `cliente`
---
-ALTER TABLE `cliente`
-    ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limiti per la tabella `immobile`
---
-ALTER TABLE `immobile`
-    ADD CONSTRAINT `immobile_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `media_admin`
