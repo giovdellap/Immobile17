@@ -69,4 +69,27 @@ abstract class FObject
         $data->setGiorno($giorno);
         return $data;
     }
+
+    public static function identifyId (string $id):string
+    {
+        if (strpos($id,"CL"))
+            return "CLIENTE";
+        else if(strpos($id,"AG"))
+            return "AGENTE IMMOBILIARE";
+        else if(strpos($id,"AZ"))
+            return "AGENZIA";
+        else if(strpos($id,"IM"))
+            return "IMMOBILE";
+        else if(strpos($id,"AM"))
+            return "AMMINISTRATORE";
+        else if(strpos($id,"MC"))
+            return "MEDIA CLIENTE";
+        else if(strpos($id,"MA"))
+            return "MEDIA AGENTE";
+        else if(strpos($id,"MI"))
+            return "MEDIA IMMOBILE";
+        else if(strpos($id,"MZ"))
+            return "MEDIA AGENZIA";
+        else return "";
+    }
 }

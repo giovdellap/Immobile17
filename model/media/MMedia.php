@@ -6,7 +6,8 @@ class MMedia
     private string $id;
     private string $nome;
     private string $type;
-    private string $immagine;
+    private string $data;
+
 
     /**
      * @return string
@@ -59,17 +60,17 @@ class MMedia
     /**
      * @return string
      */
-    public function getImmagine(): string
+    public function getData(): string
     {
-        return $this->immagine;
+        return $this->data ;
     }
 
     /**
      * @param string $immagine
      */
-    public function setImmagine(string $immagine): void
+    public function setData(string $data): void
     {
-        $this->immagine = $immagine;
+        $this->data = $data;
     }
 
 

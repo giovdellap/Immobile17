@@ -43,6 +43,7 @@ class FAgenzia extends FObject
                 $agenzia->setIndirizzo($db_result["indirizzo"]);
                 $agenzia->setNome($db_result["nome"]);
                 $agenzia->setProvincia($db_result["provincia"]);
+                $agenzia->setImmagini(FMedia::getMedia($agenzia->getId()));
 
                 return $agenzia;
             }

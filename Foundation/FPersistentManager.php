@@ -120,4 +120,18 @@ class FPersistentManager
     {
         return FAgenzia::getBusyWeek($idImm, $idCliente, $dataInizio, $dataFine, $idAgenzia);
     }
+
+
+    public static function addMedia(MMedia $media):bool
+    {
+        return FMedia::addMedia($media);
+    }
+
+    public static function removeMedia(string $id):bool
+    {
+        return FMedia::removeMedia($id);
+    }
+
+
+
 }

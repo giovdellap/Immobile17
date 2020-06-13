@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 12, 2020 alle 19:10
+-- Creato il: Giu 13, 2020 alle 12:47
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.3
 
@@ -172,15 +172,15 @@ INSERT INTO `immobile` (`id`, `CAP`, `citta`, `indirizzo`, `tipologia`, `dimensi
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `media_admin`
+-- Struttura della tabella `media_agenteimm`
 --
 
-CREATE TABLE `media_admin` (
+CREATE TABLE `media_agenteimm` (
   `id` varchar(10) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
   `immagine` longblob NOT NULL,
-  `id_admin` varchar(10) NOT NULL
+  `id_agenteimm` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -269,10 +269,11 @@ ALTER TABLE `immobile`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `media_admin`
+-- Indici per le tabelle `media_agenteimm`
 --
-ALTER TABLE `media_admin`
-  ADD KEY `id_admin` (`id_admin`);
+ALTER TABLE `media_agenteimm`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_agenteimm` (`id_agenteimm`);
 
 --
 -- Indici per le tabelle `media_agenzia`
@@ -305,12 +306,6 @@ ALTER TABLE `appuntamento`
   ADD CONSTRAINT `appuntamento_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appuntamento_ibfk_2` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appuntamento_ibfk_3` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Limiti per la tabella `media_admin`
---
-ALTER TABLE `media_admin`
-  ADD CONSTRAINT `media_admin_ibfk_1` FOREIGN KEY (`id_admin`) REFERENCES `amministratore` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `media_agenzia`
