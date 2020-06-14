@@ -2,9 +2,7 @@
 
 
 abstract class FObject
-{   private static string $table="table";
-    private static string $values = "values";
-    private static string $idString = "id";
+{
 
     /**
      * Efettua il bind degli attributi di $obj (Oggetto del model) nello statement PDO

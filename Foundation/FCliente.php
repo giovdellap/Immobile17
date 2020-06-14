@@ -3,8 +3,8 @@
 
 class FCliente extends FUtente
 {
-    private static string $table = "cliente";
-    private static string $idString = "CL";
+    protected static string $table = "cliente";
+    protected static string $idString = "CL";
 
 
     /**

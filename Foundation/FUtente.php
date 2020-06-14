@@ -42,10 +42,11 @@ class FUtente extends FObject
      */
     public static function emailesistente(string $mail):bool
     {
-       if(strpos($mail, "@info.it"))
-           return FAgenteImmobiliare::emailExist($mail);
-       else
-           return FCliente::emailExist($mail);
+        $db = FDataBase::getInstance();
+        if(strpos($mail, "@info.it"))
+            return $db->existDB("FAgenteImmobiliare", "mail", $mail);
+        else
+            return $db->existDB("FCliente", "mail", $mail);
     }
 
     /**
@@ -56,6 +57,7 @@ class FUtente extends FObject
     public static function emailExist(string $mail): bool
     {
         $db=FDataBase::getInstance();
+        echo self::class;
         return $db->existDB(self::class, "mail", $mail);
 
     }
@@ -257,5 +259,8 @@ class FUtente extends FObject
         $utente->setListAppuntamenti(FAppuntamento::getAppInBetween($id, $inizio, $fine));
         return $utente;
     }
+
+
+
 
 }
