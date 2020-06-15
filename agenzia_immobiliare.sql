@@ -318,7 +318,7 @@ ALTER TABLE `appuntamento`
 -- Limiti per la tabella `media_agenteimm`
 --
 ALTER TABLE `media_agenteimm`
-  ADD CONSTRAINT `media_agenteimm_ibfk_1` FOREIGN KEY (`id_agenteimm`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `media_agenteimm_ibfk_1` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `media_agenzia`
