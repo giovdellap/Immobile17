@@ -17,7 +17,11 @@ function my_autoloader($classname)
             }
             break;
         case 'F':
-            include_once('Foundation/' . $classname . '.php');
+            if (strcmp(str_split($classname, 6)[0], "FMedia" )===0)
+            {
+                include_once ('Foundation/FMedia/' . $classname . '.php');
+            }
+            else include_once('Foundation/' . $classname . '.php');
     }
 
 }

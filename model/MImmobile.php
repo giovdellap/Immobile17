@@ -3,13 +3,13 @@
 
 class MImmobile
 {
-    private String $id;
-    private String $indirizzo;
-    private String $comune;
-    private String $CAP;
-    private String $tipologia;
-    private String $tipoAnnuncio;
-    private String $descrizione;
+    private string $id;
+    private string $indirizzo;
+    private string $comune;
+    private string $CAP;
+    private string $tipologia;
+    private string $tipoAnnuncio;
+    private string $descrizione;
     private array  $immagini;
     private int    $prezzo;
     private int    $grandezza;
@@ -25,7 +25,7 @@ class MImmobile
     /**
      * @return String
      */
-    public function getId(): String
+    public function getId(): string
     {
         return $this->id;
     }
@@ -65,7 +65,7 @@ class MImmobile
     /**
      * @param String $id
      */
-    public function setId(String $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
@@ -73,7 +73,7 @@ class MImmobile
     /**
      * @return String
      */
-    public function getIndirizzo(): String
+    public function getIndirizzo(): string
     {
         return $this->indirizzo;
     }
@@ -81,7 +81,7 @@ class MImmobile
     /**
      * @param String $indirizzo
      */
-    public function setIndirizzo(String $indirizzo): void
+    public function setIndirizzo(string $indirizzo): void
     {
         $this->indirizzo = $indirizzo;
     }
@@ -89,7 +89,7 @@ class MImmobile
     /**
      * @return String
      */
-    public function getComune(): String
+    public function getComune(): string
     {
         return $this->comune;
     }
@@ -97,7 +97,7 @@ class MImmobile
     /**
      * @param String $comune
      */
-    public function setComune(String $comune): void
+    public function setComune(string $comune): void
     {
         $this->comune = $comune;
     }
@@ -105,7 +105,7 @@ class MImmobile
     /**
      * @return String
      */
-    public function getTipologia(): String
+    public function getTipologia(): string
     {
         return $this->tipologia;
     }
@@ -113,7 +113,7 @@ class MImmobile
     /**
      * @param String $tipologia
      */
-    public function setTipologia(String $tipologia): void
+    public function setTipologia(string $tipologia): void
     {
         $this->tipologia = $tipologia;
     }
@@ -121,7 +121,7 @@ class MImmobile
     /**
      * @return String
      */
-    public function getTipoAnnuncio(): String
+    public function getTipoAnnuncio(): string
     {
         return $this->tipoAnnuncio;
     }
@@ -129,7 +129,7 @@ class MImmobile
     /**
      * @param String $tipoAnnuncio
      */
-    public function setTipoAnnuncio(String $tipoAnnuncio): void
+    public function setTipoAnnuncio(string $tipoAnnuncio): void
     {
         $this->tipoAnnuncio = $tipoAnnuncio;
     }
@@ -137,7 +137,7 @@ class MImmobile
     /**
      * @return String
      */
-    public function getDescrizione(): String
+    public function getDescrizione(): string
     {
         return $this->descrizione;
     }
@@ -145,7 +145,7 @@ class MImmobile
     /**
      * @param String $descrizione
      */
-    public function setDescrizione(String $descrizione): void
+    public function setDescrizione(string $descrizione): void
     {
         $this->descrizione = $descrizione;
     }

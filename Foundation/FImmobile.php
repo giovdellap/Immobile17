@@ -70,8 +70,8 @@ class FImmobile extends FObject
         $db= FDataBase::getInstance();
         if($db->existDB(self::class,"id",$id)) {
             $db_result = $db->loadDB(self::class, "id", $id);
-            if($db_result =! null)
-                return self::unBindImmobile($db_result);
+            if($db_result != null)
+                return self::unBindImmobile($db_result[0]);
             else return null;
         }
         else return null;
@@ -91,11 +91,13 @@ class FImmobile extends FObject
         $immobile->setComune($db_result["citta"]);
         $immobile->setIndirizzo($db_result["indirizzo"]);
         $immobile->setTipologia($db_result["tipologia"]);
+        $immobile->setDescrizione($db_result["descrizione"]);
         $immobile->setGrandezza($db_result["dimensione"]);
         $immobile->setTipoAnnuncio($db_result["tipo_annuncio"]);
         $immobile->setPrezzo($db_result["prezzo"]);
         $immobile->setAttivo($db_result["attivo"]);
-        $immobile->setImmagini(FMedia::getMedia($immobile->getId()));
+        if (FMedia::getMedia($immobile->getId())!=null)
+             $immobile->setImmagini(FMedia::getMedia($immobile->getId()));
 
         return $immobile;
     }
@@ -153,6 +155,8 @@ class FImmobile extends FObject
                 $mods["dimensione"] = $immobile->getGrandezza();
             if ($oldImmobile->getPrezzo() != $immobile->getPrezzo())
                 $mods["prezzo"] = $immobile->getPrezzo();
+            echo ("Immobile: " . $immobile->getDescrizione() . "\n" );
+            echo ("OLDimmobile: " . $oldImmobile->getDescrizione() . "\n");
             if ($oldImmobile->getDescrizione() != $immobile->getDescrizione())
                 $mods["descrizione"] = $immobile->getDescrizione();
             if ($oldImmobile->isAttivo() != $immobile->isAttivo())

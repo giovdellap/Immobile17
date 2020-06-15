@@ -71,7 +71,7 @@ class FDataBase
         $result = $this->executeLoadQuery($query);
 
         //$a=$result[0]
-        return $result[0]["id"];
+        return $result[sizeof($result)-1]["id"];
     }
 
     /**
@@ -85,6 +85,9 @@ class FDataBase
     {
 
             $query= "SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . "='" . $param . "';";
+
+            echo "loadDB: " . $query . "\n";
+
             return $this->executeLoadQuery($query);
     }
 
@@ -153,7 +156,8 @@ class FDataBase
     {
         try {
             $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "'";
-            echo $query;
+            echo "existDB: " . $query . "\n";
+
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -179,7 +183,8 @@ class FDataBase
     public function updateDB ($foundation, $field, $newvalue, $searchfield, $searchparam){
         try{
             $this->db->beginTransaction();
-            $query = " ALTER TABLE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam .  "';";
+            $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam .  "';";
+            echo "updateDB :" . $query . "\n";
             $stmt =$this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();
@@ -227,7 +232,8 @@ class FDataBase
     public function login($foundation, string $mail, string $password): bool
     {
         try {
-            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail =" . $mail . " AND password =" . $password . ";";
+            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail = '" .  $mail . " ' AND password = '" . $password . "';";
+            echo "login: " . $query . "\n";
             $stmt =$this->db->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);

@@ -34,8 +34,9 @@ class FAgenzia extends FObject
         $db= FDataBase::getInstance();
         if($db->existDB(self::class,"id",$id)) {
             $db_result = $db->loadDB(self::class, "id", $id);
-            if($db_result =! null)
+            if($db_result != null)
             {
+                $db_result=$db_result[0];
                 $agenzia= new MAgenzia();
                 $agenzia->setId($db_result["id"]);
                 $agenzia->setCAP($db_result["CAP"]);
@@ -43,7 +44,8 @@ class FAgenzia extends FObject
                 $agenzia->setIndirizzo($db_result["indirizzo"]);
                 $agenzia->setNome($db_result["nome"]);
                 $agenzia->setProvincia($db_result["provincia"]);
-                $agenzia->setImmagini(FMedia::getMedia($agenzia->getId()));
+                if (FMedia::getMedia($agenzia->getId())!= null)
+                   $agenzia->setImmagini(FMedia::getMedia($agenzia->getId()));
 
                 return $agenzia;
             }

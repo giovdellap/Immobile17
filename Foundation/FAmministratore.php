@@ -3,7 +3,7 @@
 
 class FAmministratore
 {
-    private static string $table= "amministatore";
+    private static string $table= "amministratore";
     private static string $idString= "AD";
     private static string $values="(:id, :nome, :cognome, :password)";
 
@@ -47,10 +47,14 @@ class FAmministratore
     public static function getAmministratore(string $id)
     {
         $db= FDataBase::getInstance();
+
+        //echo $db->existDB(self::class,"id",$id);
+
+
         if($db->existDB(self::class,"id",$id)) {
             $db_result = $db->loadDB(self::class, "id", $id);
-            if($db_result =! null)
-            {
+            if($db_result != null)
+            {   $db_result=$db_result[0];
                 $amministratore= new MAmministratore();
                 $amministratore->setId($db_result["id"]);
                 $amministratore->setNome($db_result["nome"]);
