@@ -4,11 +4,11 @@
 
 class MUtente
 {
-    private String $nome;
-    private String $cognome;
-    private String $email;
-    private String $id;
-    private String $password;
+    private string $nome;
+    private string $cognome;
+    private string $email;
+    private string $id;
+    private string $password;
     private MData $dataNascita;
     private MData $iscrizione;
     private MMedia $immagine;
@@ -69,87 +69,87 @@ class MUtente
     }
 
     /**
-     * @return String
+     * @return string
      */
-    public function getNome(): String
+    public function getNome(): string
     {
         return $this->nome;
     }
 
     /**
-     * @param String $nome
+     * @param string $nome
      */
-    public function setNome(String $nome): void
+    public function setNome(string $nome): void
     {
         $this->nome = $nome;
     }
 
     /**
-     * @return String
+     * @return string
      */
-    public function getCognome(): String
+    public function getCognome(): string
     {
         return $this->cognome;
     }
 
     /**
-     * @param String $cognome
+     * @param string $cognome
      */
-    public function setCognome(String $cognome): void
+    public function setCognome(string $cognome): void
     {
         $this->cognome = $cognome;
     }
 
     /**
-     * @return String
+     * @return string
      */
-    public function getEmail(): String
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * @param String $email
+     * @param string $email
      */
-    public function setEmail(String $email): void
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
     /**
-     * @return String
+     * @return string
      */
-    public function getId(): String
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param String $id
+     * @param string $id
      */
-    public function setId(String $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
     }
 
     /**
-     * @return String
+     * @return string
      */
-    public function getPassword(): String
+    public function getPassword(): string
     {
         return $this->password;
     }
 
     /**
-     * @param String $password
+     * @param string $password
      */
-    public function setPassword(String $password): void
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
 
     /**
-     * @return String
+     * @return MData
      */
     public function getIscrizione(): MData
     {
@@ -157,7 +157,7 @@ class MUtente
     }
 
     /**
-     * @param String $iscrizione
+     * @param MData $iscrizione
      */
     public function setIscrizione(MData $iscrizione): void
     {

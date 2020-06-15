@@ -10,10 +10,6 @@ class MAppuntamento
     private MImmobile $immobile;
     private MAgenteImmobiliare $agenteImmobiliare;
 
-    public function __construct(int $id)
-    {
-        $this->id = $id;
-    }
 
     /**
      * Imposta gli attributi della classe

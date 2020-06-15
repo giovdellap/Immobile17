@@ -52,6 +52,7 @@ class FDataBase
             echo("lastId: ".$lastID."\n");
             $this->db->beginTransaction();
             $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
+            echo("storeDB: " . $query . "\n");
             $stmt=$this->db->prepare($query);
             $foundation::bind($stmt, $model, $foundation::calculateNewID($lastID));
             $stmt->execute();
@@ -83,11 +84,8 @@ class FDataBase
      */
     public function loadDB ($foundation, $field, $param)
     {
-
             $query= "SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . "='" . $param . "';";
-
             echo "loadDB: " . $query . "\n";
-
             return $this->executeLoadQuery($query);
     }
 
