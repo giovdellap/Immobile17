@@ -54,6 +54,7 @@ class FDataBase
             echo("storeDB: " . $query . "\n");
             $stmt=$this->db->prepare($query);
             $foundation::bind($stmt, $model, $foundation::calculateNewID($lastID));
+            echo "PENIVIOLACEI: ".$stmt->queryString;
             $stmt->execute();
             $this->db->commit();
             $this->closeDbConnection();

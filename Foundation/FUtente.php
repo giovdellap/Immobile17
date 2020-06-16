@@ -21,14 +21,14 @@ class FUtente extends FObject
      */
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
-        $stmt->bindValue(':id', $newId, PDO::PARAM_STR);
-        $stmt->bindValue(':nome', $obj->getNome(), PDO::PARAM_STR);
-        $stmt->bindValue(':cognome', $obj->getCognome(), PDO::PARAM_STR);
+        $stmt->bindValue(':id',          $newId,                                      PDO::PARAM_STR);
+        $stmt->bindValue(':nome',        $obj->getNome(),                             PDO::PARAM_STR);
+        $stmt->bindValue(':cognome',     $obj->getCognome(),                          PDO::PARAM_STR);
         $stmt->bindValue(':datanascita', self::getDateString($obj->getDataNascita()), PDO::PARAM_STR);
-        $stmt->bindValue(':mail', $obj->getEmail(), PDO::PARAM_STR);
-        $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);
-        $stmt->bindValue(':iscrizione', self::getDateString($obj->getIscrizione()), PDO::PARAM_STR);
-        $stmt->bindValue(':verifica', $obj->isAttivato(), PDO::PARAM_STR);
+        $stmt->bindValue(':mail',        $obj->getEmail(),                            PDO::PARAM_STR);
+        $stmt->bindValue(':password',    $obj->getPassword(),                         PDO::PARAM_STR);
+        $stmt->bindValue(':iscrizione',  self::getDateString($obj->getIscrizione()),  PDO::PARAM_STR);
+        $stmt->bindValue(':verifica',    $obj->isAttivato(),                          PDO::PARAM_STR);
     }
 
     /**
@@ -55,7 +55,7 @@ class FUtente extends FObject
         $db= FDataBase::getInstance();
         if($utente instanceof MCliente)
             return $db->storeDb(FCliente::class, $utente);
-        else
+        else if ($utente instanceof MAgenteImmobiliare)
             return $db->storeDb(FAgenteImmobiliare::class, $utente);
     }
 

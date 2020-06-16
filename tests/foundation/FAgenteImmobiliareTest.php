@@ -46,7 +46,8 @@ class FAgenteImmobiliareTest extends TestCase
         $agente->setDataNascita(new MData(1987, 03, 16, 0));
         $agente->setEmail("vanessamarchesani@info.it");
         $agente->setPassword("paperino");
-        FUtente::registrazione($agente);
+        echo "PENI: " . $agente->getPassword();
+        FAgenteImmobiliare::registrazione($agente);
         $agente->setId("AG3");
         $this->assertEquals($agente, FUtente::visualizzaUtente("AG3"));
     }

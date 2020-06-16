@@ -9,8 +9,8 @@ class MUtente
     private string $email;
     private string $id;
     private string $password;
-    private MData $dataNascita;
-    private MData $iscrizione;
+    private MData  $dataNascita;
+    private MData  $iscrizione;
     private MMedia $immagine;
     private bool   $attivato;
     private array  $list_Appuntamenti;

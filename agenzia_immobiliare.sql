@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 15, 2020 alle 11:45
+-- Creato il: Giu 16, 2020 alle 16:07
 -- Versione del server: 10.4.11-MariaDB
--- Versione PHP: 7.4.6
+-- Versione PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -31,9 +32,9 @@ CREATE TABLE `agente_immobiliare` (
   `id` varchar(10) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `cognome` varchar(30) NOT NULL,
+  `datanascita` date NOT NULL,
   `mail` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `datanascita` date NOT NULL,
   `iscrizione` date NOT NULL,
   `verifica` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -42,9 +43,10 @@ CREATE TABLE `agente_immobiliare` (
 -- Dump dei dati per la tabella `agente_immobiliare`
 --
 
-INSERT INTO `agente_immobiliare` (`id`, `nome`, `cognome`, `mail`, `password`, `datanascita`, `iscrizione`, `verifica`) VALUES
-('AG1', 'Aldo', 'Rossi', 'aldorossi@info.it', 'pippo', '1975-12-25', '2020-06-11', 1),
-('AG2', 'Gabriele', 'Gatti', 'gabrielegatti@info.it', 'topolino', '1985-05-01', '2020-03-09', 1);
+INSERT INTO `agente_immobiliare` (`id`, `nome`, `cognome`, `datanascita`, `mail`, `password`, `iscrizione`, `verifica`) VALUES
+('AG1', 'Aldo', 'Rossi', '1975-12-25', 'aldorossi@info.it', 'pippo', '2020-06-11', 1),
+('AG2', 'Gabriele', 'Gatti', '1985-05-01', 'gabrielegatti@info.it', 'topolino', '2020-03-09', 1),
+('AG3', 'Vanessa', 'Marchesani', '1987-03-16', 'vanessamarchesani@info.it', 'paperino', '2020-06-15', 1);
 
 -- --------------------------------------------------------
 
@@ -140,7 +142,9 @@ INSERT INTO `cliente` (`id`, `nome`, `cognome`, `datanascita`, `mail`, `password
 ('CL1', 'Giordano', 'Bruno', '1548-02-17', 'vadoafuoco@hotmail.com', 'campodeifiori', '1568-11-01', 1),
 ('CL2', 'Marco ', 'Di Domenica', '1998-07-07', 'marcodido@hotmail.com', 'sabato', '2020-06-01', 1),
 ('CL3', 'Gabriele', 'Foderà', '1998-08-19', 'gifold@gmail.com', 'hodor', '2020-06-01', 1),
-('CL4', 'Giovanni Nicola', 'Della Pelle', '1997-01-10', 'giovdellap@gmail.com', 'macchia', '2020-06-01', 1);
+('CL4', 'Giovanni Nicola', 'Della Pelle', '1997-01-10', 'giovdellap@gmail.com', 'macchia', '2020-06-01', 1),
+('CL5', 'Eustachio', 'Popovich', '1948-03-16', 'facciolapopovich@hotmail.com', 'CartaIgienica777', '2020-06-15', 1),
+('CL6', 'Eustachio', 'Popovich', '1948-03-16', 'facciolapopovich@hotmail.com', 'CartaIgienica777', '2020-06-15', 1);
 
 -- --------------------------------------------------------
 
@@ -166,8 +170,8 @@ CREATE TABLE `immobile` (
 --
 
 INSERT INTO `immobile` (`id`, `CAP`, `citta`, `indirizzo`, `tipologia`, `dimensione`, `descrizione`, `tipo_annuncio`, `prezzo`, `attivo`) VALUES
-('IM1', 67100, 'L\'Aquila', 'Via Roma 1', 'Monolocale', '500 mq', 'spaziosa e accogliente', 'Vendita', '80000 ', 1),
-('IM2', 67100, 'L\'Aquila', 'via Cardinale Mazzarino 53', 'Bilocale', '5000 mq', 'Casa molto carina, senza soffitto, senza cucina, senza pavimento. Ma è bella, bella davvero', 'Vendita', '2', 1);
+('IM1', 67100, 'L\'Aquila', 'Via Roma 1', 'Monolocale', '500', 'spaziosa e accogliente', 'Vendita', '80000 ', 1),
+('IM2', 67100, 'L\'Aquila', 'via Cardinale Mazzarino 53', 'Bilocale', '5000', 'Casa molto carina, senza soffitto, senza cucina, senza pavimento. Ma è bella, bella davvero', 'Vendita', '2', 1);
 
 -- --------------------------------------------------------
 
