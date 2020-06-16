@@ -1,8 +1,63 @@
 COSE DA FARE:
+-VIEW
+-CONTROLLER
+-SMARTY + TEMPLATE
+-PRENDERE 30L
+-APERITIVO POST ESAME
 
-UML FOUNDATION
-Booleano "DISABILITATO" Immobile/Agente e funzione per abilitare e disabilitare
-Metodi per modifica Appuntamento
-Vedere come fare modifiche Cliente, Immobile, Agente Immobiliare
-Eliminare datanascita, iscrizione, verifica amministratore dal DB
-Aggiungere tipoAnnuncio, grandezza al DB immobile
+
+URL VARI IDEE:
+
+caso d'uso LOGIN:
+Immobile17/Utente/login
+
+caso d'uso REGISTRAZIONE:
+immobile17/Utente/registrazione
+
+caso d'uso HOMEPAGE:
+immobile17/Utente/homepage
+
+caso d'uso VISUALIZZAZIONE_IMMOBILI:
+immobile17/immobile/listaimmobili
+
+caso d'uso VISUALIZZAZIONE_PROFILO:
+immobile17/Utente/profilo/id
+
+caso d'uso VISUALIZZAZIONE_AREA PERSONALE
+immobile17/Utente/areapersonale/
+
+caso d'uso VISUALIZZA IMMOBILE
+immobile17/Immobile/id
+
+caso d'uso INFO AGENZIA
+immobile17/Agenzia/about
+
+caso d'uso Calendario personale
+immobile17/Utente/lista_appuntamenti
+
+caso d'uso PRENOTAZIONE (CALENDARIO)
+immobile17/Immobile/prenota
+
+caso d'uso VISUALIZZA LISTA CLIENTI
+immobile17/Admin/lista_clienti
+
+caso d'uso VISUALIZZA LISTA AGENTI
+immobile17/Admin/lista_agenti
+
+caso d'uso VISUALIZZA LISTA IMMOBILI
+immobile17/Admin/lista_immobili
+
+caso d'uso AGGIUNTA AGENTE
+immobile17/admin/add_agente
+
+caso d'uso AGGIUNTA IMMOBILE
+immobile17/Admin/add_immobile
+
+caso d'uso MODIFICA AGENTE
+immobile17/Admin/mod_agente
+
+caso d'uso MODIFICA IMMOBILE
+immobile17/Admin/mod_immobile
+
+
+
