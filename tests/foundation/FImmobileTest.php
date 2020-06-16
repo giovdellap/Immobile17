@@ -25,4 +25,13 @@ class FImmobileTest extends TestCase
         FImmobile::modificaImmobile($immobile);
         $this->assertEquals($immobile,FImmobile::getImmobile("IM2"));
     }
+
+    public function testGetAppImmobileInBetween()
+    {
+        $inizio = new MData(2020, 07, 26, 0);
+        $fine = new MData(2020, 07, 31, 0);
+        $immobile = FImmobile::getAppImmobileInBetween("IM2", $inizio, $fine);
+        $this->assertEquals(count($immobile->getListAppuntamenti()), 1);
+
+    }
 }

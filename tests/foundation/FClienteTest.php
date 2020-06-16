@@ -58,5 +58,20 @@ class FClienteTest extends TestCase
         $this->assertEquals(FUtente::visualizzaUtente("CL5"), $cliente);
     }
 
+    public function testVisualizzaAppUtente()
+    {
+        $cliente = FUtente::visualizzaAppUtente("CL4");
+        $this->assertEquals(count($cliente->getListAppuntamenti()), 2);
+    }
+
+    public function testAppUtenteInBetween()
+    {
+        $inizio = new MData(2020, 06, 14, 0);
+        $fine = new MData(2020, 06, 20, 0);
+        $cliente = FUtente::AppUtenteInBetween("CL4", $inizio, $fine);
+        $this->assertEquals(count($cliente->getListAppuntamenti()), 2);
+    }
+
+
 
 }

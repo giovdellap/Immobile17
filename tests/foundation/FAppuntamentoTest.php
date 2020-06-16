@@ -43,17 +43,10 @@ class FAppuntamentoTest extends TestCase
 
     public function testGetAppInBetween()
     {
-        $appuntamento = new MAppuntamento();
-        $appuntamento->setOrarioInizio(new MData(2020, 06, 16, 18.30));
-        $appuntamento->setOrarioFine(new MData(2020, 06, 16, 19.00));
-        $appuntamento->setCliente(FCliente::visualizzaUtente("CL4"));
-        $appuntamento->setAgenteImmobiliare(FUtente::visualizzaUtente("AG1"));
-        $appuntamento->setImmobile(FImmobile::getImmobile("IM1"));
-        FAppuntamento::addAppuntamento($appuntamento);
+
 
         $inizio = new MData(2020, 06, 14, 0);
         $fine = new MData(2020, 06, 20, 0);
-        echo ("cacca secca: ". count(FAppuntamento::getAppInBetween("CL4", $inizio, $fine))."\n");
         $this->assertEquals(count(FAppuntamento::getAppInBetween("CL4", $inizio, $fine)), 2);
 
     }

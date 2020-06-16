@@ -40,4 +40,20 @@ class FAgenziaTest extends TestCase
         $agenzia->setId("AZ3");
         $this->assertEquals($agenzia,FAgenzia::getAgenzia("AZ3"));
     }
+
+    public function testBusyWeek()
+    {
+        $inizio = new MData(2020, 06, 14, 0);
+        $fine = new MData(2020, 06, 20, 0);
+        $agenzia = FAgenzia::getBusyWeek("IM2", "CL4", $inizio, $fine);
+
+        $cliente = $agenzia->getListClienti()[0];
+        echo("ID: ".$cliente->getId()."\n");
+        $this->assertEquals(count($cliente->getListAppuntamenti()), 2);
+
+        $immobile = $agenzia->getListImmobili()[0];
+        $this->assertEquals(count($immobile->getListAppuntamenti()), 1);
+
+        $this->assertEquals(count($agenzia->getListAgentiImmobiliari()), 2);
+    }
 }

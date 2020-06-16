@@ -58,4 +58,25 @@ class FAgenteImmobiliareTest extends TestCase
         FUtente::modificaUtente($agente);
         $this->assertEquals(FUtente::visualizzaUtente("AG3"), $agente);
     }
+
+    public function testVisualizzaAppUtente()
+    {
+        $agente = FUtente::visualizzaAppUtente("AG1");
+        $this->assertEquals(count($agente->getListAppuntamenti()), 3);
+    }
+
+    public function testAppUtenteInBetween()
+    {
+        $inizio = new MData(2020, 06, 14, 0);
+        $fine = new MData(2020, 06, 20, 0);
+        $agente = FUtente::AppUtenteInBetween("AG1", $inizio, $fine);
+        $this->assertEquals(count($agente->getListAppuntamenti()), 2);
+    }
+
+    public function testGetAllAgenti()
+    {
+        $inizio = new MData(2020, 06, 14, 0);
+        $fine = new MData(2020, 06, 20, 0);
+        $this->assertEquals(count(FAgenteImmobiliare::getAllAgenti($inizio, $fine)), 2);
+    }
 }

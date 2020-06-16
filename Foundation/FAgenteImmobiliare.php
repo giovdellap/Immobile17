@@ -19,7 +19,7 @@ class FAgenteImmobiliare extends FUtente
         $db_result = $db->loadAll(self::class);
         $agenti = array();
         foreach ($db_result as &$item)
-            $agenti[] = self::AppUtenteInBetween($db_result["id"], $inizio,$fine);
+            $agenti[] = self::AppUtenteInBetween($item["id"], $inizio,$fine);
         return $agenti;
     }
     /**

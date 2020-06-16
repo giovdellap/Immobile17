@@ -208,9 +208,9 @@ class FPersistentManager
      * @param string $idAgenzia
      * @return MAgenzia
      */
-    public static function getBusyWeek(string $idImm, string $idCliente,MData $dataInizio,MData $dataFine, string $idAgenzia): MAgenzia
+    public static function getBusyWeek(string $idImm, string $idCliente,MData $dataInizio,MData $dataFine): MAgenzia
     {
-        return FAgenzia::getBusyWeek($idImm, $idCliente, $dataInizio, $dataFine, $idAgenzia);
+        return FAgenzia::getBusyWeek($idImm, $idCliente, $dataInizio, $dataFine);
     }
 
 

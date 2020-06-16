@@ -47,10 +47,6 @@ class FAmministratore
     public static function getAmministratore(string $id)
     {
         $db= FDataBase::getInstance();
-
-        //echo $db->existDB(self::class,"id",$id);
-
-
         if($db->existDB(self::class,"id",$id)) {
             $db_result = $db->loadDB(self::class, "id", $id);
             if($db_result != null)

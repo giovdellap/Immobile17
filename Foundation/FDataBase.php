@@ -49,7 +49,6 @@ class FDataBase
     {
         try{
             $lastID = $this->getLastId($foundation::getTable());
-            echo("lastId: ".$lastID."\n");
             $this->db->beginTransaction();
             $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
             echo("storeDB: " . $query . "\n");
@@ -67,7 +66,7 @@ class FDataBase
     }
 
     public function getLastId(string $table):string
-    {   echo $table;
+    {
         $query = "SELECT id FROM " . $table. " GROUP BY " . "id" . " ORDER BY " . "id";
         $result = $this->executeLoadQuery($query);
 
@@ -101,7 +100,6 @@ class FDataBase
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = array();
-            echo $stmt->rowCount();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while ($row = $stmt->fetch())
                 $result[] = $row;
@@ -281,7 +279,8 @@ class FDataBase
      */
     public function loadAppInBetween($foundation, string $field, string $param, string $inizio,string $fine)
     {
-        $query= " SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . " ='" . $param . " AND " . "data" . " BETWEEN " . $inizio . " AND " . $fine . "';";
+        $query= " SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . " ='" . $param . "' AND " . "data" . " BETWEEN '" . $inizio . "' AND '" . $fine . "';";
+        echo ("loadAppInBetween: ".$query."\n");
         return $this->executeLoadQuery($query);
             //SELECT * FROM appuntamento WHERE $field= $param AND "ora_inizio" BETWEEN $inizio AND $fine
     }

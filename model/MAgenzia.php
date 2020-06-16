@@ -202,7 +202,7 @@ class MAgenzia
     public function addImmobile(MImmobile $Immobile):bool{
         if(!in_array($Immobile, $this ->list_Immobili) )
         {
-            $this->list_Clienti[] = $Immobile;
+            $this->list_Immobili[] = $Immobile;
             return true;
         }
 
@@ -319,6 +319,30 @@ class MAgenzia
     public function setListImmobili(array $list_Immobili): void
     {
         $this->list_Immobili = $list_Immobili;
+    }
+
+    /**
+     * @return array
+     */
+    public function getListClienti(): array
+    {
+        return $this->list_Clienti;
+    }
+
+    /**
+     * @return array
+     */
+    public function getListAgentiImmobiliari(): array
+    {
+        return $this->list_AgentiImmobiliari;
+    }
+
+    /**
+     * @return array
+     */
+    public function getListImmobili(): array
+    {
+        return $this->list_Immobili;
     }
 
 

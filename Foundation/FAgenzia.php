@@ -54,18 +54,6 @@ class FAgenzia extends FObject
     }
 
     /**
-     * Ritorna un'MAgenzia con la lista Immobili completa di tutti gli Immobili del DB
-     * @param string $id
-     * @return MAgenzia
-     */
-    public static function getImmobili(string $id): MAgenzia
-    {
-        $agenzia = self::getAgenzia($id);
-        $agenzia->setListImmobili(FImmobile::getImmobili());
-        return $agenzia;
-    }
-
-    /**
      * @return string
      */
     public static function getTable(): string
@@ -128,12 +116,11 @@ class FAgenzia extends FObject
      * @param string $idCliente
      * @param MData $inizio
      * @param MData $fine
-     * @param string $idAgenzia
-     * @return MAgenzia|null
+     * @return MAgenzia
      */
-    public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine, string $idAgenzia)
+    public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine): MAgenzia
     {
-        $agenzia = FAgenzia::getAgenzia($idAgenzia);
+        $agenzia = new MAgenzia();
         $agenzia->addImmobile(FImmobile::getAppImmobileInBetween($idImm,$inizio,$fine));
         $agenzia->setListAgentiImmobiliari(FAgenteImmobiliare::getAllAgenti($inizio,$fine));
         $agenzia->addCliente(FUtente::AppUtenteInBetween($idCliente,$inizio,$fine));

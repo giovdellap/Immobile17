@@ -155,8 +155,6 @@ class FImmobile extends FObject
                 $mods["dimensione"] = $immobile->getGrandezza();
             if ($oldImmobile->getPrezzo() != $immobile->getPrezzo())
                 $mods["prezzo"] = $immobile->getPrezzo();
-            echo ("Immobile: " . $immobile->getDescrizione() . "\n" );
-            echo ("OLDimmobile: " . $oldImmobile->getDescrizione() . "\n");
             if ($oldImmobile->getDescrizione() != $immobile->getDescrizione())
                 $mods["descrizione"] = $immobile->getDescrizione();
             if ($oldImmobile->isAttivo() != $immobile->isAttivo())
