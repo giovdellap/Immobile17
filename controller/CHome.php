@@ -23,7 +23,7 @@ class CHome
             $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
             $immobili = FPersistentManager::getImmobiliHomepage();
 
-            VHome::homepage($agenzia, $immobili);
+            VHome::visitorsHomepage($agenzia, $immobili);
         }
         // ipotetico else
     }
