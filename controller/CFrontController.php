@@ -3,7 +3,7 @@
 require_once 'StartSmarty.php';
 class CFrontController
 {
-    public function main ()
+    public function main()
     {
         $path = $_SERVER['REQUEST_URI'];
         $resource = explode('/', $path);

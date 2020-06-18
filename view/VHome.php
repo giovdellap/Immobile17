@@ -8,7 +8,7 @@ class VHome
 
     }
 
-    public static function visitorsHomepage (MAgenzia $agenzia, array $immobili)
+    public static function visitorsHomepage(MAgenzia $agenzia, array $immobili)
     {
 
     }

@@ -13,10 +13,10 @@ class FDataBase
     private function __construct()
     {
         try {
-            $this->db= new PDO ("mysql:dbname="."agenzia_immobiliare".
+            $this->db = new PDO ("mysql:dbname=" . "agenzia_immobiliare" .
                 ";host=127.0.0.1;", "root", "");
-        } catch (PDOException $e){
-            echo "Errore costruttore FDatabase: ".$e->getMessage();
+        } catch (PDOException $e) {
+            echo "Errore costruttore FDatabase: " . $e->getMessage();
             die;
         }
     }
@@ -25,7 +25,7 @@ class FDataBase
      * Singleton Instance
      * @return FDataBase
      */
-    public static function getInstance ()
+    public static function getInstance()
     {
         if (self::$instance == null) {
             self::$instance = new FDatabase();
@@ -34,7 +34,7 @@ class FDataBase
     }
 
     /**  Metodo che chiude la connessione con il DB */
-    public function closeDbConnection ()
+    public function closeDbConnection()
     {
         static::$instance = null;
     }
@@ -45,34 +45,34 @@ class FDataBase
      * @param $model
      * @return bool
      */
-    public function storeDb ($foundation, $model):bool
+    public function storeDb($foundation, $model): bool
     {
-        try{
+        try {
             $lastID = $this->getLastId($foundation::getTable());
             $this->db->beginTransaction();
             $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
             echo("storeDB: " . $query . "\n");
-            $stmt=$this->db->prepare($query);
+            $stmt = $this->db->prepare($query);
             $foundation::bind($stmt, $model, $foundation::calculateNewID($lastID));
-            echo "PENIVIOLACEI: ".$stmt->queryString;
+            echo "PENIVIOLACEI: " . $stmt->queryString;
             $stmt->execute();
             $this->db->commit();
             $this->closeDbConnection();
             return true;
         } catch (PDOException $e) {
-        echo "ATTENTION ERROR: " . $e->getMessage();
-        $this->db->rollBack();
-        return false;
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            $this->db->rollBack();
+            return false;
         }
     }
 
-    public function getLastId(string $table):string
+    public function getLastId(string $table): string
     {
-        $query = "SELECT id FROM " . $table. " GROUP BY " . "id" . " ORDER BY " . "id";
+        $query = "SELECT id FROM " . $table . " GROUP BY " . "id" . " ORDER BY " . "id";
         $result = $this->executeLoadQuery($query);
 
         //$a=$result[0]
-        return $result[sizeof($result)-1]["id"];
+        return $result[sizeof($result) - 1]["id"];
     }
 
     /**
@@ -82,11 +82,11 @@ class FDataBase
      * @param $param valore da cercare
      * @return array|null
      */
-    public function loadDB ($foundation, $field, $param)
+    public function loadDB($foundation, $field, $param)
     {
-            $query= "SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . "='" . $param . "';";
-            echo "loadDB: " . $query . "\n";
-            return $this->executeLoadQuery($query);
+        $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "';";
+        echo "loadDB: " . $query . "\n";
+        return $this->executeLoadQuery($query);
     }
 
     /**
@@ -95,7 +95,7 @@ class FDataBase
      * @param string $query
      * @return array|null
      */
-    private function executeLoadQuery(string $query):?array
+    private function executeLoadQuery(string $query): ?array
     {
         try {
             $stmt = $this->db->prepare($query);
@@ -107,7 +107,7 @@ class FDataBase
 
             return $result;
 
-        }catch (PDOException $e) {
+        } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
             $this->db->rollBack();
             return null;
@@ -121,13 +121,13 @@ class FDataBase
      * @param $param
      * @return bool|null
      */
-    public function deleteDB ($foundation, $field, $param)
+    public function deleteDB($foundation, $field, $param)
     {
         try {
             $result = null;
             $this->db->beginTransaction();
-            $esiste = $this->existDB($foundation,$field,$param);
-            if($esiste){
+            $esiste = $this->existDB($foundation, $field, $param);
+            if ($esiste) {
                 $query = "DELETE FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "';";
                 $stmt = $this->db->prepare($query);
                 $stmt->execute();
@@ -135,7 +135,7 @@ class FDataBase
                 $this->closeDbConnection();
                 $result = true;
             }
-        }catch (PDOException $e){
+        } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
             $this->db->rollBack();
         }
@@ -177,17 +177,18 @@ class FDataBase
      * @param $searchparam valore identificativo della riga
      * @return bool
      */
-    public function updateDB ($foundation, $field, $newvalue, $searchfield, $searchparam){
-        try{
+    public function updateDB($foundation, $field, $newvalue, $searchfield, $searchparam)
+    {
+        try {
             $this->db->beginTransaction();
-            $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam .  "';";
+            $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam . "';";
             echo "updateDB :" . $query . "\n";
-            $stmt =$this->db->prepare($query);
+            $stmt = $this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();
             $this->closeDbConnection();
             return true;
-           }catch (PDOException $e){
+        } catch (PDOException $e) {
             echo " ATTENTION ERROR: " . $e->getMessage();
             $this->db->rollBack();
             return false;
@@ -229,17 +230,16 @@ class FDataBase
     public function login($foundation, string $mail, string $password): bool
     {
         try {
-            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail = '" .  $mail . " ' AND password = '" . $password . "';";
+            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail = '" . $mail . " ' AND password = '" . $password . "';";
             echo "login: " . $query . "\n";
-            $stmt =$this->db->prepare($query);
+            $stmt = $this->db->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            if($stmt->fetch() != 0)
+            if ($stmt->fetch() != 0)
                 return true;
             else return false;
 
-        } catch (PDOException $e)
-        {
+        } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
             $this->db->rollBack();
             return false;
@@ -248,26 +248,26 @@ class FDataBase
     /**  BISOGNA VEDERE COME IMPOSTARLA PER IL NOSTRO DB
      *
      *
-    public function storeMedia ($foundation , $obj,$nome_file) {
-        try {
-            $lastID = $this->db->lastInsertId("id");
-            $this->db->beginTransaction();
-            $query = "INSERT INTO ".$foundation::getTable()." VALUES ".$foundation::getValues();
-
-            $stmt = $this->db->prepare($query);
-            $foundation::bind($stmt,$obj,$nome_file);
-            $stmt->execute();
-            $id=$this->db->lastInsertId();
-            $this->db->commit();
-            $this->closeDbConnection();
-            return $id;
-        }
-        catch(PDOException $e) {
-            echo "Attenzione errore: ".$e->getMessage();
-            $this->db->rollBack();
-            return null;
-        }
-    }**/
+     * public function storeMedia ($foundation , $obj,$nome_file) {
+     * try {
+     * $lastID = $this->db->lastInsertId("id");
+     * $this->db->beginTransaction();
+     * $query = "INSERT INTO ".$foundation::getTable()." VALUES ".$foundation::getValues();
+     *
+     * $stmt = $this->db->prepare($query);
+     * $foundation::bind($stmt,$obj,$nome_file);
+     * $stmt->execute();
+     * $id=$this->db->lastInsertId();
+     * $this->db->commit();
+     * $this->closeDbConnection();
+     * return $id;
+     * }
+     * catch(PDOException $e) {
+     * echo "Attenzione errore: ".$e->getMessage();
+     * $this->db->rollBack();
+     * return null;
+     * }
+     * }**/
 
     /**
      * Ritorna tutti gli appuntamenti per i quali $field = $param e data è compresa fra $inizio e $fine
@@ -278,10 +278,18 @@ class FDataBase
      * @param string $fine
      * @return array|null
      */
-    public function loadAppInBetween($foundation, string $field, string $param, string $inizio,string $fine)
+    public function loadAppInBetween($foundation, string $field, string $param, string $inizio, string $fine)
     {
-        $query= " SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . " ='" . $param . "' AND " . "data" . " BETWEEN '" . $inizio . "' AND '" . $fine . "';";
-        echo ("loadAppInBetween: ".$query."\n");
+        $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "' AND " . "data" . " BETWEEN '" . $inizio . "' AND '" . $fine . "';";
+        echo("loadAppInBetween: " . $query . "\n");
         return $this->executeLoadQuery($query);
+    }
+
+    public function loadOrderBy($foundation, string $field, string $orderBy)
+    {
+        $query = " SELECT * FROM " . $foundation::getTable() . " GROUP BY " . $field . " ORDER BY " . $orderBy . " DESC " . ";";
+        echo("loadOrderBy: " . $query . "\n");
+        return $this->executeLoadQuery($query);
+        //SELEC * FROM immobile GROUP BY id ORDER BY prezzo LIMIT 3
     }
 }

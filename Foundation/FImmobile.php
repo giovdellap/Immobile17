@@ -188,10 +188,12 @@ class FImmobile extends FObject
     }
     public static function getImmobiliHomepage()
     {
-        $immobili=FImmobile::getImmobili();
-        $desc[]=rsort($immobili);
-        $immobilihomepage[]=array_slice($desc,0,2);
+        $db=FDataBase::getInstance();
+        $db_result = $db->loadOrderBy(self::class, 'id', 'prezzo');
+        $immobili = array();
+        foreach ($db_result as &$item)
+            $immobili[] = self::unBindImmobile($item);
 
-        return $immobilihomepage;
+        return array_slice($immobili,0,3);
     }
 }

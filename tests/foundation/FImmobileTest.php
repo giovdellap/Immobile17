@@ -36,6 +36,11 @@ class FImmobileTest extends TestCase
     }
     public function testImmobiliHomepage()
     {
+        $immobile = FImmobile::getImmobiliHomepage();
+        $this->assertEquals($immobile[0]->getId(), 'IM4');
+        $this->assertEquals($immobile[1]->getId(), 'IM1');
+        $this->assertEquals($immobile[2]->getId(), 'IM6');
+
 
     }
 }
