@@ -172,6 +172,11 @@ class FPersistentManager
         return FImmobile::modificaImmobile($immobile);
     }
 
+    public static function getImmobiliHomepage():array
+    {
+        return FImmobile::getImmobiliHomepage();
+    }
+
     // ------- AGENZIA -------
 
     /**

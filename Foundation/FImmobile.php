@@ -186,4 +186,12 @@ class FImmobile extends FObject
         $immobile->setListAppuntamenti(FAppuntamento::getAppInBetween($id,$inizio,$fine));
         return $immobile;
     }
+    public static function getImmobiliHomepage()
+    {
+        $immobili=FImmobile::getImmobili();
+        $desc[]=rsort($immobili);
+        $immobilihomepage[]=array_slice($desc,0,2);
+
+        return $immobilihomepage;
+    }
 }

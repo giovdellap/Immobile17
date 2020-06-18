@@ -283,6 +283,5 @@ class FDataBase
         $query= " SELECT * FROM " . $foundation::getTable() . " WHERE " .  $field . " ='" . $param . "' AND " . "data" . " BETWEEN '" . $inizio . "' AND '" . $fine . "';";
         echo ("loadAppInBetween: ".$query."\n");
         return $this->executeLoadQuery($query);
-            //SELECT * FROM appuntamento WHERE $field= $param AND "ora_inizio" BETWEEN $inizio AND $fine
     }
 }

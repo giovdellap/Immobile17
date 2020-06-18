@@ -34,4 +34,8 @@ class FImmobileTest extends TestCase
         $this->assertEquals(count($immobile->getListAppuntamenti()), 1);
 
     }
+    public function testImmobiliHomepage()
+    {
+
+    }
 }
