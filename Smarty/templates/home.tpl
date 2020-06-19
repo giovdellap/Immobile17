@@ -93,7 +93,7 @@
 <section class="hero-area">
     <div class="hero-slides owl-carousel">
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$immagine1};">
+        <div class="single-hero-slide bg-img" style="background-image: {$immagine1->viewImageHTML()};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -105,7 +105,7 @@
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$immagine2};">
+        <div class="single-hero-slide bg-img" style="background-image: {$immagine2->viewImageHTML()};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -117,7 +117,7 @@
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$immagine3};">
+        <div class="single-hero-slide bg-img" style="background-image: {$immagine3->viewImageHTML()};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -153,7 +153,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$immobile0->getImmagini()[0]->getData()} alt="">
+                        <img src={$immobile0->getImmagini()[0]->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile1->getTipoAnnuncio()}"</span>
@@ -185,7 +185,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$immobile1->getImmagini()[0]->getData()} alt="">
+                        <img src={$immobile1->getImmagini()[0]->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile1->getTipoAnnuncio()}"</span>
@@ -217,7 +217,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$immobile2->getImmagini()[0]->getData()} alt="">
+                        <img src={$immobile2->getImmagini()[0]->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile2->getTipoAnnuncio()}"</span>
@@ -249,7 +249,7 @@
 <!-- ##### Featured Properties Area End ##### -->
 
 <!-- ##### Call To Action Area Start ##### -->
-<section class="call-to-action-area bg-fixed bg-overlay-black" style="background-image: url(img/bg-img/cta.jpg)">
+<section class="call-to-action-area bg-fixed bg-overlay-black" style="background-image: url({$path}Smarty/img/bg-img/cta.jpg)">
     <div class="container h-100">
         <div class="row align-items-center h-100">
             <div class="col-12">
@@ -270,23 +270,23 @@
     <div class="editor-content-area">
         <!-- Section Heading -->
         <div class="section-heading wow fadeInUp" data-wow-delay="250ms">
-            <img src="img/icons/prize.png" alt="">
+            <img src={$path}Smarty/img/icons/prize.png alt="">
             <h2>Admin Istrator</h2>
             <p>Amministratore</p>
         </div>
         <p class="wow fadeInUp" data-wow-delay="500ms">Admin Istrator è un dirigente d'azienda italiano con cittadinanza statunitense. Da sempre appassionato di immobili e barbe, è diventato il nuovo amministratore di Immobile17 nell'aprile 2020. Comincia i primi passi nell'azienda assumendo la carica di agente immobiliare nel reparto I17 research.</p>
         <div class="address wow fadeInUp" data-wow-delay="750ms">
-            <h6><img src="img/icons/phone-call.png" alt=""> +39 0862 433812</h6>
-            <h6><img src="img/icons/envelope.png" alt=""> admin@admin.it</h6>
+            <h6><img src={$path}Smarty/img/icons/phone-call.png alt=""> +39 0862 433812</h6>
+            <h6><img src={$path}Smarty/img/icons/envelope.png alt=""> admin@admin.it</h6>
         </div>
         <div class="signature mt-50 wow fadeInUp" data-wow-delay="1000ms">
-            <img src="img/core-img/signature.png" alt="">
+            <img src={$path}Smarty/img/core-img/signature.png alt="">
         </div>
     </div>
 
     <!-- Editor Thumbnail -->
     <div class="editor-thumbnail">
-        <img src="img/bg-img/editor.jpg" alt="">
+        <img src={$path}Smarty/img/bg-img/editor.jpg alt="">
     </div>
 </section>
 <!-- ##### Editor Area End ##### -->
@@ -306,12 +306,11 @@
                             <h6>About Us</h6>
                         </div>
 
-                        <img src="img/bg-img/footer.jpg" alt="">
+                        <img src={$path}Smarty/img/bg-img/footer.jpg alt="">
                         <div class="footer-logo my-4">
-                            <img src="img/core-img/logo.png" alt="">
+                            <img src={$path}Smarty/img/core-img/logo.png alt="">
                         </div>
-                        <p>Giovanni Nicola Della Pelle<br>
-                        </p>
+                        <p>Giovanni Nicola Della Pelle</p>
                         <p>Marco Di Domenica</p>
                         <p>Gabriele Foderà</p>
                         <p>&nbsp;</p>
@@ -335,9 +334,9 @@
                         </div>
                         <!-- Address -->
                         <div class="address">
-                            <h6><img src="img/icons/phone-call.png" alt=""> +39 0862 433812</h6>
-                            <h6><img src="img/icons/envelope.png" alt=""> admin@admin.it</h6>
-                            <h6><img src="img/icons/location.png" alt=""> L'Aquila(AQ), 67100, Via Enrico De Nicola 17&nbsp; &nbsp;</h6>
+                            <h6><img src={$path}/Smarty/img/icons/phone-call.png alt=""> +39 0862 433812</h6>
+                            <h6><img src={$path}/Smarty/img/icons/envelope.png alt=""> admin@admin.it</h6>
+                            <h6><img src={$path}/Smarty/img/icons/location.png alt=""> L'Aquila(AQ), 67100, Via Enrico De Nicola 17&nbsp; &nbsp;</h6>
                         </div>
                     </div>
                 </div>
@@ -355,17 +354,17 @@
 <!-- ##### Footer Area End ##### -->
 
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src={$path}/Smarty/js/jquery/jquery-2.2.4.min.js></script>
 <!-- Popper js -->
-<script src="js/popper.min.js"></script>
+<script src={$path}/Smarty/js/popper.min.js></script>
 <!-- Bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
+<script src={$path}/Smarty/js/bootstrap.min.js></script>
 <!-- Plugins js -->
-<script src="js/plugins.js"></script>
-<script src="js/classy-nav.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
+<script src={$path}/Smarty/js/plugins.js></script>
+<script src={$path}/Smarty/js/classy-nav.min.js></script>
+<script src={$path}/Smarty/js/jquery-ui.min.js></script>
 <!-- Active js -->
-<script src="js/active.js"></script>
+<script src={$path}/Smarty/js/active.js></script>
 
 </body>
 

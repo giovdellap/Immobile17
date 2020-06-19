@@ -4,7 +4,7 @@
 class FImmobile extends FObject
 {
     private static string $table="immobile";
-    private static string $values="(:id,:CAP,:citta,:indirizzo,:tipologia,:dimensione,
+    private static string $values="(:id,:nome,:citta,:indirizzo,:tipologia,:dimensione,
                                     :descrizione,:tipo_annuncio,:attivo)";
     private static string $idString = "IM";
 
@@ -12,7 +12,7 @@ class FImmobile extends FObject
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',$newId,PDO::PARAM_STR);
-        $stmt->bindValue(':CAP',$obj->getCAP(),PDO::PARAM_STR);
+        $stmt->bindValue(':nome',$obj->getNome(),PDO::PARAM_STR);
         $stmt->bindValue(':citta',$obj->getComune(),PDO::PARAM_STR);
         $stmt->bindValue(':indirizzo',$obj->getIndirizzo(),PDO::PARAM_STR);
         $stmt->bindValue(':tipologia',$obj->getTipologia(),PDO::PARAM_STR);
@@ -87,7 +87,7 @@ class FImmobile extends FObject
     {
         $immobile= new MImmobile();
         $immobile->setId($db_result["id"]);
-        $immobile->setCAP($db_result["CAP"]);
+        $immobile->setNome($db_result["nome"]);
         $immobile->setComune($db_result["citta"]);
         $immobile->setIndirizzo($db_result["indirizzo"]);
         $immobile->setTipologia($db_result["tipologia"]);
@@ -143,8 +143,8 @@ class FImmobile extends FObject
 
             if ($oldImmobile->getIndirizzo() != $immobile->getIndirizzo())
                 $mods["indirizzo"] = $immobile->getIndirizzo();
-            if ($oldImmobile->getCAP() != $immobile->getCAP())
-                $mods["CAP"] = $immobile->getCAP();
+            if ($oldImmobile->getNome() != $immobile->getNome())
+                $mods["nome"] = $immobile->getNome();
             if ($oldImmobile->getComune() != $immobile->getComune())
                 $mods["comune"] = $immobile->getComune();
             if ($oldImmobile->getTipologia() != $immobile->getTipologia())

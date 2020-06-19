@@ -6,7 +6,7 @@ class MImmobile
     private string $id;
     private string $indirizzo;
     private string $comune;
-    private string $CAP;
+    private string $nome;
     private string $tipologia;
     private string $tipoAnnuncio;
     private string $descrizione;
@@ -49,17 +49,17 @@ class MImmobile
     /**
      * @return String
      */
-    public function getCAP(): string
+    public function getNome(): string
     {
-        return $this->CAP;
+        return $this->nome;
     }
 
     /**
-     * @param String $CAP
+     * @param String $nome
      */
-    public function setCAP(string $CAP): void
+    public function setNome(string $nome): void
     {
-        $this->CAP = $CAP;
+        $this->nome = $nome;
     }
 
     /**

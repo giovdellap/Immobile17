@@ -38,8 +38,6 @@ class CFrontController
             }
             else $this->wrongUrl();
         }
-
-
         //else api
 
 

@@ -36,7 +36,7 @@ class FPersistentManager
             if(FAmministratore::emailEsistente($mail))
             {
                 if(FAmministratore::login($mail, $password,))
-                    return "OK";
+                    return "OK ADMIN";
                 else
                     return "WRONG PASSWORD";
             }
@@ -48,7 +48,7 @@ class FPersistentManager
             if(FUtente::emailEsistente($mail))
             {
                 if(FUtente::login($mail, $password))
-                    return "OK";
+                    return "OK USER";
                 else
                     return "WRONG PASSWORD";
             }
@@ -99,6 +99,11 @@ class FPersistentManager
     public static function visualizzaAppUtente(string $id): MUtente
     {
         return FUtente::visualizzaAppUtente($id);
+    }
+
+    public static function loadIDbyEMail(string $email)
+    {
+        return FUtente::loadIDbyEmail($email);
     }
 
     // -------AMMINISTRATORE -------

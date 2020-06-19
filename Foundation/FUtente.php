@@ -192,6 +192,19 @@ class FUtente extends FObject
         return $utente;
     }
 
+    public static function loadIDbyEmail(string $email)
+    {
+        $db = FDataBase::getInstance();
+        if(strpos($email, '@info.it'))
+            return $db->getIDby(FAgenteImmobiliare::class, "mail", $email);
+
+        else
+            return $db-> getIDby(FCliente::class, "mail", $email);
+
+
+
+    }
+
 
 
 

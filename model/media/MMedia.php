@@ -73,5 +73,9 @@ class MMedia
         $this->data = $data;
     }
 
+    public function viewImageHTML():string
+    {
+       return  "data:image/" . explode("/", $this->getType())[1] . ";" . $this->getData();
+    }
 
 }

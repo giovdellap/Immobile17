@@ -9,7 +9,6 @@ class FClienteTest extends TestCase
     {
         $this->assertTrue(FUtente::emailesistente("vadoafuoco@hotmail.com"));
     }
-
     public function testLogin()
     {
         $this->assertTrue(FUtente::login("vadoafuoco@hotmail.com", "campodeifiori"));
@@ -72,6 +71,10 @@ class FClienteTest extends TestCase
         $this->assertEquals(count($cliente->getListAppuntamenti()), 2);
     }
 
+    public function testIDbyEMail()
+    {
+        $this->assertTrue(FUtente::loadIDbyEmail("vadoafuoco@hotmail.com"));
+    }
 
 
 }

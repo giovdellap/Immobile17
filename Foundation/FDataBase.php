@@ -290,6 +290,15 @@ class FDataBase
         $query = " SELECT * FROM " . $foundation::getTable() . " GROUP BY " . $field . " ORDER BY " . $orderBy . " DESC " . ";";
         echo("loadOrderBy: " . $query . "\n");
         return $this->executeLoadQuery($query);
-        //SELEC * FROM immobile GROUP BY id ORDER BY prezzo LIMIT 3
+        //SELECT * FROM immobile GROUP BY id ORDER BY prezzo DESC
+    }
+
+    public function getIDby($foundation, string $field, string $param)
+    {
+        $query = " SELECT id FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "';";
+        echo("getIDby: " . $query ."\n");
+        return $this->executeLoadQuery($query);
     }
 }
+
+
