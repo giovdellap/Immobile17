@@ -182,6 +182,13 @@ class FPersistentManager
         return FImmobile::getImmobiliHomepage();
     }
 
+    /*verificare
+    public static function getTipologia():array
+    {
+        return FImmobile::getTipologia($tipo_annuncio);
+    }
+    */
+
     // ------- AGENZIA -------
 
     /**

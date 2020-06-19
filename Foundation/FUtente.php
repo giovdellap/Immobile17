@@ -196,12 +196,10 @@ class FUtente extends FObject
     {
         $db = FDataBase::getInstance();
         if(strpos($email, '@info.it'))
-            return $db->getIDby(FAgenteImmobiliare::class, "mail", $email);
+            return $db->getSomethingby(FAgenteImmobiliare::class, "id", "mail", $email);
 
         else
-            return $db-> getIDby(FCliente::class, "mail", $email);
-
-
+            return $db-> getSomethingby(FCliente::class, "id", "mail", $email);
 
     }
 

@@ -293,11 +293,17 @@ class FDataBase
         //SELECT * FROM immobile GROUP BY id ORDER BY prezzo DESC
     }
 
-    public function getIDby($foundation, string $field, string $param)
+    public function getSomethingby($foundation, string $something, string $field, string $param)
     {
-        $query = " SELECT id FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "';";
-        echo("getIDby: " . $query ."\n");
+        $query = " SELECT " .$something . "  FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "';";
+        echo("getSomethingby: " . $query ."\n");
         return $this->executeLoadQuery($query);
+
+        /*ricerca ID by EMAIL: SELCET id FROM Cliente(AgenteImmobiliare) WHERE mail='...'
+        per differenziare gli immobili in affitto e gli immobili in vendita:
+        -VENDITA: SELECT * FROM immobile WHERE tipo_annuncio= 'Vendita';
+        -AFFITTO: SELECT * FROM immobile WHERE tipo_annuncio= 'Affitto';
+        */
     }
 }
 

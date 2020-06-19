@@ -197,4 +197,27 @@ class FImmobile extends FObject
         return array_slice($immobili,0,3);
     }
 
+    /*verificare
+    public static function getTipologia($tipo_annuncio)
+    {
+        $db=FDataBase::getInstance();
+        if ($tipo_annuncio = "Vendita")
+        {
+            $db_result = $db->getSomethingby(self::class, "*", "tipo_annuncio", $tipo_annuncio);
+            $immobile = array();
+            foreach ($db_result as &$item)
+                $immobile[] = self::unBindImmobile($item);
+        }
+        else if ($tipo_annuncio = "Vendita")
+        {
+            $db_result = $db->getSomethingby(self::class, "*", "tipo_annuncio", $tipo_annuncio);
+            $immobile = array();
+            foreach ($db_result as &$item)
+                $immobile[] = self::unBindImmobile($item);
+        }
+
+        return $immobile;
+    }
+    */
+
 }
