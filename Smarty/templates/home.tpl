@@ -93,36 +93,36 @@
 <section class="hero-area">
     <div class="hero-slides owl-carousel">
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: url(img/bg-img/hero1.jpg);">
+        <div class="single-hero-slide bg-img" style="background-image: {$immagine1};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Find your home</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Trova la casa perfetta per te</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: url(img/bg-img/hero2.jpg);">
+        <div class="single-hero-slide bg-img" style="background-image: {$immagine2};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Find your dream house</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Trova la casa perfetta per te</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: url(img/bg-img/hero3.jpg);">
+        <div class="single-hero-slide bg-img" style="background-image: {$immagine3};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Find your perfect house</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Trova la casa perfetta per te</h2>
                         </div>
                     </div>
                 </div>
@@ -153,35 +153,27 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src="img/bg-img/feature1.jpg" alt="">
+                        <img src={$immobile0->getImmagini()[0]->getData()} alt="">
 
                         <div class="tag">
-                            <span>For Sale</span>
+                            <span>"{$immobile1->getTipoAnnuncio()}"</span>
                         </div>
                         <div class="list-price">
-                            <p>$945 679</p>
+                            <p>"{$immobile0->getPrezzo()}"</p>
                         </div>
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5>Villa in Los Angeles</h5>
-                        <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                        <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                        <h5>"{$immobile0->getNome()}"</h5>
+                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">"{$immobile0->getIndirizzo()}"</p>
+                        <p>"{$miniDescr0}"</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
-                                <img src="img/icons/new.png" alt="">
-                            </div>
-                            <div class="bathroom">
-                                <img src="img/icons/bathtub.png" alt="">
-                                <span>2</span>
-                            </div>
-                            <div class="garage">
-                                <img src="img/icons/garage.png" alt="">
-                                <span>2</span>
+                                <img src="{$path}Smarty/img/icons/new.png" alt="">
                             </div>
                             <div class="space">
-                                <img src="img/icons/space.png" alt="">
-                                <span>120 sq ft</span>
+                                <img src="{$path}Smarty/img/icons/space.png" alt="">
+                                <span>{$immobile0->getGrandezza()}</span>
                             </div>
                         </div>
                     </div>
@@ -193,35 +185,27 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src="img/bg-img/feature2.jpg" alt="">
+                        <img src={$immobile1->getImmagini()[0]->getData()} alt="">
 
                         <div class="tag">
-                            <span>For Sale</span>
+                            <span>"{$immobile1->getTipoAnnuncio()}"</span>
                         </div>
                         <div class="list-price">
-                            <p>$945 679</p>
+                            <p>"{$immobile1->getPrezzo()}"</p>
                         </div>
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5>Town House in Los Angeles</h5>
-                        <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                        <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                        <h5>"{$immobile1->getNome() }"</h5>
+                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""</p>
+                        <p>"{{$miniDescr1}}"</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
-                                <img src="img/icons/new.png" alt="">
-                            </div>
-                            <div class="bathroom">
-                                <img src="img/icons/bathtub.png" alt="">
-                                <span>2</span>
-                            </div>
-                            <div class="garage">
-                                <img src="img/icons/garage.png" alt="">
-                                <span>2</span>
+                                <img src="{$path}Smarty/img/icons/new.png" alt="">
                             </div>
                             <div class="space">
-                                <img src="img/icons/space.png" alt="">
-                                <span>120 sq ft</span>
+                                <img src="{$path}Smarty/img/icons/space.png" alt=""">
+                                <span>{$immobile1->getGrandezza()}</span>
                             </div>
                         </div>
                     </div>
@@ -230,44 +214,36 @@
 
             <!-- Single Featured Property -->
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="300ms">
+                <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src="img/bg-img/feature3.jpg" alt="">
+                        <img src={$immobile2->getImmagini()[0]->getData()} alt="">
 
                         <div class="tag">
-                            <span>For Sale</span>
+                            <span>"{$immobile2->getTipoAnnuncio()}"</span>
                         </div>
                         <div class="list-price">
-                            <p>$945 679</p>
+                            <p>"{$immobile2->getPrezzo()}"</p>
                         </div>
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5>Town House in Los Angeles</h5>
-                        <p class="location"><img src="img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                        <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                        <h5>"{$immobile2->getNome() }"</h5>
+                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile2->getIndirizzo()}</p>
+                        <p>{$miniDescr2}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
-                                <img src="img/icons/new.png" alt="">
+                                <img src="{$path}Smarty/img/icons/new.png" alt="">
                             </div>
-                            <div class="bathroom">
-                                <img src="img/icons/bathtub.png" alt="">
-                                <span>2</span>
-                            </div>
-                            <div class="garage">
-                                <img src="img/icons/garage.png" alt="">
-                                <span>2</span>
                             </div>
                             <div class="space">
-                                <img src="img/icons/space.png" alt="">
-                                <span>120 sq ft</span>
+                                <img src="{$path}Smarty/img/icons/space.png" alt="">
+                                <span>{$immobile1->getGrandezza()}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 </section>
 <!-- ##### Featured Properties Area End ##### -->

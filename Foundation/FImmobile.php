@@ -196,4 +196,5 @@ class FImmobile extends FObject
 
         return array_slice($immobili,0,3);
     }
+
 }

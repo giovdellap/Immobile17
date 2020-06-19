@@ -22,7 +22,6 @@ class CHome
         {
             $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
             $immobili = FPersistentManager::getImmobiliHomepage();
-
             VHome::visitorsHomepage($agenzia, $immobili);
         }
         // ipotetico else
