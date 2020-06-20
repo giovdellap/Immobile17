@@ -30,7 +30,7 @@ class CUtente
             case "OK USER":
                 if (session_status() == PHP_SESSION_NONE){
                     session_start();
-                    $_SESSION['utente'] = FPersistentManager::visualizzaID($_POST['email']);
+                    $_SESSION['utente'] = FPersistentManager::loadIDbyEMail($_POST['email']);
                     CHome::homepage();
                 }
                 else CHome::homepage();
@@ -56,5 +56,10 @@ class CUtente
             $logged = true;
         }
         return $logged;
+    }
+
+    public static function wrongLogin(string $error)
+    {
+        //TO DO
     }
 }

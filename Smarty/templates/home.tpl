@@ -26,68 +26,7 @@
     <div class="south-load"></div>
 </div>
 
-<!-- ##### Header Area Start ##### -->
-<header class="header-area">
-
-
-
-    <!-- Main Header Area -->
-    <div class="main-header-area" id="stickyHeader">
-        <div class="classy-nav-container breakpoint-off">
-            <!-- Classy Menu -->
-            <nav class="classy-navbar justify-content-between" id="southNav">
-
-                <!-- Logo -->
-                <a class="nav-brand" href="{$path}"><img src="{$path}Smarty/img/core-img/logo.png" alt=""></a>
-
-                <!-- Navbar Toggler -->
-                <div class="classy-navbar-toggler">
-                    <span class="navbarToggler"><span></span><span></span><span></span></span>
-                </div>
-
-                <!-- Menu -->
-                <div class="classy-menu">
-
-                    <!-- close btn -->
-                    <div class="classycloseIcon">
-                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
-                    </div>
-
-                    <!-- Nav Start -->
-                    <div class="classynav">
-                        <ul>
-                            <li><a href="{$path}">Home</a></li>
-
-                            <li class="cn-dropdown-item has-down pr12"><a href="#">Immobili</a>
-                                <ul class="dropdown">
-                                    <li><a href="//URLVENDITA">Vendita</a></li>
-                                    <li><a href="//URLAFFITTO">Affitto</a></li>
-
-                                </ul>
-                            </li>
-                            {if $utente != 'visitatore'}
-                                <li><a href="index.html">login</a></li>
-
-                            {else}
-                                <li class="cn-dropdown-item has-down pr12"><a href="#">{$nomeutente}</a>
-                                    <ul class="dropdown">
-                                        <li><a href="index.html">Area Riservata</a></li>
-                                        <li><a href="about-us.html">Logout</a></li>
-
-                                    </ul>
-                                </li>
-                            {/if}
-
-                            <li><a href="contact.html">About Us</a></li>
-                        </ul>
-                    </div>
-                    <!-- Nav End -->
-                </div>
-            </nav>
-        </div>
-    </div>
-</header>
-<!-- ##### Header Area End ##### -->
+{include file="header.tpl"}
 
 <!-- ##### Hero Area Start ##### -->
 <section class="hero-area">
@@ -291,67 +230,7 @@
 </section>
 <!-- ##### Editor Area End ##### -->
 
-<!-- ##### Footer Area Start ##### -->
-<footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
-    <!-- Main Footer Area -->
-    <div class="main-footer-area">
-        <div class="container">
-            <div class="row">
-
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-xl-6">
-                    <div class="footer-widget-area mb-100">
-                        <!-- Widget Title -->
-                        <div class="widget-title">
-                            <h6>About Us</h6>
-                        </div>
-
-                        <img src={$path}Smarty/img/bg-img/footer.jpg alt="">
-                        <div class="footer-logo my-4">
-                            <img src={$path}Smarty/img/core-img/logo.png alt="">
-                        </div>
-                        <p>Giovanni Nicola Della Pelle</p>
-                        <p>Marco Di Domenica</p>
-                        <p>Gabriele Foderà</p>
-                        <p>&nbsp;</p>
-                    </div>
-                </div>
-
-                <!-- Single Footer Widget -->
-                <div class="col-12 col-sm-6 col-xl-6">
-                    <div class="footer-widget-area mb-100">
-                        <!-- Widget Title -->
-                        <div class="widget-title">
-                            <h6>Orari</h6>
-                        </div>
-                        <!-- Office Hours -->
-                        <div class="weekly-office-hours">
-                            <ul>
-                                <li class="d-flex align-items-center justify-content-between"><span>Lunedì - Venerdì</span> <span>08:00 - 20:00</span></li>
-                                <li class="d-flex align-items-center justify-content-between"><span>Sabato</span> <span>Chiuso</span></li>
-                                <li class="d-flex align-items-center justify-content-between"><span>Domenica</span> <span>Chiuso</span></li>
-                            </ul>
-                        </div>
-                        <!-- Address -->
-                        <div class="address">
-                            <h6><img src={$path}/Smarty/img/icons/phone-call.png alt=""> +39 0862 433812</h6>
-                            <h6><img src={$path}/Smarty/img/icons/envelope.png alt=""> admin@admin.it</h6>
-                            <h6><img src={$path}/Smarty/img/icons/location.png alt=""> L'Aquila(AQ), 67100, Via Enrico De Nicola 17&nbsp; &nbsp;</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Copywrite Text -->
-    <div class="copywrite-text d-flex align-items-center justify-content-center">
-        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-    </div>
-</footer>
-<!-- ##### Footer Area End ##### -->
+{include file = "footer.tpl"}
 
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
 <script src={$path}/Smarty/js/jquery/jquery-2.2.4.min.js></script>

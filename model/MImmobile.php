@@ -150,6 +150,11 @@ class MImmobile
         $this->descrizione = $descrizione;
     }
 
+    public function getDescrizioneBreve():string
+    {
+      return str_split($this->descrizione,50)[0];
+    }
+
     /**
      * @return array
      */

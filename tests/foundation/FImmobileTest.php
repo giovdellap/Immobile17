@@ -41,7 +41,7 @@ class FImmobileTest extends TestCase
         $this->assertEquals($immobile[1]->getId(), 'IM1');
         $this->assertEquals($immobile[2]->getId(), 'IM6');
     }
-    /* questo test funge
+    /* questo test funge*/
     public function testVendita()
     {
         $tipo_annuncio = "Vendita";
@@ -52,13 +52,13 @@ class FImmobileTest extends TestCase
         $this->assertEquals($vendita[3]->getId(), 'IM6');
     }
 
-    questo test non funge porco il signore dio tuo
+
     public function testAffitto()
     {
         $tipo_annuncio = "Affitto";
         $affitto = FImmobile::getTipologia($tipo_annuncio);
-        $this->assertEquals($affitto[1]->getId(), 'IM2');
+        $this->assertEquals($affitto[0]->getId(), 'IM3');
         $this->assertEquals($affitto[1]->getId(), 'IM5');
     }
-    */
+
 }

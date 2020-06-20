@@ -35,5 +35,6 @@ class VHome
         $smarty->assign("miniDescr0"    , str_split($immobili[0]->getDescrizione(), 50) . "[...]");
         $smarty->assign("miniDescr1"    , str_split($immobili[1]->getDescrizione(), 50) . "[...]");
         $smarty->assign("miniDescr2"    , str_split($immobili[2]->getDescrizione(), 50) . "[...]");
+        $smarty->display("home.tpl");
     }
 }

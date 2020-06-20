@@ -70,10 +70,11 @@ class FClienteTest extends TestCase
         $cliente = FUtente::AppUtenteInBetween("CL4", $inizio, $fine);
         $this->assertEquals(count($cliente->getListAppuntamenti()), 2);
     }
-    //i test sono il mio tachille d'allone
+    //i test sono il mio tachille d'allone    tranqui bro
     public function testIDbyEMail()
     {
-        $this->assertTrue(FUtente::loadIDbyEmail("vadoafuoco@hotmail.com"));
+        $this->assertEquals(FUtente::loadIDbyEmail("vadoafuoco@hotmail.com"),"CL1");
+        echo FUtente::loadIDbyEmail("vadoafuoco@hotmail.com");
     }
 
 
