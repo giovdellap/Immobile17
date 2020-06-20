@@ -7,22 +7,13 @@ class CHome
     {
         if($_SERVER["REQUEST_METHOD"] === 'GET')
         {
-            $utente = CSessionManager::getUtenteLoggato();
             $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
             $immobili = FPersistentManager::getImmobiliHomepage();
-
-            VHome::homepage($utente, $agenzia, $immobili);
-        }
-        // ipotetico else
-    }
-
-    public static function visitorsHomepage()
-    {
-        if($_SERVER["REQUEST_METHOD"] === 'GET')
-        {
-            $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
-            $immobili = FPersistentManager::getImmobiliHomepage();
-            VHome::visitorsHomepage($agenzia, $immobili);
+            if(CUtente::isLogged()) {
+                $utente = CSessionManager::getUtenteLoggato();
+                VHome::homepage(VSmartyFactory::userSmarty($utente), $agenzia, $immobili);
+            }
+            else VHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
         }
         // ipotetico else
     }

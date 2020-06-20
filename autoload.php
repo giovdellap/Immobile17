@@ -22,6 +22,9 @@ function my_autoloader($classname)
                 include_once ('Foundation/FMedia/' . $classname . '.php');
             }
             else include_once('Foundation/' . $classname . '.php');
+            break;
+        case 'C':
+            include_once ('Controller/' . $classname . '.php');
     }
 
 }

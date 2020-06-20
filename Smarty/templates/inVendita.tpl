@@ -79,22 +79,22 @@
                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 d-flex">
                                 <!-- Space Range -->
                                 <div class="slider-range">
-                                    <div data-min="120" data-max="820" data-unit=" sq. ft" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="120" data-value-max="820">
+                                    <div data-min="50" data-max="500" data-unit=" mq" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="50" data-value-max="500">
                                         <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                         <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                         <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                     </div>
-                                    <div class="range">120 sq. ft - 820 sq. ft</div>
+                                    <div class="range">50 mq - 500 mq</div>
                                 </div>
 
-                                <!-- Distance Range -->
+                                <!-- Price Range -->
                                 <div class="slider-range">
-                                    <div data-min="10" data-max="1300" data-unit=" mil" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="10" data-value-max="1300">
+                                    <div data-min="50000" data-max="1000000" data-unit=" €" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="50000" data-value-max="1000000">
                                         <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
                                         <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                         <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
                                     </div>
-                                    <div class="range">10 mil - 1300 mil</div>
+                                    <div class="range">50000 € - 1000000 €</div>
                                 </div>
                             </div>
 
