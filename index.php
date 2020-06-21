@@ -1,5 +1,9 @@
 <?php
 
-require "autoload.php";
+require_once "autoload.php";
+require_once 'StartSmarty.php';
 
-CHome::visitorsHomepage();
+$GLOBALS["path"] = "/AgenziaImmobiliare/";
+
+$fc = new CFrontController();
+$fc->main();

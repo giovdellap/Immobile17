@@ -25,6 +25,9 @@ function my_autoloader($classname)
             break;
         case 'C':
             include_once ('Controller/' . $classname . '.php');
+            break;
+        case 'V':
+            include_once ('view/'. $classname . '.php');
     }
 
 }

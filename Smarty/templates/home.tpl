@@ -92,7 +92,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$immobile0->getImmagini()[0]->viewImageHTML()} alt="">
+                        <img src={$imgTop1->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile1->getTipoAnnuncio()}"</span>
@@ -124,7 +124,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$immobile1->getImmagini()[0]->viewImageHTML()} alt="">
+                        <img src={$imgTop2->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile1->getTipoAnnuncio()}"</span>
@@ -156,7 +156,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$immobile2->getImmagini()[0]->viewImageHTML()} alt="">
+                        <img src={$imgTop3->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile2->getTipoAnnuncio()}"</span>
