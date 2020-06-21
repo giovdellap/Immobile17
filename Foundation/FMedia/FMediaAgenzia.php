@@ -18,7 +18,7 @@ class FMediaAgenzia extends FObject
         $stmt->bindValue(':nome',$obj->getNome(), PDO::PARAM_STR);
         $stmt->bindValue(':type',$obj->getType(), PDO::PARAM_STR);
         $stmt->bindValue(':immagine', fread($file,filesize($path)), PDO::PARAM_LOB);
-        $stmt->bindValue(':id_agenzia', $obj->getUtente()->getId(), PDO::PARAM_STR);
+        $stmt->bindValue(':id_agenzia', $obj->getId(), PDO::PARAM_STR);
         unset($file);
         unlink($path);
     }
@@ -44,7 +44,7 @@ class FMediaAgenzia extends FObject
     public static function loadMedia(string $id):?array
     {
         $db=FDataBase::getInstance();
-        $db_result= $db->loadDB(self::class,"id",$id);
+        $db_result= $db->loadDB(self::class,"id_agenzia",$id);
         $toReturn=array();
         foreach ($db_result as &$row)
             $toReturn[]=self::unbindMedia($row);
@@ -58,7 +58,7 @@ class FMediaAgenzia extends FObject
         $media->setNome($db_result["nome"]);
         $media->setType($db_result["type"]);
         $media->setData($db_result["immagine"]);
-        $media->setAgenzia(FAgenzia::getAgenzia($db_result["id_agenzia"]));
+        //$media->setAgenzia(FAgenzia::getAgenzia($db_result["id_agenzia"]));
         return $media;
     }
 

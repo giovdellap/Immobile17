@@ -23,7 +23,7 @@ class FMedia
         else if (FObject::identifyId($id)=="AGENZIA")
             return FMediaAgenzia::loadMedia($id);
         else if (FObject::identifyId($id)=="IMMOBILE")
-            return FMediaAgenzia::loadMedia($id);
+            return FMediaImmobile::loadMedia($id);
         else return null;
     }
 

@@ -96,9 +96,11 @@ class FImmobile extends FObject
         $immobile->setTipoAnnuncio($db_result["tipo_annuncio"]);
         $immobile->setPrezzo($db_result["prezzo"]);
         $immobile->setAttivo($db_result["attivo"]);
-        if (FMedia::getMedia($immobile->getId())!=null)
-             $immobile->setImmagini(FMedia::getMedia($immobile->getId()));
-
+        if (FMedia::getMedia($immobile->getId())!=null && count(FMedia::getMedia($immobile->getId()))>0) {
+            $immobile->setImmagini(FMedia::getMedia($immobile->getId()));
+            foreach ($immobile->getImmagini() as &$immagine)
+                $immagine->setImmobile($immobile);
+        }
         return $immobile;
     }
 

@@ -11,7 +11,7 @@ class MUtente
     private string $password;
     private MData  $dataNascita;
     private MData  $iscrizione;
-    private MMedia $immagine;
+    private MMediaUtente $immagine;
     private bool   $attivato;
     private array  $list_Appuntamenti;
 
@@ -55,7 +55,7 @@ class MUtente
     /**
      * @return MMedia
      */
-    public function getImmagine(): MMedia
+    public function getImmagine(): MMediaUtente
     {
         return $this->immagine;
     }
@@ -63,7 +63,7 @@ class MUtente
     /**
      * @param MMedia $immagine
      */
-    public function setImmagine(MMedia $immagine): void
+    public function setImmagine(MMediaUtente $immagine): void
     {
         $this->immagine = $immagine;
     }

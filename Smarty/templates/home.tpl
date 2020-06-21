@@ -32,7 +32,7 @@
 <section class="hero-area">
     <div class="hero-slides owl-carousel">
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$immagine1->viewImageHTML()};">
+        <div class="single-hero-slide bg-img" style="background-image: {$imgSlide1->viewImageHTML()};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$immagine2->viewImageHTML()};">
+        <div class="single-hero-slide bg-img" style="background-image: {$imgSlide2->viewImageHTML()};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -56,7 +56,7 @@
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$immagine3->viewImageHTML()};">
+        <div class="single-hero-slide bg-img" style="background-image: {$imgSlide3->viewImageHTML()};">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">

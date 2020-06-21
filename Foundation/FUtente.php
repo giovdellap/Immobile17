@@ -127,8 +127,10 @@ class FUtente extends FObject
         $utente->setDataNascita(self::getMDataFromString($db_result["datanascita"]));
         $utente->setIscrizione(self::getMDataFromString($db_result["iscrizione"]));
         $utente->setAttivato($db_result["verifica"]);
-        if(FMedia::getMedia($utente->getId()) != null)
+        if(FMedia::getMedia($utente->getId()) != null) {
             $utente->setImmagine(FMedia::getMedia($utente->getId())[0]);
+            $utente->getImmagine()->setUtente($utente);
+        }
     }
 
     /**

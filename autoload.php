@@ -12,6 +12,9 @@ function my_autoloader($classname)
             else if (strcmp($classname, "MDataChecker") === 0) {
                 include_once('model/utils/MDataChecker.php');
             }
+            else if(strcmp(str_split($classname, 6)[0], "MMedia") === 0){
+                include_once('model/media/' . $classname . ".php");
+            }
             else {
                 include_once('model/' . $classname . '.php');
             }

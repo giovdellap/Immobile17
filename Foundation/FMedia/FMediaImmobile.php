@@ -42,7 +42,7 @@ class FMediaImmobile extends FObject
     public static function loadMedia(string $id):?array
     {
         $db=FDataBase::getInstance();
-        $db_result= $db->loadDB(self::class,"id",$id);
+        $db_result= $db->loadDB(self::class,"id_immobile",$id);
         $toReturn=array();
         foreach ($db_result as &$row)
             $toReturn[]=self::unbindMedia($row);
@@ -51,12 +51,12 @@ class FMediaImmobile extends FObject
 
     public static function unbindMedia(array $db_result):MMediaImmobile
     {
-        $media=new MMediaUtente();
+        $media=new MMediaImmobile();
         $media->setId($db_result["id"]);
         $media->setNome($db_result["nome"]);
         $media->setType($db_result["type"]);
         $media->setData($db_result["immagine"]);
-        $media->setImmobile(FImmobile::getImmobile($db_result["id_immobile"]));
+        //$media->setImmobile(FImmobile::getImmobile($db_result["id_immobile"]));
         return $media;
     }
 
