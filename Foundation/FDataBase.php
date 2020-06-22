@@ -51,10 +51,10 @@ class FDataBase
             $lastID = $this->getLastId($foundation::getTable());
             $this->db->beginTransaction();
             $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
-            echo("storeDB: " . $query . "\n");
+
             $stmt = $this->db->prepare($query);
             $foundation::bind($stmt, $model, $foundation::calculateNewID($lastID));
-            echo "PENIVIOLACEI: " . $stmt->queryString;
+
             $stmt->execute();
             $this->db->commit();
             $this->closeDbConnection();
@@ -85,7 +85,7 @@ class FDataBase
     public function loadDB($foundation, $field, $param)
     {
         $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "';";
-        echo "loadDB: " . $query . "\n";
+
         return $this->executeLoadQuery($query);
     }
 
@@ -153,7 +153,7 @@ class FDataBase
     {
         try {
             $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "'";
-            echo "existDB: " . $query . "\n";
+
 
             $stmt = $this->db->prepare($query);
             $stmt->execute();
@@ -182,7 +182,7 @@ class FDataBase
         try {
             $this->db->beginTransaction();
             $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam . "';";
-            echo "updateDB :" . $query . "\n";
+
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();
@@ -231,7 +231,7 @@ class FDataBase
     {
         try {
             $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail = '" . $mail . " ' AND password = '" . $password . "';";
-            echo "login: " . $query . "\n";
+
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -281,14 +281,14 @@ class FDataBase
     public function loadAppInBetween($foundation, string $field, string $param, string $inizio, string $fine)
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "' AND " . "data" . " BETWEEN '" . $inizio . "' AND '" . $fine . "';";
-        echo("loadAppInBetween: " . $query . "\n");
+
         return $this->executeLoadQuery($query);
     }
 
     public function loadOrderBy($foundation, string $field, string $orderBy)
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " GROUP BY " . $field . " ORDER BY " . $orderBy . " DESC " . ";";
-        echo("loadOrderBy: " . $query . "\n");
+
         return $this->executeLoadQuery($query);
         //SELECT * FROM immobile GROUP BY id ORDER BY prezzo DESC
     }
@@ -296,14 +296,18 @@ class FDataBase
     public function getSomethingby($foundation, string $something, string $field, string $param)
     {
         $query = " SELECT " .$something . "  FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "';";
-        echo("getSomethingby: " . $query ."\n");
         return $this->executeLoadQuery($query);
+    }
+    public function loadValuesIncluded($foundation, string $field, string $min, string $max)
+    {
+        $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field .  " BETWEEN '" . $min . "' AND '" . $max . "';";
+        return $this->executeLoadQuery($query);
+    }
 
-        /*ricerca ID by EMAIL: SELCET id FROM Cliente(AgenteImmobiliare) WHERE mail='...'
-        per differenziare gli immobili in affitto e gli immobili in vendita:
-        -VENDITA: SELECT * FROM immobile WHERE tipo_annuncio= 'Vendita';
-        -AFFITTO: SELECT * FROM immobile WHERE tipo_annuncio= 'Affitto';
-        */
+    public function loadByKeyword($foundation, string $field, string $param )
+    {
+        $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " LIKE '%" . $param . "%' ;";
+        return $this->executeLoadQuery($query);
     }
 }
 

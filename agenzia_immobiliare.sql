@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Giu 21, 2020 alle 18:02
+-- Creato il: Giu 22, 2020 alle 18:21
 -- Versione del server: 10.4.11-MariaDB
 -- Versione PHP: 7.4.6
 
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `agente_immobiliare` (
-                                      `id` varchar(10) NOT NULL,
-                                      `nome` varchar(50) NOT NULL,
-                                      `cognome` varchar(30) NOT NULL,
-                                      `datanascita` date NOT NULL,
-                                      `mail` varchar(50) NOT NULL,
-                                      `password` varchar(20) NOT NULL,
-                                      `iscrizione` date NOT NULL,
-                                      `verifica` tinyint(1) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cognome` varchar(30) NOT NULL,
+  `datanascita` date NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `iscrizione` date NOT NULL,
+  `verifica` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -54,12 +54,12 @@ INSERT INTO `agente_immobiliare` (`id`, `nome`, `cognome`, `datanascita`, `mail`
 --
 
 CREATE TABLE `agenzia` (
-                           `id` varchar(10) NOT NULL,
-                           `nome` varchar(50) NOT NULL,
-                           `citta` varchar(50) NOT NULL,
-                           `CAP` int(5) NOT NULL,
-                           `provincia` varchar(2) NOT NULL,
-                           `indirizzo` varchar(50) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `citta` varchar(50) NOT NULL,
+  `CAP` int(5) NOT NULL,
+  `provincia` varchar(2) NOT NULL,
+  `indirizzo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -77,12 +77,12 @@ INSERT INTO `agenzia` (`id`, `nome`, `citta`, `CAP`, `provincia`, `indirizzo`) V
 --
 
 CREATE TABLE `amministratore` (
-                                  `id` varchar(10) NOT NULL,
-                                  `nome` varchar(50) NOT NULL,
-                                  `cognome` varchar(50) NOT NULL,
-                                  `mail` varchar(50) NOT NULL,
-                                  `password` varchar(20) NOT NULL,
-                                  `id_agenzia` varchar(10) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cognome` varchar(50) NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `id_agenzia` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -99,13 +99,13 @@ INSERT INTO `amministratore` (`id`, `nome`, `cognome`, `mail`, `password`, `id_a
 --
 
 CREATE TABLE `appuntamento` (
-                                `id` varchar(10) NOT NULL,
-                                `data` date NOT NULL,
-                                `ora_inizio` float NOT NULL,
-                                `ora_fine` float NOT NULL,
-                                `id_cliente` varchar(10) NOT NULL,
-                                `id_agenteimm` varchar(10) NOT NULL,
-                                `id_immobile` varchar(10) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `data` date NOT NULL,
+  `ora_inizio` float NOT NULL,
+  `ora_fine` float NOT NULL,
+  `id_cliente` varchar(10) NOT NULL,
+  `id_agenteimm` varchar(10) NOT NULL,
+  `id_immobile` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -123,14 +123,14 @@ INSERT INTO `appuntamento` (`id`, `data`, `ora_inizio`, `ora_fine`, `id_cliente`
 --
 
 CREATE TABLE `cliente` (
-                           `id` varchar(10) NOT NULL,
-                           `nome` varchar(50) NOT NULL,
-                           `cognome` varchar(50) NOT NULL,
-                           `datanascita` date NOT NULL,
-                           `mail` varchar(50) NOT NULL,
-                           `password` varchar(20) NOT NULL,
-                           `iscrizione` date NOT NULL,
-                           `verifica` tinyint(1) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cognome` varchar(50) NOT NULL,
+  `datanascita` date NOT NULL,
+  `mail` varchar(50) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `iscrizione` date NOT NULL,
+  `verifica` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -152,16 +152,16 @@ INSERT INTO `cliente` (`id`, `nome`, `cognome`, `datanascita`, `mail`, `password
 --
 
 CREATE TABLE `immobile` (
-                            `id` varchar(10) NOT NULL,
-                            `nome` varchar(50) NOT NULL,
-                            `citta` varchar(50) NOT NULL,
-                            `indirizzo` varchar(50) NOT NULL,
-                            `tipologia` varchar(50) NOT NULL,
-                            `dimensione` varchar(15) NOT NULL,
-                            `descrizione` varchar(5000) NOT NULL,
-                            `tipo_annuncio` varchar(50) NOT NULL,
-                            `prezzo` float NOT NULL,
-                            `attivo` tinyint(1) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `citta` varchar(50) NOT NULL,
+  `indirizzo` varchar(50) NOT NULL,
+  `tipologia` varchar(50) NOT NULL,
+  `dimensione` float NOT NULL,
+  `descrizione` varchar(5000) NOT NULL,
+  `tipo_annuncio` varchar(50) NOT NULL,
+  `prezzo` float NOT NULL,
+  `attivo` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -169,12 +169,12 @@ CREATE TABLE `immobile` (
 --
 
 INSERT INTO `immobile` (`id`, `nome`, `citta`, `indirizzo`, `tipologia`, `dimensione`, `descrizione`, `tipo_annuncio`, `prezzo`, `attivo`) VALUES
-('IM1', 'casa1', 'L\'Aquila', 'Via Roma 1', 'Monolocale', '500', 'spaziosa e accogliente', 'Vendita', 80000, 1),
-('IM2', 'casa2', 'L\'Aquila', 'via Cardinale Mazzarino 53', 'Bilocale', '5000', 'Casa molto carina, senza soffitto, senza cucina, senza pavimento. Ma è bella, bella davvero', 'Vendita', 2, 1),
-('IM3', 'casa3', 'L\'Aquila', 'Viale Corrado IV 41', 'monolocale', '150', 'bellino, adatto a studenti', 'Affitto', 850, 1),
-('IM4', 'casa4', 'L\'Aquila', 'Viale Corrado IV 71', 'bilocale', '300', 'spaziosa, adatta a famiglie', 'Vendita', 100000, 1),
-('IM5', 'casamonica', 'Coppito', 'Via Vetoio 3', 'monolocale', '50', 'grazioso monolocale, vicino al polo universitario di Coppito. Adatto a studenti.', 'Affitto', 350, 1),
-('IM6', 'casablanca', 'L\'Aquila', 'Via Aldo Moro 7', 'Appartamento', '100', 'Grazioso Appartamento a pochi minuti dal centro storico al terzo piano di una palazzina in cortina composto da:\r\n- salone con camino;\r\n- cucina abitabile;\r\n- 2 camere da letto\r\n- 1 bagno;\r\n- 1 ripostiglio;\r\n- 3 balconi.\r\nL\'Appartamento in parte arredato, ristrutturato e abitabile offre anche una vista spettacolare.\r\n', 'Vendita', 50000, 1);
+('IM1', 'casa1', 'L\'Aquila', 'Via Roma 1', 'monolocale', 500, 'spaziosa e accogliente', 'Vendita', 80000, 1),
+('IM2', 'casa2', 'L\'Aquila', 'via Cardinale Mazzarino 53', 'bilocale', 5000, 'Casa molto carina, senza soffitto, senza cucina, senza pavimento. Ma è bella, bella davvero', 'Vendita', 2000, 1),
+('IM3', 'casa3', 'L\'Aquila', 'Viale Corrado IV 41', 'monolocale', 150, 'bellino, adatto a studenti', 'Affitto', 850, 1),
+('IM4', 'casa4', 'L\'Aquila', 'Viale Corrado IV 71', 'bilocale', 300, 'spaziosa, adatta a famiglie', 'Vendita', 100000, 1),
+('IM5', 'casamonica', 'Coppito', 'Via Vetoio 3', 'monolocale', 50, 'grazioso monolocale, vicino al polo universitario di Coppito. Adatto a studenti.', 'Affitto', 350, 1),
+('IM6', 'casablanca', 'L\'Aquila', 'Via Aldo Moro 7', 'appartamento', 100, 'Grazioso Appartamento a pochi minuti dal centro storico al terzo piano di una palazzina in cortina composto da:\r\n- salone con camino;\r\n- cucina abitabile;\r\n- 2 camere da letto\r\n- 1 bagno;\r\n- 1 ripostiglio;\r\n- 3 balconi.\r\nL\'Appartamento in parte arredato, ristrutturato e abitabile offre anche una vista spettacolare.\r\n', 'Vendita', 50000, 1);
 
 -- --------------------------------------------------------
 
@@ -183,11 +183,11 @@ INSERT INTO `immobile` (`id`, `nome`, `citta`, `indirizzo`, `tipologia`, `dimens
 --
 
 CREATE TABLE `media_agenteimm` (
-                                   `id` varchar(10) NOT NULL,
-                                   `nome` varchar(50) NOT NULL,
-                                   `type` varchar(50) NOT NULL,
-                                   `immagine` longblob NOT NULL,
-                                   `id_agenteimm` varchar(10) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `immagine` longblob NOT NULL,
+  `id_agenteimm` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -197,11 +197,11 @@ CREATE TABLE `media_agenteimm` (
 --
 
 CREATE TABLE `media_agenzia` (
-                                 `id` varchar(10) NOT NULL,
-                                 `nome` varchar(50) NOT NULL,
-                                 `type` varchar(50) NOT NULL,
-                                 `immagine` longblob NOT NULL,
-                                 `id_agenzia` varchar(10) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `immagine` longblob NOT NULL,
+  `id_agenzia` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -222,11 +222,11 @@ INSERT INTO `media_agenzia` (`id`, `nome`, `type`, `immagine`, `id_agenzia`) VAL
 --
 
 CREATE TABLE `media_cliente` (
-                                 `id` varchar(10) NOT NULL,
-                                 `nome` varchar(50) NOT NULL,
-                                 `type` varchar(50) NOT NULL,
-                                 `immagine` longblob NOT NULL,
-                                 `id_cliente` varchar(10) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `immagine` longblob NOT NULL,
+  `id_cliente` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -236,11 +236,11 @@ CREATE TABLE `media_cliente` (
 --
 
 CREATE TABLE `media_immobile` (
-                                  `id` varchar(10) NOT NULL,
-                                  `nome` varchar(50) NOT NULL,
-                                  `type` varchar(50) NOT NULL,
-                                  `immagine` longblob NOT NULL,
-                                  `id_immobile` varchar(10) NOT NULL
+  `id` varchar(10) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `immagine` longblob NOT NULL,
+  `id_immobile` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -262,68 +262,68 @@ INSERT INTO `media_immobile` (`id`, `nome`, `type`, `immagine`, `id_immobile`) V
 -- Indici per le tabelle `agente_immobiliare`
 --
 ALTER TABLE `agente_immobiliare`
-    ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `agenzia`
 --
 ALTER TABLE `agenzia`
-    ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `amministratore`
 --
 ALTER TABLE `amministratore`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_agenzia` (`id_agenzia`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_agenzia` (`id_agenzia`);
 
 --
 -- Indici per le tabelle `appuntamento`
 --
 ALTER TABLE `appuntamento`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_cliente` (`id_cliente`),
-    ADD KEY `id_agenteimm` (`id_agenteimm`),
-    ADD KEY `id_immobile` (`id_immobile`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`),
+  ADD KEY `id_agenteimm` (`id_agenteimm`),
+  ADD KEY `id_immobile` (`id_immobile`);
 
 --
 -- Indici per le tabelle `cliente`
 --
 ALTER TABLE `cliente`
-    ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `immobile`
 --
 ALTER TABLE `immobile`
-    ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indici per le tabelle `media_agenteimm`
 --
 ALTER TABLE `media_agenteimm`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_agenteimm` (`id_agenteimm`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_agenteimm` (`id_agenteimm`);
 
 --
 -- Indici per le tabelle `media_agenzia`
 --
 ALTER TABLE `media_agenzia`
-    ADD KEY `id_agenzia` (`id_agenzia`);
+  ADD KEY `id_agenzia` (`id_agenzia`);
 
 --
 -- Indici per le tabelle `media_cliente`
 --
 ALTER TABLE `media_cliente`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_cliente` (`id_cliente`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_cliente` (`id_cliente`);
 
 --
 -- Indici per le tabelle `media_immobile`
 --
 ALTER TABLE `media_immobile`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `id_immobile` (`id_immobile`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_immobile` (`id_immobile`);
 
 --
 -- Limiti per le tabelle scaricate
@@ -333,41 +333,41 @@ ALTER TABLE `media_immobile`
 -- Limiti per la tabella `amministratore`
 --
 ALTER TABLE `amministratore`
-    ADD CONSTRAINT `amministratore_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `amministratore_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `appuntamento`
 --
 ALTER TABLE `appuntamento`
-    ADD CONSTRAINT `appuntamento_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    ADD CONSTRAINT `appuntamento_ibfk_2` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    ADD CONSTRAINT `appuntamento_ibfk_3` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `appuntamento_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appuntamento_ibfk_2` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appuntamento_ibfk_3` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `media_agenteimm`
 --
 ALTER TABLE `media_agenteimm`
-    ADD CONSTRAINT `media_agenteimm_ibfk_1` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `media_agenteimm_ibfk_1` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `media_agenzia`
 --
 ALTER TABLE `media_agenzia`
-    ADD CONSTRAINT `media_agenzia_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    ADD CONSTRAINT `media_agenzia_ibfk_2` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-    ADD CONSTRAINT `media_agenzia_ibfk_3` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `media_agenzia_ibfk_1` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `media_agenzia_ibfk_2` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `media_agenzia_ibfk_3` FOREIGN KEY (`id_agenzia`) REFERENCES `agenzia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `media_cliente`
 --
 ALTER TABLE `media_cliente`
-    ADD CONSTRAINT `media_cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `media_cliente_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `media_immobile`
 --
 ALTER TABLE `media_immobile`
-    ADD CONSTRAINT `media_immobile_ibfk_1` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `media_immobile_ibfk_1` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

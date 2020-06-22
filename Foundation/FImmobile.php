@@ -199,16 +199,44 @@ class FImmobile extends FObject
         return array_slice($immobili,0,3);
     }
 
-    /*verificare*/
-    public static function getTipologia($tipo_annuncio)
+    public static function getByType($field ,$type)
     {
         $db=FDataBase::getInstance();
-        $db_result = $db->getSomethingby(self::class, "*", "tipo_annuncio", $tipo_annuncio);
+        $db_result = $db->getSomethingby(self::class, "*", $field , $type);
         $immobile = array();
         foreach ($db_result as &$item)
             $immobile[] = self::unBindImmobile($item);
         return $immobile;
     }
 
+
+
+    public static function getByPriceOrSize($field, $min, $max)
+    {
+        $db = FDataBase::getInstance();
+        $db_result = $db-> loadValuesIncluded(self::class, $field, $min, $max);
+        $immobile = [];
+        foreach ($db_result as &$item)
+            $immobile[] = self::unBindImmobile($item);
+        return $immobile;
+    }
+
+    public static function getByKeyword ($keyword)
+    {
+        $db = FDataBase::getInstance();
+        $db_result = $db-> loadByKeyword(self::class, 'nome', $keyword);
+        $immobile = [];
+        foreach ($db_result as &$item)
+            $immobile[] = self::unBindImmobile($item);
+        return $immobile;
+    }
+
+
+
+
+    public static function getImmobiliByParameters(array $parameters)
+    {
+
+    }
 
 }

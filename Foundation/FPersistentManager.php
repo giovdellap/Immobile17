@@ -183,9 +183,19 @@ class FPersistentManager
     }
 
 
-    public static function getTipologia($tipo_annuncio):array
+    public static function getByType($field,$type):array
     {
-        return FImmobile::getTipologia($tipo_annuncio);
+        return FImmobile::getByType($field, $type);
+    }
+
+    public static function getByKeyword(string $keyword):array
+    {
+        return FImmobile::getByKeyword($keyword);
+    }
+
+    public static function getByPriceOrSize($field, $min, $max)
+    {
+        return FImmobile::getByPriceOrSize($field, $min, $max);
     }
 
 
@@ -238,7 +248,7 @@ class FPersistentManager
      */
     public static function getImmobiliByParameters(array $parameters):array
     {
-        // TO DO
+        //TODO
     }
 
     // ------- APPUNTAMENTO -------

@@ -7,6 +7,7 @@ class VSmartyFactory
     {
         $smarty = StartSmarty::configuration();
         $smarty->assign("path", $GLOBALS["path"]);
+        $smarty->assign("utente", "visitatore");
         return $smarty;
     }
 
@@ -14,6 +15,7 @@ class VSmartyFactory
     {
         $smarty = self::basicSmarty();
         $smarty->assign("utente", $utente);
+        $smarty->assign("nomeutente", $utente->getNome() . $utente->getCognome());
         return $smarty;
     }
 }

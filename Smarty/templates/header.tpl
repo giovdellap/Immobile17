@@ -11,7 +11,8 @@
             <nav class="classy-navbar justify-content-between" id="southNav">
 
                 <!-- Logo -->
-                <a class="nav-brand" href="{$path}"><img src="{$path}Smarty/img/core-img/logo.png" alt=""></a>
+                <a class="nav-brand" href="{$path}">
+                    <img src="{$path}Smarty/img/core-img/logo_1.png" alt=""></a>
 
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
@@ -38,7 +39,7 @@
 
                                 </ul>
                             </li>
-                            {if $utente != 'visitatore'}
+                            {if $utente == 'visitatore'}
                                 <li><a href="index.html">login</a></li>
 
                             {else}

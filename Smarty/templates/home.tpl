@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{assign var='utente' value=$utente|default:'visitatore'}
 <html lang="it">
 
 <head>
@@ -32,36 +31,36 @@
 <section class="hero-area">
     <div class="hero-slides owl-carousel">
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$imgSlide1->viewImageHTML()};">
+        <div class="single-hero-slide bg-img" style="background-image: url({$imgSlide1});">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Trova la casa perfetta per te</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Fai goal insieme a Ciro</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$imgSlide2->viewImageHTML()};">
+        <div class="single-hero-slide bg-img" style="background-image: url({$imgSlide2});">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Trova la casa perfetta per te</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Cerca la casa dei tuoi sogni</h2>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: {$imgSlide3->viewImageHTML()};">
+        <div class="single-hero-slide bg-img" style="background-image: url({$imgSlide3});" >
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Trova la casa perfetta per te</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Prega nella chiesa più figa del mondo</h2>
                         </div>
                     </div>
                 </div>
@@ -92,10 +91,10 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$imgTop1->viewImageHTML()} alt="">
+                        <img src={$imgTop1[0]->viewImageHTML()} alt="">
 
                         <div class="tag">
-                            <span>"{$immobile1->getTipoAnnuncio()}"</span>
+                            <span>"{$immobile0->getTipoAnnuncio()}"</span>
                         </div>
                         <div class="list-price">
                             <p>"{$immobile0->getPrezzo()}"</p>
@@ -124,7 +123,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$imgTop2->viewImageHTML()} alt="">
+                        <img src={$imgTop2[0]->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile1->getTipoAnnuncio()}"</span>
@@ -136,7 +135,7 @@
                     <!-- Property Content -->
                     <div class="property-content">
                         <h5>"{$immobile1->getNome() }"</h5>
-                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""</p>
+                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> "{$immobile1->getIndirizzo()}"</p>
                         <p>"{{$miniDescr1}}"</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
@@ -156,7 +155,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$imgTop3->viewImageHTML()} alt="">
+                        <img src={$imgTop3[0]->viewImageHTML()} alt="">
 
                         <div class="tag">
                             <span>"{$immobile2->getTipoAnnuncio()}"</span>
@@ -177,12 +176,13 @@
                             </div>
                             <div class="space">
                                 <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                <span>{$immobile1->getGrandezza()}</span>
+                                <span>{$immobile2->getGrandezza()}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
 </section>
 <!-- ##### Featured Properties Area End ##### -->
@@ -219,7 +219,7 @@
             <h6><img src={$path}Smarty/img/icons/envelope.png alt=""> admin@admin.it</h6>
         </div>
         <div class="signature mt-50 wow fadeInUp" data-wow-delay="1000ms">
-            <img src={$path}Smarty/img/core-img/signature.png alt="">
+            <img src={$path}Smarty/img/core-img/firma.png alt="">
         </div>
     </div>
 

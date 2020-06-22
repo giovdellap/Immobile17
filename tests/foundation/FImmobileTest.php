@@ -7,7 +7,7 @@ class FImmobileTest extends TestCase
 {
     public function testGetImmobili()
     {
-        $this->assertEquals(count(FImmobile::getImmobili()),2);
+        $this->assertEquals(count(FImmobile::getImmobili()),6);
     }
 
     public function testDisabilita()
@@ -41,11 +41,12 @@ class FImmobileTest extends TestCase
         $this->assertEquals($immobile[1]->getId(), 'IM1');
         $this->assertEquals($immobile[2]->getId(), 'IM6');
     }
-    /* questo test funge*/
+
     public function testVendita()
     {
-        $tipo_annuncio = "Vendita";
-        $vendita = FImmobile::getTipologia($tipo_annuncio);
+        $field = "tipo_annuncio";
+        $type = "Vendita";
+        $vendita = FImmobile::getByType($field, $type);
         $this->assertEquals($vendita[0]->getId(), 'IM1');
         $this->assertEquals($vendita[1]->getId(), 'IM2');
         $this->assertEquals($vendita[2]->getId(), 'IM4');
@@ -55,10 +56,71 @@ class FImmobileTest extends TestCase
 
     public function testAffitto()
     {
-        $tipo_annuncio = "Affitto";
-        $affitto = FImmobile::getTipologia($tipo_annuncio);
+        $field = "tipo_annuncio";
+        $type = "Affitto";
+        $affitto = FImmobile::getByType($field, $type);
         $this->assertEquals($affitto[0]->getId(), 'IM3');
         $this->assertEquals($affitto[1]->getId(), 'IM5');
     }
+
+    public function testMonolocale()
+    {
+        $field = "tipologia";
+        $type = "monolocale";
+        $monolocale = FImmobile::getByType($field, $type);
+        $this->assertEquals($monolocale[0]->getId(), 'IM1');
+        $this->assertEquals($monolocale[1]->getId(), 'IM3');
+        $this->assertEquals($monolocale[2]->getId(), 'IM5');
+    }
+
+    public function testBilocale()
+    {
+        $field = "tipologia";
+        $type = "bilocale";
+        $bilocale = FImmobile::getByType($field, $type);
+        $this->assertEquals($bilocale[0]->getId(), 'IM2');
+        $this->assertEquals($bilocale[1]->getId(), 'IM4');
+
+    }
+    public function testAppartamento()
+    {
+        $field = "tipologia";
+        $type = "appartamento";
+        $appartamento = FImmobile::getByType($field, $type);
+        $this->assertEquals($appartamento[0]->getId(), 'IM6');
+
+    }
+
+    public function testPrezzo()
+    {
+        $field = 'prezzo';
+        $min = '850';
+        $max = '80000';
+        $immobile = FImmobile::getByPriceOrSize($field, $min, $max);
+        $this->assertEquals($immobile[0]->getId(), 'IM1');
+        $this->assertEquals($immobile[1]->getId(), 'IM2');
+        $this->assertEquals($immobile[2]->getId(), 'IM3');
+        $this->assertEquals($immobile[3]->getId(), 'IM6');
+    }
+
+    public function testDimensione()
+    {
+        $field = 'dimensione';
+        $min = '100';
+        $max = '500';
+        $immobile = FImmobile::getByPriceOrSize($field, $min, $max);
+        $this->assertEquals($immobile[0]->getId(), 'IM1');
+        $this->assertEquals($immobile[1]->getId(), 'IM3');
+        $this->assertEquals($immobile[2]->getId(), 'IM4');
+        $this->assertEquals($immobile[3]->getId(), 'IM6');
+    }
+
+    public function testKeyword()
+    {
+        $keyword = 'monica';
+        $immobile = FImmobile::getByKeyword($keyword);
+        $this->assertEquals($immobile[0]->getId(), 'IM5');
+    }
+
 
 }
