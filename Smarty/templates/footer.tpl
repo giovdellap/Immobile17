@@ -13,9 +13,9 @@
                             <h6>About Us</h6>
                         </div>
 
-                        <img src={$path}Smarty/img/bg-img/footer.jpg alt="">
+                        <img src={$path}Smarty/img/bg-img/img_agenzia.png alt="">
                         <div class="footer-logo my-4">
-                            <img src={$path}Smarty/img/core-img/logo.png alt="">
+                            <img src={$path}Smarty/img/core-img/logo_1.png alt="">
                         </div>
                         <p>Giovanni Nicola Della Pelle</p>
                         <p>Marco Di Domenica</p>

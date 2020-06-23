@@ -199,6 +199,7 @@ class FImmobile extends FObject
         return array_slice($immobili,0,3);
     }
 
+
     public static function getByType($field ,$type)
     {
         $db=FDataBase::getInstance();

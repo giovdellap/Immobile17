@@ -1,4 +1,3 @@
-
 <!-- ##### Header Area Start ##### -->
 <header class="header-area">
 
@@ -32,6 +31,8 @@
                         <ul>
                             <li><a href="{$path}">Home</a></li>
 
+                            <li><a href="contact.html">About Us</a></li>
+
                             <li class="cn-dropdown-item has-down pr12"><a href="#">Immobili</a>
                                 <ul class="dropdown">
                                     <li><a href="//URLVENDITA">Vendita</a></li>
@@ -40,7 +41,9 @@
                                 </ul>
                             </li>
                             {if $utente == 'visitatore'}
-                                <li><a href="index.html">login</a></li>
+                                <li><a href="{$path}Smarty/templates/login.tpl">Login</a></li>
+
+
 
                             {else}
                                 <li class="cn-dropdown-item has-down pr12"><a href="#">{$nomeutente}</a>
@@ -52,7 +55,6 @@
                                 </li>
                             {/if}
 
-                            <li><a href="contact.html">About Us</a></li>
                         </ul>
                     </div>
                     <!-- Nav End -->
