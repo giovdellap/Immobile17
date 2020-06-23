@@ -29,13 +29,16 @@
     <!--===============================================================================================-->
 </head>
 <body>
+
 <span style="font-family: themify.ttf; color: black; ">
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
             <form class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-32">
+
 						Account Login
+
 					</span>
                 <form action="/Immobile17/Utente/Login" method="POST">
                 <span class="txt1 p-b-11">
@@ -83,7 +86,7 @@
     </div>
 </div>
 
-</span>
+
 <div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
