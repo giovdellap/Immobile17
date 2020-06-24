@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-24 15:14:00
+/* Smarty version 3.1.34-dev-7, created on 2020-06-24 17:47:15
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef35198136de6_08239833',
+  'unifunc' => 'content_5ef3758306dff6_57136193',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eaf74409c4efe684fa57c607a3880dee976849b6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\login.tpl',
-      1 => 1593004430,
+      1 => 1593013633,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef35198136de6_08239833 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef3758306dff6_57136193 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <title>Immobile17 | Login</title>
     <meta charset="UTF-8">
@@ -32,13 +32,13 @@ function content_5ef35198136de6_08239833 (Smarty_Internal_Template $_smarty_tpl)
 Smarty/img/icons/favicon_1.ico"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smart/yvendor/bootstrap/css/bootstrap.min.css">
+Smarty/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smarty/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+Smarty/fonts/fonts_login/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smarty/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+Smarty/fonts/fonts_login/Linearicons-Free-v1.0.0/icon-font.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/vendor/animate/animate.css">
@@ -64,8 +64,7 @@ Smarty/css/main.css">
 </head>
 <body>
 
-<span style="font-family: <?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smarty/fonts/themify.ttf; color: black; ">
+
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
