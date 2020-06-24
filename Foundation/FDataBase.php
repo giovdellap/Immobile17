@@ -309,6 +309,22 @@ class FDataBase
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " LIKE '%" . $param . "%' ;";
         return $this->executeLoadQuery($query);
     }
+
+    public function loadIntersect($foundation,array $parameters)
+    {
+        $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " ;
+        if(array_key_exists('ti', $parameters))
+            $query = $query . "tipo_annuncio = '" . $parameters['ti'] . "' AND ";
+        if(array_key_exists('pc', $parameters))
+            $query = $query . "nome LIKE '%" . $parameters['pc'] . "%' AND ";
+        if(array_key_exists('tp', $parameters))
+            $query = $query . "tipologia = '" . $parameters['tp'] . "' AND ";
+        $query = $query . "prezzo BETWEEN " . $parameters['pmin'] . " AND " .$parameters['pmax'] .
+        " AND dimensione BETWEEN " . $parameters['gmin'] . " AND " . $parameters['gmax'] . ";";
+
+        echo ("query" . $query);
+        return $this->executeLoadQuery($query);
+    }
 }
 
 

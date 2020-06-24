@@ -122,5 +122,21 @@ class FImmobileTest extends TestCase
         $this->assertEquals($immobile[0]->getId(), 'IM5');
     }
 
+    public function testImmobiliByParameters()
+    {
+        $parameters = [
+            'ti' => 'Vendita',
+            'pc' => 'casa',
+            'tp' => 'bilocale',
+            'gmin' => '100',
+            'gmax' => '5000',
+            'pmin' => '2000',
+            'pmax' => '100000'
+        ];
+        $immobile = FImmobile::getImmobiliByParameters($parameters);
+        $this->assertEquals($immobile[0]->getId(), 'IM2');
+        $this->assertEquals($immobile[1]->getId(), 'IM4');
 
+
+    }
 }

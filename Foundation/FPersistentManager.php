@@ -198,6 +198,17 @@ class FPersistentManager
         return FImmobile::getByPriceOrSize($field, $min, $max);
     }
 
+    /**
+     * Prende in ingresso un'array di parametri della tipologia descritta in CImmobile::ricerca()
+     * Restituisce un array di Immobili che matchano i parametri
+     * @param array $parameters
+     * @return array
+     */
+    public static function getImmobiliByParameters(array $parameters)
+    {
+        return FImmobile::getImmobiliByParameters($parameters);
+    }
+
 
     // ------- AGENZIA -------
 
@@ -246,10 +257,6 @@ class FPersistentManager
      * @param array $parameters
      * @return array
      */
-    public static function getImmobiliByParameters(array $parameters):array
-    {
-        //TODO
-    }
 
     // ------- APPUNTAMENTO -------
 

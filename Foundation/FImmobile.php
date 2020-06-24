@@ -200,7 +200,7 @@ class FImmobile extends FObject
     }
 
 
-    public static function getByType($field ,$type)
+    public static function getByType($field ,$type):array
     {
         $db=FDataBase::getInstance();
         $db_result = $db->getSomethingby(self::class, "*", $field , $type);
@@ -212,7 +212,7 @@ class FImmobile extends FObject
 
 
 
-    public static function getByPriceOrSize($field, $min, $max)
+    public static function getByPriceOrSize($field, $min, $max):array
     {
         $db = FDataBase::getInstance();
         $db_result = $db-> loadValuesIncluded(self::class, $field, $min, $max);
@@ -222,7 +222,7 @@ class FImmobile extends FObject
         return $immobile;
     }
 
-    public static function getByKeyword ($keyword)
+    public static function getByKeyword ($keyword):array
     {
         $db = FDataBase::getInstance();
         $db_result = $db-> loadByKeyword(self::class, 'nome', $keyword);
@@ -234,10 +234,13 @@ class FImmobile extends FObject
 
 
 
-
     public static function getImmobiliByParameters(array $parameters)
     {
-
+        $db = FDataBase::getInstance();
+        $db_result = $db-> loadIntersect(self::class, $parameters);
+        $immobile = [];
+        foreach ($db_result as &$item)
+            $immobile[] = self::unBindImmobile($item);
+        return $immobile;
     }
-
 }
