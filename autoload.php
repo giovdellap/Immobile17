@@ -27,7 +27,7 @@ function my_autoloader($classname)
             else include_once('Foundation/' . $classname . '.php');
             break;
         case 'C':
-            include_once ('Controller/' . $classname . '.php');
+            include_once ('controller/' . $classname . '.php');
             break;
         case 'V':
             include_once ('view/'. $classname . '.php');

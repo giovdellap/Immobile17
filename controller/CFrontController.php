@@ -7,7 +7,9 @@ class CFrontController
     {
         $path = $_SERVER['REQUEST_URI'];
         $resource = explode('/', $path);
+
         array_shift($resource);
+
 
         if ($resource[0] != 'api')
         {

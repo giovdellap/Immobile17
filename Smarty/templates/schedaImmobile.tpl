@@ -9,13 +9,13 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>South - Real Estate Agency Template | Listings Details</title>
+    <title>{$immobile->getNome()[0]}</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{$path}Smarty/style.css">
 
 </head>
 
@@ -41,78 +41,7 @@
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
-<!-- ##### Advance Search Area Start ##### -->
-<div class="south-search-area">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="advanced-search-form">
-                    <!-- Search Title -->
-                    <div class="search-title">
-                        <p>Cerca la tua casa </p>
-                    </div>
-                    <!-- Search Form -->
-                    <form action="#" method="post" id="advanceSearch">
-                        <div class="row">
-
-                            <div class="col-12 col-md-4 col-lg-3">
-                                <div class="form-group">
-                                    <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-4 col-lg-3">
-                                <div class="form-group">
-                                    <select class="form-control" id="catagories">
-                                        <option>Tutte le Tipologie</option>
-                                        <option>Monolocale</option>
-                                        <option>Bilocale</option>
-                                        <option>Villa</option>
-                                        <option>Appartamento</option>
-                                        <option>Garage</option>
-                                        <option>Mansarda</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-                            <div class="col-12 col-md-6 col-lg-6 col-xl-6 d-flex">
-                                <!-- Space Range -->
-                                <div class="slider-range">
-                                    <div data-min="50" data-max="500" data-unit=" mq" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="50" data-value-max="500">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                    <div class="range">50 mq - 500 mq</div>
-                                </div>
-
-                                <!-- Price Range -->
-                                <div class="slider-range">
-                                    <div data-min="50000" data-max="1000000" data-unit=" €" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="50000" data-value-max="1000000">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                    <div class="range">50000 € - 1000000 €</div>
-                                </div>
-                            </div>
-
-                            <div class="col-12 d-flex justify-content-between align-items-end">
-
-                                <!-- Submit -->
-                                <div class="form-group mb-0">
-                                    <button type="submit" class="btn south-btn">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ##### Advance Search Area End ##### -->
+{include file="advanceSearch.tpl"}
 
 
 <!-- ##### Listings Content Area Start ##### -->
@@ -140,15 +69,15 @@
                         <p>{$immobile->getPrezzo()}</p>
                     </div>
                     <h5>{$immobile->getNome}</h5>
-                    <p class="location"><img src="img/icons/location.png" alt="">"{$immobile->getIndirizzo()}"</p>
+                    <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">"{$immobile->getIndirizzo()}"</p>
                     <p> "{$immobile->getDescrizione()}"</p>
                     <!-- Meta -->
                     <div class="property-meta-data d-flex align-items-end">
                         <div class="new-tag">
-                            <img src="img/icons/new.png" alt="">
+                            <img src="{$path}Smarty/img/icons/new.png" alt="">
                         </div>
                         <div class="space">
-                            <img src="img/icons/space.png" alt="">
+                            <img src="{$path}Smarty/img/icons/space.png" alt="">
                             <span>"{$immobile->getDimensione()}"</span>
                         </div>
                     </div>

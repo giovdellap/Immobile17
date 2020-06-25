@@ -848,7 +848,7 @@ img {
     .advanced-search-form {
         position: relative;
         z-index: 1;
-        padding: 30px 50px;
+        padding: 30px 30px;
         border: 1px solid $border-color;
         box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
         @media #{$breakpoint-xs} {
