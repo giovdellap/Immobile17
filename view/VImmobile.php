@@ -11,6 +11,11 @@ class VImmobile
         $smarty->display("schedaImmobile.tpl");
     }
 
+    public static function visualizzaImmobili(Smarty $smarty, array $immobili)
+    {
+        $smarty->assign("immobili",$immobili);
+        $smarty->display("immobili.tpl");
+    }
 
     public static function ricerca(Smarty $smarty, $immobili, $parameters)
     {

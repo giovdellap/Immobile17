@@ -163,6 +163,11 @@ class MImmobile
         return $this->immagini;
     }
 
+    public function getPresentationImg()
+    {
+        return $this->immagini[0]->viewImageHTML();
+    }
+
     /**
      * @param array $immagini
      */

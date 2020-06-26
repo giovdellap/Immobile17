@@ -28,7 +28,7 @@
 {include file="header.tpl"}
 
 <!-- ##### Breadcumb Area Start ##### -->
-<section class="breadcumb-area bg-img" style="background-image: url("{$immobile->getImmagini()[0]->viewImageHTML()}") ;">
+<section class="breadcumb-area bg-img" style="background-image: url("{$immobile->getPresentationImg()}") ;">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -108,20 +108,20 @@
 
 {include file="footer.tpl"}
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="{$path}Smarty/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
-<script src="js/popper.min.js"></script>
+<script src="{$path}Smarty/js/popper.min.js"></script>
 <!-- Bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{$path}Smarty/js/bootstrap.min.js"></script>
 <!-- Plugins js -->
-<script src="js/plugins.js"></script>
-<script src="js/classy-nav.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
+<script src="{$path}Smarty/js/plugins.js"></script>
+<script src="{$path}Smarty/js/classy-nav.min.js"></script>
+<script src="{$path}Smarty/js/jquery-ui.min.js"></script>
 <!-- Active js -->
-<script src="js/active.js"></script>
+<script src="{$path}Smarty/js/active.js"></script>
 <!-- Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
-<script src="js/map-active.js"></script>
+<script src="{$path}Smarty/js/map-active.js"></script>
 
 </body>
 

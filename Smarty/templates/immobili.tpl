@@ -54,7 +54,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$item->getImmagini()[0]->viewImageHTML()} alt="">
+                        <img src={$item->getPresentationImg()} alt="">
 
                         <div class="tag">
                             <span>"{$item->getTipoAnnuncio()}"</span>
@@ -89,17 +89,17 @@
 {include file="footer.tpl"}
 
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
-<script src="js/jquery/jquery-2.2.4.min.js"></script>
+<script src="{$path}Smarty/js/jquery/jquery-2.2.4.min.js"></script>
 <!-- Popper js -->
-<script src="js/popper.min.js"></script>
+<script src="{$path}Smarty/js/popper.min.js"></script>
 <!-- Bootstrap js -->
-<script src="js/bootstrap.min.js"></script>
+<script src="{$path}Smarty/js/bootstrap.min.js"></script>
 <!-- Plugins js -->
-<script src="js/plugins.js"></script>
-<script src="js/classy-nav.min.js"></script>
-<script src="js/jquery-ui.min.js"></script>
+<script src="{$path}Smarty/js/plugins.js"></script>
+<script src="{$path}Smarty/js/classy-nav.min.js"></script>
+<script src="{$path}Smarty/js/jquery-ui.min.js"></script>
 <!-- Active js -->
-<script src="js/active.js"></script>
+<script src="{$path}Smarty/js/active.js"></script>
 
 </body>
 

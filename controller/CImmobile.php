@@ -30,6 +30,17 @@ class CImmobile
         }
     }
 
+    public static function visualizzaImmobili()
+    {
+        if ($_SERVER["REQUEST_METHOD"] == 'GET') {
+            $immobili = FPersistentManager::visualizzaImmobili();
+            if (CUtente::isLogged()) {
+                $utente = CSessionManager::getUtenteLoggato();
+                VImmobile::visualizzaImmobili(VSmartyFactory::userSmarty($utente), $immobili);
+            } else VImmobile::visualizzaImmobili(VSmartyFactory::basicSmarty(), $immobili);
+        }
+    }
+
     public static function visualizza(string $id)
     {
         if($_SERVER["REQUEST_METHOD"]=='GET')
