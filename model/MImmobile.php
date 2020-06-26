@@ -152,7 +152,16 @@ class MImmobile
 
     public function getDescrizioneBreve():string
     {
-      return str_split($this->descrizione,50)[0];
+        if(strlen($this->descrizione)<85) {
+            $spacesToAdd = 85 - strlen($this->descrizione);
+            return $this->descrizione . str_repeat(" ", $spacesToAdd);
+        }
+        else if (strlen($this->descrizione) == 85)
+            return $this->descrizione;
+        else {
+            return str_split($this->descrizione, 82)[0] . "...";
+        }
+        //return str_split($this->descrizione,50)[0];
     }
 
     /**
@@ -258,6 +267,4 @@ class MImmobile
     {
         $this->list_appuntamenti = $list_appuntamenti;
     }
-
-
 }
