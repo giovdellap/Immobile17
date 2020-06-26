@@ -58,7 +58,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: red; /*FORGOT PASSWORD in rosso quando ci si passa sopra con il mouse*/
+  color: black; /*FORGOT PASSWORD in rosso quando ci si passa sopra con il mouse*/
 }
 
 /*---------------------------------------------*/
@@ -315,7 +315,7 @@ iframe {
 }
 
 .btn-show-pass:hover {
-  color: #57b846;
+  color: #a48464;
 }
 
 .btn-show-pass.active {

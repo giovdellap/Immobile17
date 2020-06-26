@@ -20,7 +20,6 @@ class CFrontController
             $dir = 'controller';
 
             if (in_array($controller . ".php", scandir($dir))){
-
                 if(isset($resource[1]))
                 {
                     if(!strpos($resource[1],"?"))

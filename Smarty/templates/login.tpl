@@ -61,13 +61,13 @@
                     <div class="contact100-form-checkbox">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
                         <label class="label-checkbox100" for="ckb1">
-                            Remember me
+                            Ricordami
                         </label>
                     </div>
 
                     <div>
                         <a href="#" class="txt3">
-                            Forgot Password?
+                            Password dimenticata?
                         </a>
                     </div>
                 </div>
@@ -77,6 +77,11 @@
                         Login
                     </button>
                 </div>
+                <div>
+                    <a href="#" class="txt2">
+                        <br></br>
+                        Non hai un account? Registrati.
+                    </a>
 
             </form>
         </div>
