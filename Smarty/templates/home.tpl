@@ -104,7 +104,7 @@
                     <div class="property-content">
                         <a href="{$path}Immobile/visualizza/{$immobile0->getId()}" >{$immobile0->getNome()} </a>
                         <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile0->getIndirizzo()}</p>
-                        <p>{$miniDescr0}</p>
+                        <p>{$immobile0->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
                                 <img src="{$path}Smarty/img/icons/new.png" alt="">
@@ -136,7 +136,7 @@
                     <div class="property-content">
                         <h5 href="{$path}Immobile/visualizza/{$immobile1->getId()}">{$immobile1->getNome() }</h5>
                         <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
-                        <p>{$miniDescr1}</p>
+                        <p>{$immobile1->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
                                 <img src="{$path}Smarty/img/icons/new.png" alt="">
@@ -167,7 +167,7 @@
                     <div class="property-content">
                         <h5 href="{$path}Immobile/visualizza/{$immobile2->getId()}">{$immobile2->getNome() }</h5>
                         <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
-                        <p>{$miniDescr2}</p>
+                        <p>{$immobile2->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
                                 <img src="{$path}Smarty/img/icons/new.png" alt="">
