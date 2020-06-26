@@ -3,31 +3,6 @@
 
 class CImmobile
 {
-    public static function vendita()
-    {
-        if($_SERVER["REQUEST_METHOD"] === 'GET')
-        {
-            $immobili = FPersistentManager::getTipologia("Vendita");
-            if (CUtente::isLogged()) {
-                $utente = CSessionManager::getUtenteLoggato();
-                VImmobile::vendita(VSmartyFactory::userSmarty(), $immobili);
-            }
-                else VImmobile::vendita(VSmartyFactory::basicSmarty(), $immobili);
-        }
-    }
-
-    public static function affitto()
-    {
-        if($_SERVER["REQUEST_METHOD"] === 'GET')
-        {
-            $immobili = FPersistentManager::getTipologia("Affitto");
-            if (CUtente::isLogged()) {
-                $utente = CSessionManager::getUtenteLoggato();
-                VImmobile::affitto(VSmartyFactory::userSmarty(), $immobili);
-            }
-            else VImmobile::affitto(VSmartyFactory::basicSmarty(), $immobili);
-        }
-    }
 
 
     /**
@@ -53,5 +28,20 @@ class CImmobile
             }
             else VImmobile::ricerca(VSmartyFactory::basicSmarty(), $immobili, $parameters);
         }
+    }
+
+    public static function visualizza(string $id)
+    {
+        if($_SERVER["REQUEST_METHOD"]=='GET')
+        {
+            $immobile= FPersistentManager::visualizzaImmobile($id);
+            if(CUtente::isLogged())
+            {
+                $utente=CSessionManager::getUtenteLoggato();
+                VImmobile::visualizza(VSmartyFactory::userSmarty($utente),$immobile);
+            }
+            else VImmobile::visualizza(VSmartyFactory::basicSmarty(),$immobile);
+        }
+
     }
 }

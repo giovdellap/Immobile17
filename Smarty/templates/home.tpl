@@ -102,7 +102,7 @@
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <a href="/AgenziaImmobiliare/Immobile/visualizza/IM4/" >{$immobile0->getNome()} </a>
+                        <a href="{$path}Immobile/visualizza/{$immobile0->getId()}" >{$immobile0->getNome()} </a>
                         <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile0->getIndirizzo()}</p>
                         <p>{$miniDescr0}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">

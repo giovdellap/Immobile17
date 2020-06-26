@@ -33,7 +33,7 @@
 
                             <li><a href="contact.html">About Us</a></li>
 
-                            <li class="cn-dropdown-item has-down pr12"><a href="#">Immobili</a>
+                            <li class="cn-dropdown-item has-down pr12"><a href="{$path}Immobile/viewAllListings">Immobili</a>
                                 <ul class="dropdown">
                                     <li><a href="//URLVENDITA">Vendita</a></li>
                                     <li><a href="//URLAFFITTO">Affitto</a></li>

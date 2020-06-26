@@ -3,20 +3,19 @@
 
 class VImmobile
 {
-    public static function vendita(Smarty $smarty, $immobili)
+
+    public static function visualizza(Smarty $smarty, MImmobile $immobile)
     {
-        $smarty->assign("immobili", $immobili);
-        $smarty->display("inVendita.tpl");
+
+        $smarty->assign("immobile", $immobile);
+        $smarty->display("schedaImmobile.tpl");
     }
 
-    public static function affitto(Smarty $smarty, $immobili)
-    {
-        $smarty->assign("immobili", $immobili);
-        $smarty->display("inAffitto.tpl");
-    }
 
     public static function ricerca(Smarty $smarty, $immobili, $parameters)
     {
-        // TO DO
+        $smarty->assign("parametri", $parameters);
+        $smarty->assign("immobili", $immobili);
+        $smarty->display("immobili.tpl");
     }
 }

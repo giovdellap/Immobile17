@@ -9,9 +9,12 @@ class CFrontController
         $resource = explode('/', $path);
 
         array_shift($resource);
+        array_shift($resource);
+        if (!isset($resource[0]))
+            $this->wrongUrl();
 
 
-        if ($resource[0] != 'api')
+        else if ($resource[0] != 'api')
         {
             $controller = "C" . $resource[0];
             $dir = 'controller';
@@ -20,14 +23,23 @@ class CFrontController
 
                 if(isset($resource[1]))
                 {
-                    $function = explode('?', $resource[1]);
-                    if(method_exists($controller, $function[0]))
+                    if(!strpos($resource[1],"?"))
                     {
-                        if(sizeof($function)==1)
-                            $controller::$function[0]();
-                        else $controller::$function[0]($this->queryUnpacker($function[1]));
+                        if(method_exists($controller,$resource[1]))
+                        {
+                            if(count($resource)==2)
+                                $controller::$resource[1]();
+                            else $controller::$resource[1]($resource[2]);
+                        }
+
+
                     }
-                    else $this->wrongUrl();
+                    else
+                    {
+                        $function = explode('?', $resource[1]);
+                        if(method_exists($controller, $function[0]))
+                            $controller::$function[0]($this->queryUnpacker($function[1]));
+                    }
                 }
                 else $this->wrongUrl();
                 /**
