@@ -132,7 +132,8 @@ class CImmobile
                     $error = "Appuntamento non disponibile";
                     $immobile = FPersistentManager::visualizzaImmobile($_POST['idImm']);
                     $appLiberi = $fullAgenzia->checkDisponibilità($utente, $immobile, $inizio, $fine);
-                    VImmobile::calendario(VSmartyFactory::errorSmarty($utente, $error), $appLiberi, $inizio, $fine, $immobile);
+                    $smarty = VSmartyFactory::userSmarty($utente);
+                    VImmobile::calendario(VSmartyFactory::errorSmarty($smarty, $error), $appLiberi, $inizio, $fine, $immobile);
                 }
             } else VImmobile::visualizza(VSmartyFactory::basicSmarty(), $_POST['idImm']);
         } else CHome::homepage();

@@ -12,6 +12,7 @@ class VSmartyFactory
         $smarty = StartSmarty::configuration();
         $smarty->assign("path", $GLOBALS["path"]);
         $smarty->assign("utente", "visitatore");
+        $smarty->assign("error", "noError");
         return $smarty;
     }
 
@@ -30,13 +31,12 @@ class VSmartyFactory
 
     /**
      * Ritorna un oggetto Smarty con assegnati il percorso globale, l'utente passato come parametro e una stringa di errore
-     * @param MUtente $utente
+     * @param Smarty $smarty
      * @param string $error
      * @return Smarty
      */
-    public static function errorSmarty(MUtente $utente, string $error)
+    public static function errorSmarty(Smarty $smarty, string $error): Smarty
     {
-        $smarty = self::userSmarty();
         $smarty->assign("error", $error);
         return $smarty;
     }

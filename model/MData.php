@@ -135,4 +135,13 @@ class MData
 
     }
 
+    /**
+     * Crea un MData con la data attuale
+     * @return MData
+     */
+    public static function getCurrentTime(): MData
+    {
+        return FObject::getMDataFromString(date(Y-m-d));
+    }
+
 }
