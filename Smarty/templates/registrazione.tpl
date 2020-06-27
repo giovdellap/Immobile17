@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Login</title>
+    <title>Registrati</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -25,9 +26,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/css/main.css">
-
     <!--===============================================================================================-->
-
 </head>
 <body>
 
@@ -36,21 +35,48 @@
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
             <form class="login100-form validate-form flex-sb flex-w">
 					<span class="login100-form-title p-b-32">
-						Account Login
+						Registrati
 					</span>
 
                 <span class="txt1 p-b-11">
-						Username
+						Nome
 					</span>
-                <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-                    <input class="input100" type="text" name="username" placeholder="indirizzo Email" >
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il nome">
+                    <input class="input100" type="text" name="name" placeholder="Nome">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <span class="txt1 p-b-11">
+						Cognome
+					</span>
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il cognome">
+                    <input class="input100" type="text" name="username" placeholder="Cognome" >
+                    <span class="focus-input100"></span>
+                </div>
+
+                <span class="txt1 p-b-11">
+						Data di nascita
+					</span>
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "inserire la data di nascita">
+                    <input class="input100" type="date" name="date"  >
+                    <span class="focus-input100"></span>
+                </div>
+
+
+
+
+                <span class="txt1 p-b-11">
+						Email
+					</span>
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
+                    <input class="input100" type="text" name="email" placeholder="Indirizzo Email" >
                     <span class="focus-input100"></span>
                 </div>
 
                 <span class="txt1 p-b-11">
 						Password
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
@@ -58,30 +84,46 @@
                     <span class="focus-input100"></span>
                 </div>
 
-                <div class="flex-sb-m w-full p-b-48">
+                <span class="txt1 p-b-11">
+						Conferma Password
+					</span>
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
+						<span class="btn-show-pass">
+							<i class="fa fa-eye"></i>
+						</span>
+                    <input class="input100" type="password" name="pass" placeholder="**********">
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                <!--
+                <div class="flex-m w-full p-b-33">
                     <div class="contact100-form-checkbox">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
                         <label class="label-checkbox100" for="ckb1">
-                            Ricordami
+								<span class="txt1">
+									I agree to the
+									<a href="#" class="txt2 hov1">
+										Terms of User
+									</a>
+								</span>
                         </label>
                     </div>
-
-                    <div>
-                        <a href="#" class="txt3">
-                            Forgot Password?
-                        </a>
-                    </div>
                 </div>
+                -->
+                <br>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
-                        Login
-                    </button>
-                </div>
-                <div>
-                    <a href="#" class="txt2">
-                        <br></br>
-                        Non hai un account? Registrati.
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                            Registrati
+                        </button>
+                    </div>
+
+                    <a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+                        Hai già un account?
+                        <i class="fa fa-long-arrow-right m-l-5"></i>
                     </a>
                 </div>
             </form>
@@ -89,25 +131,22 @@
     </div>
 </div>
 
-
-<div id="dropDownSelect1"></div>
-
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/animsition/js/animsition.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/bootstrap/js/popper.js"></script>
-<script src="{$path}Smartyvendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/bootstrap/js/popper.js"></script>
+<script src="{$path}Smarty/css/login/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/select2/select2.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/daterangepicker/moment.min.js"></script>
-<script src="{$path}Smartyvendor/daterangepicker/daterangepicker.js"></script>
+<script src="{$path}Smarty/css/login/vendor/daterangepicker/moment.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/countdowntime/countdowntime.js"></script>
+<script src="{$path}Smarty/css/login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyjs/main.js"></script>
+<script src="{$path}Smarty/css/login/js/main.js"></script>
 
 </body>
 </html>
