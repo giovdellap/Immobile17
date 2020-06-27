@@ -243,7 +243,6 @@ class FPersistentManager
      * @param string $idCliente
      * @param MData $dataInizio
      * @param MData $dataFine
-     * @param string $idAgenzia
      * @return MAgenzia
      */
     public static function getBusyWeek(string $idImm, string $idCliente,MData $dataInizio,MData $dataFine): MAgenzia

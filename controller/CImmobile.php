@@ -30,6 +30,9 @@ class CImmobile
         }
     }
 
+    /**
+     * Visualizza tutti gli immobili presenti nel DB
+     */
     public static function visualizzaImmobili()
     {
         if ($_SERVER["REQUEST_METHOD"] == 'GET') {
@@ -41,6 +44,10 @@ class CImmobile
         }
     }
 
+    /**
+     * Visualizza la pagina del singolo immobile
+     * @param string $id ID Immobile
+     */
     public static function visualizza(string $id)
     {
         if($_SERVER["REQUEST_METHOD"]=='GET')
@@ -56,7 +63,7 @@ class CImmobile
     }
 
     /**
-     * Funzione che consente la visualizzazione del calendario per l'Immobile
+     * Visualizzazione del calendario per l'Immobile
      * In caso l'utente non sia loggato carica la scheda dell'Immobile
      * DIZIONARIO PARAMETRI:
      *  - id = id immobile
@@ -86,6 +93,9 @@ class CImmobile
     }
 
     /**
+     * Funzione per la prenotazione dell'appuntamento
+     * Controlla che l'appuntamento possa essere aggiunto al calendario
+     * In caso positivo lo aggiunge, in caso negativo mostra all'utente il calendario con un messaggio di errore
      * Dizionario POST:
      *  - anno = anno appuntamento
      *  - mese = mese appuntamento
@@ -96,13 +106,12 @@ class CImmobile
      */
     public static function prenota()
     {
-        if($_SERVER['REQUEST_METHOD'] == POST)
-        {
-            if(CUtente::isLogged())
-            {
+        if ($_SERVER['REQUEST_METHOD'] == POST) {
+            if (CUtente::isLogged()) {
                 $inizio = new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], 8);
                 $fine = new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], 20);
-                $fullAgenzia = FPersistentManager::getBusyWeek($_POST['idImm'], CSessionManager::getUtenteLoggato(),
+                $utente = CSessionManager::getUtenteLoggato();
+                $fullAgenzia = FPersistentManager::getBusyWeek($_POST['idImm'], $utente->getId(),
                     $inizio, $fine);
 
                 $appuntamento = new MAppuntamento();
@@ -114,19 +123,18 @@ class CImmobile
                 $appuntamento->setOrarioInizio($inizio);
                 $appuntamento->setOrarioFine($fine);
 
-                if($result = $fullAgenzia->getCalendario()->addAppuntamento($appuntamento))
-                {
+                if ($fullAgenzia->getCalendario()->addAppuntamento($appuntamento)) {
                     FPersistentManager::addAppuntamento($appuntamento);
-                    VImmobile::confermaAppuntamento(CSessionManager::getUtenteLoggato(), $appuntamento);
+                    VImmobile::confermaAppuntamento($utente, $appuntamento);
                 }
-                //ELSE CALENDARIO CON MESSAGGIO DI ERRORE
-
-
-
-            }
-        }
-    }
-    {
-
+                else
+                {
+                    $error = "Appuntamento non disponibile";
+                    $immobile = FPersistentManager::visualizzaImmobile($_POST['idImm']);
+                    $appLiberi = $fullAgenzia->checkDisponibilità($utente, $immobile, $inizio, $fine);
+                    VImmobile::calendario(VSmartyFactory::errorSmarty($utente, $error), $appLiberi, $inizio, $fine, $immobile);
+                }
+            } else VImmobile::visualizza(VSmartyFactory::basicSmarty(), $_POST['idImm']);
+        } else CHome::homepage();
     }
 }
