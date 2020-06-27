@@ -23,4 +23,9 @@ class VImmobile
         $smarty->assign("immobili", $immobili);
         $smarty->display("immobili.tpl");
     }
+
+    public static function calendario(Smarty $smarty, array $appLiberi, MData $inizio, MData $fine, MImmobile $immobile)
+    {
+
+    }
 }
