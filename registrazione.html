@@ -69,7 +69,7 @@
 						Email
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
-                    <input class="input100" type="text" name="email" placeholder="Indirizzo Email" >
+                    <input class="input100" type="text" name="email" placeholder="email" >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -111,8 +111,22 @@
                     </div>
                 </div>
                 -->
-                <br>
 
+                <div class="sign__group">
+                    <button id="insert_image" class="sign__btn" type="button" style="width: 200px" onclick="document.getElementById('choose_image').click()">Carica Immagine</button>
+                    <input id="choose_image" type="file" name="propic" onchange="validateImage()" style="display: none" accept=".jpg, .jpeg, .gif, .png">
+                    <br>
+                    <!--<b><p id="image_name" class="faq__text" style="text-align: center; max-width: 300px">Nessuna immagine caricata (MAX 2MB)</p></b>-->
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+
+
+                <br>
+                <br>
                 <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
