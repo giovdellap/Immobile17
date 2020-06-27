@@ -53,7 +53,7 @@ class MUtente
     }
 
     /**
-     * @return MMedia
+     * @return MMediaUtente
      */
     public function getImmagine(): MMediaUtente
     {
@@ -61,7 +61,7 @@ class MUtente
     }
 
     /**
-     * @param MMedia $immagine
+     * @param MMediaUtente $immagine
      */
     public function setImmagine(MMediaUtente $immagine): void
     {

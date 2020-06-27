@@ -26,6 +26,11 @@ class VImmobile
 
     public static function calendario(Smarty $smarty, array $appLiberi, MData $inizio, MData $fine, MImmobile $immobile)
     {
+        // TO DO
+    }
 
+    public function confermaAppuntamento(MUtente $utente, MAppuntamento $appuntamento)
+    {
+        // TO DO
     }
 }
