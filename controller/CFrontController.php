@@ -24,20 +24,20 @@ class CFrontController
                 {   $function=$resource[1];
                     if(!strpos($function,"?"))
                     {
+                        print_r($function);
                         if(method_exists($controller,$function))
                         {
                             if(count($resource)==2)
                                 $controller::$function();
                             else $controller::$function($resource[2]);
                         }
-
-
                     }
                     else
                     {
-                        $function = explode('?', $resource[1]);
-                        if(method_exists($controller, $function[0]))
-                            $controller::$function[0]($this->queryUnpacker($function[1]));
+                        $new_resource = explode('?', $resource[1]);
+                        $function = $new_resource[0];
+                        if(method_exists($controller, $function))
+                            $controller::$function($this->queryUnpacker($new_resource[1]));
                     }
                 }
                 else $this->wrongUrl();
@@ -102,7 +102,7 @@ class CFrontController
             if(count($itemExploded) == 2)
                 $toReturn[$itemExploded[0]] = $itemExploded[1];
         }
-        return toReturn;
+        return $toReturn;
     }
 
 }

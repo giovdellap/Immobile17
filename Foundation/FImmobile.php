@@ -237,7 +237,7 @@ class FImmobile extends FObject
     public static function getImmobiliByParameters(array $parameters)
     {
         $db = FDataBase::getInstance();
-        $db_result = $db-> loadIntersect(self::class, $parameters);
+        $db_result = $db->loadIntersect(self::class, $parameters);
         $immobile = [];
         foreach ($db_result as &$item)
             $immobile[] = self::unBindImmobile($item);

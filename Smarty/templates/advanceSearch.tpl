@@ -15,7 +15,11 @@
 
                             <div class="col-12 col-md-4 col-lg-3">
                                 <div class="form-group">
-                                    <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
+                                    {if $pc === 'notSetted'}
+                                        <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
+                                    {else}
+                                        <input type="input" class="form-control" name="input" placeholder="{$pc}">
+                                    {/if}
                                 </div>
                             </div>
 

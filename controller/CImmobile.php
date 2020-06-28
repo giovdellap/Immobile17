@@ -21,6 +21,14 @@ class CImmobile
     {
         if($_SERVER["REQUEST_METHOD"] === 'GET')
         {
+            if(!key_exists('pmin', $parameters))
+                $parameters['pmin'] = 100;
+            if(!key_exists('pmax', $parameters))
+                $parameters['pmax'] = 1000000;
+            if(!key_exists('gmin', $parameters))
+                $parameters['gmin'] = 0;
+            if(!key_exists('gmax', $parameters))
+                $parameters['gmax'] = 2000;
             $immobili = FPersistentManager::getImmobiliByParameters($parameters);
             if(CUtente::isLogged()) {
                 $utente = CSessionManager::getUtenteLoggato();

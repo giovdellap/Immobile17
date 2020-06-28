@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-27 22:06:13
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:44:49
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/immobili.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef7a6b57cab13_46202958',
+  'unifunc' => 'content_5ef8d711571a88_43268077',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6d02bfb2d8428945191967f5e4a6a043c3c936e4' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/immobili.tpl',
-      1 => 1593190176,
+      1 => 1593362131,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ef7a6b57cab13_46202958 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8d711571a88_43268077 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <?php $_smarty_tpl->_assignInScope('utente', (($tmp = @$_smarty_tpl->tpl_vars['utente']->value)===null||$tmp==='' ? 'visitatore' : $tmp));?>
@@ -43,7 +43,7 @@ Smarty/img/core-img/favicon.ico">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartystyle.css">
+Smarty/style.css">
 
 </head>
 
@@ -89,27 +89,29 @@ foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src=<?php echo $_smarty_tpl->tpl_vars['item']->value->getPresentationImg();?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['item']->value->getId();?>
+"><img src=<?php echo $_smarty_tpl->tpl_vars['item']->value->getPresentationImg();?>
  alt="">
 
                         <div class="tag">
-                            <span>"<?php echo $_smarty_tpl->tpl_vars['item']->value->getTipoAnnuncio();?>
-"</span>
+                            <span><?php echo $_smarty_tpl->tpl_vars['item']->value->getTipoAnnuncio();?>
+</span>
                         </div>
                         <div class="list-price">
-                            <p>"<?php echo $_smarty_tpl->tpl_vars['item']->value->getPrezzo();?>
-"</p>
+                            <p>€ <?php echo $_smarty_tpl->tpl_vars['item']->value->getPrezzo();?>
+</p>
                         </div>
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5>"<?php echo $_smarty_tpl->tpl_vars['item']->value->getNome();?>
-"</h5>
+                        <h5><?php echo $_smarty_tpl->tpl_vars['item']->value->getNome();?>
+</h5>
                         <p class="location"><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/location.png" alt="">"<?php echo $_smarty_tpl->tpl_vars['item']->value->getIndirizzo();?>
 "</p>
-                        <p>"<?php echo $_smarty_tpl->tpl_vars['item']->value->getDescrizioneBreve();?>
-"</p>
+                        <p><?php echo $_smarty_tpl->tpl_vars['item']->value->getDescrizioneBreve();?>
+</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
                                 <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
@@ -119,7 +121,7 @@ Smarty/img/icons/new.png" alt="">
                                 <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/space.png" alt="">
                                 <span><?php echo $_smarty_tpl->tpl_vars['item']->value->getGrandezza();?>
-</span>
+ mq</span>
                             </div>
                         </div>
                     </div>

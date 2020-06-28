@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-27 22:06:13
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 20:14:47
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/advanceSearch.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef7a6b57d7402_34029076',
+  'unifunc' => 'content_5ef8de17cf2621_63016487',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bad36880b97d00b621c2925ec287fa99045ce320' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/advanceSearch.tpl',
-      1 => 1593168618,
+      1 => 1593368004,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef7a6b57d7402_34029076 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8de17cf2621_63016487 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--START-->
 <div class="south-search-area" >
     <div class="container">
@@ -38,7 +38,12 @@ function content_5ef7a6b57d7402_34029076 (Smarty_Internal_Template $_smarty_tpl)
 
                             <div class="col-12 col-md-4 col-lg-3">
                                 <div class="form-group">
-                                    <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
+                                    <?php if ($_smarty_tpl->tpl_vars['pc']->value === 'notSetted') {?>
+                                        <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
+                                    <?php } else { ?>
+                                        <input type="input" class="form-control" name="input" placeholder="<?php echo $_smarty_tpl->tpl_vars['pc']->value;?>
+">
+                                    <?php }?>
                                 </div>
                             </div>
 

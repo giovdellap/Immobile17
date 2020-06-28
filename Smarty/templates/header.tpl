@@ -35,13 +35,13 @@
 
                             <li class="cn-dropdown-item has-down pr12"><a href="{$path}Immobile/visualizzaImmobili">Immobili</a>
                                 <ul class="dropdown">
-                                    <li><a href="//URLVENDITA">Vendita</a></li>
-                                    <li><a href="//URLAFFITTO">Affitto</a></li>
+                                    <li><a href="{$path}Immobile/ricerca?ti=Vendita">Vendita</a></li>
+                                    <li><a href="{$path}Immobile/ricerca?ti=Affitto">Affitto</a></li>
 
                                 </ul>
                             </li>
                             {if $utente == 'visitatore'}
-                                <li><a href="{$path}Utente/visualizzaProfilo">Login</a></li>
+                                <li><a href="{$path}Utente/login">Login</a></li>
 
 
 

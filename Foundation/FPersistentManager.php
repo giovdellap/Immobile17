@@ -103,6 +103,7 @@ class FPersistentManager
 
     public static function loadIDbyEMail(string $email)
     {
+        print_r(FUtente::loadIDbyEmail($email));
         return FUtente::loadIDbyEmail($email);
     }
 

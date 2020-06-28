@@ -19,7 +19,13 @@ class VImmobile
 
     public static function ricerca(Smarty $smarty, $immobili, $parameters)
     {
-        $smarty->assign("parametri", $parameters);
+        $parametersNames = array('ti', 'pc', 'tp', 'pmin', 'pmax', 'gmin', 'gmax');
+        foreach ($parametersNames as &$key)
+        {
+            if(key_exists($key, $parameters))
+                $smarty->assign($key, $parameters[$key]);
+            else $smarty->assign($key, 'notSetted');
+        }
         $smarty->assign("immobili", $immobili);
         $smarty->display("immobili.tpl");
     }

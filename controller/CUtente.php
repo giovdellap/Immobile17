@@ -13,7 +13,7 @@ class CUtente
         if($_SERVER['REQUEST_METHOD'] == "GET") {
             if(self::isLogged())
                 CHome::homepage();
-            else VUtente::loginform();
+            else VUtente::loginform(VSmartyFactory::basicSmarty());
         }
         elseif ($_SERVER['REQUEST_METHOD'] == "POST")
             self::checkLogin();
@@ -41,12 +41,15 @@ class CUtente
                 break;
 
             case "OK USER":
+                $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
+                $immobili = FPersistentManager::getImmobiliHomepage();
                 if (session_status() == PHP_SESSION_NONE){
                     session_start();
-                    $_SESSION['utente'] = FPersistentManager::loadIDbyEMail($_POST['email']);
-                    CHome::homepage();
+                    $_SESSION['id'] = FPersistentManager::loadIDbyEMail($_POST['email']);
+                    $smarty = VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato());
+                    VHome::homepage($smarty, $agenzia, $immobili);
                 }
-                else CHome::homepage();
+                else CHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
                 break;
 
             case "WRONG EMAIL":

@@ -34,7 +34,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form class="login100-form validate-form flex-sb flex-w">
+            <form action="{$path}Utente/login" method="POST" class="login100-form validate-form flex-sb flex-w">
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
@@ -49,7 +49,7 @@
 						email
 					</span>
                 <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-                    <input class="input100" type="text" name="username"  >
+                    <input class="input100" type="text" required name="email"  >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -60,7 +60,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass" placeholder="**********">
+                    <input class="input100" type="password" required name="password" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
 

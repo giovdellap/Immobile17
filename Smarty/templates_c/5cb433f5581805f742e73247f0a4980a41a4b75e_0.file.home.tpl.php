@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-27 22:02:39
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:27:36
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef7a5df24e8a6_03949561',
+  'unifunc' => 'content_5ef8d308c4f6a2_09395894',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5cb433f5581805f742e73247f0a4980a41a4b75e' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/home.tpl',
-      1 => 1593202738,
+      1 => 1593362131,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ef7a5df24e8a6_03949561 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8d308c4f6a2_09395894 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 
@@ -119,31 +119,31 @@ Smarty/style.css">
 
             <!-- Single Featured Property -->
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
+                <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src=<?php echo $_smarty_tpl->tpl_vars['imgTop1']->value[0]->viewImageHTML();?>
- alt="">
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getId();?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['imgTop1']->value[0]->viewImageHTML();?>
+" alt="">
 
-                        <div class="tag">
-                            <span><?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getTipoAnnuncio();?>
+                            <div class="tag">
+                                <span><?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getTipoAnnuncio();?>
 </span>
-                        </div>
-                        <div class="list-price">
-                            <p>€ <?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getPrezzo();?>
+                            </div>
+                            <div class="list-price">
+                                <p>€ <?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getPrezzo();?>
 </p>
-                        </div>
+                            </div>
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getId();?>
-" ><?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getNome();?>
- </a>
+                        <h5><?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getNome();?>
+</h5>
                         <p class="location"><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smarty/img/icons/location.png" alt=""><?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getIndirizzo();?>
+Smarty/img/icons/location.png" alt=""> <?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getIndirizzo();?>
 </p>
-                        <p><?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getDescrizioneBreve();?>
+                        <p><?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getDescrizioneBreve();?>
 </p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
@@ -152,9 +152,9 @@ Smarty/img/icons/new.png" alt="">
                             </div>
                             <div class="space">
                                 <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smarty/img/icons/space.png" alt="">
+Smarty/img/icons/space.png" alt=""">
                                 <span><?php echo $_smarty_tpl->tpl_vars['immobile0']->value->getGrandezza();?>
-</span>
+ mq</span>
                             </div>
                         </div>
                     </div>
@@ -166,7 +166,9 @@ Smarty/img/icons/space.png" alt="">
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src="<?php echo $_smarty_tpl->tpl_vars['imgTop2']->value[0]->viewImageHTML();?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getId();?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['imgTop2']->value[0]->viewImageHTML();?>
 " alt="">
 
                         <div class="tag">
@@ -180,9 +182,7 @@ Smarty/img/icons/space.png" alt="">
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5 href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getId();?>
-"><?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getNome();?>
+                        <h5><?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getNome();?>
 </h5>
                         <p class="location"><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/location.png" alt=""> <?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getIndirizzo();?>
@@ -198,7 +198,7 @@ Smarty/img/icons/new.png" alt="">
                                 <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/space.png" alt=""">
                                 <span><?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getGrandezza();?>
-</span>
+ mq</span>
                             </div>
                         </div>
                     </div>
@@ -209,7 +209,9 @@ Smarty/img/icons/space.png" alt=""">
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src="<?php echo $_smarty_tpl->tpl_vars['imgTop3']->value[0]->viewImageHTML();?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['immobile2']->value->getId();?>
+"><img src="<?php echo $_smarty_tpl->tpl_vars['imgTop3']->value[0]->viewImageHTML();?>
 " alt="">
 
                         <div class="tag">
@@ -223,9 +225,7 @@ Smarty/img/icons/space.png" alt=""">
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5 href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['immobile2']->value->getId();?>
-"><?php echo $_smarty_tpl->tpl_vars['immobile2']->value->getNome();?>
+                        <h5><?php echo $_smarty_tpl->tpl_vars['immobile2']->value->getNome();?>
 </h5>
                         <p class="location"><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/location.png" alt=""> <?php echo $_smarty_tpl->tpl_vars['immobile1']->value->getIndirizzo();?>
@@ -241,7 +241,7 @@ Smarty/img/icons/new.png" alt="">
                                 <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/space.png" alt=""">
                                 <span><?php echo $_smarty_tpl->tpl_vars['immobile2']->value->getGrandezza();?>
-</span>
+ mq</span>
                             </div>
                         </div>
                     </div>
@@ -280,7 +280,7 @@ Smarty/img/icons/prize.png alt="">
             <h2>Admin Istrator</h2>
             <p>Amministratore</p>
         </div>
-        <p class="wow fadeInUp" data-wow-delay="500ms">Admin Istrator è un dirigente d'azienda italiano con cittadinanza statunitense. Da sempre appassionato di immobili e barbe, è diventato il nuovo amministratore di Immobile17 nell'aprile 2020. Comincia i primi passi nell'azienda assumendo la carica di agente immobiliare nel reparto I17 research.</p>
+        <p class="wow fadeInUp" data-wow-delay="500ms">Admin Istrator è un dirigente d'azienda italiano con cittadinanza statunitense. Da sempre appassionato di immobili e barbe, è diventato il nuovo amministratore di Immobile17 nell'aprile 2020. Muove i suoi primi passi in azienda assumendo la carica di agente immobiliare nel reparto I17 research.</p>
         <div class="address wow fadeInUp" data-wow-delay="750ms">
             <h6><img src=<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/phone-call.png alt=""> +39 0862 433812</h6>
