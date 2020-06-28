@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>{$immobile->getNome()[0]}</title>
+    <title>{$immobile->getNome()}</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
@@ -55,6 +55,7 @@
                     {foreach $immobile->getImmagini() as $imgs}
 
                     <!-- Single Slide -->
+                        <img src="{$imgs->viewImageHTML()}" alt="">
                     <img src="{$imgs->viewImageHTML()}" alt="">
                    {/foreach}
                 </div>
@@ -68,7 +69,7 @@
                     <div class="list-price">
                         <p>{$immobile->getPrezzo()}</p>
                     </div>
-                    <h5>{$immobile->getNome}</h5>
+                    <h5>{$immobile->getNome()}</h5>
                     <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">"{$immobile->getIndirizzo()}"</p>
                     <p> "{$immobile->getDescrizione()}"</p>
                     <!-- Meta -->
@@ -78,7 +79,7 @@
                         </div>
                         <div class="space">
                             <img src="{$path}Smarty/img/icons/space.png" alt="">
-                            <span>"{$immobile->getDimensione()}"</span>
+                            <span>"{$immobile->getGrandezza()}"</span>
                         </div>
                     </div>
                     <br></br>
@@ -94,7 +95,7 @@
 
         <!--QUA SOTTO CI VA TIPO LA POSIZIONE SULLA MAPPA -->
 
-        <!-- Listing Maps -->
+        <!-- Listing Maps
         <div class="row">
             <div>
                 <div class="listings-maps mt-80">
@@ -119,8 +120,8 @@
 <script src="{$path}Smarty/js/jquery-ui.min.js"></script>
 <!-- Active js -->
 <script src="{$path}Smarty/js/active.js"></script>
-<!-- Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>
+<!-- Google Maps
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>-->
 <script src="{$path}Smarty/js/map-active.js"></script>
 
 </body>

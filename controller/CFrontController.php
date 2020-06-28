@@ -21,14 +21,14 @@ class CFrontController
 
             if (in_array($controller . ".php", scandir($dir))){
                 if(isset($resource[1]))
-                {
-                    if(!strpos($resource[1],"?"))
+                {   $function=$resource[1];
+                    if(!strpos($function,"?"))
                     {
-                        if(method_exists($controller,$resource[1]))
+                        if(method_exists($controller,$function))
                         {
                             if(count($resource)==2)
-                                $controller::$resource[1]();
-                            else $controller::$resource[1]($resource[2]);
+                                $controller::$function();
+                            else $controller::$function($resource[2]);
                         }
 
 

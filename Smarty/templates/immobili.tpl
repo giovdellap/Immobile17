@@ -15,7 +15,7 @@
     <link rel="icon" href="{$path}Smarty/img/core-img/favicon.ico">
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{$path}Smartystyle.css">
+    <link rel="stylesheet" href="{$path}Smarty/style.css">
 
 </head>
 
