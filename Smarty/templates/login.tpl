@@ -85,8 +85,8 @@
                     </button>
                 </div>
                 <div>
-                    <a href="#" class="txt2">
-                        <br></br>
+                    <a href="{$path}Utente/registrazione" class="txt2">
+                        <br>
                         Non hai un account? Registrati.
                     </a>
                 </div>

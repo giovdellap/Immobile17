@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 15:44:27
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 16:33:27
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\registrazione.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef89ebb78c967_20765628',
+  'unifunc' => 'content_5ef8aa373779a7_21512905',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '98aabd46426569c1d2173de2bba1b9925ac9ba05' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\registrazione.tpl',
-      1 => 1593351380,
+      1 => 1593354802,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef89ebb78c967_20765628 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8aa373779a7_21512905 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 <head>
@@ -175,9 +175,10 @@ Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z
                         </button>
                     </div>
 
-                    <a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Utente/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
                         Hai già un account?
-                        <i class="fa fa-long-arrow-right m-l-5"></i>
+                       
                     </a>
                 </div>
             </form>

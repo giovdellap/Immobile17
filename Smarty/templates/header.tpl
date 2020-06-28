@@ -41,7 +41,7 @@
                                 </ul>
                             </li>
                             {if $utente == 'visitatore'}
-                                <li><a href="{$path}Smarty/templates/login.tpl">Login</a></li>
+                                <li><a href="{$path}Utente/visualizzaProfilo">Login</a></li>
 
 
 

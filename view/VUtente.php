@@ -13,6 +13,7 @@ class VUtente
         // TO DO
         // Viene passato un utente già assegnato dentro smarty
         // se è visitatore, pagina base, sennò riempi già i campi con i valori dell'utente passato
+        $smarty->display("registrazione.tpl");
     }
 
     public static function registrationOK(Smarty $smarty)

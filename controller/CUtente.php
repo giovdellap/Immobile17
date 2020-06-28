@@ -86,10 +86,10 @@ class CUtente
      */
     public static function registrazione()
     {
-        if($_SERVER['REQUEST_METHOD'] == GET)
+        if($_SERVER['REQUEST_METHOD'] == "GET")
             VUtente::showRegistrationForm(VSmartyFactory::basicSmarty());
 
-        else if ($_SERVER['REQUEST_METHOD'] == POST)
+        else if ($_SERVER['REQUEST_METHOD'] == "POST")
         {
             $utente = new MUtente();
             $utente->setNome($_POST['nome']);
@@ -123,7 +123,7 @@ class CUtente
      */
     public static function visualizzaProfilo()
     {
-        if($_SERVER['REQUEST_METHOD'] == GET) {
+        if($_SERVER['REQUEST_METHOD'] == "GET") {
             if (self::isLogged()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 VUtente::visualizzaProfilo(VSmartyFactory::userSmarty($utente));
@@ -137,7 +137,7 @@ class CUtente
      */
     public static function calendario()
     {
-        if($_SERVER['REQUEST_METHOD'] == GET) {
+        if($_SERVER['REQUEST_METHOD'] == "GET") {
             if (self::isLogged()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 $utente = FPersistentManager::visualizzaAppUtente($utente->getId());

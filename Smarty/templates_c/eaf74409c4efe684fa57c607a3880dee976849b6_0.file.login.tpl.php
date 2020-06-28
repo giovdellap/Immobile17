@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 15:49:04
+/* Smarty version 3.1.34-dev-7, created on 2020-06-28 16:29:14
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef89fd0a13ea2_08599252',
+  'unifunc' => 'content_5ef8a93ad0d2d1_02347650',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eaf74409c4efe684fa57c607a3880dee976849b6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\login.tpl',
-      1 => 1593352143,
+      1 => 1593354550,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef89fd0a13ea2_08599252 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef8a93ad0d2d1_02347650 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 <head>
@@ -77,7 +77,7 @@ Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; 
 
 					<span class="login100-form-title p-b-32">
                         <br>
-                        
+
 						Account Login
 					</span>
 
@@ -121,8 +121,9 @@ Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; 
                     </button>
                 </div>
                 <div>
-                    <a href="#" class="txt2">
-                        <br></br>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Utente/registrazione" class="txt2">
+                        <br>
                         Non hai un account? Registrati.
                     </a>
                 </div>

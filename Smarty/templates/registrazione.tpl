@@ -139,9 +139,9 @@
                         </button>
                     </div>
 
-                    <a href="#" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+                    <a href="{$path}Utente/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
                         Hai già un account?
-                        <i class="fa fa-long-arrow-right m-l-5"></i>
+
                     </a>
                 </div>
             </form>
