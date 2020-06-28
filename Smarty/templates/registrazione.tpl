@@ -35,6 +35,9 @@
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
             <form class="login100-form validate-form flex-sb flex-w">
+                <div>
+                    <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
+                </div>
 					<span class="login100-form-title p-b-32">
 						Registrati
 					</span>
@@ -43,7 +46,7 @@
 						Nome
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il nome">
-                    <input class="input100" type="text" name="name" placeholder="Nome">
+                    <input class="input100" type="text" name="name" >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -51,7 +54,7 @@
 						Cognome
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il cognome">
-                    <input class="input100" type="text" name="username" placeholder="Cognome" >
+                    <input class="input100" type="text" name="username" >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -70,7 +73,7 @@
 						Email
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
-                    <input class="input100" type="text" name="email" placeholder="email" >
+                    <input class="input100" type="text" name="email"  >
                     <span class="focus-input100"></span>
                 </div>
 

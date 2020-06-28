@@ -54,27 +54,27 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$item->getPresentationImg()} alt="">
+                        <a href="{$path}Immobile/visualizza/{$item->getId()}"><img src={$item->getPresentationImg()} alt="">
 
                         <div class="tag">
-                            <span>"{$item->getTipoAnnuncio()}"</span>
+                            <span>{$item->getTipoAnnuncio()}</span>
                         </div>
                         <div class="list-price">
-                            <p>"{$item->getPrezzo()}"</p>
+                            <p>€ {$item->getPrezzo()}</p>
                         </div>
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5>"{$item->getNome()}"</h5>
+                        <h5>{$item->getNome()}</h5>
                         <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">"{$item->getIndirizzo()}"</p>
-                        <p>"{$item->getDescrizioneBreve()}"</p>
+                        <p>{$item->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
                                 <img src="{$path}Smarty/img/icons/new.png" alt="">
                             </div>
                             <div class="space">
                                 <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                <span>{$item->getGrandezza()}</span>
+                                <span>{$item->getGrandezza()} mq</span>
                             </div>
                         </div>
                     </div>

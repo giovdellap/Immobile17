@@ -88,30 +88,30 @@
 
             <!-- Single Featured Property -->
             <div class="col-12 col-md-6 col-xl-4">
-                <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
+                <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src={$imgTop1[0]->viewImageHTML()} alt="">
+                        <a href="{$path}Immobile/visualizza/{$immobile0->getId()}"><img src="{$imgTop1[0]->viewImageHTML()}" alt="">
 
-                        <div class="tag">
-                            <span>{$immobile0->getTipoAnnuncio()}</span>
-                        </div>
-                        <div class="list-price">
-                            <p>€ {$immobile0->getPrezzo()}</p>
-                        </div>
+                            <div class="tag">
+                                <span>{$immobile0->getTipoAnnuncio()}</span>
+                            </div>
+                            <div class="list-price">
+                                <p>€ {$immobile0->getPrezzo()}</p>
+                            </div>
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <a href="{$path}Immobile/visualizza/{$immobile0->getId()}" >{$immobile0->getNome()} </a>
-                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile0->getIndirizzo()}</p>
-                        <p>{$immobile0->getDescrizioneBreve()}</p>
+                        <h5>{$immobile0->getNome() }</h5>
+                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
+                        <p>{$immobile1->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
                                 <img src="{$path}Smarty/img/icons/new.png" alt="">
                             </div>
                             <div class="space">
-                                <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                <span>{$immobile0->getGrandezza()}</span>
+                                <img src="{$path}Smarty/img/icons/space.png" alt=""">
+                                <span>{$immobile0->getGrandezza()} mq</span>
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src="{$imgTop2[0]->viewImageHTML()}" alt="">
+                        <a href="{$path}Immobile/visualizza/{$immobile1->getId()}"><img src="{$imgTop2[0]->viewImageHTML()}" alt="">
 
                         <div class="tag">
                             <span>{$immobile1->getTipoAnnuncio()}</span>
@@ -134,7 +134,7 @@
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5 href="{$path}Immobile/visualizza/{$immobile1->getId()}">{$immobile1->getNome() }</h5>
+                        <h5>{$immobile1->getNome() }</h5>
                         <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
                         <p>{$immobile1->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
@@ -143,7 +143,7 @@
                             </div>
                             <div class="space">
                                 <img src="{$path}Smarty/img/icons/space.png" alt=""">
-                                <span>{$immobile1->getGrandezza()}</span>
+                                <span>{$immobile1->getGrandezza()} mq</span>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <img src="{$imgTop3[0]->viewImageHTML()}" alt="">
+                        <a href="{$path}Immobile/visualizza/{$immobile2->getId()}"><img src="{$imgTop3[0]->viewImageHTML()}" alt="">
 
                         <div class="tag">
                             <span>{$immobile2->getTipoAnnuncio()}</span>
@@ -165,7 +165,7 @@
                     </div>
                     <!-- Property Content -->
                     <div class="property-content">
-                        <h5 href="{$path}Immobile/visualizza/{$immobile2->getId()}">{$immobile2->getNome() }</h5>
+                        <h5>{$immobile2->getNome() }</h5>
                         <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
                         <p>{$immobile2->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
@@ -174,7 +174,7 @@
                             </div>
                             <div class="space">
                                 <img src="{$path}Smarty/img/icons/space.png" alt=""">
-                                <span>{$immobile2->getGrandezza()}</span>
+                                <span>{$immobile2->getGrandezza()} mq</span>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,7 @@
             <h2>Admin Istrator</h2>
             <p>Amministratore</p>
         </div>
-        <p class="wow fadeInUp" data-wow-delay="500ms">Admin Istrator è un dirigente d'azienda italiano con cittadinanza statunitense. Da sempre appassionato di immobili e barbe, è diventato il nuovo amministratore di Immobile17 nell'aprile 2020. Comincia i primi passi nell'azienda assumendo la carica di agente immobiliare nel reparto I17 research.</p>
+        <p class="wow fadeInUp" data-wow-delay="500ms">Admin Istrator è un dirigente d'azienda italiano con cittadinanza statunitense. Da sempre appassionato di immobili e barbe, è diventato il nuovo amministratore di Immobile17 nell'aprile 2020. Muove i suoi primi passi in azienda assumendo la carica di agente immobiliare nel reparto I17 research.</p>
         <div class="address wow fadeInUp" data-wow-delay="750ms">
             <h6><img src={$path}Smarty/img/icons/phone-call.png alt=""> +39 0862 433812</h6>
             <h6><img src={$path}Smarty/img/icons/envelope.png alt=""> admin@admin.it</h6>

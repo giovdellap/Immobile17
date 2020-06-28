@@ -28,12 +28,12 @@
 {include file="header.tpl"}
 
 <!-- ##### Breadcumb Area Start ##### -->
-<section class="breadcumb-area bg-img" style="background-image: url("{$immobile->getPresentationImg()}") ;">
+<section class="breadcumb-area bg-img" style="background-image: url({$immobile->getPresentationImg()}")>
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="breadcumb-content">
-                    <h3 class="breadcumb-title">Immobile</h3>
+                    <h3 class="breadcumb-title">{$immobile->getNome()}</h3>
                 </div>
             </div>
         </div>
@@ -63,15 +63,15 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-12">
                 <div class="listings-content">
                     <!-- Price -->
                     <div class="list-price">
-                        <p>{$immobile->getPrezzo()}</p>
+                        <p>€ {$immobile->getPrezzo()}</p>
                     </div>
                     <h5>{$immobile->getNome()}</h5>
-                    <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">"{$immobile->getIndirizzo()}"</p>
-                    <p> "{$immobile->getDescrizione()}"</p>
+                    <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile->getIndirizzo()}</p>
+                    <p> {$immobile->getDescrizione()}</p>
                     <!-- Meta -->
                     <div class="property-meta-data d-flex align-items-end">
                         <div class="new-tag">
@@ -79,11 +79,11 @@
                         </div>
                         <div class="space">
                             <img src="{$path}Smarty/img/icons/space.png" alt="">
-                            <span>"{$immobile->getGrandezza()}"</span>
+                            <span>{$immobile->getGrandezza()} mq</span>
                         </div>
                     </div>
-                    <br></br>
-                    <br></br>
+                    <br>
+                    <br>
                     <div class="listings-btn-groups">
                         <a href="#" class="btn south-btn">prenota un appuntamento</a>
 
@@ -103,9 +103,10 @@
                 </div>
             </div>
         </div>
+        -->
     </div>
 </section>
-<!-- ##### Listings Content Area End ##### -->
+ <!--##### Listings Content Area End ##### -->
 
 {include file="footer.tpl"}
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
