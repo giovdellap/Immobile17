@@ -11,9 +11,9 @@
     <!-- Title  -->
     <title>About us</title>
 
-    <!-- Favicon  -->
-    <link rel="icon" href={$path}Smarty/img/core-img/favicon.ico">
+    <!-- Favicon-->
 
+    <link rel="icon" href={$path}Smarty/img/core-img/favicon.ico">
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
 
@@ -63,101 +63,44 @@
                 </div>
 
                 <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
-
+                    {foreach $Tops as $Top}
+                        {$img=$Top->getImmagini()}
                     <!-- Single Slide -->
                     <div class="single-featured-property">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$immobile0->getId()}"><img src="{$imgTop1[0]->viewImageHTML()}" alt="">
+                            <a href="{$path}Immobile/visualizza/{$Top->getId()}"<img src="{$imgs[0]->viewImageHTML()}" alt="">
+
                             <div class="tag">
-                                <span>{$immobile0->getTipoAnnuncio()}</span>
+                                <span>{$Top->getTipoAnnuncio()}</span>
                             </div>
                             <div class="list-price">
-                                € {$immobile0->getPrezzo()}</p
+                                <p>{$Top->getPrezzo()}</p>
                             </div>
                         </div>
                         <!-- Property Content -->
                         <div class="property-content">
-                            <h5>{$immobile0->getNome() }</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
-                            <p>{$immobile1->getDescrizioneBreve()}</p>
+                            <h5>{$Top->getNome()}</h5>
+                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$Top->getIndirizzo()}</p>
+                            <p>{$Top->getDescrizioneBreve()}</p>
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
                                 <div class="new-tag">
                                     <img src="{$path}Smarty/img/icons/new.png" alt="">
                                 </div>
                                 <div class="space">
-                                    <img src="{$path}Smarty/img/icons/space.png" alt=""">
-                                    <span>{$immobile0->getGrandezza()} mq</span>
+                                    <img src="{$path}Smarty/img/icons/space.png" alt="">
+                                    <span>{$Top->getGrandezza()} mq</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Single Slide -->
-                    <div class="single-featured-property">
-                        <!-- Property Thumbnail -->
-                        <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$immobile1->getId()}"><img src="{$imgTop2[0]->viewImageHTML()}" alt="">
-
-                                <div class="tag">
-                                    <span>{$immobile1->getTipoAnnuncio()}</span>
-                                </div>
-                                <div class="list-price">
-                                    <p>€ {$immobile1->getPrezzo()}</p>
-                                </div>
-                        </div>
-                        <!-- Property Content -->
-                        <div class="property-content">
-                            <h5>{$immobile1->getNome() }</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
-                            <p>{$immobile1->getDescrizioneBreve()}</p>
-                            <div class="property-meta-data d-flex align-items-end justify-content-between">
-                                <div class="new-tag">
-                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
-                                </div>
-                                <div class="space">
-                                    <img src="{$path}Smarty/img/icons/space.png" alt=""">
-                                    <span>{$immobile1->getGrandezza()} mq</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Single Slide -->
-                    <div class="single-featured-property">
-                        <!-- Property Thumbnail -->
-                        <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$immobile2->getId()}"><img src="{$imgTop3[0]->viewImageHTML()}" alt="">
-
-                                <div class="tag">
-                                    <span>{$immobile2->getTipoAnnuncio()}</span>
-                                </div>
-                                <div class="list-price">
-                                    <p>€ {$immobile2->getPrezzo()}</p>
-                                </div>
-                        </div>
-                        <!-- Property Content -->
-                        <div class="property-content">
-                            <h5>{$immobile2->getNome() }</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt=""> {$immobile1->getIndirizzo()}</p>
-                            <p>{$immobile2->getDescrizioneBreve()}</p>
-                            <div class="property-meta-data d-flex align-items-end justify-content-between">
-                                <div class="new-tag">
-                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
-                                </div>
-                                <div class="space">
-                                    <img src="{$path}Smarty/img/icons/space.png" alt=""">
-                                    <span>{$immobile2->getGrandezza()} mq</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        {/foreach}
 
 
-                            </div>
-                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
 </section>
 <!-- ##### About Content Wrapper End ##### -->
