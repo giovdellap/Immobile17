@@ -45,7 +45,7 @@
 <section class="about-content-wrapper section-padding-100">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-8">
+            <div class="col-12 col-lg-7">
                 <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
                     <h2>Selezioniamo le case perfette per te</h2>
                     <p>Suspendisse dictum enim sit amet libero</p>
@@ -77,38 +77,36 @@
                 </div>
 
                 <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
-                    {foreach $Tops as $Top}
-                        {$immagini=$Top->getImmagini()}
+
                     <!-- Single Slide -->
                     <div class="single-featured-property">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$Top->getId()}"<img src="{$immagini[0]->viewImageHTML()}" alt="">
+                            <a href="{$path}Immobile/visualizza/{$Top1->getId()}"<img src="{$imgTop1[0]->viewImageHtml()}" alt="">
 
                             <div class="tag">
-                                <span>{$Top->getTipoAnnuncio()}</span>
+                                <span>{$Top1->getTipoAnnuncio()}</span>
                             </div>
                             <div class="list-price">
-                                <p>{$Top->getPrezzo()}</p>
+                                <p>{$Top1->getPrezzo()}</p>
                             </div>
                         </div>
                         <!-- Property Content -->
                         <div class="property-content">
-                            <h5>{$Top->getNome()}</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$Top->getIndirizzo()}</p>
-                            <p>{$Top->getDescrizioneBreve()}</p>
+                            <h5>{$Top1->getNome()}</h5>
+                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$Top1->getIndirizzo()}</p>
+                            <p>{$Top1->getDescrizioneBreve()}</p>
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
                                 <div class="new-tag">
                                     <img src="{$path}Smarty/img/icons/new.png" alt="">
                                 </div>
                                 <div class="space">
                                     <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                    <span>{$Top->getGrandezza()} mq</span>
+                                    <span>{$Top1->getGrandezza()} mq</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        {/foreach}
 
 
                     </div>
