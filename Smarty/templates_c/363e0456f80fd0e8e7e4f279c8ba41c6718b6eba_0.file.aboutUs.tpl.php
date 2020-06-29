@@ -1,4 +1,29 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 14:38:06
+  from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\aboutUs.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5ef9e0ae982733_10457149',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '363e0456f80fd0e8e7e4f279c8ba41c6718b6eba' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\aboutUs.tpl',
+      1 => 1593434277,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:header.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_5ef9e0ae982733_10457149 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="it">
 
 <head>
@@ -13,9 +38,11 @@
 
     <!-- Favicon-->
 
-    <link rel="icon" href={$path}Smarty/img/icons/favicon_1.ico">
+    <link rel="icon" href=<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/favicon_1.ico">
     <!-- Style CSS -->
-    <link rel="stylesheet" href="{$path}Smarty/style.css">
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/style.css">
 
 </head>
 
@@ -25,10 +52,12 @@
     <div class="south-load"></div>
 </div>
 
-{include file="header.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 <!-- ##### Breadcumb Area Start ##### -->
-<section class="breadcumb-area bg-img" style="background-image: url({$path}Smarty/img/bg-img/hero1.jpg);">
+<section class="breadcumb-area bg-img" style="background-image: url(<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/bg-img/hero1.jpg);">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -51,7 +80,8 @@
                     <p>Suspendisse dictum enim sit amet libero</p>
                 </div>
                 <div class="about-content">
-                    <img class="wow fadeInUp" data-wow-delay="350ms" src="{$path}Smarty/img/bg-img/about.jpg" alt="">
+                    <img class="wow fadeInUp" data-wow-delay="350ms" src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/bg-img/about.jpg" alt="">
                     <p class="wow fadeInUp" data-wow-delay="450ms">L'agenzia Immobile17 nasce dal desiderio di valorizzare al massimo l'esperienza maturata nel settore dal 1999.
                         L'utilizzo del proprio nome nel marchio vuol essere sinonimo di massima serietà, trasparenza e correttezza, VALORI CONCRETI sui quali è fondata la nostra piccola ma efficiente struttura.
                         Un'attività giovane e contemporanea che opera selezionando minuziosamente le migliori opportunità immobiliari, sia in vendita che in locazione. Ogni immobile che scegliamo di trattare è altamente qualificato, completo di documentazione e preparato alla vendita.
@@ -75,38 +105,57 @@
                 </div>
 
                 <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
-                    {foreach $Tops as $Top}
+                    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['Tops']->value, 'Top');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['Top']->value) {
+?>
 
                     <!-- Single Slide -->
                     <div class="single-featured-property">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$Top->getId()}"<img src="{$Top->getImmagini()}" alt="">
+                            <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['Top']->value->getId();?>
+"<img src="<?php echo $_smarty_tpl->tpl_vars['Top']->value->getImmagini();?>
+" alt="">
 
                             <div class="tag">
-                                <span>{$Top->getTipoAnnuncio()}</span>
+                                <span><?php echo $_smarty_tpl->tpl_vars['Top']->value->getTipoAnnuncio();?>
+</span>
                             </div>
                             <div class="list-price">
-                                <p>{$Top->getPrezzo()}</p>
+                                <p><?php echo $_smarty_tpl->tpl_vars['Top']->value->getPrezzo();?>
+</p>
                             </div>
                         </div>
                         <!-- Property Content -->
                         <div class="property-content">
-                            <h5>{$Top->getNome()}</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$Top->getIndirizzo()}</p>
-                            <p>{$Top->getDescrizioneBreve()}</p>
+                            <h5><?php echo $_smarty_tpl->tpl_vars['Top']->value->getNome();?>
+</h5>
+                            <p class="location"><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/location.png" alt=""><?php echo $_smarty_tpl->tpl_vars['Top']->value->getIndirizzo();?>
+</p>
+                            <p><?php echo $_smarty_tpl->tpl_vars['Top']->value->getDescrizioneBreve();?>
+</p>
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
                                 <div class="new-tag">
-                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/new.png" alt="">
                                 </div>
                                 <div class="space">
-                                    <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                    <span>{$Top->getGrandezza()} mq</span>
+                                    <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/space.png" alt="">
+                                    <span><?php echo $_smarty_tpl->tpl_vars['Top']->value->getGrandezza();?>
+ mq</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        {/foreach}
+                        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
 
                     </div>
@@ -118,7 +167,8 @@
 <!-- ##### About Content Wrapper End ##### -->
 
 <!-- ##### Call To Action Area Start ##### -->
-<section class="call-to-action-area bg-fixed bg-overlay-black" style="background-image: url({$path}Smarty/img/bg-img/cta.jpg)">
+<section class="call-to-action-area bg-fixed bg-overlay-black" style="background-image: url(<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/bg-img/cta.jpg)">
     <div class="container h-100">
         <div class="row align-items-center h-100">
             <div class="col-12">
@@ -151,18 +201,22 @@
                 <div class="single-team-member mb-100 wow fadeInUp" data-wow-delay="250ms">
                     <!-- Team Member Thumb -->
                     <div class="team-member-thumb">
-                        <img src="{$path}Smarty/img/bg-img/team1.jpg" alt="">
+                        <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/bg-img/team1.jpg" alt="">
                     </div>
                     <!-- Team Member Info -->
                     <div class="team-member-info">
                         <div class="section-heading">
-                            <img src="{$path}Smarty/img/icons/prize.png" alt="">
+                            <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/prize.png" alt="">
                             <h2>Jeremy Scott</h2>
                             <p>C.E.O.</p>
                         </div>
                         <div class="address">
-                            <h6><img src="{$path}Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                            <h6><img src="{$path}Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
+                            <h6><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                            <h6><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
                         </div>
                     </div>
                 </div>
@@ -172,18 +226,22 @@
                 <div class="single-team-member mb-100 wow fadeInUp" data-wow-delay="500ms">
                     <!-- Team Member Thumb -->
                     <div class="team-member-thumb">
-                        <img src="{$path}Smarty/img/bg-img/team2.jpg" alt="">
+                        <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/bg-img/team2.jpg" alt="">
                     </div>
                     <!-- Team Member Info -->
                     <div class="team-member-info">
                         <div class="section-heading">
-                            <img src="{$path}Smarty/img/icons/prize.png" alt="">
+                            <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/prize.png" alt="">
                             <h2>Vanessa Marchesani</h2>
                             <p>Agente immobiliare</p>
                         </div>
                         <div class="address">
-                            <h6><img src="{$path}Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                            <h6><img src="{$path}Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
+                            <h6><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                            <h6><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
                         </div>
                     </div>
                 </div>
@@ -193,18 +251,22 @@
                 <div class="single-team-member mb-100 wow fadeInUp" data-wow-delay="750ms">
                     <!-- Team Member Thumb -->
                     <div class="team-member-thumb">
-                        <img src="{$path}Smarty/img/bg-img/team3.jpg" alt="">
+                        <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/bg-img/team3.jpg" alt="">
                     </div>
                     <!-- Team Member Info -->
                     <div class="team-member-info">
                         <div class="section-heading">
-                            <img src="{$path}Smarty/img/icons/prize.png" alt="">
+                            <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/prize.png" alt="">
                             <h2>Gabriele Gatti</h2>
                             <p>agente immobiliare</p>
                         </div>
                         <div class="address">
-                            <h6><img src="{$path}Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                            <h6><img src="{$path}Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
+                            <h6><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
+                            <h6><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
                         </div>
                     </div>
                 </div>
@@ -213,21 +275,44 @@
     </div>
 </section>
 <!-- ##### Meet The Team Area End ##### -->
-{include file="footer.tpl"}
+<?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 <!-- jQuery (Necessary for All JavaScript Plugins) -->
-<script src="{$path}Smarty/js/jquery/jquery-2.2.4.min.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/js/jquery/jquery-2.2.4.min.js"><?php echo '</script'; ?>
+>
 <!-- Popper js -->
-<script src="{$path}Smarty/js/popper.min.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/js/popper.min.js"><?php echo '</script'; ?>
+>
 <!-- Bootstrap js -->
-<script src="{$path}Smarty/js/bootstrap.min.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/js/bootstrap.min.js"><?php echo '</script'; ?>
+>
 <!-- Plugins js -->
-<script src="{$path}Smarty/js/plugins.js"></script>
-<script src="{$path}Smarty/js/classy-nav.min.js"></script>
-<script src="{$path}Smarty/js/jquery-ui.min.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/js/plugins.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/js/classy-nav.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/js/jquery-ui.min.js"><?php echo '</script'; ?>
+>
 <!-- Active js -->
-<script src="{$path}Smarty/js/active.js"></script>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/js/active.js"><?php echo '</script'; ?>
+>
 
 </body>
 
-</html>
+</html><?php }
+}

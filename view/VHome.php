@@ -20,8 +20,8 @@ class VHome
 
 
     }
-    public static function aboutUs(Smarty $smarty,$immobili)
-    {   $smarty->assign("Tops", $immobili);
+    public static function aboutUs(Smarty $smarty,  array $immobile)
+    {   $smarty->assign("Tops", $immobile);
         $smarty->display("aboutUs.tpl");
     }
 
