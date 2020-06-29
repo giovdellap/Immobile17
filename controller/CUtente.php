@@ -30,7 +30,9 @@ class CUtente
     public static function checkLogin()
     {
         $db_result = FPersistentManager::login($_POST['email'], $_POST['password']);
+        print_r($db_result);
         switch ($db_result) {
+
             case "OK ADMIN":
                 if (session_status() == PHP_SESSION_NONE){
                     session_start();
@@ -49,7 +51,7 @@ class CUtente
                     $smarty = VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato());
                     VHome::homepage($smarty, $agenzia, $immobili);
                 }
-                else CHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
+                else VHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
                 break;
 
             case "WRONG EMAIL":
@@ -73,9 +75,10 @@ class CUtente
                 //session_cache_limiter('public'); // works too
                 session_start();
             }
-        }
-        if (isset($_SESSION['utente'])) {
-            $logged = true;
+
+            if (isset($_SESSION['utente'])) {
+                $logged = true;
+            }
         }
         return $logged;
     }

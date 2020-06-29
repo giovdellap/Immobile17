@@ -48,7 +48,7 @@
                             {else}
                                 <li class="cn-dropdown-item has-down pr12"><a href="#">{$nomeutente}</a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Area Riservata</a></li>
+                                        <li><a href="{$path}Utente/visualizzaProfilo">Area Riservata</a></li>
                                         <li><a href="{$path}Utente/logout">Logout</a></li>
 
                                     </ul>

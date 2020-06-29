@@ -23,7 +23,7 @@ class VUtente
 
     public static function visualizzaProfilo(Smarty $smarty)
     {
-        //TO DO
+        $smarty->display("profilo.tpl");
     }
 
     public static function showCalendario(Smarty $smarty, array $appuntamenti)

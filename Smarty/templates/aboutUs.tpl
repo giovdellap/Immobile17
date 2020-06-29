@@ -76,12 +76,12 @@
 
                 <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
                     {foreach $Tops as $Top}
-
+                        {$immagini=$Top->getImmagini()}
                     <!-- Single Slide -->
                     <div class="single-featured-property">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$Top->getId()}"<img src="{$Top->getImmagini()}" alt="">
+                            <a href="{$path}Immobile/visualizza/{$Top->getId()}"<img src="{$immagini[0]->viewImageHTML()}" alt="">
 
                             <div class="tag">
                                 <span>{$Top->getTipoAnnuncio()}</span>
@@ -157,7 +157,7 @@
                     <div class="team-member-info">
                         <div class="section-heading">
                             <img src="{$path}Smarty/img/icons/prize.png" alt="">
-                            <h2>Jeremy Scott</h2>
+                            <h2>Admin Istrator</h2>
                             <p>C.E.O.</p>
                         </div>
                         <div class="address">
