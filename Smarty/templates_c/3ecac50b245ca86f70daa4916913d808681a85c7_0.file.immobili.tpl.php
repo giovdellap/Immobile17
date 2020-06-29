@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 15:39:39
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 15:58:16
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\immobili.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef89d9bc58e92_32490367',
+  'unifunc' => 'content_5ef9f3788778b5_92870241',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3ecac50b245ca86f70daa4916913d808681a85c7' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\immobili.tpl',
-      1 => 1593351574,
+      1 => 1593438774,
       2 => 'file',
     ),
   ),
@@ -23,7 +23,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ef89d9bc58e92_32490367 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9f3788778b5_92870241 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <?php $_smarty_tpl->_assignInScope('utente', (($tmp = @$_smarty_tpl->tpl_vars['utente']->value)===null||$tmp==='' ? 'visitatore' : $tmp));?>
@@ -39,7 +39,7 @@ function content_5ef89d9bc58e92_32490367 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Favicon  -->
     <link rel="icon" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smarty/img/core-img/favicon.ico">
+Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>

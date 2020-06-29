@@ -30,7 +30,6 @@ class CUtente
     public static function checkLogin()
     {
         $db_result = FPersistentManager::login($_POST['email'], $_POST['password']);
-        print_r($db_result);
         switch ($db_result) {
 
             case "OK ADMIN":
@@ -75,7 +74,7 @@ class CUtente
                 session_start();
             }
 
-            if (isset($_SESSION['utente'])) {
+            if (isset($_SESSION['id'])) {
                 $logged = true;
             }
         }
@@ -110,7 +109,7 @@ class CUtente
                 if (session_status() == PHP_SESSION_NONE)
                 {
                     session_start();
-                    $_SESSION['utente'] = FPersistentManager::loadIDbyEMail($_POST['email']);
+                    $_SESSION['id'] = FPersistentManager::loadIDbyEMail($_POST['email']);
                 }
                 VUtente::registrationOK(VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato()));
 

@@ -322,7 +322,7 @@ class FDataBase
         $query = $query . "prezzo BETWEEN " . $parameters['pmin'] . " AND " .$parameters['pmax'] .
         " AND dimensione BETWEEN " . $parameters['gmin'] . " AND " . $parameters['gmax'] . ";";
 
-        echo ("query" . $query);
+
         return $this->executeLoadQuery($query);
     }
 }

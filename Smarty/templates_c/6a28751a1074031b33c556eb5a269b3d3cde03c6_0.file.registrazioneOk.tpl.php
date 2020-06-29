@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-29 14:02:14
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 16:22:49
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\registrazioneOk.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef9d8467b08c8_05143388',
+  'unifunc' => 'content_5ef9f939c88fa5_26011715',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '6a28751a1074031b33c556eb5a269b3d3cde03c6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\registrazioneOk.tpl',
-      1 => 1593430441,
+      1 => 1593440535,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef9d8467b08c8_05143388 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9f939c88fa5_26011715 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 <head>
@@ -94,7 +94,7 @@ Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; 
 					</span>
 
                 <div class="container-login100-form-btn" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-" style="position:absolute; top:310px; left:370px; z-index:1">
+/Home/homepage" style="position:absolute; top:310px; left:370px; z-index:1">
                     <button class="login100-form-btn">
                         Torna alla Home
                     </button>
