@@ -12,7 +12,7 @@
     <title>Immobili</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="{$path}Smarty/img/core-img/favicon.ico">
+    <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
