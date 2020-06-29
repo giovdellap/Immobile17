@@ -17,4 +17,17 @@ class CHome
         }
         // ipotetico else
     }
+    public static function aboutUs()
+    {
+        if($_SERVER["REQUEST_METHOD"] === 'GET')
+        {
+            $immobili = FPersistentManager::getImmobiliHomepage();
+            if(CUtente::isLogged()) {
+                $utente = CSessionManager::getUtenteLoggato();
+                VHome::aboutUs(VSmartyFactory::userSmarty($utente),$immobili);
+            }
+            else VHome::aboutUs(VSmartyFactory::basicSmarty(),$immobili);
+        }
+        // ipotetico else
+    }
 }

@@ -82,6 +82,7 @@ class CFrontController
                 CAdmin::adminHomepage();
             else
                 CHome::homepage();
+
         }
         else CHome::homepage();
     }

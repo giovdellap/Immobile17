@@ -20,4 +20,14 @@ class VHome
 
 
     }
+    public static function aboutUs(Smarty $smarty,$immobili)
+    {   $smarty->assign("immobile0"     , $immobili[0]);
+        $smarty->assign("immobile1"     , $immobili[1]);
+        $smarty->assign("immobile2"     , $immobili[2]);
+        $smarty->assign("imgTop1"       , $immobili[0]->getImmagini());
+        $smarty->assign("imgTop2"       , $immobili[1]->getImmagini());
+        $smarty->assign("imgTop3"       , $immobili[2]->getImmagini());
+        $smarty->display("aboutUs.tpl");
+    }
+
 }
