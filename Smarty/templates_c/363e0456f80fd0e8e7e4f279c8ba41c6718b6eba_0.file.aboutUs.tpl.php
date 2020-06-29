@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-29 14:38:06
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 15:45:20
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\aboutUs.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef9e0ae982733_10457149',
+  'unifunc' => 'content_5ef9f0707be4f3_56612966',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '363e0456f80fd0e8e7e4f279c8ba41c6718b6eba' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\aboutUs.tpl',
-      1 => 1593434277,
+      1 => 1593438312,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ef9e0ae982733_10457149 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9f0707be4f3_56612966 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 
@@ -86,13 +86,15 @@ Smarty/img/bg-img/about.jpg" alt="">
                         L'utilizzo del proprio nome nel marchio vuol essere sinonimo di massima serietà, trasparenza e correttezza, VALORI CONCRETI sui quali è fondata la nostra piccola ma efficiente struttura.
                         Un'attività giovane e contemporanea che opera selezionando minuziosamente le migliori opportunità immobiliari, sia in vendita che in locazione. Ogni immobile che scegliamo di trattare è altamente qualificato, completo di documentazione e preparato alla vendita.
                         Rivolgersi alla nostra Agenzia Immobiliare significa affidarsi a giovani e dinamici professionisti, regolarmente iscritti alla Camera di Commercio e alla Fiaip (Federazione Italiana Agenti Immobiliari Professionali) costantemente aggiornati mediante corsi di alta formazione professionale, pronti ad ascoltarvi attentamente al fine di risolvere ogni tipo di esigenza legata all'abitare.
-                        Siamo in grado di offrire un'assistenza precisa e puntuale sin dal primo incontro. Tutto su misura e personalizzato come un abito sartoriale, tutto seguito direttamente da noi in prima persona: dalla valutazione dell'immobile al piano marketing dedicato, dalle visite coi clienti ai feed-back programmati, dalle trattative sino alla stipula dell'atto definitivo.</p>
+                        <br>
+                    </p>
+                    <p class="wow fadeInUp" data-wow-delay="450ms">Siamo in grado di offrire un'assistenza precisa e puntuale sin dal primo incontro. Tutto su misura e personalizzato come un abito sartoriale, tutto seguito direttamente da noi in prima persona: dalla valutazione dell'immobile al piano marketing dedicato, dalle visite coi clienti ai feed-back programmati, dalle trattative sino alla stipula dell'atto definitivo.
                         La nostra figura è quella dell'AGENTE IMMOBILIARE PROFESSIONISTA e l'attenzione è principalmente rivolta, prima ancora che all'immobile, alla Persona ed alle sue esigenze: in questo modo gli interessi del Cliente sono sempre preminenti.
                         Condividiamo ogni passaggio della compravendita con i nostri Clienti, in piena armonia e con la massima condivisione: la finalità è quella di raggiungere gli obiettivi prefissati con determinazione, spiccato dinamismo ed entusiasmo, mantenendo sempre un approccio diretto ed un'attenzione costante. Il rapporto confidenziale che si stabilisce è fondamentale per affrontare con serenità il delicato percorso di compravendita.
                         Crediamo fortemente nei rapporti etici, nel rispetto reciproco e nella collaborazione qualificata: ogni tipo di contatto per noi è prezioso e diventa un'importante opportunità di crescita.
                         Il costante sviluppo personale e professionale, i successi conseguiti nel tempo e la soddisfazione dei Clienti, hanno contribuito a far diventare oggi la nostra Azienda un rilevante punto di riferimento per chi necessita di un servizio efficiente e meticoloso, con professionalità e riservatezza.
                         Ricerchiamo da sempre l'eccellenza nelle CASE, nella qualità delle RELAZIONI e nel modo di ABITARE.
-
+                    </p>
 
 
                 </div>
@@ -110,14 +112,14 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['Top']->value) {
 ?>
-
+                        <?php $_smarty_tpl->_assignInScope('immagini', $_smarty_tpl->tpl_vars['Top']->value->getImmagini());?>
                     <!-- Single Slide -->
                     <div class="single-featured-property">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
                             <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Immobile/visualizza/<?php echo $_smarty_tpl->tpl_vars['Top']->value->getId();?>
-"<img src="<?php echo $_smarty_tpl->tpl_vars['Top']->value->getImmagini();?>
+"<img src="<?php echo $_smarty_tpl->tpl_vars['immagini']->value[0]->viewImageHTML();?>
 " alt="">
 
                             <div class="tag">
@@ -209,7 +211,7 @@ Smarty/img/bg-img/team1.jpg" alt="">
                         <div class="section-heading">
                             <img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Smarty/img/icons/prize.png" alt="">
-                            <h2>Jeremy Scott</h2>
+                            <h2>Admin Istrator</h2>
                             <p>C.E.O.</p>
                         </div>
                         <div class="address">

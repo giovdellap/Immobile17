@@ -53,7 +53,6 @@ class CUtente
                 }
                 else VHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
                 break;
-
             case "WRONG EMAIL":
             case "WRONG PASSWORD":
                 $smarty = VSmartyFactory::basicSmarty();

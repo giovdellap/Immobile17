@@ -12,7 +12,7 @@
     <title>South - Real Estate Agency Template | Blog</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="{$path}Smarty/img/core-img/favicon.ico">
+    <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
@@ -116,7 +116,7 @@
     <div class="row">
         <div class="col-sm-6">
             <ul>
-                <li><a href="{$path}Utente/privacy">Immobili>Privacy e Sicurezza </a> </li>
+                <li><a href="{$path}Utente/privacy">Privacy e Sicurezza </a> </li>
                 <li><a href="{$path}Utente/cambioPassword" >Cambio Password  </a></li>
                 <li><a href="{$path}Utente/eliminaAccount" > Elimina Account&nbsp; </a></li>
             </ul>
