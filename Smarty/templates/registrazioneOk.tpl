@@ -60,7 +60,7 @@
 
                 <div class="container-login100-form-btn"  style="position:absolute; top:310px; left:370px; z-index:1">
                     <button class="login100-form-btn">
-                       <a href="{$path}">Torna alla Home<a/>
+                        <a href ="{$path}" style="color:white"> Torna alla Home </a>
                     </button>
                 </div>
             </form>

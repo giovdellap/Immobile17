@@ -60,11 +60,11 @@
     />
 
     <!-- Font Awesome -->
-    <link href="{$path}Smarty/css/fonts/font-awesome.min.css"
+    <link href="{$path}Smarty/css/fonts/font-awesome.min.css" rel="stylesheet"/>
             <!--href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
 
-            rel="stylesheet"
-    />
+
+
     <!-- Custom styles for this template -->
     <link href="{$path}Smarty/css/style.css" rel="stylesheet" />
 </head>
@@ -78,7 +78,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <img
-                            src="{$path}Smarty/img/avatar.png"
+                            src="{$path}Smarty/img/icons/avatar.png"
                             alt="..."
                             class="rounded-circle profile-image"
                     />
@@ -102,7 +102,7 @@
     <h5>I miei Dati&nbsp;</h5>
     <p>{$utente->getId()}</p>
     <p></p>
-    <p>{$utente->getIndirizzo()}</p>
+    <p></p>
     <p>boh</p>
     <hr class="divider" />
     <h5>I miei Appuntamenti</h5>
