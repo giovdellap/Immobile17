@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 12:15:58
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 09:50:37
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\advanceSearch.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef86dde5706d2_23768536',
+  'unifunc' => 'content_5ef99d4d18dbe6_04843968',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'fe0d66fcc81cc79a4ff63065973a609434ca38fa' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\advanceSearch.tpl',
-      1 => 1593098271,
+      1 => 1593417029,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef86dde5706d2_23768536 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef99d4d18dbe6_04843968 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--START-->
 <div class="south-search-area" >
     <div class="container">
@@ -38,7 +38,12 @@ function content_5ef86dde5706d2_23768536 (Smarty_Internal_Template $_smarty_tpl)
 
                             <div class="col-12 col-md-4 col-lg-3">
                                 <div class="form-group">
-                                    <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
+                                    <?php if ($_smarty_tpl->tpl_vars['pc']->value == 'notSetted') {?>
+                                        <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
+                                    <?php } else { ?>
+                                        <input type="input" class="form-control" name="input" placeholder="<?php echo $_smarty_tpl->tpl_vars['pc']->value;?>
+">
+                                    <?php }?>
                                 </div>
                             </div>
 
@@ -98,7 +103,7 @@ function content_5ef86dde5706d2_23768536 (Smarty_Internal_Template $_smarty_tpl)
                             <div class="col-12 col-md-6 col-lg-12 col-xl-2 d-flex ">
                                 <!-- Submit -->
                                 <div class="form-group mb-0">
-                                    <button type="submit" class="btn south-btn">Search</button>
+                                    <button type="submit" class="btn south-btn">Cerca</button>
                                 </div>
                             </div>
                     </form>

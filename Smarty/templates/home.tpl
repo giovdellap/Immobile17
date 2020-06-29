@@ -60,7 +60,7 @@
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Prega nella chiesa più figa del mondo</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">collemaggio</h2>
                         </div>
                     </div>
                 </div>

@@ -94,11 +94,12 @@ class CUtente
 
         else if ($_SERVER['REQUEST_METHOD'] == "POST")
         {
-            $utente = new MUtente();
+            $utente = new MCliente();
             $utente->setNome($_POST['nome']);
             $utente->setCognome($_POST['cognome']);
             $utente->setEmail($_POST['email']);
-            $utente->setDataNascita(new MData($_POST['anno_nascita'], $_POST['mese_nascita'], $_POST['giorno_nascita'], 0));
+            $utente->setPassword($_POST['password']);
+            $utente->setDataNascita(self::getDateFromRegistrazione());
             $utente->setIscrizione(MData::getCurrentTime());
             $utente->setAttivato(FALSE);
             $db_result = FPersistentManager::registrazione($utente);
@@ -149,5 +150,23 @@ class CUtente
             }
             else VUtente::loginForm(VSmartyFactory::basicSmarty());
         }// ipotetico else
+    }
+
+    public static function logout()
+    {
+        session_start();
+        session_unset();
+        session_destroy();
+        $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
+        $immobili = FPersistentManager::getImmobiliHomepage();
+        //VHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
+        header("Location: " . $GLOBALS['path']);
+    }
+
+    private static function getDateFromRegistrazione(): MData
+    {
+        $date=explode("-", $_POST["date"]);
+
+        return new MData($date[0],$date[1],$date[2], 0);
     }
 }

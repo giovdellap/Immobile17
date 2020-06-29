@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 16:29:14
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 09:48:34
   from 'C:\xampp\htdocs\AgenziaImmobiliare\Smarty\templates\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef8a93ad0d2d1_02347650',
+  'unifunc' => 'content_5ef99cd2581d18_67483707',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'eaf74409c4efe684fa57c607a3880dee976849b6' => 
     array (
       0 => 'C:\\xampp\\htdocs\\AgenziaImmobiliare\\Smarty\\templates\\login.tpl',
-      1 => 1593354550,
+      1 => 1593416909,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef8a93ad0d2d1_02347650 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef99cd2581d18_67483707 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 <head>
@@ -68,7 +68,8 @@ Smarty/css/login/css/main.css">
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form class="login100-form validate-form flex-sb flex-w">
+            <form action="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Utente/login" method="POST" class="login100-form validate-form flex-sb flex-w">
                 <div>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 "><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
@@ -85,7 +86,7 @@ Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; 
 						email
 					</span>
                 <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-                    <input class="input100" type="text" name="username"  >
+                    <input class="input100" type="text" required name="email"  >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -96,7 +97,7 @@ Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; 
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass" placeholder="**********">
+                    <input class="input100" type="password" required name="password" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -138,45 +139,45 @@ Utente/registrazione" class="txt2">
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/jquery/jquery-3.2.1.min.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/jquery/jquery-3.2.1.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/animsition/js/animsition.min.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/animsition/js/animsition.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/bootstrap/js/popper.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/bootstrap/js/popper.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
->
-<!--===============================================================================================-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/select2/select2.min.js"><?php echo '</script'; ?>
+Smarty/vendor/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/daterangepicker/moment.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/daterangepicker/daterangepicker.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/select2/select2.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/countdowntime/countdowntime.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/daterangepicker/moment.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/css/login/vendor/daterangepicker/daterangepicker.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyjs/main.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/countdowntime/countdowntime.js"><?php echo '</script'; ?>
+>
+<!--===============================================================================================-->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/css/login/js/main.js"><?php echo '</script'; ?>
 >
 
 </body>

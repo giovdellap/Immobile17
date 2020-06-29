@@ -18,7 +18,7 @@ class VUtente
 
     public static function registrationOK(Smarty $smarty)
     {
-        // TO DO
+        $smarty->display("registrazioneOk.tpl");
     }
 
     public static function visualizzaProfilo(Smarty $smarty)

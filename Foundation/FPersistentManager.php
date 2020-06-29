@@ -13,14 +13,17 @@ class FPersistentManager
      */
     public static function registrazione(MUtente $utente):string
     {
-        if(FUtente::emailEsistente($utente))
+        if(FUtente::emailEsistente($utente->getEmail()))
             return "EMAIL ALREADY EXISTS!";
 
-        else if(FUtente::registrazione($utente))
-            return "OK";
-        else
-            return "REGISTRATION FAILED";
+        else {
+            $db_result = FUtente::registrazione($utente);
+            if ($db_result)
+                return "OK";
+            else
+                return "REGISTRATION FAILED";
 
+        }
     }
 
     /**
@@ -103,7 +106,6 @@ class FPersistentManager
 
     public static function loadIDbyEMail(string $email)
     {
-        print_r(FUtente::loadIDbyEmail($email));
         return FUtente::loadIDbyEmail($email);
     }
 

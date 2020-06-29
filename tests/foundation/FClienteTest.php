@@ -45,6 +45,7 @@ class FClienteTest extends TestCase
         $cliente->setEmail("facciolapopovich@hotmail.com");
         $cliente->setPassword("CartaIgienica777");
         FCliente::registrazione($cliente);
+
         $cliente->setId("CL5");
         $this->assertEquals($cliente, FUtente::visualizzaUtente("CL5"));
     }

@@ -15,7 +15,7 @@
 
                             <div class="col-12 col-md-4 col-lg-3">
                                 <div class="form-group">
-                                    {if $pc === 'notSetted'}
+                                    {if $pc == 'notSetted'}
                                         <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
                                     {else}
                                         <input type="input" class="form-control" name="input" placeholder="{$pc}">
@@ -79,7 +79,7 @@
                             <div class="col-12 col-md-6 col-lg-12 col-xl-2 d-flex ">
                                 <!-- Submit -->
                                 <div class="form-group mb-0">
-                                    <button type="submit" class="btn south-btn">Search</button>
+                                    <button type="submit" class="btn south-btn">Cerca</button>
                                 </div>
                             </div>
                     </form>

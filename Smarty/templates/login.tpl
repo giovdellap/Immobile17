@@ -99,21 +99,21 @@
 <div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/animsition/js/animsition.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/bootstrap/js/popper.js"></script>
-<script src="{$path}Smartyvendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/bootstrap/js/popper.js"></script>
+<script src="{$path}Smarty/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/select2/select2.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/daterangepicker/moment.min.js"></script>
-<script src="{$path}Smartyvendor/daterangepicker/daterangepicker.js"></script>
+<script src="{$path}Smarty/css/login/vendor/daterangepicker/moment.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyvendor/countdowntime/countdowntime.js"></script>
+<script src="{$path}Smarty/css/login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smartyjs/main.js"></script>
+<script src="{$path}Smarty/css/login/js/main.js"></script>
 
 </body>
 </html>

@@ -24,7 +24,6 @@ class CFrontController
                 {   $function=$resource[1];
                     if(!strpos($function,"?"))
                     {
-                        print_r($function);
                         if(method_exists($controller,$function))
                         {
                             if(count($resource)==2)

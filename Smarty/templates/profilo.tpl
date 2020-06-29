@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
@@ -12,10 +12,10 @@
     <title>South - Real Estate Agency Template | Blog</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="{$path}Smarty/img/core-img/favicon.ico">
 
     <!-- Style CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{$path}Smarty/style.css">
 
 </head>
 
@@ -35,9 +35,6 @@
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
-<!-- ##### Blog Area Start ##### -->
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta
@@ -63,8 +60,9 @@
     />
 
     <!-- Font Awesome -->
-    <link
-            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    <link href="{$path}Smarty/css/fonts/font-awesome.min.css"
+            <!--href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
+
             rel="stylesheet"
     />
     <!-- Custom styles for this template -->

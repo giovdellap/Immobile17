@@ -141,7 +141,7 @@ class MData
      */
     public static function getCurrentTime(): MData
     {
-        return FObject::getMDataFromString(date(Y-m-d));
+        return FObject::getMDataFromString(date("Y-m-d"));
     }
 
 }

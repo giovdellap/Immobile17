@@ -25,7 +25,7 @@ class VSmartyFactory
     {
         $smarty = self::basicSmarty();
         $smarty->assign("utente", $utente);
-        $smarty->assign("nomeutente", $utente->getNome() . $utente->getCognome());
+        $smarty->assign("nomeutente", $utente->getNome() . " " . $utente->getCognome());
         return $smarty;
     }
 
