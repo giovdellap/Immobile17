@@ -66,7 +66,7 @@
                     <!-- Property Content -->
                     <div class="property-content">
                         <h5>{$item->getNome()}</h5>
-                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">"{$item->getIndirizzo()}"</p>
+                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$item->getIndirizzo()}</p>
                         <p>{$item->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">

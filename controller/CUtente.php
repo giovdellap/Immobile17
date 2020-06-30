@@ -112,6 +112,8 @@ class CUtente
                 {
                     session_start();
                     $_SESSION['id'] = FPersistentManager::loadIDbyEMail($_POST['email']);
+
+
                 }
                 VUtente::registrationOK(VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato()));
 
