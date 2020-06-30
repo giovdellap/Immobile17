@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Prenotazione</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{$path}Smarty/img/icons/favicon_1.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/css/login/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link href='{$path}Smarty/css/calendario/main.css' rel='stylesheet' />
+    <script src='{$path}Smarty/css/login/js/main.js'></script>
+
+</head>
+<body >
+
+<div class="calendar">
+
+    <header>
+        <button class="secondary" href="{$path}Immobile/calendario" style="align-self: flex-start; flex: 0 0 1">Oggi</button>
+        <div class="calendar__title" style="display: flex; justify-content: center; align-items: center">
+            <div class="icon secondary chevron_left">‹</div>
+            <span class="login100-form-title p-b-32">
+                {$inizio->getGiorno() . $inizio->getNomeMese() } - {$fine->getGiorno() . $fine->getNomeMese()}
+					</span>
+            <!--<h1 class="" style="flex: 1;"><span></span><strong>29 Giugno – 4 Luglio</strong> 2020</h1> -->
+            <div class="icon secondary chevron_left">›</div>
+        </div>
+        <div style="align-self: flex-start; flex: 0 0 1"></div>
+    </header>
+
+    <div class="outer">
+
+
+        <table>
+            <thead>
+            <tr>
+                <th class="headcol"></th>
+                <th>{$inizio->getGiorno()}Lunedì, 29</th>
+                <th  class="today">Martedì, 30</th>
+                <th>Mercoledì, 1</th>
+                <th>Giovedì, 2</th>
+                <th>Venerdì, 3</th>
+                <th class="secondary">Sabato, 4</th>
+                <th class="secondary">Domenica, 5</th>
+            </tr>
+            </thead>
+        </table>
+
+        <div class="wrap">
+            <table class="offset">
+
+                <tbody>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td class="past"></td>
+                    <td></td>
+                    <td> </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="headcol">8:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><div class="event double"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>8:30–9:30 Yoga</div></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">9:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">10:00</td>
+                    <td></td>
+                    <td></td>
+                    <td><div class="event "><input id="check" type="checkbox" class="checkbox" /><label for="check"></label>10:00–11:00 Meeting</div></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">11:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">12:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">13:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">14:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">15:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">16:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">17:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">18:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">19:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol">20:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="headcol"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id='calendar'></div>
+
+<!--===============================================================================================-->
+<script src="{$path}Smarty/css/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="{$path}Smarty/css/login/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="{$path}Smarty/css/login/vendor/bootstrap/js/popper.js"></script>
+<script src="{$path}Smarty/css/login/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="{$path}Smarty/css/login/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="{$path}Smarty/css/login/vendor/daterangepicker/moment.min.js"></script>
+<script src="{$path}Smarty/css/login/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="{$path}Smarty/css/login/vendor/countdowntime/countdowntime.js"></script>
+
+</body>
+</html>

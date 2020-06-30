@@ -144,4 +144,17 @@ class MData
         return FObject::getMDataFromString(date("Y-m-d"));
     }
 
+    public function getNomeMese()
+    {
+        $mesi=array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
+        return $mesi[$this->mese];
+    }
+
+    public function getNomeGiorno()
+    {
+        $giorni=array("Lunedì", "Martedì", "Mercoledì", "Giovedì" ,"Venerdì", "Sabato", "Domenica");
+        return $giorni[$this->giorno];
+    }
+
+
 }

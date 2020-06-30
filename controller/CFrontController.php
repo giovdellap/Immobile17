@@ -80,7 +80,7 @@ class CFrontController
         if(CUtente::isLogged()){
             $utente = CSessionManager::getUtenteLoggato();
             if($utente instanceof MAmministratore)
-                CAdmin::adminHomepage();
+                CAdmin::homepage();
             else
                 CHome::homepage();
 

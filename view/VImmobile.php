@@ -32,7 +32,11 @@ class VImmobile
 
     public static function calendario(Smarty $smarty, array $appLiberi, MData $inizio, MData $fine, MImmobile $immobile)
     {
-        // TO DO
+        $smarty->assign("immobile", $immobile);
+        $smarty->assign("inizio", $inizio);
+        $smarty->assign("fine", $fine);
+        $smarty->assign("appLiberi", $appLiberi);
+        $smarty->display("calendario.tpl");
     }
 
     public function confermaAppuntamento(MUtente $utente, MAppuntamento $appuntamento)

@@ -87,7 +87,7 @@
         <div class="row">
 
             <!-- Single Featured Property -->
-            <div class="col-12 col-md-6 col-xl-4">
+            <div class="col-12 col-md-4 col-xl-4">
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
@@ -119,7 +119,7 @@
             </div>
 
             <!-- Single Featured Property -->
-            <div class="col-12 col-md-6 col-xl-4">
+            <div class="col-12 col-md-4 col-xl-4">
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
@@ -150,7 +150,7 @@
                 </div>
             </div>
             <!-- Single Featured Property -->
-            <div class="col-12 col-md-6 col-xl-4">
+            <div class="col-12 col-md-4 col-xl-4">
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">

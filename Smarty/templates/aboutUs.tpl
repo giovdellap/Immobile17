@@ -45,7 +45,7 @@
 <section class="about-content-wrapper section-padding-100">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-8">
                 <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
                     <h2>Selezioniamo le case perfette per te</h2>
                     <p>Suspendisse dictum enim sit amet libero</p>
@@ -55,21 +55,10 @@
                     <p class="wow fadeInUp" data-wow-delay="450ms">L'agenzia Immobile17 nasce dal desiderio di valorizzare al massimo l'esperienza maturata nel settore dal 1999.
                         L'utilizzo del proprio nome nel marchio vuol essere sinonimo di massima serietà, trasparenza e correttezza, VALORI CONCRETI sui quali è fondata la nostra piccola ma efficiente struttura.
                         Un'attività giovane e contemporanea che opera selezionando minuziosamente le migliori opportunità immobiliari, sia in vendita che in locazione. Ogni immobile che scegliamo di trattare è altamente qualificato, completo di documentazione e preparato alla vendita.
-                        Rivolgersi alla nostra Agenzia Immobiliare significa affidarsi a giovani e dinamici professionisti, regolarmente iscritti alla Camera di Commercio e alla Fiaip (Federazione Italiana Agenti Immobiliari Professionali) costantemente aggiornati mediante corsi di alta formazione professionale, pronti ad ascoltarvi attentamente al fine di risolvere ogni tipo di esigenza legata all'abitare.
-                        <br>
+                       <br>
                     </p>
-                    <p class="wow fadeInUp" data-wow-delay="450ms">Siamo in grado di offrire un'assistenza precisa e puntuale sin dal primo incontro. Tutto su misura e personalizzato come un abito sartoriale, tutto seguito direttamente da noi in prima persona: dalla valutazione dell'immobile al piano marketing dedicato, dalle visite coi clienti ai feed-back programmati, dalle trattative sino alla stipula dell'atto definitivo.
-                        La nostra figura è quella dell'AGENTE IMMOBILIARE PROFESSIONISTA e l'attenzione è principalmente rivolta, prima ancora che all'immobile, alla Persona ed alle sue esigenze: in questo modo gli interessi del Cliente sono sempre preminenti.
-                        Condividiamo ogni passaggio della compravendita con i nostri Clienti, in piena armonia e con la massima condivisione: la finalità è quella di raggiungere gli obiettivi prefissati con determinazione, spiccato dinamismo ed entusiasmo, mantenendo sempre un approccio diretto ed un'attenzione costante. Il rapporto confidenziale che si stabilisce è fondamentale per affrontare con serenità il delicato percorso di compravendita.
-                        Crediamo fortemente nei rapporti etici, nel rispetto reciproco e nella collaborazione qualificata: ogni tipo di contatto per noi è prezioso e diventa un'importante opportunità di crescita.
-                        Il costante sviluppo personale e professionale, i successi conseguiti nel tempo e la soddisfazione dei Clienti, hanno contribuito a far diventare oggi la nostra Azienda un rilevante punto di riferimento per chi necessita di un servizio efficiente e meticoloso, con professionalità e riservatezza.
-                        Ricerchiamo da sempre l'eccellenza nelle CASE, nella qualità delle RELAZIONI e nel modo di ABITARE.
-                    </p>
-
-
                 </div>
             </div>
-
             <div class="col-12 col-lg-4">
                 <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
                     <h2>Immobili in vista</h2>
@@ -174,10 +163,26 @@
 
 
                 </div>
-</section>
-<!-- ##### About Content Wrapper End ##### -->
+            </div>
+
+            <div class="col-12 col-lg-12">
+                <div class="about-content">
+                    <p class="wow fadeInUp" data-wow-delay="450ms">
+                        Rivolgersi alla nostra Agenzia Immobiliare significa affidarsi a giovani e dinamici professionisti, regolarmente iscritti alla Camera di Commercio e alla Fiaip (Federazione Italiana Agenti Immobiliari Professionali) costantemente aggiornati mediante corsi di alta formazione professionale, pronti ad ascoltarvi attentamente al fine di risolvere ogni tipo di esigenza legata all'abitare.Siamo in grado di offrire un'assistenza precisa e puntuale sin dal primo incontro. Tutto su misura e personalizzato come un abito sartoriale, tutto seguito direttamente da noi in prima persona: dalla valutazione dell'immobile al piano marketing dedicato, dalle visite coi clienti ai feed-back programmati, dalle trattative sino alla stipula dell'atto definitivo.
+                        La nostra figura è quella dell'AGENTE IMMOBILIARE PROFESSIONISTA e l'attenzione è principalmente rivolta, prima ancora che all'immobile, alla Persona ed alle sue esigenze: in questo modo gli interessi del Cliente sono sempre preminenti.
+                        Condividiamo ogni passaggio della compravendita con i nostri Clienti, in piena armonia e con la massima condivisione: la finalità è quella di raggiungere gli obiettivi prefissati con determinazione, spiccato dinamismo ed entusiasmo, mantenendo sempre un approccio diretto ed un'attenzione costante. Il rapporto confidenziale che si stabilisce è fondamentale per affrontare con serenità il delicato percorso di compravendita.
+                        Crediamo fortemente nei rapporti etici, nel rispetto reciproco e nella collaborazione qualificata: ogni tipo di contatto per noi è prezioso e diventa un'importante opportunità di crescita.
+                        Il costante sviluppo personale e professionale, i successi conseguiti nel tempo e la soddisfazione dei Clienti, hanno contribuito a far diventare oggi la nostra Azienda un rilevante punto di riferimento per chi necessita di un servizio efficiente e meticoloso, con professionalità e riservatezza.
+                        Ricerchiamo da sempre l'eccellenza nelle CASE, nella qualità delle RELAZIONI e nel modo di ABITARE.
+                    </p>
+
+
+                </div>
+            </div>
+
 
 </section>
+
 <!-- ##### About Content Wrapper End ##### -->
 
 <!-- ##### Call To Action Area Start ##### -->
