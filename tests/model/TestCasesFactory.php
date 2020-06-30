@@ -66,7 +66,7 @@ class TestCasesFactory
 
     public function createEmptyAppuntamento(float $orario): MAppuntamento
     {
-        $appuntamento = new MAppuntamento(1);
+        $appuntamento = new MAppuntamento();
         $inizio = new MData(2020, 5, 15, $orario);
         $appuntamento->setOrarioInizio($inizio);
         $fine = new MData(2020, 5, 15, $orario);

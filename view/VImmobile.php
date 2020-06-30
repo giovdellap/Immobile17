@@ -30,8 +30,21 @@ class VImmobile
         $smarty->display("immobili.tpl");
     }
 
+    /**
+     * @param Smarty $smarty
+     * @param array $appLiberi
+     * @param MData $inizio
+     * @param MData $fine
+     * @param MImmobile $immobile
+     * @throws SmartyException
+     */
     public static function calendario(Smarty $smarty, array $appLiberi, MData $inizio, MData $fine, MImmobile $immobile)
     {
+        $fd = new MData($inizio->getAnno(), $inizio->getMese(), $inizio->getGiorno(), $inizio->getOrario());
+        $smarty->assign("fd", $fd);
+        $tr = new MData($inizio->getAnno(), $inizio->getMese(), $inizio->getGiorno(), $inizio->getOrario());
+        $smarty->assign("tr", $tr);
+        $fine->nextDay();
         $smarty->assign("immobile", $immobile);
         $smarty->assign("inizio", $inizio);
         $smarty->assign("fine", $fine);

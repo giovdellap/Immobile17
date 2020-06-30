@@ -237,39 +237,43 @@ class MAgenzia
         $toCycleInizio = clone $orarioinizio;
         $toCycleFine = clone $orarioinizio;
         $toCycleFine->incrementoOrario(30);
+        echo("stocazzo");
+        while ($toCycleInizio !== $orariofine) {
+            while($toCycleInizio->getOrario()<=20) {
+                $toAdd = new MAppuntamento();
+                $toAdd->setId(-1);
+                foreach ($this->list_AgentiImmobiliari as &$agenti) {
+                    $appDisp = new MAppuntamento();
+                    $appDisp->setId(0000);
+                    $inizio = clone $toCycleInizio;
+                    $fine = clone $toCycleFine;
+                    $appDisp->setAppuntamento($inizio, $fine, $cliente, $immobile, $agenti);
 
-        while ($toCycleInizio->getOrario() <= $orariofine->getOrario()) {
-
-            $toAdd = new MAppuntamento();
-            $toAdd->setId(-1);
-            foreach ($this->list_AgentiImmobiliari as &$agenti)
-            {
-                $appDisp = new MAppuntamento();
-                $appDisp->setId(0000);
-                $inizio = clone $toCycleInizio;
-                $fine = clone $toCycleFine;
-                $appDisp->setAppuntamento($inizio, $fine, $cliente, $immobile, $agenti);
-
-                $context = new MValidatorContext($appDisp);
-                $valido = $context->validateAppuntamento(new MValidatorImmobile());
-                if ($valido)
-                    $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
-                if ($valido)
-                    $valido = $context->validateAppuntamento(new MValidatorCliente());
-                if ($valido) {
-                    if ($toAdd->getId() != -1) {
-                        if (sizeof($agenti->getListAppuntamenti()) < sizeof($toAdd->getAgenteImmobiliare()->getListAppuntamenti()))
-                            $toAdd = $appDisp;
+                    $context = new MValidatorContext($appDisp);
+                    $valido = $context->validateAppuntamento(new MValidatorImmobile());
+                    if ($valido)
+                        $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
+                    if ($valido)
+                        $valido = $context->validateAppuntamento(new MValidatorCliente());
+                    if ($valido) {
+                        if ($toAdd->getId() != -1) {
+                            if (sizeof($agenti->getListAppuntamenti()) < sizeof($toAdd->getAgenteImmobiliare()->getListAppuntamenti()))
+                                $toAdd = $appDisp;
+                        } else $toAdd = $appDisp;
                     }
-                    else $toAdd = $appDisp;
+
                 }
-
+                if ($toAdd->getId() != -1)
+                    $toReturn[] = $toAdd;
+                $toCycleInizio->incrementoOrario(15);
+                $toCycleFine->incrementoOrario(15);
+                echo("orario ".$toCycleInizio->getOrario()."\n");
             }
-            if($toAdd->getId() != -1)
-                $toReturn[] = $toAdd;
-            $toCycleInizio->incrementoOrario(15);
-            $toCycleFine->incrementoOrario(15);
-
+            echo("giorno: ".$toCycleInizio->getGiorno()."\n");
+            $toCycleInizio->nextDay();
+            $toCycleFine->nextDay();
+            $toCycleInizio->setOrario(7.30);
+            $toCycleFine->setOrario(8.0);
         }
         return $toReturn;
     }

@@ -45,7 +45,67 @@
     </header>
 
     <div class="outer">
+        <div class="wrap">
+            <div class = "container">
 
+
+                <div class="row">
+
+                    <div class="col-0 col-md-2 col-xl-2"></div>
+                    <!-- ORARI A SINISTRA -->
+                    <div class="col-2 col-md-1 col-xl-1">
+                        <div class="eventOK"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label></div>
+                        {assign var="timeReference" value="null"}
+                        {$timeReference = $tr}
+                        {while $timeReference->getOrario() <=20}
+                            <div class="row">
+                                <div class="headcol">{$timeReference->getOrario()}</div>
+                            </div>
+                        {$timeReference->incrementoOrario(30)}
+                        {/while}
+                    </div>
+
+                    {assign var="flowData" value="null"}
+                    {$flowData = $fd}
+                    {while $flowData->getGiorno() !== $fine->getGiorno()}
+                        <!-- GIORNO -->
+                        <div class="col-6 col-md-1 col-xl-1">
+                            <div class = "row">
+                                <div class = "headcol">{$flowData->getNomeGiorno()}, {$flowData->getGiorno()}</div>
+                            </div>
+                            {while $flowData->getOrario() <= 20}
+                                <!-- FASCIA ORARIA -->
+                                <div class="row">
+                                    <!-- CONTROLLO SE LA FASCIA ORARIA STA NEGLI APPLIBERI -->
+                                    {assign var="libero" value="false"}
+                                    {foreach $appLiberi as $app}
+                                        {if $app->getOrarioInizio() == $flowData}
+                                            {assign var="libero" value="true"}
+                                        {/if}
+                                    {/foreach}
+                                    {if $libero == "true"}
+                                        <div class="eventOK"><input id="check" type="checkbox" class="checkbox" /><label for="check"></label></div>
+                                    {else}
+                                        <div class="event "><input id="check" type="checkbox" class="checkbox" /><label for="check"></label></div>
+                                    {/if}
+
+                                </div>
+                                {$flowData->incrementoOrario(30)}
+                            {/while}
+                        </div>
+                        {$flowData->nextDay()}
+                    {/while}
+
+                    <div class="col-0 col-md-2 col-xl-2"></div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--
 
         <table>
             <thead>
@@ -57,6 +117,7 @@
             </tr>
             </thead>
         </table>
+
 
         <div class="wrap">
             <table class="offset">
@@ -337,6 +398,7 @@
                 </tbody>
             </table>
         </div>
+        -->
     </div>
 </div>
 

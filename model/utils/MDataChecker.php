@@ -34,8 +34,8 @@ class MDataChecker
      * In caso affermativo, ritorna True
      * @param MData $orarioInizio
      * @param MData $orarioFine
-     * @param MData $toCheck
-     * @param bool $inizio
+     * @param MData $toCheckInizio
+     * @param MData $toCheckFine
      * @return bool
      */
     public function SovrapposizioneEstesa(MData $orarioInizio, MData $orarioFine, MData $toCheckInizio, MData $toCheckFine): bool
@@ -50,5 +50,6 @@ class MDataChecker
             $newFine->incrementoOrario(30);
             return $this->sovrapposizione($newInizio, $newFine, $toCheckInizio, $toCheckFine);
         }
+
     }
 }

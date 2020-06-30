@@ -85,7 +85,7 @@
                     <br>
                     <br>
                     <div class="listings-btn-groups">
-                        <a href="#" class="btn south-btn">prenota un appuntamento</a>
+                        <a href="{$path}Immobile/calendario?id={$immobile->getId()}" class="btn south-btn">prenota un appuntamento</a>
 
                     </div>
                 </div>

@@ -20,7 +20,7 @@ class MAgenziaTest extends TestCase
 
         $immobile = $agenzia->getCalendario()->getAppuntamenti()[0]->getImmobile();
         $inizio = new MData(2020, 5, 15, 8.00);
-        $fine = new MData(2020, 5, 15, 11.30);
+        $fine = new MData(2020, 5, 16, 11.30);
 
         $disponibili = $agenzia->checkDisponibilità($cliente3, $immobile, $inizio, $fine);
 

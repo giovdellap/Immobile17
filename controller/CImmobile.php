@@ -75,21 +75,23 @@ class CImmobile
      * In caso l'utente non sia loggato carica la scheda dell'Immobile
      * DIZIONARIO PARAMETRI:
      *  - id = id immobile
-     *  - a = anno
-     *  - m = mese
-     *  - i = giorno inizio
-     *  - f = giorno fine
+     *  - ai = anno
+     *  - mi = mese
+     *  - gi = giorno inizio
+     *  - af = anno fine
+     *  - mf = mese fine
+     *  - gf = giorno fine
      * @param array $parameters
      */
     public static function calendario(array $parameters)
     {
-        if($_SERVER['REQUEST_METHOD'] == 'GET')
+        if($_SERVER['REQUEST_METHOD'] == 'GET' && key_exists('id', $parameters))
         {
             if(CUtente::isLogged())
             {
-
-                $inizio = new MData($parameters["a"], $parameters["m"], $parameters["i"], 8);
-                $fine = new MData($parameters["a"], $parameters["m"], $parameters["f"], 20);
+                $parameters = self::parametersFiller($parameters);
+                $inizio = new MData($parameters["ai"], $parameters["mi"], $parameters["gi"], 8);
+                $fine = new MData($parameters["af"], $parameters["mf"], $parameters["gf"], 20);
                 $immobile = FPersistentManager::visualizzaImmobile($parameters["id"]);
                 $fullAgenzia = FPersistentManager::getBusyWeek($parameters["id"], CSessionManager::getUtenteLoggato()->getId(),
                 $inizio, $fine);
@@ -112,6 +114,7 @@ class CImmobile
      *  - inizio = inizio appuntamento
      *  - fine = fine appuntamento
      *  - idImm = ID Immobile
+     *  - idAg = ID Agente Immobiliare
      */
     public static function prenota()
     {
@@ -146,5 +149,30 @@ class CImmobile
                 }
             } else VImmobile::visualizza(VSmartyFactory::basicSmarty(), $_POST['idImm']);
         } else CHome::homepage();
+    }
+
+    private static function parametersFiller(array $parameters):array
+    {
+        if(!key_exists('gi', $parameters))
+        {
+            if(date('w')== 0 || date('w')==6) {
+
+                $parameters['ai'] = date('Y', strtotime('next Monday'));
+                $parameters['mi'] = date('m', strtotime('next Monday'));
+                $parameters['gi'] = date('d', strtotime('next Monday'));
+                $parameters['af'] = date('Y', strtotime('next Sunday'));
+                $parameters['mf'] = date('m', strtotime('next Sunday'));
+                $parameters['gf'] = date('d', strtotime('next Sunday'));
+            }
+            else {
+                $parameters['ai'] = date('Y', strtotime('last Monday'));
+                $parameters['mi'] = date('m', strtotime('last Monday'));
+                $parameters['gi'] = date('d', strtotime('last Monday'));
+                $parameters['af'] = date('Y', strtotime('next Sunday'));
+                $parameters['mf'] = date('m', strtotime('next Sunday'));
+                $parameters['gf'] = date('d', strtotime('next Sunday'));
+            }
+        }
+        return $parameters;
     }
 }
