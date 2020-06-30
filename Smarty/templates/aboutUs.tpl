@@ -45,7 +45,7 @@
 <section class="about-content-wrapper section-padding-100">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-lg-7">
+            <div class="col-12 col-lg-6">
                 <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
                     <h2>Selezioniamo le case perfette per te</h2>
                     <p>Suspendisse dictum enim sit amet libero</p>
@@ -82,37 +82,100 @@
                     <div class="single-featured-property">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$Top1->getId()}"<img src="{$imgTop1[0]->viewImageHtml()}" alt="">
+                            <a href="{$path}Immobile/visualizza/{$immobile0->getId()}"><img src="{$imgTop1[0]->viewImageHTML()}"></a>
 
                             <div class="tag">
-                                <span>{$Top1->getTipoAnnuncio()}</span>
+                                <span>{$immobile0->getTipoAnnuncio()}</span>
                             </div>
                             <div class="list-price">
-                                <p>{$Top1->getPrezzo()}</p>
+                                <p>{$immobile0->getPrezzo()}</p>
                             </div>
                         </div>
                         <!-- Property Content -->
                         <div class="property-content">
-                            <h5>{$Top1->getNome()}</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$Top1->getIndirizzo()}</p>
-                            <p>{$Top1->getDescrizioneBreve()}</p>
+                            <h5>{$immobile0->getNome()}</h5>
+                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile0->getIndirizzo()}</p>
+                            <p>{$immobile0->getDescrizioneBreve()}</p>
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
                                 <div class="new-tag">
                                     <img src="{$path}Smarty/img/icons/new.png" alt="">
                                 </div>
+
                                 <div class="space">
                                     <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                    <span>{$Top1->getGrandezza()} mq</span>
+                                    <span>{$immobile0->getGrandezza()}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Slide -->
+                    <div class="single-featured-property">
+                        <!-- Property Thumbnail -->
+                        <div class="property-thumb">
+                            <a href="{$path}Immobile/visualizza/{$immobile1->getId()}"><img src="{$imgTop2[0]->viewImageHTML()}"></a>
+
+                            <div class="tag">
+                                <span>{$immobile1->getTipoAnnuncio()}</span>
+                            </div>
+                            <div class="list-price">
+                                <p>{$immobile1->getPrezzo()}</p>
+                            </div>
+                        </div>
+                        <!-- Property Content -->
+                        <div class="property-content">
+                            <h5>{$immobile1->getNome()}</h5>
+                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile1->getIndirizzo()}</p>
+                            <p>{$immobile1->getDescrizioneBreve()}</p>
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                <div class="new-tag">
+                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
+                                </div>
+
+                                <div class="space">
+                                    <img src="{$path}Smarty/img/icons/space.png" alt="">
+                                    <span>{$immobile1->getGrandezza()}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Single Slide -->
+                    <div class="single-featured-property">
+                        <!-- Property Thumbnail -->
+                        <div class="property-thumb">
+                            <a href="{$path}Immobile/visualizza/{$immobile2->getId()}"><img src="{$imgTop3[0]->viewImageHTML()}"></a>
+
+                            <div class="tag">
+                                <span>{$immobile2->getTipoAnnuncio()}</span>
+                            </div>
+                            <div class="list-price">
+                                <p>{$immobile2->getPrezzo()}</p>
+                            </div>
+                        </div>
+                        <!-- Property Content -->
+                        <div class="property-content">
+                            <h5>{$immobile2->getNome()}</h5>
+                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile2->getIndirizzo()}</p>
+                            <p>{$immobile2->getDescrizioneBreve()}</p>
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                <div class="new-tag">
+                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
+                                </div>
+
+                                <div class="space">
+                                    <img src="{$path}Smarty/img/icons/space.png" alt="">
+                                    <span>{$immobile2->getGrandezza()}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    </div>
+
                 </div>
-            </div>
-        </div>
+</section>
+<!-- ##### About Content Wrapper End ##### -->
 
 </section>
 <!-- ##### About Content Wrapper End ##### -->

@@ -91,7 +91,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <a href="{$path}Immobile/visualizza/{$immobile0->getId()}"><img src="{$imgTop1[0]->viewImageHTML()}" alt="">
+                        <a href="{$path}Immobile/visualizza/{$immobile0->getId()}"><img src="{$imgTop1[0]->viewImageHTML()}" alt="" style="width: 450px; height: 270px">
 
                             <div class="tag">
                                 <span>{$immobile0->getTipoAnnuncio()}</span>
@@ -123,7 +123,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <a href="{$path}Immobile/visualizza/{$immobile1->getId()}"><img src="{$imgTop2[0]->viewImageHTML()}" alt="">
+                        <a href="{$path}Immobile/visualizza/{$immobile1->getId()}"><img src="{$imgTop2[0]->viewImageHTML()}" alt="" style="width: 450px; height: 270px">
 
                         <div class="tag">
                             <span>{$immobile1->getTipoAnnuncio()}</span>
@@ -154,7 +154,7 @@
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="200ms">
                     <!-- Property Thumbnail -->
                     <div class="property-thumb">
-                        <a href="{$path}Immobile/visualizza/{$immobile2->getId()}"><img src="{$imgTop3[0]->viewImageHTML()}" alt="">
+                        <a href="{$path}Immobile/visualizza/{$immobile2->getId()}"><img src="{$imgTop3[0]->viewImageHTML()}" alt="" style="width: 450px; height: 270px">
 
                         <div class="tag">
                             <span>{$immobile2->getTipoAnnuncio()}</span>
