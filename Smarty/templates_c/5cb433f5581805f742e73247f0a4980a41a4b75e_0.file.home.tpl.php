@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:27:36
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 16:49:21
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef8d308c4f6a2_09395894',
+  'unifunc' => 'content_5ef9ff71b1fad0_92945899',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5cb433f5581805f742e73247f0a4980a41a4b75e' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/home.tpl',
-      1 => 1593362131,
+      1 => 1593439486,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5ef8d308c4f6a2_09395894 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9ff71b1fad0_92945899 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 
@@ -38,7 +38,7 @@ function content_5ef8d308c4f6a2_09395894 (Smarty_Internal_Template $_smarty_tpl)
 
     <!-- Favicon  -->
     <link rel="icon" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smarty/img/core-img/favicon.ico">
+Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
@@ -91,7 +91,7 @@ Smarty/style.css">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Prega nella chiesa più figa del mondo</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">collemaggio</h2>
                         </div>
                     </div>
                 </div>
@@ -261,7 +261,8 @@ Smarty/img/bg-img/cta.jpg)">
                 <div class="cta-content text-center">
                     <h2 class="wow fadeInUp" data-wow-delay="300ms">Cerchi casa in affitto?</h2>
                     <h6 class="wow fadeInUp" data-wow-delay="400ms">Dai un'occhiata alle nostre migliori proposte</h6>
-                    <a href="#" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Affitti</a>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Immobile/ricerca?ti=Affitto" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Affitti</a>
                 </div>
             </div>
         </div>

@@ -180,9 +180,22 @@ class FPersistentManager
         return FImmobile::modificaImmobile($immobile);
     }
 
+    /**
+     * Ritorna i 3 immobili con il prezzo maggiore
+     * @return array
+     */
     public static function getImmobiliHomepage():array
     {
         return FImmobile::getImmobiliHomepage();
+    }
+
+    /**
+     * Ritorna un array con tutti gli immobili attivi
+     * @return array
+     */
+    public static function getImmobiliAttivi():array
+    {
+        return FImmobile::getByType("attivo", true);
     }
 
 

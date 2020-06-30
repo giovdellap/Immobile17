@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 20:14:47
+/* Smarty version 3.1.34-dev-7, created on 2020-06-30 09:50:21
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/advanceSearch.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef8de17cf2621_63016487',
+  'unifunc' => 'content_5efaeebd1c4346_96312061',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'bad36880b97d00b621c2925ec287fa99045ce320' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/advanceSearch.tpl',
-      1 => 1593368004,
+      1 => 1593439486,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef8de17cf2621_63016487 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5efaeebd1c4346_96312061 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!--START-->
 <div class="south-search-area" >
     <div class="container">
@@ -38,7 +38,7 @@ function content_5ef8de17cf2621_63016487 (Smarty_Internal_Template $_smarty_tpl)
 
                             <div class="col-12 col-md-4 col-lg-3">
                                 <div class="form-group">
-                                    <?php if ($_smarty_tpl->tpl_vars['pc']->value === 'notSetted') {?>
+                                    <?php if ($_smarty_tpl->tpl_vars['pc']->value == 'notSetted') {?>
                                         <input type="input" class="form-control" name="input" placeholder="Parola Chiave">
                                     <?php } else { ?>
                                         <input type="input" class="form-control" name="input" placeholder="<?php echo $_smarty_tpl->tpl_vars['pc']->value;?>
@@ -103,7 +103,7 @@ function content_5ef8de17cf2621_63016487 (Smarty_Internal_Template $_smarty_tpl)
                             <div class="col-12 col-md-6 col-lg-12 col-xl-2 d-flex ">
                                 <!-- Submit -->
                                 <div class="form-group mb-0">
-                                    <button type="submit" class="btn south-btn">Search</button>
+                                    <button type="submit" class="btn south-btn">Cerca</button>
                                 </div>
                             </div>
                     </form>

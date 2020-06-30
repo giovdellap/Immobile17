@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-27 22:02:39
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 16:49:21
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/footer.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef7a5df285427_62199886',
+  'unifunc' => 'content_5ef9ff71b53916_61519510',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '69a1d1ba480e565fe8a21d9fed3f24c035723ea1' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/footer.tpl',
-      1 => 1593168618,
+      1 => 1593439486,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef7a5df285427_62199886 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9ff71b53916_61519510 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- ##### Footer Area Start ##### -->
 <footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
     <!-- Main Footer Area -->

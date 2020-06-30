@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:37:51
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 16:49:21
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef8d56f4a9ac1_17940320',
+  'unifunc' => 'content_5ef9ff71b424d6_33836899',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f02469b9c02da16e9360c7301879975be0e2917f' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/header.tpl',
-      1 => 1593365866,
+      1 => 1593439486,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef8d56f4a9ac1_17940320 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9ff71b424d6_33836899 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- ##### Header Area Start ##### -->
 <header class="header-area">
 
@@ -57,7 +57,8 @@ Smarty/img/core-img/logo_1.png" alt=""></a>
                             <li><a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 ">Home</a></li>
 
-                            <li><a href="contact.html">About Us</a></li>
+                            <li><a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Home/aboutUs">About Us</a></li>
 
                             <li class="cn-dropdown-item has-down pr12"><a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 Immobile/visualizzaImmobili">Immobili</a>
@@ -79,8 +80,10 @@ Utente/login">Login</a></li>
                                 <li class="cn-dropdown-item has-down pr12"><a href="#"><?php echo $_smarty_tpl->tpl_vars['nomeutente']->value;?>
 </a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Area Riservata</a></li>
-                                        <li><a href="about-us.html">Logout</a></li>
+                                        <li><a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Utente/visualizzaProfilo">Area Riservata</a></li>
+                                        <li><a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Utente/logout">Logout</a></li>
 
                                     </ul>
                                 </li>

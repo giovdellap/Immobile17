@@ -11,4 +11,11 @@ class CSessionManager
         else
             return FPersistentManager::visualizzaUtente($id);
     }
+
+    public static function adminLogged()
+    {
+        $id = $_SESSION['id'];
+        if($id == 'AM1') return true;
+        else return false;
+    }
 }

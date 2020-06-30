@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 20:26:56
+/* Smarty version 3.1.34-dev-7, created on 2020-06-30 09:51:02
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef8e0f04b53c2_44211571',
+  'unifunc' => 'content_5efaeee6acc8e2_15795996',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '89955cc2a4780fbd93ca7c83e377afffd7b6ee9e' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/login.tpl',
-      1 => 1593368812,
+      1 => 1593439486,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef8e0f04b53c2_44211571 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5efaeee6acc8e2_15795996 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 <head>
@@ -139,45 +139,45 @@ Utente/registrazione" class="txt2">
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/jquery/jquery-3.2.1.min.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/jquery/jquery-3.2.1.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/animsition/js/animsition.min.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/animsition/js/animsition.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/bootstrap/js/popper.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/bootstrap/js/popper.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
->
-<!--===============================================================================================-->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/select2/select2.min.js"><?php echo '</script'; ?>
+Smarty/vendor/bootstrap/js/bootstrap.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/daterangepicker/moment.min.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/daterangepicker/daterangepicker.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/select2/select2.min.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyvendor/countdowntime/countdowntime.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/daterangepicker/moment.min.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/css/login/vendor/daterangepicker/daterangepicker.js"><?php echo '</script'; ?>
 >
 <!--===============================================================================================-->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
-Smartyjs/main.js"><?php echo '</script'; ?>
+Smarty/css/login/vendor/countdowntime/countdowntime.js"><?php echo '</script'; ?>
+>
+<!--===============================================================================================-->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Smarty/css/login/js/main.js"><?php echo '</script'; ?>
 >
 
 </body>

@@ -29,6 +29,13 @@ class VSmartyFactory
         return $smarty;
     }
 
+    public static function adminSmarty(MAmministratore $admin)
+    {
+        $smarty = self::basicSmarty();
+        $smarty->assign("admin", $admin);
+        return $smarty;
+    }
+
     /**
      * Ritorna un oggetto Smarty con assegnati il percorso globale, l'utente passato come parametro e una stringa di errore
      * @param Smarty $smarty

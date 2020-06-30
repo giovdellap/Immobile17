@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-06-28 19:34:16
+/* Smarty version 3.1.34-dev-7, created on 2020-06-29 16:49:20
   from '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/registrazione.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5ef8d4980b7a92_13691583',
+  'unifunc' => 'content_5ef9ff70de1ce2_71022879',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '62ef73f7b6dc22c50b69a98a6d4ae7dbfb901876' => 
     array (
       0 => '/opt/lampp/htdocs/AgenziaImmobiliare/Smarty/templates/registrazione.tpl',
-      1 => 1593362131,
+      1 => 1593439486,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ef8d4980b7a92_13691583 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ef9ff70de1ce2_71022879 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="it">
 <head>
@@ -68,7 +68,8 @@ Smarty/css/login/css/main.css">
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form class="login100-form validate-form flex-sb flex-w">
+            <form action="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
+Utente/registrazione" method="POST" class="login100-form validate-form flex-sb flex-w">
                 <div>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
 "><img src="<?php echo $_smarty_tpl->tpl_vars['path']->value;?>
@@ -82,7 +83,7 @@ Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z
 						Nome
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il nome">
-                    <input class="input100" type="text" name="name" >
+                    <input class="input100" type="text" required name="nome" >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -90,7 +91,7 @@ Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z
 						Cognome
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il cognome">
-                    <input class="input100" type="text" name="username" >
+                    <input class="input100" type="text" required name="cognome" >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -98,18 +99,15 @@ Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z
 						Data di nascita
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "inserire la data di nascita">
-                    <input class="input100" type="date" name="date"  >
+                    <input class="input100" type="date" name="date" required name="date"  >
                     <span class="focus-input100"></span>
                 </div>
-
-
-
 
                 <span class="txt1 p-b-11">
 						Email
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
-                    <input class="input100" type="text" name="email"  >
+                    <input class="input100" type="text" required name="email"  >
                     <span class="focus-input100"></span>
                 </div>
 
@@ -120,7 +118,7 @@ Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass" placeholder="**********">
+                    <input class="input100" type="password" required name="password" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -131,7 +129,7 @@ Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-                    <input class="input100" type="password" name="pass" placeholder="**********">
+                    <input class="input100" type="password" required name="password" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
 
@@ -156,7 +154,7 @@ Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z
                     <button id="insert_image" class="sign__btn" type="button" style="width: 200px" onclick="document.getElementById('choose_image').click()">Carica Immagine</button>
                     <input id="choose_image" type="file" name="propic" onchange="validateImage()" style="display: none" accept=".jpg, .jpeg, .gif, .png">
                     <br>
-                    <!--<b><p id="image_name" class="faq__text" style="text-align: center; max-width: 300px">Nessuna immagine caricata (MAX 2MB)</p></b>-->
+                    <b><p id="image_name" class="faq__text" style="text-align: center; max-width: 300px">Nessuna immagine caricata (MAX 2MB)</p></b>
 
                     <br>
                     <br>
