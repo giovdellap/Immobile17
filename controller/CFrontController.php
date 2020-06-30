@@ -95,6 +95,7 @@ class CFrontController
      */
     public function queryUnpacker(string $query):array
     {
+
         $parameters = explode('&', $query);
         $toReturn = array();
         foreach ($parameters as $item)

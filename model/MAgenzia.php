@@ -240,10 +240,12 @@ class MAgenzia
 
         while ($toCycleInizio->getOrario() <= $orariofine->getOrario()) {
 
-            $toAdd = new MAppuntamento(-1);
+            $toAdd = new MAppuntamento();
+            $toAdd->setId(-1);
             foreach ($this->list_AgentiImmobiliari as &$agenti)
             {
-                $appDisp = new MAppuntamento(0000);
+                $appDisp = new MAppuntamento();
+                $appDisp->setId(0000);
                 $inizio = clone $toCycleInizio;
                 $fine = clone $toCycleFine;
                 $appDisp->setAppuntamento($inizio, $fine, $cliente, $immobile, $agenti);

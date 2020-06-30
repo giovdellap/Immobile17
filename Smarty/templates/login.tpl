@@ -99,21 +99,21 @@
 <div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
-<script src="{$path}Smarty/css/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="{$path}Smarty/others/login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smarty/css/login/vendor/animsition/js/animsition.min.js"></script>
+<script src="{$path}Smarty/others/login/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smarty/css/login/vendor/bootstrap/js/popper.js"></script>
-<script src="{$path}Smarty/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="{$path}Smarty/others/login/vendor/bootstrap/js/popper.js"></script>
+<script src="{$path}Smarty/others/login/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smarty/css/login/vendor/select2/select2.min.js"></script>
+<script src="{$path}Smarty/others/login/vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smarty/css/login/vendor/daterangepicker/moment.min.js"></script>
-<script src="{$path}Smarty/css/login/vendor/daterangepicker/daterangepicker.js"></script>
+<script src="{$path}Smarty/others/login/vendor/daterangepicker/moment.min.js"></script>
+<script src="{$path}Smarty/others/login/vendor/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smarty/css/login/vendor/countdowntime/countdowntime.js"></script>
+<script src="{$path}Smarty/others/login/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-<script src="{$path}Smarty/css/login/js/main.js"></script>
+<script src="{$path}Smarty/others/login/js/main.js"></script>
 
 </body>
 </html>

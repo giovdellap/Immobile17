@@ -36,6 +36,7 @@ class VImmobile
         $smarty->assign("inizio", $inizio);
         $smarty->assign("fine", $fine);
         $smarty->assign("appLiberi", $appLiberi);
+        $smarty->assign("giorni", VCalendario::getDayStrings($inizio, $fine));
         $smarty->display("calendario.tpl");
     }
 

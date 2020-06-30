@@ -3,7 +3,7 @@
 
 class MAppuntamento
 {
-    private String $id;
+    private string $id;
     private MData $orario_inizio;
     private MData $orario_fine;
     private MCliente $cliente;
@@ -29,17 +29,17 @@ class MAppuntamento
     }
 
     /**
-     * @return String
+     * @return string
      */
-    public function getId(): String
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param String $id
+     * @param string $id
      */
-    public function setId(String $id): void
+    public function setId(string $id): void
     {
         $this->id = $id;
     }

@@ -147,13 +147,14 @@ class MData
     public function getNomeMese()
     {
         $mesi=array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
-        return $mesi[$this->mese];
+        return $mesi[$this->mese-1];
     }
 
     public function getNomeGiorno()
     {
-        $giorni=array("Lunedì", "Martedì", "Mercoledì", "Giovedì" ,"Venerdì", "Sabato", "Domenica");
-        return $giorni[$this->giorno];
+        $giorni=array("Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì" ,"Venerdì", "Sabato");
+        $sett = date("w", mktime(0,0,0,$this->mese, $this->giorno, $this->anno));
+        return $giorni[$sett];
     }
 
 

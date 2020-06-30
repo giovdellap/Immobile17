@@ -87,10 +87,11 @@ class CImmobile
         {
             if(CUtente::isLogged())
             {
+
                 $inizio = new MData($parameters["a"], $parameters["m"], $parameters["i"], 8);
                 $fine = new MData($parameters["a"], $parameters["m"], $parameters["f"], 20);
                 $immobile = FPersistentManager::visualizzaImmobile($parameters["id"]);
-                $fullAgenzia = FPersistentManager::getBusyWeek($parameters["id"], CSessionManager::getUtenteLoggato(),
+                $fullAgenzia = FPersistentManager::getBusyWeek($parameters["id"], CSessionManager::getUtenteLoggato()->getId(),
                 $inizio, $fine);
                 $appLiberi = $fullAgenzia->checkDisponibilità(CSessionManager::getUtenteLoggato(), $immobile, $inizio, $fine);
                 $utente = CSessionManager::getUtenteLoggato();
