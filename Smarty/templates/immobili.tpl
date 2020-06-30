@@ -53,8 +53,8 @@
             <div class="col-12 col-md-6 col-xl-4">
                 <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
                     <!-- Property Thumbnail -->
-                    <div class="property-thumb">
-                        <a href="{$path}Immobile/visualizza/{$item->getId()}"><img src={$item->getPresentationImg()} alt="">
+                    <div class="property-thumb"   >
+                        <a href="{$path}Immobile/visualizza/{$item->getId()}"><img src="{$item->getPresentationImg()}" alt=""  style="width: 450px; height: 270px">
 
                         <div class="tag">
                             <span>{$item->getTipoAnnuncio()}</span>
