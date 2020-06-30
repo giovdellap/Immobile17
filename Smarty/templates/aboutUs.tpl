@@ -188,7 +188,7 @@
                 <div class="cta-content text-center">
                     <h2 class="wow fadeInUp" data-wow-delay="300ms">Cerchi casa?</h2>
                     <h6 class="wow fadeInUp" data-wow-delay="400ms">Dai un'occhiata alle nostre migliori proposte</h6>
-                    <a href="#" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Cerca</a>
+                    <a href="{$path}Immobile/visualizzaImmobili" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Cerca</a>
                 </div>
             </div>
         </div>

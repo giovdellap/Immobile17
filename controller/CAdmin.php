@@ -9,7 +9,7 @@ class CAdmin
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == GET)
+                if($_SERVER['REQUEST_METHOD'] == 'GET')
                 {
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     VAdmin::showHomepage($smarty);
@@ -27,7 +27,7 @@ class CAdmin
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == GET)
+                if($_SERVER['REQUEST_METHOD'] == 'GET')
                 {
                     $immobili = FPersistentManager::getImmobiliAttivi();
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
@@ -46,7 +46,7 @@ class CAdmin
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == GET)
+                if($_SERVER['REQUEST_METHOD'] == 'GET')
                 {
                     $immobili = FPersistentManager::visualizzaImmobili();
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
@@ -65,12 +65,12 @@ class CAdmin
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == GET)
+                if($_SERVER['REQUEST_METHOD'] == 'GET')
                 {
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     VAdmin::showAggiuntaImmobile($smarty);
                 }
-                else if($_SERVER['REQUEST_METHOD'] == POST)
+                else if($_SERVER['REQUEST_METHOD'] == 'POST')
                 {
                     $immobile = self::getImmobilebyPostRequest();
                     FPersistentManager::addImmobile($immobile);
@@ -88,13 +88,13 @@ class CAdmin
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == GET)
+                if($_SERVER['REQUEST_METHOD'] == 'GET')
                 {
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     $immobile = FPersistentManager::visualizzaImmobile($id);
                     VAdmin::showImmobile($smarty, $immobile);
                 }
-                else if($_SERVER['REQUEST_METHOD'] == POST)
+                else if($_SERVER['REQUEST_METHOD'] == 'POST')
                 {
                     $immobile = self::getImmobilebyPostRequest();
                     $immobile->setId($id);

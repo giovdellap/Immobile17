@@ -83,7 +83,7 @@ class CImmobile
      */
     public static function calendario(array $parameters)
     {
-        if($_SERVER['REQUEST_METHOD'] == GET)
+        if($_SERVER['REQUEST_METHOD'] == 'GET')
         {
             if(CUtente::isLogged())
             {
@@ -114,7 +114,7 @@ class CImmobile
      */
     public static function prenota()
     {
-        if ($_SERVER['REQUEST_METHOD'] == POST) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (CUtente::isLogged()) {
                 $inizio = new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], 8);
                 $fine = new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], 20);

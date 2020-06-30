@@ -198,21 +198,21 @@ tbody tr td {
     height: 200%;
 }
 
-/**
-thead {
+/*
+thead
     tr {
       display: block;
       position: relative;
     }
-  }
+
 tbody {
     display: block;
     overflow: auto;
     width: 800px;
     height: 100%;
   }
-*/
 
+*/
 
 
 td:hover:after {
@@ -226,7 +226,7 @@ td:hover:after {
 
 button.secondary {
     border: 1px solid rgba(0, 0, 0, 0.1);
-    background: white;
+    background: darkgrey;
     padding: 0.5rem 0.75rem;
     font-size: 14px;
     border-radius: 2px;
