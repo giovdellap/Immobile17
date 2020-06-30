@@ -31,7 +31,7 @@
                         <ul>
                             <li><a href="{$path}">Home</a></li>
 
-                            <li><a href="{$path}Home/aboutUs">About Us</a></li>
+
 
                             <li class="cn-dropdown-item has-down pr12"><a href="{$path}Immobile/visualizzaImmobili">Immobili</a>
                                 <ul class="dropdown">
@@ -54,6 +54,8 @@
                                     </ul>
                                 </li>
                             {/if}
+
+                            <li><a href="{$path}Home/aboutUs">About Us</a></li>
 
                         </ul>
                     </div>
