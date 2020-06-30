@@ -199,12 +199,12 @@ tbody tr td {
 }
 
 /*
-thead
+thead{
     tr {
       display: block;
       position: relative;
     }
-
+}
 tbody {
     display: block;
     overflow: auto;

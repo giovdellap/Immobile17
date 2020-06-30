@@ -103,9 +103,7 @@ class CUtente
             $utente->setDataNascita(self::getDateFromRegistrazione());
             $utente->setIscrizione(MData::getCurrentTime());
             $utente->setAttivato(FALSE);
-            print_r($utente);
             $db_result = FPersistentManager::registrazione($utente);
-            print_r($db_result);
             if($db_result === "OK")
             {
                 if (session_status() == PHP_SESSION_NONE)

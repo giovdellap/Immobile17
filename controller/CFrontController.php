@@ -7,7 +7,7 @@ class CFrontController
     {
         $path = $_SERVER['REQUEST_URI'];
         $resource = explode('/', $path);
-        print_r($_POST);
+
 
         array_shift($resource);
         array_shift($resource);
