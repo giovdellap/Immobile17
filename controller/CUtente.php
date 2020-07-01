@@ -30,7 +30,6 @@ class CUtente
     public static function checkLogin()
     {
         $loginUser = VReceiverProxy::loginUser();
-        print_r($loginUser);
         $db_result = FPersistentManager::login($loginUser->getEmail(), $loginUser->getPassword());
         switch ($db_result) {
 
@@ -43,7 +42,6 @@ class CUtente
                 $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
                 $immobili = FPersistentManager::getImmobiliHomepage();
                 CSessionManager::createSession(FPersistentManager::loadIDbyEMail($loginUser->getEmail()));
-                print_r(session_status());
                 $smarty = VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato());
                 VHome::homepage($smarty, $agenzia, $immobili);
                 break;

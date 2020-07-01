@@ -21,6 +21,8 @@ class CSessionManager
 
     public static function createSession(string $id)
     {
+        ini_set('session.gc_maxlifetime', 3600);
+        session_set_cookie_params(3600);
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
             $_SESSION['id'] = $id;
@@ -29,6 +31,8 @@ class CSessionManager
 
     public static function sessionExists(): bool
     {
+        if(session_status() == PHP_SESSION_NONE)
+            session_start();
         $logged = false;
         if (isset($_COOKIE['PHPSESSID']))
             if (isset($_SESSION['id']))

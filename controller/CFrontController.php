@@ -92,10 +92,12 @@ class CFrontController
     public function queryUnpacker(array $parameters):array
     {
         $toReturn = array();
-        for($i=0;$i<count($parameters);$i+2)
-            if(key_exists($i, $parameters) && key_exists($i+1, $parameters))
-                $toReturn[$parameters[$i]] = $parameters[$i+1];
+        for($i=0;$i<count($parameters);$i++) {
 
+            if (key_exists($i, $parameters) && key_exists($i + 1, $parameters))
+                $toReturn[$parameters[$i]] = $parameters[$i + 1];
+            $i++;
+        }
         return $toReturn;
     }
 

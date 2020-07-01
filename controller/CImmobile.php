@@ -37,7 +37,6 @@ class CImmobile
      */
     public static function visualizzaImmobili()
     {
-        print_r(session_status());
         if (VReceiverProxy::getRequest()) {
             $immobili = FPersistentManager::visualizzaImmobili();
             if (CSessionManager::sessionExists()) {
