@@ -237,8 +237,7 @@ class MAgenzia
         $toCycleInizio = clone $orarioinizio;
         $toCycleFine = clone $orarioinizio;
         $toCycleFine->incrementoOrario(30);
-        echo("stocazzo");
-        while ($toCycleInizio !== $orariofine) {
+        //while ($toCycleInizio !== $orariofine) {
             while($toCycleInizio->getOrario()<=20) {
                 $toAdd = new MAppuntamento();
                 $toAdd->setId(-1);
@@ -267,13 +266,11 @@ class MAgenzia
                     $toReturn[] = $toAdd;
                 $toCycleInizio->incrementoOrario(15);
                 $toCycleFine->incrementoOrario(15);
-                echo("orario ".$toCycleInizio->getOrario()."\n");
-            }
-            echo("giorno: ".$toCycleInizio->getGiorno()."\n");
-            $toCycleInizio->nextDay();
-            $toCycleFine->nextDay();
-            $toCycleInizio->setOrario(7.30);
-            $toCycleFine->setOrario(8.0);
+            //}
+            //$toCycleInizio->nextDay();
+            //$toCycleFine->nextDay();
+            //$toCycleInizio->setOrario(7.30);
+            //$toCycleFine->setOrario(8.0);
         }
         return $toReturn;
     }
