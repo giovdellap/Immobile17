@@ -38,8 +38,9 @@
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
-					<span class="login100-form-title p-b-32">
-						Registrati
+                <span class="login100-form-title p-b-32">
+                    <br>
+						Aggiunta immobile
 					</span>
 
                 <span class="txt1 p-b-11">
@@ -51,51 +52,77 @@
                 </div>
 
                 <span class="txt1 p-b-11">
-						Cognome
+						Città
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il cognome">
-                    <input class="input100" type="text" required name="cognome" >
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la città">
+                    <input class="input100" type="text" required name="citta" >
                     <span class="focus-input100"></span>
                 </div>
 
                 <span class="txt1 p-b-11">
-						Data di nascita
+						Indirizzo
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "inserire la data di nascita">
-                    <input class="input100" type="date" name="date" required name="date"  >
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo">
+                    <input class="input100" type="text" required name="indirizzo" placeholder="es. via Roma 1" >
                     <span class="focus-input100"></span>
                 </div>
 
                 <span class="txt1 p-b-11">
-						Email
+						Tipologia
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
-                    <input class="input100" type="text" required name="email"  >
-                    <span class="focus-input100"></span>
+                <div class="col-12 col-md-12 col-xl-12">
+                <div class="form-group">
+                    <select class="form-control" id="catagories">
+                        <option>Tutte le categorie</option>
+                        <option>Monolocale</option>
+                        <option>Bilocale</option>
+                        <option>Farm</option>
+                        <option>House</option>
+                        <option>Store</option>
+                    </select>
+                </div>
                 </div>
 
                 <span class="txt1 p-b-11">
-						Password
+						Dimensione
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la dimensione">
+                    <input class="input100" type="text" required name="dimensione"  placeholder="es. 500 (in mq)" >
                     <span class="focus-input100"></span>
                 </div>
 
+
+
                 <span class="txt1 p-b-11">
-						Conferma Password
+						Tipo Annuncio
+					</span>
+                <div class="col-12 col-md-12 col-xl-12">
+                <div class="form-group">
+                    <select class="form-control" id="cities">
+                        <option>Vendita/Affitto</option>
+                        <option>Vendita</option>
+                        <option>Affitto</option>
+                    </select>
+                </div>
+                </div>
+                <span class="txt1 p-b-11">
+						Prezzo
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
+                    <input class="input100" type="password" required name="prezzo" placeholder="es. 20000 (in €)">
                     <span class="focus-input100"></span>
                 </div>
 
+                <span class="txt1 p-b-11">
+						Descrizione
+					</span>
+                <div class="wrap-input100 validate-input m-b-20" data-validate = "Inserire la descrizione">
+                    <input class="input100" type="text" required name="descrizione" >
+                    <span class="focus-input100"></span>
+                </div>
+
+
+                {include file="loadImage.tpl"}
 
                 <!--
                 <div class="flex-m w-full p-b-33">
@@ -113,7 +140,8 @@
                 </div>
                 -->
 
-                {include file="loadImage.tpl"}
+
+
 
                 <br>
                 <br>
@@ -121,14 +149,9 @@
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Registrati
+                            Aggiungi
                         </button>
                     </div>
-
-                    <a href="{$path}Utente/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-                        Hai già un account?
-
-                    </a>
                 </div>
             </form>
         </div>

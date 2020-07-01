@@ -58,13 +58,14 @@
 
 					</span>
 
-                <div class="container-login100-form-btn"   style="position:absolute; top:310px; left:370px; z-index:1">
-                    <a href = "{$path}"><button class="login100-form-btn">
+                <div style="position:absolute; top:310px; left:370px; z-index:1">
+                    <a href = "{$path}">
+                        <span class="txt1 p-b-3">
                         Torna alla Home
-                    </button></a>
+                        </span>
+                    </a>
 
                 </div>
-
 
 
             </form>

@@ -172,4 +172,14 @@ class CUtente
 
         return new MData($date[0],$date[1],$date[2], 0);
     }
+
+    public static function modificaDati()
+    {
+        //todo
+    }
+
+    public static function eliminaAccount()
+    {
+        //todo
+    }
 }

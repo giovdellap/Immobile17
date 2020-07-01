@@ -26,6 +26,11 @@ class VUtente
         $smarty->display("profilo.tpl");
     }
 
+    public static function modificaDati(Smarty $smarty)
+    {
+        $smarty->display("modificaDati.tpl");
+    }
+
     public static function showCalendario(Smarty $smarty, array $appuntamenti)
     {
         // TO DO

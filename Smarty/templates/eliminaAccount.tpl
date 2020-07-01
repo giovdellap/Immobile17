@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Registrati</title>
-
+    <title>Elimina Account</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -26,114 +25,62 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/main.css">
-    <!--===============================================================================================-->
 
+    <!--===============================================================================================-->
 </head>
 <body>
 
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/registrazione" method="POST" class="login100-form validate-form flex-sb flex-w">
-                <div>
-                    <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
-                </div>
-					<span class="login100-form-title p-b-32">
-						Registrati
+            <form class="login100-form validate-form flex-sb flex-w">
+                <a class="nav-brand" >
+                    <img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
+
+                <span class="login100-form-title p-b-30">
+                    <br>
+						Elimina Account
 					</span>
 
-                <span class="txt1 p-b-11">
-						Nome
+
+                <span class="txt1 p-b-3">
+						Ci Dispiace!
+
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il nome">
-                    <input class="input100" type="text" required name="nome" >
-                    <span class="focus-input100"></span>
-                </div>
 
-                <span class="txt1 p-b-11">
-						Cognome
+
+                <span class="txt3 p-b-11">
+						Sei sicura/o di voler eliminare il tuo accont? Puoi ancora tornare indietro e restare con noi
+
+                    <br>
+                    <br>
+                    <br>
+
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il cognome">
-                    <input class="input100" type="text" required name="cognome" >
-                    <span class="focus-input100"></span>
-                </div>
 
-                <span class="txt1 p-b-11">
-						Data di nascita
-					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "inserire la data di nascita">
-                    <input class="input100" type="date" name="date" required name="date"  >
-                    <span class="focus-input100"></span>
-                </div>
-
-                <span class="txt1 p-b-11">
-						Email
-					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
-                    <input class="input100" type="text" required name="email"  >
-                    <span class="focus-input100"></span>
-                </div>
-
-                <span class="txt1 p-b-11">
-						Password
-					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"></span>
-                </div>
-
-                <span class="txt1 p-b-11">
-						Conferma Password
-					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"></span>
-                </div>
-
-
-                <!--
-                <div class="flex-m w-full p-b-33">
-                    <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-								<span class="txt1">
-									I agree to the
-									<a href="#" class="txt2 hov1">
-										Terms of User
-									</a>
-								</span>
-                        </label>
-                    </div>
-                </div>
-                -->
-
-                {include file="loadImage.tpl"}
-
-                <br>
-                <br>
                 <div class="container-login100-form-btn">
-                    <div class="wrap-login100-form-btn">
-                        <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn">
-                            Registrati
-                        </button>
-                    </div>
-
-                    <a href="{$path}Utente/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-                        Hai già un account?
-
-                    </a>
+                    <button class="login100-form-btn" style="position:absolute; top:240px; left:370px; z-index:1">
+                        Conferma
+                    </button>
                 </div>
+
+                <div style="position:absolute; top:256px; left:82px; z-index:1">
+                    <a href = "{$path}Utente/visualizzaProfilo">
+                        <span class="txt1 p-b-3">
+                        torna Inidietro
+                        </span>
+                    </a>
+
+                </div>
+
+
             </form>
         </div>
     </div>
 </div>
+
+
+<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
 <script src="{$path}Smarty/others/login/vendor/jquery/jquery-3.2.1.min.js"></script>

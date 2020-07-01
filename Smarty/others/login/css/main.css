@@ -61,7 +61,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: black; /*FORGOT PASSWORD in rosso quando ci si passa sopra con il mouse*/
+  color: #a48464; /*FORGOT PASSWORD in rosso quando ci si passa sopra con il mouse*/
 }
 
 /*---------------------------------------------*/

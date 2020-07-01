@@ -30,4 +30,10 @@ class CHome
         }
         // ipotetico else
     }
+    /*funzione che serve a testare i templates di prova (da rimuovere)*/
+    public static function provatpl()
+    {
+        if($_SERVER["REQUEST_METHOD"] === 'GET')
+            VHome::provatpl(VSmartyFactory::basicSmarty());
+    }
 }

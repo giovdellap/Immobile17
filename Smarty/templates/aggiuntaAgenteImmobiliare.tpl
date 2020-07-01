@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Registrati</title>
+    <title>Aggiunta AI</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,8 +38,9 @@
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
-					<span class="login100-form-title p-b-32">
-						Registrati
+                <span class="login100-form-title p-b-32">
+                    <br>
+						Aggiunta Agente Immobiliare
 					</span>
 
                 <span class="txt1 p-b-11">
@@ -96,24 +97,8 @@
                     <span class="focus-input100"></span>
                 </div>
 
-
-                <!--
-                <div class="flex-m w-full p-b-33">
-                    <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-								<span class="txt1">
-									I agree to the
-									<a href="#" class="txt2 hov1">
-										Terms of User
-									</a>
-								</span>
-                        </label>
-                    </div>
-                </div>
-                -->
-
                 {include file="loadImage.tpl"}
+
 
                 <br>
                 <br>
@@ -121,12 +106,10 @@
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
                         <button class="login100-form-btn">
-                            Registrati
+                            Aggiungi
                         </button>
                     </div>
 
-                    <a href="{$path}Utente/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
-                        Hai già un account?
 
                     </a>
                 </div>

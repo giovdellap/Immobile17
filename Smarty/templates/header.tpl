@@ -29,6 +29,10 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
+
+                            <!--campo che serve per testare i teplates di prova (da rimuovere)-->
+                            <li><a href="{$path}Home/provatpl">Prova tlp</a></li>
+
                             <li><a href="{$path}">Home</a></li>
 
 

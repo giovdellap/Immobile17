@@ -117,7 +117,7 @@
         <div class="col-sm-6">
             <ul>
                 <li><a href="{$path}Utente/privacy">Privacy e Sicurezza </a> </li>
-                <li><a href="{$path}Utente/cambioPassword" >Cambio Password  </a></li>
+                <li><a href="{$path}Utente/modificaDati" >Modifica Dati Personali </a></li>
                 <li><a href="{$path}Utente/eliminaAccount" > Elimina Account&nbsp; </a></li>
             </ul>
         </div>
