@@ -34,7 +34,7 @@ class CSessionManager
         if(session_status() == PHP_SESSION_NONE)
             session_start();
         $logged = false;
-        if (isset($_COOKIE['PHPSESSID']))
+        if (isset($_COOKIE["PHPSESSID"]))
             if (isset($_SESSION['id']))
                 $logged = true;
         return $logged;

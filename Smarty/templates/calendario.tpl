@@ -5,6 +5,7 @@
     <link href='{$path}Smarty/others/calendario/lib/main.css' rel='stylesheet' />
     <script src='{$path}Smarty/others/calendario/lib/main.js'></script>
     <link rel="icon" type="image/png" href="{$path}Smarty/img/icons/favicon_1.ico"/>
+
     <script>
 
 
@@ -110,6 +111,12 @@
     </style>
 </head>
 <body>
+
+{if ($error=="Appuntamento non disponibile")}
+    <div class="sign__group">
+        <span class="sign__text" style="color: #ff0000">Appuntamento non disponibile</span>
+    </div>
+{/if}
 
 <div id='calendar'></div>
 
