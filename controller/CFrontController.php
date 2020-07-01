@@ -73,7 +73,7 @@ class CFrontController
      */
     public function wrongUrl()
     {
-        if(CUtente::isLogged()){
+        if(CSessionManager::sessionExists()){
             $utente = CSessionManager::getUtenteLoggato();
             if($utente instanceof MAmministratore)
                 CAdmin::homepage();

@@ -193,7 +193,7 @@
                 <div class="cta-content text-center">
                     <h2 class="wow fadeInUp" data-wow-delay="300ms">Cerchi casa in affitto?</h2>
                     <h6 class="wow fadeInUp" data-wow-delay="400ms">Dai un'occhiata alle nostre migliori proposte</h6>
-                    <a href="{$path}Immobile/ricerca?ti=Affitto" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Affitti</a>
+                    <a href="{$path}Immobile/ricerca/ti/Affitto" class="btn south-btn mt-50 wow fadeInUp" data-wow-delay="500ms">Affitti</a>
                 </div>
             </div>
         </div>
