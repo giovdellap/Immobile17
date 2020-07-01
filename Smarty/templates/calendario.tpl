@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
     <meta charset='utf-8' />
     <link href='{$path}Smarty/others/calendario/lib/main.css' rel='stylesheet' />

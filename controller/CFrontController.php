@@ -28,6 +28,8 @@ class CFrontController
                     {
                         $controller::$function();
                     }
+                    elseif (count($resource)== 3)
+                        $controller::$function($resource[2]);
                     else
                     {
                         $parameters = $resource;
