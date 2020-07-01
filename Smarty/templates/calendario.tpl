@@ -4,19 +4,32 @@
     <meta charset='utf-8' />
     <link href='{$path}Smarty/others/calendario/lib/main.css' rel='stylesheet' />
     <script src='{$path}Smarty/others/calendario/lib/main.js'></script>
+    <link rel="icon" type="image/png" href="{$path}Smarty/img/icons/favicon_1.ico"/>
     <script>
 
+
         document.addEventListener('DOMContentLoaded', function() {
+
             var calendarEl = document.getElementById('calendar');
+
+            var dd = String({$inizio->getGiorno()}).padStart(2,'0');
+            var mm = String({$inizio->getMese()}).padStart(2,'0');
+            var aaaa = String({$inizio->getAnno()});
+            var logo = new Image();
+            logo.src="{$path}Smarty/img/core-img/logo_1.png";
+            logo.onclick=function () {
+                window.location.href="{$path}";
+            };
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                    right: 'logo'
                 },
-                initialDate: '2020-06-12',
-                navLinks: true, // can click day/week names to navigate views
+                initialDate: aaaa+'-'+mm+'-'+dd,
+                initialView: 'timeGridWeek',
+                navLinks: false, // can click day/week names to navigate views
                 businessHours: true, // display business hours
                 editable: true,
                 selectable: true,
@@ -73,6 +86,8 @@
                     }
                 ]
             });
+
+            calendar.setOption('locale', "it");
 
             calendar.render();
         });

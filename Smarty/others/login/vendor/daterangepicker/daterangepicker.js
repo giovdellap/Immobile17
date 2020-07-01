@@ -1223,6 +1223,8 @@
         },
 
         clickPrev: function(e) {
+            window.location = ''
+            /*
             var cal = $(e.target).parents('.calendar');
             if (cal.hasClass('left')) {
                 this.leftCalendar.month.subtract(1, 'month');
@@ -1232,6 +1234,8 @@
                 this.rightCalendar.month.subtract(1, 'month');
             }
             this.updateCalendars();
+
+             */
         },
 
         clickNext: function(e) {
