@@ -5,11 +5,11 @@ class CAdmin
 {
     public static function homepage()
     {
-        if(CUtente::isLogged())
+        if(CSessionManager::sessionExists())
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == 'GET')
+                if(VReceiverProxy::getRequest())
                 {
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     VAdmin::showHomepage($smarty);
@@ -23,11 +23,11 @@ class CAdmin
 
     public static function immobiliAttivi()
     {
-        if(CUtente::isLogged())
+        if(CSessionManager::sessionExists())
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == 'GET')
+                if(VReceiverProxy::getRequest())
                 {
                     $immobili = FPersistentManager::getImmobiliAttivi();
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
@@ -42,11 +42,11 @@ class CAdmin
 
     public static function immobili()
     {
-        if(CUtente::isLogged())
+        if(CSessionManager::sessionExists())
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == 'GET')
+                if(VReceiverProxy::getRequest())
                 {
                     $immobili = FPersistentManager::visualizzaImmobili();
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
@@ -61,16 +61,16 @@ class CAdmin
 
     public static function aggiungiImmobile()
     {
-        if(CUtente::isLogged())
+        if(CSessionManager::sessionExists())
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == 'GET')
+                if(VReceiverProxy::getRequest())
                 {
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     VAdmin::showAggiuntaImmobile($smarty);
                 }
-                else if($_SERVER['REQUEST_METHOD'] == 'POST')
+                else if(VReceiverProxy::postRequest())
                 {
                     $immobile = self::getImmobilebyPostRequest();
                     FPersistentManager::addImmobile($immobile);
@@ -88,15 +88,15 @@ class CAdmin
         {
             if(CSessionManager::adminLogged())
             {
-                if($_SERVER['REQUEST_METHOD'] == 'GET')
+                if(VReceiverProxy::getRequest())
                 {
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     $immobile = FPersistentManager::visualizzaImmobile($id);
                     VAdmin::showImmobile($smarty, $immobile);
                 }
-                else if($_SERVER['REQUEST_METHOD'] == 'POST')
+                else if(VReceiverProxy::postRequest())
                 {
-                    $immobile = self::getImmobilebyPostRequest();
+                    $immobile = VReceiverProxy::immobileByPostRequest();
                     $immobile->setId($id);
                     FPersistentManager::modificaImmobile($immobile);
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
@@ -108,18 +108,5 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
-    private static function getImmobilebyPostRequest(): MImmobile
-    {
-        $immobile = new MImmobile();
-        $immobile->setNome($_POST['nome']);
-        $immobile->setComune($_POST['comune']);
-        $immobile->setIndirizzo($_SERVER['indirizzo']);
-        $immobile->setGrandezza($_SERVER['grandezza']);
-        $immobile->setPrezzo($_SERVER['prezzo']);
-        $immobile->setDescrizione($_SERVER['descrizione']);
-        $immobile->setTipoAnnuncio($_SERVER['tipoAnnuncio']);
-        $immobile->setTipologia($_SERVER['tipologia']);
-        $immobile->setAttivo($_SERVER['attivo']);
-        return$immobile;
-    }
+
 }

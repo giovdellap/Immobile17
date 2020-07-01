@@ -22,22 +22,18 @@ class CFrontController
 
             if (in_array($controller . ".php", scandir($dir))){
                 if(isset($resource[1]))
-                {   $function=$resource[1];
-                    if(!strpos($function,"?"))
+                {
+                    $function=$resource[1];
+                    if(count($resource) == 2)
                     {
-                        if(method_exists($controller,$function))
-                        {
-                            if(count($resource)==2)
-                                $controller::$function();
-                            else $controller::$function($resource[2]);
-                        }
+                        $controller::$function();
                     }
                     else
                     {
-                        $new_resource = explode('?', $resource[1]);
-                        $function = $new_resource[0];
-                        if(method_exists($controller, $function))
-                            $controller::$function($this->queryUnpacker($new_resource[1]));
+                        $parameters = $resource;
+                        array_shift($parameters);
+                        array_shift($parameters);
+                        $controller::$function($this->queryUnpacker($parameters));
                     }
                 }
                 else $this->wrongUrl();
@@ -90,20 +86,16 @@ class CFrontController
 
     /**
      * Converte la query dell'URL in un'array di parametri
-     * @param string $query
+     * @param array $parameters
      * @return array chiave = nome del parametro, valore = valore del parametro
      */
-    public function queryUnpacker(string $query):array
+    public function queryUnpacker(array $parameters):array
     {
-
-        $parameters = explode('&', $query);
         $toReturn = array();
-        foreach ($parameters as $item)
-        {
-            $itemExploded = explode('=', $item);
-            if(count($itemExploded) == 2)
-                $toReturn[$itemExploded[0]] = $itemExploded[1];
-        }
+        for($i=0;$i<count($parameters);$i+2)
+            if(key_exists($i, $parameters) && key_exists($i+1, $parameters))
+                $toReturn[$parameters[$i]] = $parameters[$i+1];
+
         return $toReturn;
     }
 

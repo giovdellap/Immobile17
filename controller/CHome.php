@@ -5,11 +5,11 @@ class CHome
 {
     public static function homepage()
     {
-        if($_SERVER["REQUEST_METHOD"] === 'GET')
+        if(VReceiverProxy::getRequest())
         {
             $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
             $immobili = FPersistentManager::getImmobiliHomepage();
-            if(CUtente::isLogged()) {
+            if(CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 VHome::homepage(VSmartyFactory::userSmarty($utente), $agenzia, $immobili);
             }
@@ -19,10 +19,10 @@ class CHome
     }
     public static function aboutUs()
     {
-        if($_SERVER["REQUEST_METHOD"] === 'GET')
+        if(VReceiverProxy::getRequest())
         {
             $immobili = FPersistentManager::getImmobiliHomepage();
-            if(CUtente::isLogged()) {
+            if(CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 VHome::aboutUs(VSmartyFactory::userSmarty($utente),$immobili);
             }

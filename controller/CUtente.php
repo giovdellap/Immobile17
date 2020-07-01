@@ -10,12 +10,12 @@ class CUtente
      */
     public static function login()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if(self::isLogged())
+        if(VReceiverProxy::getRequest()) {
+            if(CSessionManager::sessionExists())
                 CHome::homepage();
             else VUtente::loginform(VSmartyFactory::basicSmarty());
         }
-        elseif ($_SERVER['REQUEST_METHOD'] == 'POST')
+        elseif (VReceiverProxy::postRequest())
             self::checkLogin();
     }
 
@@ -24,61 +24,33 @@ class CUtente
      * Effettua operazioni diverse in base alla risposta del DB:
      *  - OK ADMIN: Visualizza la homepage dell'Admin
      *  - OK USER: Visualizza la homepage
-     *  - WRONGEMAIL/PASSWORD: visualizza la login form con un messaggio di errore
+     *  - WRONG EMAIL/PASSWORD: visualizza la login form con un messaggio di errore
      * Nel caso il login vada a buon fine e l'utente non abbia una sessione attiva, la crea
      */
     public static function checkLogin()
     {
-        $db_result = FPersistentManager::login($_POST['email'], $_POST['password']);
+        $loginUser = VReceiverProxy::loginUser();
+        $db_result = FPersistentManager::login($loginUser->getEmail(), $loginUser->getPassword());
         switch ($db_result) {
 
             case "OK ADMIN":
-                if (session_status() == PHP_SESSION_NONE){
-                    session_start();
-                    $_SESSION['utente'] = "AM1";
-                    CAdmin::adminHomepage();
-                }
-                else CAdmin::adminHomepage();
+                CSessionManager::createSession("AM1");
+                CAdmin::adminHomepage();
                 break;
 
             case "OK USER":
                 $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
                 $immobili = FPersistentManager::getImmobiliHomepage();
-                if (session_status() == PHP_SESSION_NONE){
-                    session_start();
-                    $_SESSION['id'] = FPersistentManager::loadIDbyEMail($_POST['email']);
-                    $smarty = VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato());
-                    VHome::homepage($smarty, $agenzia, $immobili);
-                }
-                else VHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
+                CSessionManager::createSession(FPersistentManager::loadIDbyEMail($loginUser->getEmail()));
+                $smarty = VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato());
+                VHome::homepage($smarty, $agenzia, $immobili);
                 break;
+
             case "WRONG EMAIL":
             case "WRONG PASSWORD":
                 $smarty = VSmartyFactory::basicSmarty();
                 VUtente::loginForm(VSmartyFactory::errorSmarty($smarty, $db_result));
         }
-    }
-
-    /**
-     * Ritorna un booleano vero o falso a seconda che l'utente sia loggato o meno
-     * @return bool
-     */
-    public static function isLogged(): bool
-    {
-        $logged = false;
-        if (isset($_COOKIE['PHPSESSID'])) {
-            if (session_status() == PHP_SESSION_NONE) {
-                //header('Cache-Control: no cache'); //no cache
-                //session_cache_limiter('private_no_expire'); // works
-                //session_cache_limiter('public'); // works too
-                session_start();
-            }
-
-            if (isset($_SESSION['id'])) {
-                $logged = true;
-            }
-        }
-        return $logged;
     }
 
     /**
@@ -90,31 +62,17 @@ class CUtente
      */
     public static function registrazione()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'GET')
+        if(VReceiverProxy::getRequest())
             VUtente::showRegistrationForm(VSmartyFactory::basicSmarty());
 
-        else if ($_SERVER['REQUEST_METHOD'] == 'POST')
+        else if (VReceiverProxy::postRequest())
         {
-            $utente = new MCliente();
-            $utente->setNome($_POST['nome']);
-            $utente->setCognome($_POST['cognome']);
-            $utente->setEmail($_POST['email']);
-            $utente->setPassword($_POST['password']);
-            $utente->setDataNascita(self::getDateFromRegistrazione());
-            $utente->setIscrizione(MData::getCurrentTime());
-            $utente->setAttivato(FALSE);
+            $utente = VReceiverProxy::registrationUser();
             $db_result = FPersistentManager::registrazione($utente);
             if($db_result === "OK")
             {
-                if (session_status() == PHP_SESSION_NONE)
-                {
-                    session_start();
-                    $_SESSION['id'] = FPersistentManager::loadIDbyEMail($_POST['email']);
-
-
-                }
+                CSessionManager::createSession(FPersistentManager::loadIDbyEMail($utente->getEmail()));
                 VUtente::registrationOK(VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato()));
-
             }
             else
             {
@@ -130,8 +88,8 @@ class CUtente
      */
     public static function visualizzaProfilo()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (self::isLogged()) {
+        if(VReceiverProxy::getRequest()) {
+            if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 VUtente::visualizzaProfilo(VSmartyFactory::userSmarty($utente));
             }
@@ -144,8 +102,8 @@ class CUtente
      */
     public static function calendario()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (self::isLogged()) {
+        if(VReceiverProxy::getRequest()) {
+            if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 $utente = FPersistentManager::visualizzaAppUtente($utente->getId());
                 $appuntamenti = $utente->getListAppuntamenti();
@@ -157,29 +115,8 @@ class CUtente
 
     public static function logout()
     {
-        session_start();
-        session_unset();
-        session_destroy();
-        $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
-        $immobili = FPersistentManager::getImmobiliHomepage();
-        //VHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
-        header("Location: " . $GLOBALS['path']);
+       CSessionManager::sessionDestroy();
+       header("Location: " . $GLOBALS['path']);
     }
 
-    private static function getDateFromRegistrazione(): MData
-    {
-        $date=explode("-", $_POST["date"]);
-
-        return new MData($date[0],$date[1],$date[2], 0);
-    }
-
-    public static function modificaDati()
-    {
-        //todo
-    }
-
-    public static function eliminaAccount()
-    {
-        //todo
-    }
 }
