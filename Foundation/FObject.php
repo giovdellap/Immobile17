@@ -34,27 +34,10 @@ abstract class FObject
     }
 
     /**
-     * Converte un oggetto MData in una data in formato YYYY-mm-dd
-     * @param MData $data
+     * Identifica unoggetto in base al formato dell'ID
+     * @param string $id
      * @return string
      */
-    public static function getDateString(MData $data): string
-    {
-        return $data->getAnno() . "-" . $data->getMese() . "-" . $data->getGiorno();
-    }
-
-    /**
-     * Converte una stringa data in formato YYYY--mm--dd in un MData
-     * @param string $str
-     * @return MData
-     */
-    public static function getMDataFromString(string $str): MData
-    {
-        list($anno, $mese, $giorno) = explode("-", $str);
-        $data = new MData($anno, $mese, $giorno, 0);
-        return $data;
-    }
-
     public static function identifyId (string $id):string
     {
         $idString = str_split($id, 2)[0];

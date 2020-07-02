@@ -55,37 +55,44 @@ class VReceiverProxy
 
     public static function calendarioParametersFiller(array $parameters):array
     {
-        if(!key_exists('gi', $parameters))
+        if(!key_exists('inizio', $parameters))
         {
-            if(date('w')== 0 || date('w')==6) {
-
-                $parameters['ai'] = date('Y', strtotime('next Monday'));
-                $parameters['mi'] = date('m', strtotime('next Monday'));
-                $parameters['gi'] = date('d', strtotime('next Monday'));
-                $parameters['af'] = date('Y', strtotime('next Sunday'));
-                $parameters['mf'] = date('m', strtotime('next Sunday'));
-                $parameters['gf'] = date('d', strtotime('next Sunday'));
+            if(date('w') == 0)
+            {
+                $parameters['inizio'] = date('Y-m-d');
+                $parameters['fine'] = date('Y-m-d', strtotime('next Saturday'));
+            }
+            else if(date('w') == 6)
+            {
+                $parameters['inizio'] = date('Y-m-d', strtotime('next Sunday'));
+                $parameters['fine'] = date('Y-m-d', strtotime('next Saturday'));
             }
             else {
-                $parameters['ai'] = date('Y', strtotime('last Monday'));
-                $parameters['mi'] = date('m', strtotime('last Monday'));
-                $parameters['gi'] = date('d', strtotime('last Monday'));
-                $parameters['af'] = date('Y', strtotime('next Sunday'));
-                $parameters['mf'] = date('m', strtotime('next Sunday'));
-                $parameters['gf'] = date('d', strtotime('next Sunday'));
+                $parameters['inizio'] = date('Y-m-d', strtotime('last Sunday'));
+                $parameters['fine'] = date('Y-m-d', strtotime('next Saturday'));
             }
+        }
+        else if (!key_exists('fine', $parameters))
+        {
+            $inizio = MData::getMDataFromString($parameters['inizio']);
+            $fine = MData::shiftedData($inizio, 7);
+            $parameters['fine'] = MData::getDateString($fine);
         }
         return $parameters;
     }
 
     public static function calendarioInizio(array $parameters):MData
     {
-        return new MData($parameters["ai"], $parameters["mi"], $parameters["gi"], 7.3);
+        $data = MData::getMDataFromString($parameters['inizio']);
+        $data->setOrario(7.3);
+        return $data;
     }
 
     public static function calendarioFine(array $parameters):MData
     {
-        return new MData($parameters["af"], $parameters["mf"], $parameters["gf"], 20);
+        $data = MData::getMDataFromString($parameters['fine']);
+        $data->setOrario(20);
+        return $data;
     }
 
     public static function prenotaInizioAgenzia()

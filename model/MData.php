@@ -141,7 +141,7 @@ class MData
      */
     public static function getCurrentTime(): MData
     {
-        return FObject::getMDataFromString(date("Y-m-d"));
+        return self::getMDataFromString(date("Y-m-d"));
     }
 
     public function getNomeMese()
@@ -156,6 +156,61 @@ class MData
         $sett = date("w", mktime(0,0,0,$this->mese, $this->giorno, $this->anno));
         return $giorni[$sett];
     }
+
+    /**
+     * Converte un oggetto MData in una data in formato YYYY-mm-dd
+     * @param MData $data
+     * @return string
+     */
+    public static function getDateString(MData $data): string
+    {
+        return $data->getAnno() . "-" . $data->getMese() . "-" . $data->getGiorno();
+    }
+
+    /**
+     * Converte una stringa data in formato YYYY--mm--dd in un MData
+     * @param string $str
+     * @return MData
+     */
+    public static function getMDataFromString(string $str): MData
+    {
+        list($anno, $mese, $giorno) = explode("-", $str);
+        $data = new MData($anno, $mese, $giorno, 0);
+        return $data;
+    }
+
+    /**
+     * Aggiunge o sottrae il numero di giorni passato come parametro
+     * @param int $days
+     * @throws Exception
+     */
+    public function sumDays(int $days)
+    {
+        $date = $this::getDateString($this);
+        $finalDate = new Datetime($date);
+        if($days > 0)
+            $finalDate->add(new DateInterval("P".$days."D"));
+        else $finalDate->sub(new DateInterval("P".abs($days)."D"));
+        $mdata = self::getMDataFromString($finalDate->format("Y-m-d"));
+        $this->anno = $mdata->getAnno();
+        $this->mese = $mdata->getMese();
+        $this->giorno = $mdata->getGiorno();
+    }
+
+    public static function shiftedData(MData $data, int $days): MData
+    {
+        $toReturn = clone $data;
+        $toReturn->sumDays($days);
+        return $toReturn;
+    }
+
+    public function getfullDataString()
+    {
+        $ora = intval($this->getOrario());
+        $minuto = ($this->getOrario() - $ora)*100;
+        return self::getDateString($this)."T".$ora.":".$minuto.":00";
+    }
+
 
 
 }
