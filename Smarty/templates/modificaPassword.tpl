@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Elimina Account</title>
+    <title>Registrati</title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -25,60 +26,105 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/main.css">
-
     <!--===============================================================================================-->
+
+    <script>
+
+        function testpass(modulo)
+        {
+            // Verifico che il campo password sia valorizzato in caso contrario
+            // avverto dell'errore tramite un Alert
+            if (modulo.password.value == "")
+            {
+                alert("Errore: inserire una password!")
+                modulo.password.focus()
+                return false
+            }
+            // Verifico che le due password siano uguali, in caso contrario avverto
+            // dell'errore con un Alert
+            if (modulo.password.value != modulo.password2.value)
+            {
+                alert("La password inserita non coincide con la prima!")
+                modulo.password.focus()
+                modulo.password.select()
+                return false
+            }
+            return true
+        }
+
+    </script>
+
 </head>
 <body>
 
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/eliminaAccount" method="POST" class="login100-form validate-form flex-sb flex-w">
-                <a class="nav-brand" >
-                    <img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
-
-                <span class="login100-form-title p-b-30">
-                    <br>
-						Elimina Account
+            <form action="{$path}Utente/registrazione" method="POST" class="login100-form validate-form flex-sb flex-w" name="modulo" onsubmit="return testpass(this)">
+                <div>
+                    <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
+                </div>
+                <span class="login100-form-title p-b-32">
+						Cambia Password
 					</span>
 
-
-                <span class="txt1 p-b-3">
-						Ci Dispiace!
-
+                <span class="txt1 p-b-11">
+						Vecchia Password
 					</span>
-
-
-                <span class="txt3 p-b-11">
-						Sei sicura/o di voler eliminare il tuo account? Puoi ancora tornare indietro e restare con noi
-					</span>
-
-                <br>
-                <br>
-
-                <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" style="position:absolute; top:240px; left:370px; z-index:1">
-                        Conferma
-                    </button>
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
+						<span class="btn-show-pass">
+							<i class="fa fa-eye"></i>
+						</span>
+                    <input class="input100" type="password" required name="old_password" placeholder="**********">
+                    <span class="focus-input100"></span>
                 </div>
 
-                <div style="position:absolute; top:256px; left:82px; z-index:1">
-                    <a href = "{$path}Utente/visualizzaProfilo">
-                        <span class="txt1 p-b-3">
+                <span class="txt1 p-b-11">
+						Nuova Password
+					</span>
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
+						<span class="btn-show-pass">
+							<i class="fa fa-eye"></i>
+						</span>
+                    <input class="input100" type="password" required name="password" placeholder="**********">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <span class="txt1 p-b-11">
+						ripeti nuova Password
+                </span>
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
+						<span class="btn-show-pass">
+							<i class="fa fa-eye"></i>
+						</span>
+                    <input class="input100" type="password" required name="password2" placeholder="**********">
+                    <span class="focus-input100"></span>
+                </div>
+
+                <font color="white">
+                    space
+                    <br>
+                </font>
+
+               <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" style="position:absolute; top:440px; left:370px; z-index:1">
+                            Conferma
+                        </button>
+                    </div>
+                    <div style="position:absolute; top:460px; left:82px; z-index:1">
+                        <a href = "{$path}Utente/visualizzaProfilo">
+                        <span class="txt1 p-b-40">
                         torna Inidietro
                         </span>
-                    </a>
-
+                        </a>
+                    </div>
                 </div>
-
-
             </form>
         </div>
     </div>
 </div>
-
-
-<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
 <script src="{$path}Smarty/others/login/vendor/jquery/jquery-3.2.1.min.js"></script>

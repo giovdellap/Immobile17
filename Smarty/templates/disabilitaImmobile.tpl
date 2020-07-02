@@ -39,31 +39,30 @@
 
                 <span class="login100-form-title p-b-30">
                     <br>
-						Elimina Account
+						Disabilita Immobile
 					</span>
 
 
                 <span class="txt1 p-b-3">
-						Ci Dispiace!
-
-					</span>
+						Ciao Admin Istrator!
+                </span>
 
 
                 <span class="txt3 p-b-11">
-						Sei sicura/o di voler eliminare il tuo account? Puoi ancora tornare indietro e restare con noi
+						Sei sicuro di voler disabilitare l'immobile? Non ne troverai un altro così bello
 					</span>
 
                 <br>
                 <br>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" style="position:absolute; top:240px; left:370px; z-index:1">
+                    <button class="login100-form-btn" style="position:absolute; top:245px; left:370px; z-index:1">
                         Conferma
                     </button>
                 </div>
 
-                <div style="position:absolute; top:256px; left:82px; z-index:1">
-                    <a href = "{$path}Utente/visualizzaProfilo">
+                <div style="position:absolute; top:261px; left:82px; z-index:1">
+                    <a href = "{$path}Immobile/visualizza/{$immobile2->getId()}">
                         <span class="txt1 p-b-3">
                         torna Inidietro
                         </span>

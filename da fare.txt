@@ -6,15 +6,15 @@ COSE DA FARE:
 
 -adminHomepage.tpl (Marco)
 
--modificaPassword.tpl (Marco)
+-modificaPassword.tpl (Marco) ---->fatto
 
 -aggiuntaAgenteImmobiliare.tlp (tpl esistente! da collegare un volta fatto l'admin)
 
 -aggiuntaImmobile.tpl (tpl esistente! da collegare con l'admin)
 
--disabilitaImmobile.tpl (Marco)
+-disabilitaImmobile.tpl (Marco) ---->fatto
 
--confermaEmail.tpl (Marco)
+-confermaEmail.tpl (Marco) ---->fatto
 
 -listaImmobili.tpl per admin
 

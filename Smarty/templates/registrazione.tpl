@@ -51,7 +51,6 @@
             }
             return true
         }
-
     </script>
 
 </head>
@@ -121,6 +120,7 @@
                     <input class="input100" type="password" required name="password2" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
+
 
 
                 <!--
