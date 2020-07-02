@@ -204,6 +204,13 @@ class MData
         return $toReturn;
     }
 
+    public function getfullDataString()
+    {
+        $ora = intval($this->getOrario());
+        $minuto = ($this->getOrario() - $ora)*100;
+        return self::getDateString($this)."T".$ora.":".$minuto.":00";
+    }
+
 
 
 }

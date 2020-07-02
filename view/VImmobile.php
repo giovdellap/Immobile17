@@ -51,6 +51,8 @@ class VImmobile
         $smarty->assign("nextInizio", MData::shiftedData($inizio, 7));
         $smarty->assign("nextFine", MData::shiftedData($fine, 7));
 
+        //$smarty->left_delimiter = "{{";
+        //$smarty->right_delimiter = "}}";
         $smarty->display("calendario.tpl");
     }
 

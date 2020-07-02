@@ -21,9 +21,9 @@
             // LOGO
             var logo = new Image();
             logo.src="{$path}Smarty/img/core-img/logo_1.png";
-            logo.onclick=function () {
-                window.location.href="{$path}";
-            };
+
+            //EVENTS
+
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
 
@@ -70,58 +70,39 @@
                 initialView: 'timeGridWeek',
                 navLinks: false, // can click day/week names to navigate views
                 businessHours: true, // display business hours
-                editable: true,
-                selectable: true,
-                events: [
-                    {
-                        title: 'Business Lunch',
-                        start: '2020-06-03T13:00:00',
-                        constraint: 'businessHours'
-                    },
-                    {
-                        title: 'Meeting',
-                        start: '2020-06-13T11:00:00',
-                        constraint: 'availableForMeeting', // defined below
-                        color: '#257e4a'
-                    },
-                    {
-                        title: 'Conference',
-                        start: '2020-06-18',
-                        end: '2020-06-20'
-                    },
-                    {
-                        title: 'Party',
-                        start: '2020-06-29T20:00:00'
-                    },
+                editable: false,
+                selectable: false,
 
-                    // areas where "Meeting" must be dropped
+                events: [
+                    {foreach $appLiberi as $app}
                     {
-                        groupId: 'availableForMeeting',
-                        start: '2020-06-11T10:00:00',
-                        end: '2020-06-11T16:00:00',
-                        display: 'background'
+
+                        start: '{$app->getOrarioInizio()->getFullDataString()}',
+                        end: '{$app->getOrarioFine()->getFullDataString()}',
+                        color: '#faf3dc'
+
                     },
-                    {
-                        groupId: 'availableForMeeting',
-                        start: '2020-06-13T10:00:00',
-                        end: '2020-06-13T16:00:00',
-                        display: 'background'
-                    },
+                    {/foreach}
+
 
                     // red areas where no events can be dropped
                     {
-                        start: '2020-06-24',
-                        end: '2020-06-28',
-                        overlap: false,
+                        start: '2020-07-03T13:00:00',
+                        end: '2020-07-03T14:00:00',
+                        color: '#111111'
+                    }
+
+                    {
+                        start: '{MData::getDateString($inizio)}',
+                        end: '{MData::getDateString($inizio)}',
                         display: 'background',
-                        color: '#ff9f89'
+                        color: '#111111'
                     },
                     {
-                        start: '2020-06-06',
-                        end: '2020-06-08',
-                        overlap: false,
+                        start: '{MData::getDateString($fine)}',
+                        end: '{MData::getDateString($fine)}',
                         display: 'background',
-                        color: '#ff9f89'
+                        color: '#111111'
                     }
                 ]
             });
@@ -130,14 +111,6 @@
 
             calendar.render();
 
-            $('.fc-button-prev span').click(function(){
-                var baseURL = {$path}+'Immobile/calendario/id/'+{$immobile->getId()};
-                var inizioURL = '/ai/'+String({$prevInizio->getAnno()})
-                    +'/mi/'+String({$prevInizio->getMese()})+'/gi/'+String({$prevInizio->getGiorno()});
-                var fineURL = '/af/'+String({$prevFine->getAnno()})
-                    +'/mf/'+String({$prevFine->getMese()})+'/gf/'+String({$prevFine->getGiorno()});
-                window.location.href=baseURL+inizioURL+fineURL;
-            });
         });
 
     </script>

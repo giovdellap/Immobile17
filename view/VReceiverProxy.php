@@ -57,13 +57,19 @@ class VReceiverProxy
     {
         if(!key_exists('inizio', $parameters))
         {
-            if(date('w')== 0 || date('w')==6) {
-                $parameters['inizio'] = date('Y-m-d', strtotime('next Monday'));
-                $parameters['fine'] = date('Y-m-d', strtotime('next Sunday'));
+            if(date('w') == 0)
+            {
+                $parameters['inizio'] = date('Y-m-d');
+                $parameters['fine'] = date('Y-m-d', strtotime('next Saturday'));
+            }
+            else if(date('w') == 6)
+            {
+                $parameters['inizio'] = date('Y-m-d', strtotime('next Sunday'));
+                $parameters['fine'] = date('Y-m-d', strtotime('next Saturday'));
             }
             else {
-                $parameters['inizio'] = date('Y-m-d', strtotime('last Monday'));
-                $parameters['fine'] = date('Y-m-d', strtotime('next Sunday'));
+                $parameters['inizio'] = date('Y-m-d', strtotime('last Sunday'));
+                $parameters['fine'] = date('Y-m-d', strtotime('next Saturday'));
             }
         }
         else if (!key_exists('fine', $parameters))
