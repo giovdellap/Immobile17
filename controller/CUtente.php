@@ -31,6 +31,7 @@ class CUtente
     {
         $loginUser = VReceiverProxy::loginUser();
         $db_result = FPersistentManager::login($loginUser->getEmail(), $loginUser->getPassword());
+        //print_r($db_result);
         switch ($db_result) {
 
             case "OK ADMIN":
@@ -75,7 +76,7 @@ class CUtente
                 VUtente::registrationOK(VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato()));
             }
             else
-            {
+            {   $db_result="ERRORE";
                 $smarty = VSmartyFactory::userSmarty($utente);
                 VUtente::showRegistrationForm(VSmartyFactory::errorSmarty($smarty, $db_result));
             }

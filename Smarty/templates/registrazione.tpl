@@ -124,6 +124,11 @@
                             Registrati
                         </button>
                     </div>
+                    {if ($error=="ERRORE")}
+                        <div class="sign__group">
+                            <span class="sign__text" style="color: #ff0000">ERRORE</span>
+                        </div>
+                    {/if}
 
                     <a href="{$path}Utente/login" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
                         Hai già un account?

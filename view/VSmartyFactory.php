@@ -47,4 +47,5 @@ class VSmartyFactory
         $smarty->assign("error", $error);
         return $smarty;
     }
+
 }

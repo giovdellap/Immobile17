@@ -48,6 +48,7 @@
                 <span class="txt1 p-b-11">
 						email
 					</span>
+
                 <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
                     <input class="input100" type="text" required name="email"  >
                     <span class="focus-input100"></span>
@@ -56,13 +57,20 @@
                 <span class="txt1 p-b-11">
 						Password
 					</span>
+                {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
+                    <div class="sign__group">
+                        <span class="sign__text" style="color: #ff0000">Username o password errate</span>
+                    </div>
+                {/if}
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
+
                     <input class="input100" type="password" required name="password" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
+
 
                 <div class="flex-sb-m w-full p-b-48">
                     <div class="contact100-form-checkbox">
@@ -90,7 +98,9 @@
                         Non hai un account? Registrati.
                     </a>
                 </div>
+
             </form>
+
         </div>
     </div>
 </div>
