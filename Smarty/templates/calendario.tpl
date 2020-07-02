@@ -76,7 +76,7 @@
                 events: [
                     {foreach $appLiberi as $app}
                     {
-
+                        title: 'selezionabile',
                         start: '{$app->getOrarioInizio()->getFullDataString()}',
                         end: '{$app->getOrarioFine()->getFullDataString()}',
                         color: '#faf3dc'
@@ -86,21 +86,19 @@
 
 
                     // red areas where no events can be dropped
-                    {
-                        start: '2020-07-03T13:00:00',
-                        end: '2020-07-03T14:00:00',
-                        color: '#111111'
-                    }
+
 
                     {
-                        start: '{MData::getDateString($inizio)}',
-                        end: '{MData::getDateString($inizio)}',
+                        title: 'festivo',
+                        start: '{MData::getDateString($inizio)}'+'T00:00:00',
+                        end: '{MData::getDateString($inizio)}'+'T23:59:00',
                         display: 'background',
                         color: '#111111'
                     },
                     {
-                        start: '{MData::getDateString($fine)}',
-                        end: '{MData::getDateString($fine)}',
+                        title: 'festivo',
+                        start: '{MData::getDateString($fine)}'+'T00:00:00',
+                        end: '{MData::getDateString($fine)}'+'T23:59:00',
                         display: 'background',
                         color: '#111111'
                     }

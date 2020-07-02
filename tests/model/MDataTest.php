@@ -70,7 +70,10 @@ class MDataTest extends TestCase
     public function testIncremento_3()
     {
         $data = new MData(2020, 12, 31, 13.30);
+        echo($data->getfullDataString());
         $data->incrementoOrario(-140);
         $this->assertEquals($data->getOrario(), 11.10);
     }
+
+
 }
