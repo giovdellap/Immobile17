@@ -69,12 +69,9 @@ class CImmobile
      * In caso l'utente non sia loggato carica la scheda dell'Immobile
      * DIZIONARIO PARAMETRI:
      *  - id = id immobile
-     *  - ai = anno
-     *  - mi = mese
-     *  - gi = giorno inizio
-     *  - af = anno fine
-     *  - mf = mese fine
-     *  - gf = giorno fine
+     *  - inizio = data inizio
+     *  - fine = data fine
+     *  - le date sono in formato yyyy-mm--dd
      * @param array $parameters
      * @throws SmartyException
      */

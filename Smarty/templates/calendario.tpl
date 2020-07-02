@@ -13,9 +13,12 @@
 
             var calendarEl = document.getElementById('calendar');
 
+            // INITIALDATE
             var dd = String({$inizio->getGiorno()}).padStart(2,'0');
             var mm = String({$inizio->getMese()}).padStart(2,'0');
             var aaaa = String({$inizio->getAnno()});
+
+            // LOGO
             var logo = new Image();
             logo.src="{$path}Smarty/img/core-img/logo_1.png";
             logo.onclick=function () {
@@ -23,8 +26,43 @@
             };
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
+
+                customButtons: {
+                    prevCustomButton: {
+                        icon: 'left-single-arrow',
+                        click: function() {
+                            var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}'
+                                +'/inizio/'+'{MData::getDateString($prevInizio)}'
+                                +'/fine/'+'{MData::getDateString($prevFine)}';
+                            window.location.href=url;
+                        }
+                    },
+                    nextCustomButton: {
+                        icon: 'right-single-arrow',
+                        click: function() {
+                            var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}'
+                                +'/inizio/'+'{MData::getDateString($nextInizio)}'
+                                +'/fine/'+'{MData::getDateString($nextFine)}';
+                            window.location.href=url;
+                        }
+                    },todayCustomButton: {
+                        text: 'Oggi',
+                        click: function() {
+                            var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}';
+                            window.location.href=url;
+                        }
+                    },
+                    logoCustomButton: {
+                        icon: logo,
+                        click: function() {
+                            window.location.href='{$path}';
+                        }
+                    }
+
+                },
+
                 headerToolbar: {
-                    left: 'prev,next today',
+                    left: 'prevCustomButton,nextCustomButton todayCustomButton',
                     center: 'title',
                     right: 'logo'
                 },
@@ -91,6 +129,15 @@
             calendar.setOption('locale', "it");
 
             calendar.render();
+
+            $('.fc-button-prev span').click(function(){
+                var baseURL = {$path}+'Immobile/calendario/id/'+{$immobile->getId()};
+                var inizioURL = '/ai/'+String({$prevInizio->getAnno()})
+                    +'/mi/'+String({$prevInizio->getMese()})+'/gi/'+String({$prevInizio->getGiorno()});
+                var fineURL = '/af/'+String({$prevFine->getAnno()})
+                    +'/mf/'+String({$prevFine->getMese()})+'/gf/'+String({$prevFine->getGiorno()});
+                window.location.href=baseURL+inizioURL+fineURL;
+            });
         });
 
     </script>

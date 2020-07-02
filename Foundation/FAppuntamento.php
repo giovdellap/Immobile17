@@ -11,7 +11,7 @@ class FAppuntamento extends FObject
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',$newId,PDO::PARAM_STR);
-        $stmt->bindValue(':data',self::getDateString($obj->getOrarioInizio()),PDO::PARAM_STR);
+        $stmt->bindValue(':data',MData::getDateString($obj->getOrarioInizio()),PDO::PARAM_STR);
         $stmt->bindValue(':ora_inizio',$obj->getOrarioInizio()->getOrario(),PDO::PARAM_STR);
         $stmt->bindValue(':ora_fine',$obj->getOrarioFine()->getOrario(),PDO::PARAM_STR);
         $stmt->bindValue(':id_cliente',$obj->getCliente()->getId(),PDO::PARAM_STR);
@@ -76,11 +76,11 @@ class FAppuntamento extends FObject
         $appuntamento= new MAppuntamento();
         $appuntamento->setId($db_result["id"]);
 
-        $datainizio=self::getMDataFromString($db_result["data"]);
+        $datainizio=MData::getMDataFromString($db_result["data"]);
         $datainizio->setOrario($db_result["ora_inizio"]);
         $appuntamento->setOrarioInizio($datainizio);
 
-        $datafine=self::getMDataFromString($db_result["data"]);
+        $datafine=MData::getMDataFromString($db_result["data"]);
         $datafine->setOrario($db_result["ora_fine"]);
         $appuntamento->setOrarioFine($datafine);
 
@@ -123,8 +123,8 @@ class FAppuntamento extends FObject
      */
     public static function getAppInBetween(string $id, MData $inizio, MData $fine): array
     {
-        $datainizio=self::getDateString($inizio);
-        $datafine=self::getDateString($fine);
+        $datainizio=MData::getDateString($inizio);
+        $datafine=MData::getDateString($fine);
 
         $db= FDataBase::getInstance();
         $to_return=array();

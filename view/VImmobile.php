@@ -40,16 +40,17 @@ class VImmobile
      */
     public static function calendario(Smarty $smarty, array $appLiberi, MData $inizio, MData $fine, MImmobile $immobile)
     {
-        $fd = new MData($inizio->getAnno(), $inizio->getMese(), $inizio->getGiorno(), $inizio->getOrario());
-        $smarty->assign("fd", $fd);
-        $tr = new MData($inizio->getAnno(), $inizio->getMese(), $inizio->getGiorno(), $inizio->getOrario());
-        $smarty->assign("tr", $tr);
-        $fine->nextDay();
+
         $smarty->assign("immobile", $immobile);
         $smarty->assign("inizio", $inizio);
         $smarty->assign("fine", $fine);
         $smarty->assign("appLiberi", $appLiberi);
-        $smarty->assign("giorni", VCalendario::getDayStrings($inizio, $fine));
+
+        $smarty->assign("prevInizio", MData::shiftedData($inizio, -7));
+        $smarty->assign("prevFine", MData::shiftedData($fine, -7));
+        $smarty->assign("nextInizio", MData::shiftedData($inizio, 7));
+        $smarty->assign("nextFine", MData::shiftedData($fine, 7));
+
         $smarty->display("calendario.tpl");
     }
 

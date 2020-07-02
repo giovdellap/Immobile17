@@ -24,11 +24,11 @@ class FUtente extends FObject
         $stmt->bindValue(':id',          $newId,                                      PDO::PARAM_STR);
         $stmt->bindValue(':nome',        $obj->getNome(),                             PDO::PARAM_STR);
         $stmt->bindValue(':cognome',     $obj->getCognome(),                          PDO::PARAM_STR);
-        $stmt->bindValue(':datanascita', self::getDateString($obj->getDataNascita()), PDO::PARAM_STR);
+        $stmt->bindValue(':datanascita', MData::getDateString($obj->getDataNascita()), PDO::PARAM_STR);
         $stmt->bindValue(':mail',        $obj->getEmail(),                            PDO::PARAM_STR);
         $stmt->bindValue(':password',    $obj->getPassword(),                         PDO::PARAM_STR);
-        $stmt->bindValue(':iscrizione',  self::getDateString($obj->getIscrizione()),  PDO::PARAM_STR);
-        $stmt->bindValue(':verifica',    $obj->isAttivato(),                          PDO::PARAM_STR);
+        $stmt->bindValue(':iscrizione',  MData::getDateString($obj->getIscrizione()),  PDO::PARAM_STR);
+        $stmt->bindValue(':verifica',    $obj->isAttivato(),                          PDO::PARAM_BOOL);
     }
 
     /**
@@ -124,8 +124,8 @@ class FUtente extends FObject
         $utente->setCognome($db_result["cognome"]);
         $utente->setEmail($db_result["mail"]);
         $utente->setPassword($db_result["password"]);
-        $utente->setDataNascita(self::getMDataFromString($db_result["datanascita"]));
-        $utente->setIscrizione(self::getMDataFromString($db_result["iscrizione"]));
+        $utente->setDataNascita(MData::getMDataFromString($db_result["datanascita"]));
+        $utente->setIscrizione(MData::getMDataFromString($db_result["iscrizione"]));
         $utente->setAttivato($db_result["verifica"]);
         if(FMedia::getMedia($utente->getId()) != null) {
             $utente->setImmagine(FMedia::getMedia($utente->getId())[0]);
@@ -141,7 +141,7 @@ class FUtente extends FObject
     public static function modificaUtente(MUtente $utente)
     {
         $db = FDataBase::getInstance();
-        $oldUtente = self::visualizzaUtente($utente->getId());
+        $oldUtente = MData::visualizzaUtente($utente->getId());
         $mods = array();
         if($utente->getNome() != $oldUtente->getNome())
             $mods["nome"] = $utente->getNome();
@@ -152,9 +152,9 @@ class FUtente extends FObject
         if($utente->getPassword() != $oldUtente)
             $mods["password"] = $utente->getPassword();
         if($utente->getDataNascita() != $oldUtente->getDataNascita())
-            $mods["datanascita"] = self::getDateString($utente->getDataNascita());
+            $mods["datanascita"] = MData::getDateString($utente->getDataNascita());
         if($utente->getIscrizione() != $oldUtente->getIscrizione())
-            $mods["iscrizione"] = self::getDateString($utente->getIscrizione());
+            $mods["iscrizione"] = MData::getDateString($utente->getIscrizione());
         if($utente->isAttivato() != $oldUtente->isAttivato())
             $mods["verifica"] = $utente->isAttivato();
 
