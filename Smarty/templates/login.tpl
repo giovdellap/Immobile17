@@ -57,11 +57,7 @@
                 <span class="txt1 p-b-11">
 						Password
 					</span>
-                {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
-                    <div class="sign__group">
-                        <span class="sign__text" style="color: #ff0000">Username o password errate</span>
-                    </div>
-                {/if}
+
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
@@ -70,6 +66,14 @@
                     <input class="input100" type="password" required name="password" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
+
+
+
+                {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
+
+                        <span class="txt_error" >Username o password errate</span>
+
+                {/if}
 
 
                 <div class="flex-sb-m w-full p-b-48">

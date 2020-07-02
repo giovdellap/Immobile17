@@ -119,26 +119,31 @@ class FDataBase
      * @param $foundation
      * @param $field
      * @param $param
-     * @return bool|null
+     * @return bool
      */
-    public function deleteDB($foundation, $field, $param)
+    public function deleteDB($foundation, $field, $param): bool
     {
         try {
             $result = null;
             $this->db->beginTransaction();
             $esiste = $this->existDB($foundation, $field, $param);
             if ($esiste) {
+                print('pene rossiccio tendente al violaceo');
                 $query = "DELETE FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "';";
                 $stmt = $this->db->prepare($query);
                 $stmt->execute();
                 $this->db->commit();
                 $this->closeDbConnection();
+                print('pene rossiccio tendente al verde');
                 $result = true;
+                print('pene rossiccio tendente al terre di siena' . $result);
             }
         } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
             $this->db->rollBack();
+            return false;
         }
+        print('pene rossiccio tendente all immobile scleto'. $result);
         return $result;
     }
 

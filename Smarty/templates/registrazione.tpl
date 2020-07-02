@@ -28,13 +28,39 @@
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/main.css">
     <!--===============================================================================================-->
 
+    <script>
+
+        function testpass(modulo)
+        {
+            // Verifico che il campo password sia valorizzato in caso contrario
+            // avverto dell'errore tramite un Alert
+            if (modulo.password.value == "")
+            {
+                alert("Errore: inserire una password!")
+                modulo.password.focus()
+                return false
+            }
+            // Verifico che le due password siano uguali, in caso contrario avverto
+            // dell'errore con un Alert
+            if (modulo.password.value != modulo.password2.value)
+            {
+                alert("La password inserita non coincide con la prima!")
+                modulo.password.focus()
+                modulo.password.select()
+                return false
+            }
+            return true
+        }
+
+    </script>
+
 </head>
 <body>
 
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/registrazione" method="POST" class="login100-form validate-form flex-sb flex-w">
+            <form action="{$path}Utente/registrazione" method="POST" class="login100-form validate-form flex-sb flex-w" name="modulo" onsubmit="return testpass(this)">
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
@@ -92,7 +118,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"></i>
 						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
+                    <input class="input100" type="password" required name="password2" placeholder="**********">
                     <span class="focus-input100"></span>
                 </div>
 

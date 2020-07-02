@@ -13,19 +13,15 @@ class VImmobile
 
     public static function visualizzaImmobili(Smarty $smarty, array $immobili)
     {
+        $smarty = self::searchBarSmarty($smarty, array());
         $smarty->assign("immobili",$immobili);
         $smarty->display("immobili.tpl");
     }
 
+
     public static function ricerca(Smarty $smarty, $immobili, $parameters)
     {
-        $parametersNames = array('ti', 'pc', 'tp', 'pmin', 'pmax', 'gmin', 'gmax');
-        foreach ($parametersNames as &$key)
-        {
-            if(key_exists($key, $parameters))
-                $smarty->assign($key, $parameters[$key]);
-            else $smarty->assign($key, 'notSetted');
-        }
+        $smarty = self::searchBarSmarty($smarty, $parameters);
         $smarty->assign("immobili", $immobili);
         $smarty->display("immobili.tpl");
     }
@@ -59,5 +55,25 @@ class VImmobile
     public function confermaAppuntamento(MUtente $utente, MAppuntamento $appuntamento)
     {
         // TO DO
+    }
+
+    private static function searchBarSmarty(Smarty $smarty, array $parameters): Smarty
+    {
+        $parametersNames = array('ti', 'pc', 'tp');
+        foreach ($parametersNames as $key)
+        {
+            if(key_exists($key, $parameters))
+                $smarty->assign($key, $parameters[$key]);
+            else $smarty->assign($key, 'notSetted');
+        }
+        if(!key_exists('pmin', $parameters))
+            $smarty->assign('pmin', 100);
+        if(!key_exists('pmax', $parameters))
+            $smarty->assign('pmax', 1000000);
+        if(!key_exists('gmin', $parameters))
+            $smarty->assign('gmin', 0);
+        if(!key_exists('gmax', $parameters))
+            $smarty->assign('gmax', 2000);
+        return $smarty;
     }
 }

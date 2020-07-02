@@ -94,6 +94,11 @@ class FPersistentManager
         return FUtente::modificaUtente($utente);
     }
 
+    public static function eliminaUtente(MUtente $utente): bool
+    {
+        return FUtente::eliminaUtente($utente);
+    }
+
     /**
      * Ritorna l'MUtente con l'Id passato come parametro con la lista appuntamenti completa
      * @param string $id

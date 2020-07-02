@@ -33,7 +33,7 @@ class VUtente
 
     public static function eliminaAccount(Smarty $smarty)
     {
-        $smarty->display("eliminaAcocunt.tpl");
+        $smarty->display("eliminaAccount.tpl");
     }
 
     public static function showCalendario(Smarty $smarty, array $appuntamenti)

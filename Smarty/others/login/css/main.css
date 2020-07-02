@@ -163,6 +163,13 @@ iframe {
   line-height: 1.4;
 }
 
+.txt_error {
+  font-family: Raleway-Regular;
+  font-size: 10px;
+  color: red;
+  line-height: 1.4;
+}
+
 
 /*//////////////////////////////////////////////////////////////////
 [ login ]*/

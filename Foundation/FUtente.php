@@ -207,6 +207,20 @@ class FUtente extends FObject
 
     }
 
+    public static function eliminaUtente(MUtente $utente): bool
+    {
+        $db = FDataBase::getInstance();
+        if($utente instanceof MCliente)
+        {
+            $num =count(FUtente::visualizzaAppUtente($utente->getId())->getListAppuntamenti());
+            if($num !=0)
+                $db->deleteDB(FAppuntamento::class, 'id_cliente', $utente->getId());
+            $deleted = $db->deleteDB(FCliente::class, 'id', $utente->getId());
+
+            return $deleted;
+        }
+    }
+
 
 
 

@@ -122,6 +122,30 @@ class CUtente
 
     public static function eliminaAccount()
     {
-        //
+        if(VReceiverProxy::postRequest()) {
+            if (CSessionManager::sessionExists())
+            {
+                $utente = CSessionManager::getUtenteLoggato();
+                CSessionManager::sessionDestroy();
+                if(FPersistentManager::eliminaUtente($utente))
+                    header('Location: ' . $GLOBALS['path']);
+                else
+                {
+                    CSessionManager::createSession($utente->getId());
+                    VUtente::eliminaAccount(VSmartyFactory::errorSmarty(VSmartyFactory::userSmarty($utente), 'ERRORE ELIMINAZIONE'));
+                }
+            }
+            else VUtente::loginForm(VSmartyFactory::basicSmarty());
+        }
+        elseif (VReceiverProxy::getRequest())
+        {
+            if(CSessionManager::sessionExists())
+            {
+                $utente = CSessionManager::getUtenteLoggato();
+                VUtente::eliminaAccount(VSmartyFactory::userSmarty($utente));
+            }
+            else VUtente::loginForm(VSmartyFactory::basicSmarty());
+        }
+        //ipotetico else
     }
 }

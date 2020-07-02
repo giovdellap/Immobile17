@@ -22,6 +22,7 @@ class CImmobile
         if(VReceiverProxy::getRequest())
         {
             $parameters = VReceiverProxy::ricercaParametersFiller($parameters);
+            print_r($parameters);
             $immobili = FPersistentManager::getImmobiliByParameters($parameters);
             if(CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();

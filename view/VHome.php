@@ -36,7 +36,7 @@ class VHome
     /*funzione che serve a testare i templates di prova (da rimuovere)*/
     public static function provatpl(Smarty $smarty)
     {
-        $smarty->display('eliminaAccount.tpl');
+        $smarty->display('aggiuntaImmobile.tpl');
     }
 
 }

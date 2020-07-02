@@ -86,16 +86,6 @@
                     <span class="focus-input100"></span>
                 </div>
 
-                <span class="txt1 p-b-11">
-						Conferma Password
-					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
-						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"></span>
-                </div>
 
                 {include file="loadImage.tpl"}
 

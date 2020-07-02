@@ -33,7 +33,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form class="login100-form validate-form flex-sb flex-w">
+            <form action="{$path}Utente/eliminaAccount" method="POST" class="login100-form validate-form flex-sb flex-w">
                 <a class="nav-brand" >
                     <img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
 
@@ -50,7 +50,7 @@
 
 
                 <span class="txt3 p-b-11">
-						Sei sicura/o di voler eliminare il tuo accont? Puoi ancora tornare indietro e restare con noi
+						Sei sicura/o di voler eliminare il tuo account? Puoi ancora tornare indietro e restare con noi
 
                     <br>
                     <br>
