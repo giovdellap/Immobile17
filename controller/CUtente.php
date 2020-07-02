@@ -119,4 +119,8 @@ class CUtente
        header("Location: " . $GLOBALS['path']);
     }
 
+    public static function eliminaAccount()
+    {
+        //
+    }
 }

@@ -31,6 +31,11 @@ class VUtente
         $smarty->display("modificaDati.tpl");
     }
 
+    public static function eliminaAccount(Smarty $smarty)
+    {
+        $smarty->display("eliminaAcocunt.tpl");
+    }
+
     public static function showCalendario(Smarty $smarty, array $appuntamenti)
     {
         // TO DO
