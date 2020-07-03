@@ -30,3 +30,36 @@ COSE DA FARE:
 -varie cose per il calendario
 
 -documentazione
+
+- cambiare MData come diceva cic
+
+{foreach $appLiberi as $app}
+                    {
+                        title: 'selezionabile',
+                        start: '{$app->getOrarioInizio()->getFullDataString()}',
+                        end: '{$app->getOrarioFine()->getFullDataString()}',
+                        color: '#8f7c36'
+                        display: 'inverse-background'
+
+
+                    },
+                    {/foreach}
+
+                    // red areas where no events can be dropped
+
+
+                    {
+                        title: 'festivo',
+                        start: String({$inizio->getAnno()})+String({$inizio->getMese()}).padStart(2, '0')+String({$inizio->getGiorno()}).padStart(2,'0')+'T00:00:00',
+                        end: String({$inizio->getAnno()})+String({$inizio->getMese()}).padStart(2, '0')+String({$inizio->getGiorno()}).padStart(2,'0')+'T23:59:00',
+                        //display: 'background',
+                        color: '#22aa22'
+                    },
+                    {
+                        title: 'festivo',
+                        start: '{MData::getDateString($fine)}'+'T00:00:00',
+                        end: '{MData::getDateString($fine)}'+'T23:59:00',
+                        //display: 'background',
+                        color: '#22aa22'
+                    }
+

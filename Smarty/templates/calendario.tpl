@@ -32,8 +32,8 @@
                         icon: 'left-single-arrow',
                         click: function() {
                             var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}'
-                                +'/inizio/'+'{MData::getDateString($prevInizio)}'
-                                +'/fine/'+'{MData::getDateString($prevFine)}';
+                                +'/inizio/'+'{$prevInizio->getDateString()}'
+                                +'/fine/'+'{$prevFine->getDateString()}';
                             window.location.href=url;
                         }
                     },
@@ -41,8 +41,8 @@
                         icon: 'right-single-arrow',
                         click: function() {
                             var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}'
-                                +'/inizio/'+'{MData::getDateString($nextInizio)}'
-                                +'/fine/'+'{MData::getDateString($nextFine)}';
+                                +'/inizio/'+'{$nextInizio->getDateString()}'
+                                +'/fine/'+'{$nextFine->getDateString()}';
                             window.location.href=url;
                         }
                     },todayCustomButton: {
@@ -69,38 +69,23 @@
                 initialDate: aaaa+'-'+mm+'-'+dd,
                 initialView: 'timeGridWeek',
                 navLinks: false, // can click day/week names to navigate views
-                businessHours: true, // display business hours
+                businessHours: false, // display business hours
                 editable: false,
                 selectable: false,
 
                 events: [
-                    {foreach $appLiberi as $app}
-                    {
-                        title: 'selezionabile',
-                        start: '{$app->getOrarioInizio()->getFullDataString()}',
-                        end: '{$app->getOrarioFine()->getFullDataString()}',
-                        color: '#faf3dc'
-
-                    },
-                    {/foreach}
-
-
-                    // red areas where no events can be dropped
-
 
                     {
-                        title: 'festivo',
-                        start: '{MData::getDateString($inizio)}'+'T00:00:00',
-                        end: '{MData::getDateString($inizio)}'+'T23:59:00',
-                        display: 'background',
-                        color: '#111111'
+                        title: 'PROVAPROVAPROVA',
+                        start: {$appLiberi[0]->getOrarioInizio()->getFullDataString()},
+                        end: {$appLiberi[0]->getOrarioFine()->getFullDataString()},
+                        color: '#ea12ac'
                     },
                     {
-                        title: 'festivo',
-                        start: '{MData::getDateString($fine)}'+'T00:00:00',
-                        end: '{MData::getDateString($fine)}'+'T23:59:00',
-                        display: 'background',
-                        color: '#111111'
+                        title: 'Festivo',
+                        start: '{$inizio->getfullDataString()}',
+                        allDay: true,
+                        color: '#257e4a'
                     }
                 ]
             });

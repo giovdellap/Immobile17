@@ -162,9 +162,9 @@ class MData
      * @param MData $data
      * @return string
      */
-    public static function getDateString(MData $data): string
+    public function getDateString(): string
     {
-        return $data->getAnno() . "-" . $data->getMese() . "-" . $data->getGiorno();
+        return $this->anno."-".$this->get2digit($this->mese)."-".$this->get2digit($this->giorno);
     }
 
     /**
@@ -186,7 +186,7 @@ class MData
      */
     public function sumDays(int $days)
     {
-        $date = $this::getDateString($this);
+        $date = $this->getDateString();
         $finalDate = new Datetime($date);
         if($days > 0)
             $finalDate->add(new DateInterval("P".$days."D"));
@@ -204,11 +204,24 @@ class MData
         return $toReturn;
     }
 
-    public function getfullDataString()
+    public function getFullDataString()
     {
         $ora = intval($this->getOrario());
         $minuto = ($this->getOrario() - $ora)*100;
-        return self::getDateString($this)."T".$ora.":".$minuto.":00";
+        return $this->getDateString()."T".$this->get2digit($ora).":".$this->get2digit($minuto).":00";
+    }
+
+    /**
+     * Se l'intero passato come parametro ha una sola cifra, ritorna una stringa con l'intero preceduto da uno 0.
+     * Altrimenti ritorna una stringa rappresentante l'intero
+     * @param int $val
+     * @return string
+     */
+    private function get2digit(int $val)
+    {
+        if(strlen(strval($val))===1)
+            return '0'.strval($val);
+        else return strval($val);
     }
 
 

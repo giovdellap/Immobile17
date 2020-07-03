@@ -237,7 +237,15 @@ class MAgenzia
         $toCycleInizio = clone $orarioinizio;
         $toCycleFine = clone $orarioinizio;
         $toCycleFine->incrementoOrario(30);
-        //while ($toCycleInizio !== $orariofine) {
+
+        //echo("\ntoCycleInizio: ");
+        //print_r($toCycleInizio);
+        //echo ("\norarioFine: ");
+        //print_r($orariofine);
+
+        while ($toCycleInizio->getGiorno() != $orariofine->getGiorno())
+        {
+
             while($toCycleInizio->getOrario()<=20) {
                 $toAdd = new MAppuntamento();
                 $toAdd->setId(-1);
@@ -260,17 +268,24 @@ class MAgenzia
                                 $toAdd = $appDisp;
                         } else $toAdd = $appDisp;
                     }
-
+                    //echo("\nInizio: ".$inizio->getfullDataString());
+                    //echo("\nFine: ".$fine->getfullDataString());
+                    //echo("\nImmobile: ".$context->validateAppuntamento(new MValidatorImmobile()));
+                    //echo("\nAgente: ".$context->validateAppuntamento(new MValidatorAgenteImmobiliare()));
+                    //echo("\nCliente: ".$context->validateAppuntamento(new MValidatorCliente()));
                 }
                 if ($toAdd->getId() != -1)
                     $toReturn[] = $toAdd;
                 $toCycleInizio->incrementoOrario(15);
                 $toCycleFine->incrementoOrario(15);
-            //}
-            //$toCycleInizio->nextDay();
-            //$toCycleFine->nextDay();
-            //$toCycleInizio->setOrario(7.30);
-            //$toCycleFine->setOrario(8.0);
+
+                //echo ("Inizio: ".$toCycleInizio->getOrario()."\n");
+                //echo ("Fine: ".$toCycleFine->getOrario()."\n");
+            }
+            $toCycleInizio->nextDay();
+            $toCycleFine->nextDay();
+            $toCycleInizio->setOrario(7.30);
+            $toCycleFine->setOrario(8.0);
         }
         return $toReturn;
     }

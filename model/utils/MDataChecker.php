@@ -40,6 +40,17 @@ class MDataChecker
      */
     public function SovrapposizioneEstesa(MData $orarioInizio, MData $orarioFine, MData $toCheckInizio, MData $toCheckFine): bool
     {
+        /**
+        echo("orarioInizio: ");
+        print_r($orarioInizio);
+        echo("\nirariofine: ");
+        print_r($orarioFine);
+        echo("\ntocheckInizio: ");
+        print_r($toCheckInizio);
+        echo("\ntoCheckFine: ");
+        print_r($toCheckFine);
+        **/
+
         if(($toCheckInizio->getAnno() == $orarioInizio->getAnno()) && ($orarioFine->getAnno() == $toCheckFine->getAnno())
             && ($toCheckInizio->getMese() == $orarioInizio->getMese()) && ($orarioFine->getMese() == $toCheckFine->getMese())
             && ($toCheckInizio->getGiorno() == $orarioInizio->getGiorno()) && ($orarioFine->getGiorno() == $toCheckFine->getGiorno()))
@@ -50,6 +61,7 @@ class MDataChecker
             $newFine->incrementoOrario(30);
             return $this->sovrapposizione($newInizio, $newFine, $toCheckInizio, $toCheckFine);
         }
+        else return false;
 
     }
 }

@@ -76,7 +76,7 @@ class VReceiverProxy
         {
             $inizio = MData::getMDataFromString($parameters['inizio']);
             $fine = MData::shiftedData($inizio, 7);
-            $parameters['fine'] = MData::getDateString($fine);
+            $parameters['fine'] = $fine->getDateString();
         }
         return $parameters;
     }

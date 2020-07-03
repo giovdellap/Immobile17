@@ -24,10 +24,10 @@ class FUtente extends FObject
         $stmt->bindValue(':id',          $newId,                                      PDO::PARAM_STR);
         $stmt->bindValue(':nome',        $obj->getNome(),                             PDO::PARAM_STR);
         $stmt->bindValue(':cognome',     $obj->getCognome(),                          PDO::PARAM_STR);
-        $stmt->bindValue(':datanascita', MData::getDateString($obj->getDataNascita()), PDO::PARAM_STR);
+        $stmt->bindValue(':datanascita', $obj->getDataNascita()->getDateString(), PDO::PARAM_STR);
         $stmt->bindValue(':mail',        $obj->getEmail(),                            PDO::PARAM_STR);
         $stmt->bindValue(':password',    $obj->getPassword(),                         PDO::PARAM_STR);
-        $stmt->bindValue(':iscrizione',  MData::getDateString($obj->getIscrizione()),  PDO::PARAM_STR);
+        $stmt->bindValue(':iscrizione',  $obj->getIscrizione()->getDateString(),  PDO::PARAM_STR);
         $stmt->bindValue(':verifica',    $obj->isAttivato(),                          PDO::PARAM_BOOL);
     }
 
@@ -152,9 +152,9 @@ class FUtente extends FObject
         if($utente->getPassword() != $oldUtente)
             $mods["password"] = $utente->getPassword();
         if($utente->getDataNascita() != $oldUtente->getDataNascita())
-            $mods["datanascita"] = MData::getDateString($utente->getDataNascita());
+            $mods["datanascita"] = $utente->getDataNascita()->getDateString();
         if($utente->getIscrizione() != $oldUtente->getIscrizione())
-            $mods["iscrizione"] = MData::getDateString($utente->getIscrizione());
+            $mods["iscrizione"] = $utente->getIscrizione()->getDateString();
         if($utente->isAttivato() != $oldUtente->isAttivato())
             $mods["verifica"] = $utente->isAttivato();
 

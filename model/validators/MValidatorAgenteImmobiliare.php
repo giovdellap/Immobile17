@@ -17,7 +17,6 @@ class MValidatorAgenteImmobiliare implements MValidator
         {
             $notValido = $checker->SovrapposizioneEstesa($appAgente->getOrarioInizio(), $appAgente->getOrarioFine(), $appuntamento->getOrarioInizio(), $appuntamento->getOrarioFine());
             if($notValido) return false;
-
         }
 
         return true;
