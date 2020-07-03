@@ -85,6 +85,7 @@ class CImmobile
                 $parameters = VReceiverProxy::calendarioParametersFiller($parameters);
                 $inizio = VReceiverProxy::calendarioInizio($parameters);
                 $fine = VReceiverProxy::calendarioFine($parameters);
+                $fine->nextDay();
                 $immobile = FPersistentManager::visualizzaImmobile($parameters["id"]);
                 $fullAgenzia = FPersistentManager::getBusyWeek($parameters["id"],
                     CSessionManager::getUtenteLoggato()->getId(), $inizio, $fine);
@@ -113,6 +114,7 @@ class CImmobile
     public static function prenota()
     {
         if (VReceiverProxy::postRequest()) {
+            print_r($_POST);
             if (CSessionManager::sessionExists()) {
                 $inizio = VReceiverProxy::prenotaInizioAgenzia();
                 $fine = VReceiverProxy::prenotaFineAgenzia();

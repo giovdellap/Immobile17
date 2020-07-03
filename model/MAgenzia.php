@@ -234,26 +234,27 @@ class MAgenzia
     public function checkDisponibilità(MCliente $cliente, MImmobile $immobile, MData $orarioinizio, MData $orariofine): array
     {
         $toReturn = array();
-        $toCycleInizio = clone $orarioinizio;
-        $toCycleFine = clone $orarioinizio;
+        $toCycleInizio = $orarioinizio->dateClone();
+        $toCycleFine = $orarioinizio->dateClone();
         $toCycleFine->incrementoOrario(30);
 
         //echo("\ntoCycleInizio: ");
         //print_r($toCycleInizio);
+        //echo("\ntoCycleFine: ");
+        //print_r($toCycleFine);
         //echo ("\norarioFine: ");
         //print_r($orariofine);
 
         while ($toCycleInizio->getGiorno() != $orariofine->getGiorno())
         {
-
             while($toCycleInizio->getOrario()<=20) {
                 $toAdd = new MAppuntamento();
                 $toAdd->setId(-1);
                 foreach ($this->list_AgentiImmobiliari as &$agenti) {
                     $appDisp = new MAppuntamento();
                     $appDisp->setId(0000);
-                    $inizio = clone $toCycleInizio;
-                    $fine = clone $toCycleFine;
+                    $inizio = $toCycleInizio->dateClone();
+                    $fine = $toCycleFine->dateClone();
                     $appDisp->setAppuntamento($inizio, $fine, $cliente, $immobile, $agenti);
 
                     $context = new MValidatorContext($appDisp);
@@ -276,8 +277,8 @@ class MAgenzia
                 }
                 if ($toAdd->getId() != -1)
                     $toReturn[] = $toAdd;
-                $toCycleInizio->incrementoOrario(15);
-                $toCycleFine->incrementoOrario(15);
+                $toCycleInizio->incrementoOrario(30);
+                $toCycleFine->incrementoOrario(30);
 
                 //echo ("Inizio: ".$toCycleInizio->getOrario()."\n");
                 //echo ("Fine: ".$toCycleFine->getOrario()."\n");

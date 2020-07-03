@@ -55,9 +55,9 @@ class MDataChecker
             && ($toCheckInizio->getMese() == $orarioInizio->getMese()) && ($orarioFine->getMese() == $toCheckFine->getMese())
             && ($toCheckInizio->getGiorno() == $orarioInizio->getGiorno()) && ($orarioFine->getGiorno() == $toCheckFine->getGiorno()))
         {
-            $newInizio = clone $orarioInizio;
+            $newInizio = $orarioInizio->dateClone();
             $newInizio->incrementoOrario(-30);
-            $newFine = clone $orarioFine;
+            $newFine = $orarioFine->dateClone();
             $newFine->incrementoOrario(30);
             return $this->sovrapposizione($newInizio, $newFine, $toCheckInizio, $toCheckFine);
         }

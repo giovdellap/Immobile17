@@ -3,18 +3,16 @@
 
 class MData
 {
-    private int $giorno;
-    private int $mese;
-    private int $anno;
-    private float $orario;
+    private DateTime $data;
 
 
     public function __construct(int $anno, int $mese, int $giorno, float $orario)
     {
-        $this->anno = $anno;
-        $this->mese = $mese;
-        $this->giorno = $giorno;
-        $this->orario = $orario;
+        $this->data = new DateTime();
+        $this->data->setDate($anno, $mese, $giorno);
+        $ora = intval($orario);
+        $minuto = ($orario - $ora)*100;
+        $this->data->setTime($ora, $minuto);
     }
 
     /**
@@ -22,7 +20,9 @@ class MData
      */
     public function getOrario(): float
     {
-        return round($this->orario, 2);
+        $ora = date("G", $this->data->getTimestamp());
+        $minuto = date("i", $this->data->getTimestamp());
+        return round($ora+($minuto/100),2);
     }
 
     /**
@@ -30,7 +30,9 @@ class MData
      */
     public function setOrario(float $orario): void
     {
-        $this->orario = round($orario,2);
+        $ora = intval($orario);
+        $minuto = ($orario - $ora)*100;
+        $this->data->setTime($ora, $minuto);
     }
 
     /**
@@ -38,7 +40,7 @@ class MData
      */
     public function getGiorno(): int
     {
-        return $this->giorno;
+        return date("d", $this->data->getTimestamp());
     }
 
     /**
@@ -46,7 +48,7 @@ class MData
      */
     public function setGiorno(int $giorno): void
     {
-        $this->giorno = $giorno;
+        $this->data->setDate($this->getAnno(), $this->getMese(), $giorno);
     }
 
     /**
@@ -54,7 +56,7 @@ class MData
      */
     public function getMese(): int
     {
-        return $this->mese;
+        return date("n", $this->data->getTimestamp());
     }
 
     /**
@@ -62,7 +64,7 @@ class MData
      */
     public function setMese(int $mese): void
     {
-        $this->mese = $mese;
+        $this->data->setDate($this->getAnno(), $mese, $this->getGiorno());
     }
 
     /**
@@ -70,7 +72,7 @@ class MData
      */
     public function getAnno(): int
     {
-        return $this->anno;
+        return date("Y", $this->data->getTimestamp());
     }
 
     /**
@@ -78,7 +80,7 @@ class MData
      */
     public function setAnno(int $anno): void
     {
-        $this->anno = $anno;
+        $this->data->setDate($anno, $this->getMese(), $this->getGiorno());
     }
 
     /**
@@ -86,22 +88,7 @@ class MData
      */
     public function nextDay() : void
     {
-        $numDays = cal_days_in_month(CAL_GREGORIAN, $this->mese, $this->anno);
-        if($this->giorno == $numDays)
-        {
-            if($this->mese == 12)
-            {
-                ++$this->anno;
-                $this->mese = 1;
-                $this->giorno = 1;
-            }
-            else
-            {
-                ++$this->mese;
-                $this->giorno = 1;
-            }
-        }
-        else ++$this->giorno;
+        $this->sumDays(1);
     }
 
     /**
@@ -110,28 +97,9 @@ class MData
      */
     public function incrementoOrario(int $incremento): void
     {
-        $ora = intval($this->orario);
-        $minuto = ($this->orario - $ora)*100;
         if($incremento > 0)
-        {
-            $minuto = $minuto + $incremento;
-            while($minuto > 60)
-            {
-                $minuto = $minuto - 60;
-                ++$ora;
-            }
-        }
-        else
-        {
-            $modulo = $incremento*(-1);
-            $minuto = $minuto - $modulo;
-            while($minuto < 0)
-            {
-                $minuto = 60 + $minuto;
-                --$ora;
-            }
-        }
-        $this->orario = $ora + $minuto/100;
+            $this->data->modify("+".$incremento." minutes");
+        else $this->data->modify("-".abs($incremento)." minutes");
 
     }
 
@@ -164,7 +132,7 @@ class MData
      */
     public function getDateString(): string
     {
-        return $this->anno."-".$this->get2digit($this->mese)."-".$this->get2digit($this->giorno);
+        return date("Y-m-d", $this->data->getTimestamp());
     }
 
     /**
@@ -186,28 +154,22 @@ class MData
      */
     public function sumDays(int $days)
     {
-        $date = $this->getDateString();
-        $finalDate = new Datetime($date);
         if($days > 0)
-            $finalDate->add(new DateInterval("P".$days."D"));
-        else $finalDate->sub(new DateInterval("P".abs($days)."D"));
-        $mdata = self::getMDataFromString($finalDate->format("Y-m-d"));
-        $this->anno = $mdata->getAnno();
-        $this->mese = $mdata->getMese();
-        $this->giorno = $mdata->getGiorno();
+            $this->data->modify("+".$days." days");
+        else $this->data->modify("-".$days." days");
     }
 
     public static function shiftedData(MData $data, int $days): MData
     {
-        $toReturn = clone $data;
+        $toReturn = $data->dateClone();
         $toReturn->sumDays($days);
         return $toReturn;
     }
 
     public function getFullDataString()
     {
-        $ora = intval($this->getOrario());
-        $minuto = ($this->getOrario() - $ora)*100;
+        $ora = date("G", $this->data->getTimestamp());
+        $minuto = date("i", $this->data->getTimestamp());
         return $this->getDateString()."T".$this->get2digit($ora).":".$this->get2digit($minuto).":00";
     }
 
@@ -222,6 +184,11 @@ class MData
         if(strlen(strval($val))===1)
             return '0'.strval($val);
         else return strval($val);
+    }
+
+    public function dateClone()
+    {
+        return new MData($this->getAnno(), $this->getMese(), $this->getGiorno(), $this->getOrario());
     }
 
 

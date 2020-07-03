@@ -39,7 +39,6 @@ class VImmobile
         //print_r($appLiberi[0]);
         //print_r($inizio->getFullDataString());
 
-
         $smarty->assign("immobile", $immobile);
         $smarty->assign("inizio", $inizio);
         $smarty->assign("fine", $fine);

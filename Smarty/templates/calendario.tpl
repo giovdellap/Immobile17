@@ -73,17 +73,65 @@
                 editable: false,
                 selectable: false,
 
-                events: [
+                eventClick: function(info)
+                {
+                    var id = info.event.id;
+                    var parameters = id.split("/");
 
+                    var form = document.createElement('form');
+                    form.setAttribute('method', 'post');
+                    form.setAttribute('action', '{$path}'+'Immobile/prenota');
+
+                    const idCl = document.createElement('input');
+                    idCl.type = 'hidden';
+                    idCl.name = 'idCl';
+                    idCl.value = parameters[0];
+                    form.appendChild(idCl);
+
+                    const idIm = document.createElement('input');
+                    idIm.type = 'hidden';
+                    idIm.name = 'idIm';
+                    idIm.value = parameters[1];
+                    form.appendChild(idIm);
+
+                    const idAg = document.createElement('input');
+                    idAg.type = 'hidden';
+                    idAg.name = 'idAg';
+                    idAg.value = parameters[2];
+                    form.appendChild(idAg);
+
+                    const inizio = document.createElement('input');
+                    inizio.type = 'hidden';
+                    inizio.name = 'inizio';
+                    inizio.value = info.event.start;
+                    form.appendChild(inizio);
+
+                    const fine = document.createElement('input');
+                    fine.type = 'hidden';
+                    fine.name = 'fine';
+                    fine.value = info.event.end;
+                    form.appendChild(fine);
+
+
+                    document.body.appendChild(form);
+                    form.submit();
+                },
+
+                events: [
+                    {foreach $appLiberi as $app}
                     {
-                        title: 'PROVAPROVAPROVA',
-                        start: {$appLiberi[0]->getOrarioInizio()->getFullDataString()},
-                        end: {$appLiberi[0]->getOrarioFine()->getFullDataString()},
-                        color: '#ea12ac'
+                        id: '{$app->getCliente()->getId()}'+'/'+
+                                '{$app->getImmobile()->getId()}'+'/'+
+                                '{$app->getAgenteImmobiliare()->getId()}',
+                        title: 'app',
+                        start: '{$app->getOrarioInizio()->getFullDataString()}',
+                        end: '{$app->getOrarioFine()->getFullDataString()}',
+                        color: '#ff0523'
                     },
+                    {/foreach}
                     {
                         title: 'Festivo',
-                        start: '{$inizio->getfullDataString()}',
+                        start: '{$inizio->getFullDataString()}',
                         allDay: true,
                         color: '#257e4a'
                     }
