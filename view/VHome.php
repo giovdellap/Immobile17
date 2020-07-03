@@ -36,7 +36,8 @@ class VHome
     /*funzione che serve a testare i templates di prova (da rimuovere)*/
     public static function provatpl(Smarty $smarty)
     {
-        $smarty->display('confermaEmail.tpl');
+        $smarty->assign("prova", "aggiuntaImmobile.tpl");
+        $smarty->display('adminDashboard.tpl');
     }
 
 }
