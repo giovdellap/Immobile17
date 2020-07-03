@@ -62,10 +62,12 @@ class VImmobile
         $parametersNames = array('ti', 'pc', 'tp');
         foreach ($parametersNames as $key)
         {
-            if(key_exists($key, $parameters))
-                $smarty->assign($key, $parameters[$key]);
-            else $smarty->assign($key, 'notSetted');
+            if(!key_exists($key, $parameters))
+                $parameters[$key]="notSetted";
+            $smarty->assign($key, $parameters[$key]);
         }
+        $smarty->assign("tipologie", self::listTipologie($parameters["tp"]) );
+        $smarty->assign("tipoAnnuncio", self::listTipoAnnuncio($parameters["ti"]) );
         if(!key_exists('pmin', $parameters))
             $smarty->assign('pmin', 100);
         if(!key_exists('pmax', $parameters))
@@ -75,5 +77,41 @@ class VImmobile
         if(!key_exists('gmax', $parameters))
             $smarty->assign('gmax', 2000);
         return $smarty;
+    }
+
+    private static function listTipoAnnuncio(string $selected):array
+    {
+        $tipologie=array("Affitto e Vendita","Vendita", "Affitto");
+        if (array_search($selected,$tipologie)==false)
+            return $tipologie;
+        else
+        {
+            $toReturn=array();
+            $toReturn[]=$selected;
+            foreach ($tipologie as $elem)
+              {
+                if ($elem!==$selected)
+                        $toReturn[]=$elem;
+              }
+              return $toReturn;
+        }
+    }
+
+    private static function listTipologie(string $selected):array
+    {
+        $tipologie=array("Tutte le Tipologie","Monolocale","Bilocale", "Villa","Mansarda","Garage","Locale");
+        if (array_search($selected,$tipologie)==false)
+            return $tipologie;
+        else
+        {
+            $toReturn=array();
+            $toReturn[]=$selected;
+            foreach ($tipologie as $elem)
+            {
+                if ($elem!==$selected)
+                    $toReturn[]=$elem;
+            }
+            return $toReturn;
+        }
     }
 }
