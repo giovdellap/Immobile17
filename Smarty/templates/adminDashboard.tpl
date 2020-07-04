@@ -27,14 +27,14 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>{count($clienti)}</h3>
 
                             <span>Clienti</span>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Vai all'elenco <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{$path}Admin/visualizzaClienti" class="small-box-footer">Vai all'elenco <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -42,14 +42,14 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53</h3>
+                            <h3>{count($agenti)}</h3>
 
                             <span>Agenti Immobiliari</span>
                         </div>
                         <div class="icon">
                             <i class="ion ion-clipboard"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Vai all'elenco <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{$path}Admin/visualizzaAgenti" class="small-box-footer">Vai all'elenco <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -57,14 +57,14 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3>{count($immobili)}</h3>
 
                             <span>Immobili</span>
                         </div>
                         <div class="icon">
                             <i class="ion ion-home"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Vai all'elenco <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="{$path}Admin/visualizzaImmobili" class="small-box-footer">Vai all'elenco <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -96,10 +96,12 @@
 
 
 
+
                 </section>
                 <!-- /.Left col -->
                 <!-- right col (We are only adding the ID to make the widgets sortable)-->
                 <section class="col-lg-5 connectedSortable">
+
 
 
 

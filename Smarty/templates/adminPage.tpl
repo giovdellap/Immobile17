@@ -46,7 +46,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{$path}Admin/homepage" class="nav-link">Home</a>
       </li>
     </ul>
     <!-- Right navbar links -->
@@ -93,9 +93,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="{$path}Admin/homepage" class="nav-link">
                   <i class="fas fa-eye nav-icon"></i>
-                  <p>Statistiche</p>
+                  <p>Homepage</p>
                 </a>
               </li>
             </ul>
@@ -144,7 +144,7 @@
 
           <li class="nav-header">VISUALIZZA</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{$path}Admin/visualizzaClienti" class="nav-link">
               <i class="nav-icon far fa-user"></i>
               <p>
                 Clienti
@@ -152,7 +152,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{$path}Admin/visualizzaAgenti" class="nav-link">
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Agenti Immobiliari
@@ -160,7 +160,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{$path}Admin/visualizzaImmobili" class="nav-link">
               <i class="nav-icon fas fa-laptop-house"></i>
               <p>
                 Immobili
@@ -170,7 +170,7 @@
 
           <li class="nav-header">AGGIUNGI</li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{$path}Admin/aggiungiCliente" class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>
                 Clienti
@@ -178,7 +178,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{$path}Admin/aggiungiAgente" class="nav-link">
               <i class="nav-icon fas fa-people-arrows"></i>
               <p>
                 Agenti Immobiliari
@@ -186,7 +186,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{$path}Admin/aggiungiImmobile" class="nav-link">
               <i class="nav-icon far fa-plus-square"></i>
               <p>
                 Immobili
@@ -203,7 +203,7 @@
 
 
 
-{include file = $prova}}
+{include file = $toAppend}}
 
   <footer class="main-footer">
     <span style=" fill-opacity: 1%">Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</span>

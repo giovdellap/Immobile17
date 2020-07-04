@@ -28,9 +28,7 @@
                 <table class="table table-striped projects">
                     <thead>
                     <tr>
-                        <th style="width: 1%">
-                            Foto
-                        </th>
+                        <th style="width: 1%"> Foto </th>
                         <th style="width: 1%">
                             ID
                         </th>
@@ -53,65 +51,73 @@
 
                         <th style="width: 40%" class="text-center">
                         </th>
-
                     </tr>
+
                     </thead>
                     <tbody>
+                    {foreach $clienti as $cliente}
                     <tr>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="{$path}Smarty/img/blog-img/c-1.jpg">
+                                    {if isset($cliente->getImmagine())}
+                                        <img  class="table-avatar" src="{$cliente->getImmagine()->viewImageHTML()}">
+                                    {else}  <img class="table-avatar" src="{$path}Smarty/img/icons/avatar.png">
+                                    {/if}
                                 </li>
                             </ul>
                         </td>
                         <td>
-                            CL1
+                            {$cliente->getId()}
                         </td>
                         <td>
                             <a>
-                                Giordano Bruno
+                                {$cliente->getNome()} {$cliente->getCognome()}
                             </a>
 
                         </td>
                         <td>
-                            <a>vadoafuoco@gmail.com</a>
+                            <a>{$cliente->getEmail()}</a>
                         </td>
                         <td >
                             <a>
-                                1548-02-17
+                                {$cliente->getDataNascita()->getDateString()}
                             </a>
                         </td>
 
                         <td >
-                            <a>1568-11-01</a>
+                            <a>{$cliente->getIscrizione()->getDateString()}</a>
                         </td>
 
                         <td class="project-state">
-                            <span class="badge badge-success">Success</span>
+                            {if $cliente->isAttivato()}
+                                <span class="badge badge-success">Attivo</span>
+                                {else} <span class="badge badge-danger">Non Attivo</span>
+                            {/if}
                         </td>
 
 
 
                         <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                                Visualizza
-                            </a>
-                            <a class="btn btn-info btn-sm" href="#">
+                            <a class="btn btn-info btn-sm" href="{$path}Admin/modificaCliente/id/{$cliente->getId()}">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 Modifica
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="#">
+                                <i class="fas fa-folder">
+                                </i>
+                                Attiva/Disattiva
                             </a>
                             <a class="btn btn-danger btn-sm" href="#">
                                 <i class="fas fa-trash">
                                 </i>
                                 Cancella
                             </a>
+
                         </td>
                     </tr>
-
+                    {/foreach}
                     </tbody>
                 </table>
             </div>

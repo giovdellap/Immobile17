@@ -35,7 +35,7 @@ class CUtente
 
             case "OK ADMIN":
                 CSessionManager::createSession("AM1");
-                CAdmin::adminHomepage();
+                CAdmin::homepage();
                 break;
 
             case "OK USER":

@@ -28,9 +28,7 @@
                 <table class="table table-striped projects">
                     <thead>
                     <tr>
-                        <th style="width: 1%">
-                            Foto
-                        </th>
+                        <th style="width: 1%"> Foto </th>
                         <th style="width: 1%"> ID </th>
                         <th style="width: 15%"> Nome </th>
                         <th style="width: 15%"> Città </th>
@@ -45,45 +43,51 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {foreach $immobili as $immobile}
                     <tr>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="{$path}Smarty/img/blog-img/c-1.jpg">
+                                    <img alt="Immobile" class="table-avatar" src="{$immobile->getPresentationImg()}">
                                 </li>
                             </ul>
                         </td>
-                        <td> IM1 </td>
-                        <td> <a>casa1</a> </td>
-                        <td> <a>L'Aquila</a> </td>
-                        <td > <a>Via Roma 1</a> </td>
-                        <td > <a>Monolocale</a> </td>
-                        <td > <a>500 mq</a> </td>
-                        <td ><a>Vendita</a></td>
-                        <td > <a>€ 80000</a> </td>
+                        <td> {$immobile->getId()} </td>
+                        <td> <a>{$immobile->getNome()}</a> </td>
+                        <td> <a>{$immobile->getComune()}</a> </td>
+                        <td > <a>{$immobile->getIndirizzo()}</a> </td>
+                        <td > <a>{$immobile->getTipologia()}</a> </td>
+                        <td > <a>{$immobile->getGrandezza()} mq</a> </td>
+                        <td ><a>{$immobile->getTipoAnnuncio()}</a></td>
+                        <td > <a>€ {$immobile->getPrezzo()}</a> </td>
 
                         <td class="project-state">
-                            <span class="badge badge-success">Success</span>
+                            {if $immobile->isAttivo()}
+                                <span class="badge badge-success">Attivo</span>
+                            {else} <span class="badge badge-danger">Non Attivo</span>
+                            {/if}
                         </td>
 
                         <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                                Visualizza
-                            </a>
-                            <a class="btn btn-info btn-sm" href="#">
+                            <a class="btn btn-info btn-sm" href="{$path}Admin/modificaImmobile/id/{$immobile->getId()}">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 Modifica
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="#">
+                                <i class="fas fa-folder">
+                                </i>
+                                Attiva/Disattiva
                             </a>
                             <a class="btn btn-danger btn-sm" href="#">
                                 <i class="fas fa-trash">
                                 </i>
                                 Cancella
                             </a>
+
                         </td>
                     </tr>
+                    {/foreach}
 
                     </tbody>
                 </table>

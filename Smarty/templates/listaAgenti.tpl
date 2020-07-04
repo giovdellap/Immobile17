@@ -15,7 +15,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">AgentiImmobiliari</h3>
+                <h3 class="card-title">Agenti Immobiliari</h3>
 
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -57,60 +57,70 @@
                     </tr>
                     </thead>
                     <tbody>
+
+                        {foreach $agenti as $agente}
                     <tr>
                         <td>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="{$path}Smarty/img/blog-img/c-1.jpg">
+                                    {if isset($agente->getImmagine())}
+                                        <img  class="table-avatar" src="{$agente->getImmagine()->viewImageHTML()}">
+                                    {else}  <img class="table-avatar" src="{$path}Smarty/img/icons/avatar.png">
+                                    {/if}
                                 </li>
                             </ul>
                         </td>
                         <td>
-                            AG1
+                            {$agente->getId()}
                         </td>
                         <td>
                             <a>
-                                Vanessa Marchesani
+                                {$agente->getNome()} {$agente->getCognome()}
                             </a>
 
                         </td>
                         <td>
-                            <a>vanessamarchesani@info.it</a>
+                            <a>{$agente->getEmail()}</a>
                         </td>
                         <td >
                             <a>
-                                1987-03-16
+                                {$agente->getDataNascita()->getDateString()}
                             </a>
                         </td>
 
                         <td >
-                            <a>2020-06-15</a>
+                            <a>{$agente->getIscrizione()->getDateString()}</a>
                         </td>
 
                         <td class="project-state">
-                            <span class="badge badge-success">Success</span>
+                            {if $agente->isAttivato()}
+                                <span class="badge badge-success">Attivo</span>
+                            {else} <span class="badge badge-danger">Non Attivo</span>
+                            {/if}
                         </td>
 
 
 
                         <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                                Visualizza
-                            </a>
-                            <a class="btn btn-info btn-sm" href="#">
+                            <a class="btn btn-info btn-sm" href="{$path}Admin/modificaAgente/id/{$agente->getId()}">
                                 <i class="fas fa-pencil-alt">
                                 </i>
                                 Modifica
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="#">
+                                <i class="fas fa-folder">
+                                </i>
+                                Attiva/Disattiva
                             </a>
                             <a class="btn btn-danger btn-sm" href="#">
                                 <i class="fas fa-trash">
                                 </i>
                                 Cancella
                             </a>
+
                         </td>
                     </tr>
+                    {/foreach}
 
                     </tbody>
                 </table>

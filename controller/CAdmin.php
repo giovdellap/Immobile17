@@ -11,8 +11,11 @@ class CAdmin
             {
                 if(VReceiverProxy::getRequest())
                 {
+                    $immobili = FPersistentManager::visualizzaImmobili();
+                    $clienti = FPersistentManager::visualizzaUtenti('CLIENTE');
+                    $agenti = FPersistentManager::visualizzaUtenti('AGENTE');
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
-                    VAdmin::showHomepage($smarty);
+                    VAdmin::showHomepage($smarty, $immobili, $clienti, $agenti);
                 }
                 else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
             }
@@ -40,7 +43,7 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
-    public static function immobili()
+    public static function visualizzaImmobili()
     {
         if(CSessionManager::sessionExists())
         {
@@ -118,7 +121,7 @@ class CAdmin
                 {
                     $clienti = FPersistentManager::visualizzaUtenti("CLIENTE");
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
-                    VAdmin::showImmobili($smarty, $clienti);
+                    VAdmin::showClienti($smarty, $clienti);
                 }
                 else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
             }
@@ -137,7 +140,7 @@ class CAdmin
                 {
                     $agenti = FPersistentManager::visualizzaUtenti("AGENTE");
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
-                    VAdmin::showImmobili($smarty, $agenti);
+                    VAdmin::showAgenti($smarty, $agenti);
                 }
                 else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
             }

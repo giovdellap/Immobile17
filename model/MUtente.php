@@ -55,9 +55,12 @@ class MUtente
     /**
      * @return MMediaUtente
      */
-    public function getImmagine(): MMediaUtente
+    public function getImmagine(): ?MMediaUtente
     {
-        return $this->immagine;
+        if(!isset($this->immagine))
+            return null;
+        else
+            return $this->immagine;
     }
 
     /**
