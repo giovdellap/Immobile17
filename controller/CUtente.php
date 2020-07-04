@@ -152,7 +152,7 @@ class CUtente
             $img=$_FILES[$nomeFile];
             $name = $img["name"];
             $type = $img["type"];
-            echo "PENE VIOLACEO: " . $name;
+
             $data = file_get_contents($_FILES[$nomeFile]["tmp_name"]);
             $data=base64_encode($data);
 

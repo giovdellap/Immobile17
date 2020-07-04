@@ -121,38 +121,9 @@
                     <span class="focus-input100"></span>
                 </div>
 
-
-
-                <!--
-                <div class="flex-m w-full p-b-33">
-                    <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-								<span class="txt1">
-									I agree to the
-									<a href="#" class="txt2 hov1">
-										Terms of User
-									</a>
-								</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div>
-                   <button id="insert_image"  type="button" style="width: 200px" onclick="document.getElementById('choose_image').click()">Carica Immagine</button>
-                    <input id="choose_image" type="file" name="propic" onchange="validateImage()" style="display: none" accept=".jpg, .jpeg, .gif, .png">
-                    <br>
-                    <b><p id="image_name" class="faq__text" style="text-align: center; max-width: 300px">Nessuna immagine caricata (MAX 2MB)</p></b>
-
-                    <br>
-                    <br>
-
-                </div> -->
-
-                    File:
-                    <input type="file" name="propic" /> <input type="submit" value="Upload" />
-
-
+                <span class="txt1 p-b-7">Immagine del Profilo:</span>
+                    <input type="file" name="propic" />
+                <br>
                 <br>
                 <br>
                 <div class="container-login100-form-btn">
