@@ -71,15 +71,26 @@
                             </div>
 
 
-                            <div class="col-12 col-md-8 col-xl-4">
-                                <div class="slider-range">
-                                    <input type="range" min="{$pmin}" max="300000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
+                            <div class="col-12 col-md-8 col-xl-2">
+                                <div class="row">
+                                    <p>Prezzo massimo: € <span id="outputPrezzo"></span></p>
                                 </div>
-                                <div class="slider-range">
-                                    <input type="range" min="{$gmin}" max="2000" value="{$gmax}" class="slider" name="gmax" id="grandezza">
+                                <div class="row">
+                                    <div class="slider-range">
+                                        <input type="range" min="{$pmin}" max="300000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
+                                    </div>
                                 </div>
 
-
+                            </div>
+                            <div class="col-12 col-md-8 col-xl-2">
+                                <div class="row">
+                                    <p>Grandezza minima: mq <span id="outputGrandezza"></span></p>
+                                </div>
+                                <div class="row">
+                                    <div class="slider-range">
+                                        <input type="range" min="{$gmin}" max="2000" value="{$gmax}" class="slider" name="gmax" id="grandezza">
+                                    </div>
+                                </div>
                             </div>
 
                             <!--<div class="col-12 col-md-8 col-lg-12 col-xl-4 d-flex">
@@ -127,7 +138,7 @@
 
         // Update the current slider value (each time you drag the slider handle)
         slider.oninput = function() {
-        output.innerHTML = this.value;
+            output.innerHTML = this.value;
 }
 </script>
 <script>

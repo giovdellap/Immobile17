@@ -112,6 +112,17 @@
                     fine.value = info.event.end;
                     form.appendChild(fine);
 
+                    const agInizio = document.createElement('input');
+                    agInizio.type = 'hidden';
+                    agInizio.name = 'agInizio';
+                    agInizio.value = '{$inizio->getDateString()}';
+                    form.appendChild(agInizio);
+
+                    const agFine = document.createElement('input');
+                    agFine.type = 'hidden';
+                    agFine.name = 'agFine';
+                    agFine.value = '{$fine->getDateString()}';
+                    form.appendChild(agFine);
 
                     document.body.appendChild(form);
                     form.submit();
@@ -123,7 +134,6 @@
                         id: '{$app->getCliente()->getId()}'+'/'+
                                 '{$app->getImmobile()->getId()}'+'/'+
                                 '{$app->getAgenteImmobiliare()->getId()}',
-                        title: 'app',
                         start: '{$app->getOrarioInizio()->getFullDataString()}',
                         end: '{$app->getOrarioFine()->getFullDataString()}',
                         color: '#ff0523'

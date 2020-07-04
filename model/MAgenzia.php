@@ -262,6 +262,8 @@ class MAgenzia
                     if ($valido)
                         $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
                     if ($valido)
+                        $valido = $context->validateAppuntamento(new MValidatorGeneral());
+                    if ($valido)
                         $valido = $context->validateAppuntamento(new MValidatorCliente());
                     if ($valido) {
                         if ($toAdd->getId() != -1) {

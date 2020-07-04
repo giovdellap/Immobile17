@@ -115,17 +115,18 @@ class CImmobile
     {
         if (VReceiverProxy::postRequest()) {
             print_r($_POST);
+            print_r(VReceiverProxy::prenotaAppuntamentoInizio());
             if (CSessionManager::sessionExists()) {
                 $inizio = VReceiverProxy::prenotaInizioAgenzia();
                 $fine = VReceiverProxy::prenotaFineAgenzia();
                 $utente = CSessionManager::getUtenteLoggato();
-                $fullAgenzia = FPersistentManager::getBusyWeek($_POST['idImm'], $utente->getId(),
+                $fullAgenzia = FPersistentManager::getBusyWeek(VReceiverProxy::prenotaImmobile(), $utente->getId(),
                     $inizio, $fine);
 
                 $appuntamento = new MAppuntamento();
                 $appuntamento->setCliente(FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId()));
                 $appuntamento->setAgenteImmobiliare(FPersistentManager::visualizzaAppUtente(VReceiverProxy::prenotaAgente()));
-                $appuntamento->setImmobile(VReceiverProxy::prenotaImmobile());
+                $appuntamento->setImmobile(FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile()));
                 $appuntamento->setOrarioInizio(VReceiverProxy::prenotaAppuntamentoInizio());
                 $appuntamento->setOrarioFine(VReceiverProxy::prenotaAppuntamentoFine());
 

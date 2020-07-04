@@ -97,12 +97,16 @@ class VReceiverProxy
 
     public static function prenotaInizioAgenzia()
     {
-        return new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], 8);
+        $data = MData::getMDataFromString($_POST['agInizio']);
+        $data->setOrario(7.4);
+        return $data;
     }
 
     public static function prenotaFineAgenzia()
     {
-        return new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], 20);
+        $data = MData::getMDataFromString($_POST['agFine']);
+        $data->setOrario(20.1);
+        return $data;
     }
 
     public static function prenotaAgente()
@@ -112,17 +116,24 @@ class VReceiverProxy
 
     public static function prenotaImmobile()
     {
-        return $_POST['idImm'];
+        return $_POST['idIm'];
     }
 
     public static function prenotaAppuntamentoInizio()
     {
-        return new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], $_POST['inizio']);
+        return self::calendarDataConverter($_POST['inizio']);
     }
 
     public static function prenotaAppuntamentoFine()
     {
-        return new MData($_POST['anno'], $_POST['mese'], $_POST['giorno'], $_POST['fine']);
+        return self::calendarDataConverter($_POST['fine']);
+    }
+
+    private static function calendarDataConverter(string $received): MData
+    {
+        $timeString = str_split($received, 24)[0];
+        $timeStamp = strtotime($timeString);
+        return MData::getMdataFromTimestamp($timeStamp);
     }
 
     public static function immobileByPostRequest(): MImmobile

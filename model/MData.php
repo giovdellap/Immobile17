@@ -191,6 +191,22 @@ class MData
         return new MData($this->getAnno(), $this->getMese(), $this->getGiorno(), $this->getOrario());
     }
 
+    public function getWeekDay()
+    {
+        return date("w", $this->data->getTimestamp());
+    }
+
+    public static function getMdataFromTimestamp(int $timeStamp): MData
+    {
+        $anno = date("Y", $timeStamp);
+        $mese = date("m", $timeStamp);
+        $giorno = date("d", $timeStamp);
+        $ora = date("G", $timeStamp);
+        $minuto = date("i", $timeStamp);
+        $orario = $ora + ($minuto/100);
+        return new MData($anno, $mese, $giorno, $orario);
+    }
+
 
 
 }

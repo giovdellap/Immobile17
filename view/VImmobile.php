@@ -6,14 +6,14 @@ class VImmobile
 
     public static function visualizza(Smarty $smarty, MImmobile $immobile)
     {
-
+        $smarty = VSmartyFactory::searchBarSmarty($smarty, array());
         $smarty->assign("immobile", $immobile);
         $smarty->display("schedaImmobile.tpl");
     }
 
     public static function visualizzaImmobili(Smarty $smarty, array $immobili)
     {
-        $smarty = self::searchBarSmarty($smarty, array());
+        $smarty = VSmartyFactory::searchBarSmarty($smarty, array());
         $smarty->assign("immobili",$immobili);
         $smarty->display("immobili.tpl");
     }
@@ -21,7 +21,7 @@ class VImmobile
 
     public static function ricerca(Smarty $smarty, $immobili, $parameters)
     {
-        $smarty = self::searchBarSmarty($smarty, $parameters);
+        $smarty = VSmartyFactory::searchBarSmarty($smarty, $parameters);
         $smarty->assign("immobili", $immobili);
         $smarty->display("immobili.tpl");
     }
@@ -37,7 +37,7 @@ class VImmobile
     public static function calendario(Smarty $smarty, array $appLiberi, MData $inizio, MData $fine, MImmobile $immobile)
     {
         //print_r($appLiberi[0]);
-        //print_r($inizio->getFullDataString());
+        print_r($inizio->getDateString());
 
         $smarty->assign("immobile", $immobile);
         $smarty->assign("inizio", $inizio);
@@ -59,61 +59,5 @@ class VImmobile
         // TO DO
     }
 
-    private static function searchBarSmarty(Smarty $smarty, array $parameters): Smarty
-    {
-        $parametersNames = array('ti', 'pc', 'tp');
-        foreach ($parametersNames as $key)
-        {
-            if(!key_exists($key, $parameters))
-                $parameters[$key]="notSetted";
-            $smarty->assign($key, $parameters[$key]);
-        }
-        $smarty->assign("tipologie", self::listTipologie($parameters["tp"]) );
-        $smarty->assign("tipoAnnuncio", self::listTipoAnnuncio($parameters["ti"]) );
-        if(!key_exists('pmin', $parameters))
-            $smarty->assign('pmin', 100);
-        if(!key_exists('pmax', $parameters))
-            $smarty->assign('pmax', 1000000);
-        if(!key_exists('gmin', $parameters))
-            $smarty->assign('gmin', 0);
-        if(!key_exists('gmax', $parameters))
-            $smarty->assign('gmax', 2000);
-        return $smarty;
-    }
 
-    private static function listTipoAnnuncio(string $selected):array
-    {
-        $tipologie=array("Affitto e Vendita","Vendita", "Affitto");
-        if (array_search($selected,$tipologie)==false)
-            return $tipologie;
-        else
-        {
-            $toReturn=array();
-            $toReturn[]=$selected;
-            foreach ($tipologie as $elem)
-              {
-                if ($elem!==$selected)
-                        $toReturn[]=$elem;
-              }
-              return $toReturn;
-        }
-    }
-
-    private static function listTipologie(string $selected):array
-    {
-        $tipologie=array("Tutte le Tipologie","Monolocale","Bilocale", "Villa","Mansarda","Garage","Locale");
-        if (array_search($selected,$tipologie)==false)
-            return $tipologie;
-        else
-        {
-            $toReturn=array();
-            $toReturn[]=$selected;
-            foreach ($tipologie as $elem)
-            {
-                if ($elem!==$selected)
-                    $toReturn[]=$elem;
-            }
-            return $toReturn;
-        }
-    }
 }
