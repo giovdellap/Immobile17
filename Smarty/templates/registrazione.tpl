@@ -59,7 +59,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/registrazione" method="POST" class="login100-form validate-form flex-sb flex-w" name="modulo" onsubmit="return testpass(this)">
+            <form action="{$path}Utente/registrazione" method="POST" enctype="multipart/form-data" class="login100-form validate-form flex-sb flex-w" name="modulo" onsubmit="return testpass(this)">
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
@@ -137,9 +137,21 @@
                         </label>
                     </div>
                 </div>
-                -->
 
-                {include file="loadImage.tpl"}
+                <div>
+                   <button id="insert_image"  type="button" style="width: 200px" onclick="document.getElementById('choose_image').click()">Carica Immagine</button>
+                    <input id="choose_image" type="file" name="propic" onchange="validateImage()" style="display: none" accept=".jpg, .jpeg, .gif, .png">
+                    <br>
+                    <b><p id="image_name" class="faq__text" style="text-align: center; max-width: 300px">Nessuna immagine caricata (MAX 2MB)</p></b>
+
+                    <br>
+                    <br>
+
+                </div> -->
+
+                    File:
+                    <input type="file" name="propic" /> <input type="submit" value="Upload" />
+
 
                 <br>
                 <br>
@@ -184,4 +196,24 @@
 <script src="{$path}Smarty/others/login/js/main.js"></script>
 
 </body>
+<script>
+    function validateImage() {
+        var formData = new FormData();
+
+        var file = document.getElementById("choose_image").files[0];
+
+        formData.append("Filedata", file);
+        var t = file.type.split('/').pop().toLowerCase();
+        if (t !== "jpeg" && t !== "jpg" && t !== "png" && t !== "gif") {
+            alert('Inserire un file di immagine valido!');
+            document.getElementById("choose_image").value = '';
+            return false;
+        }
+        if (file.size > 2048000) {
+            alert('Non puoi caricare file più grandi di 2 MB');
+            document.getElementById("choose_image").value = '';
+            return false;
+        }
+        return true;
+</script>
 </html>

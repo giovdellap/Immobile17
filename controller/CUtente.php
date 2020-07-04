@@ -10,12 +10,11 @@ class CUtente
      */
     public static function login()
     {
-        if(VReceiverProxy::getRequest()) {
-            if(CSessionManager::sessionExists())
+        if (VReceiverProxy::getRequest()) {
+            if (CSessionManager::sessionExists())
                 CHome::homepage();
             else VUtente::loginform(VSmartyFactory::basicSmarty());
-        }
-        elseif (VReceiverProxy::postRequest())
+        } elseif (VReceiverProxy::postRequest())
             self::checkLogin();
     }
 
@@ -63,20 +62,19 @@ class CUtente
      */
     public static function registrazione()
     {
-        if(VReceiverProxy::getRequest())
+        if (VReceiverProxy::getRequest())
             VUtente::showRegistrationForm(VSmartyFactory::basicSmarty());
 
-        else if (VReceiverProxy::postRequest())
-        {
+        else if (VReceiverProxy::postRequest()) {
             $utente = VReceiverProxy::registrationUser();
             $db_result = FPersistentManager::registrazione($utente);
-            if($db_result === "OK")
-            {
+
+            if ($db_result === "OK") {
                 CSessionManager::createSession(FPersistentManager::loadIDbyEMail($utente->getEmail()));
+                CUtente::uploadImage(CSessionManager::getUtenteLoggato(),"propic");
                 VUtente::registrationOK(VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato()));
-            }
-            else
-            {   $db_result="ERRORE";
+            } else {
+                $db_result = "ERRORE";
                 $smarty = VSmartyFactory::userSmarty($utente);
                 VUtente::showRegistrationForm(VSmartyFactory::errorSmarty($smarty, $db_result));
             }
@@ -89,12 +87,11 @@ class CUtente
      */
     public static function visualizzaProfilo()
     {
-        if(VReceiverProxy::getRequest()) {
+        if (VReceiverProxy::getRequest()) {
             if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 VUtente::visualizzaProfilo(VSmartyFactory::userSmarty($utente));
-            }
-            else VUtente::loginForm(VSmartyFactory::basicSmarty());
+            } else VUtente::loginForm(VSmartyFactory::basicSmarty());
         }// ipotetico else
     }
 
@@ -103,49 +100,72 @@ class CUtente
      */
     public static function calendario()
     {
-        if(VReceiverProxy::getRequest()) {
+        if (VReceiverProxy::getRequest()) {
             if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 $utente = FPersistentManager::visualizzaAppUtente($utente->getId());
                 $appuntamenti = $utente->getListAppuntamenti();
                 VUtente::showCalendario(VSmartyFactory::userSmarty($utente), $appuntamenti);
-            }
-            else VUtente::loginForm(VSmartyFactory::basicSmarty());
+            } else VUtente::loginForm(VSmartyFactory::basicSmarty());
         }// ipotetico else
     }
 
     public static function logout()
     {
-       CSessionManager::sessionDestroy();
-       header("Location: " . $GLOBALS['path']);
+        CSessionManager::sessionDestroy();
+        header("Location: " . $GLOBALS['path']);
     }
 
     public static function eliminaAccount()
     {
-        if(VReceiverProxy::postRequest()) {
-            if (CSessionManager::sessionExists())
-            {
+        if (VReceiverProxy::postRequest()) {
+            if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 CSessionManager::sessionDestroy();
-                if(FPersistentManager::eliminaUtente($utente))
+                if (FPersistentManager::eliminaUtente($utente))
                     header('Location: ' . $GLOBALS['path']);
-                else
-                {
+                else {
                     CSessionManager::createSession($utente->getId());
                     VUtente::eliminaAccount(VSmartyFactory::errorSmarty(VSmartyFactory::userSmarty($utente), 'ERRORE ELIMINAZIONE'));
                 }
-            }
-            else VUtente::loginForm(VSmartyFactory::basicSmarty());
-        }
-        elseif (VReceiverProxy::getRequest())
-        {
-            if(CSessionManager::sessionExists())
-            {
+            } else VUtente::loginForm(VSmartyFactory::basicSmarty());
+        } elseif (VReceiverProxy::getRequest()) {
+            if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 VUtente::eliminaAccount(VSmartyFactory::userSmarty($utente));
-            }
-            else VUtente::loginForm(VSmartyFactory::basicSmarty());
+            } else VUtente::loginForm(VSmartyFactory::basicSmarty());
         }
         //ipotetico else
     }
+
+    public static function uploadImage($utente,$nomeFile)
+    {
+        if(!is_uploaded_file($_FILES[$nomeFile]["tmp_name"])) {
+            $nome = "";
+            $type = "";
+            $data = "";
+        }
+        elseif ($_FILES[$nomeFile]['size'] > 2000000)
+            throw new RuntimeException('Exceeded filesize limit.');
+        elseif (VSmartyFactory::isImage($_FILES[$nomeFile]["type"]))
+        {
+            $img=$_FILES[$nomeFile];
+            $name = $img["name"];
+            $type = $img["type"];
+            echo "PENE VIOLACEO: " . $name;
+            $data = file_get_contents($_FILES[$nomeFile]["tmp_name"]);
+            $data=base64_encode($data);
+
+            $image = new MMediaUtente();
+            $image->setNome($name);
+            $image->setUtente($utente);
+            $image->setType($type);
+            $image->setData($data);
+            FPersistentManager::addMedia($image);
+        }
+
+    }
+
+
+
 }

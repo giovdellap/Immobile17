@@ -8,3 +8,23 @@
     <br>
 
 </div>
+<script>
+function validateImage() {
+var formData = new FormData();
+
+var file = document.getElementById("choose_image").files[0];
+
+formData.append("Filedata", file);
+var t = file.type.split('/').pop().toLowerCase();
+if (t != "jpeg" && t != "jpg" && t != "png" && t != "gif") {
+alert('Inserire un file di immagine valido!');
+document.getElementById("choose_image").value = '';
+return false;
+}
+if (file.size > 2048000) {
+alert('Non puoi caricare file più grandi di 2 MB');
+document.getElementById("choose_image").value = '';
+return false;
+}
+return true;
+</script>

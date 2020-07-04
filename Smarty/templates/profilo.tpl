@@ -12,7 +12,7 @@
     <title>South - Real Estate Agency Template | Blog</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
+    <link rel="icon" alt="{$path}Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
@@ -78,8 +78,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <img
-                            src="{$path}Smarty/img/icons/avatar.png"
-                            alt="..."
+                            src="{$utente->getImmagine()->viewImageHTML()}"
+                            alt="{$path}Smarty/img/icons/avatar.png"
                             class="rounded-circle profile-image"
                     />
                 </div>

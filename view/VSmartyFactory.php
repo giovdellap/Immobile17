@@ -105,5 +105,19 @@ class VSmartyFactory
             return $toReturn;
         }
     }
+    public static function isImage($typefile): bool
+    {
+        $estensione = strtolower(strrchr($typefile, '/'));
+
+        switch($estensione) {
+            case '/jpg':
+            case '/jpeg':
+            case '/gif':
+            case '/png':
+                return true;
+            default:
+                return false;
+        }
+    }
 
 }

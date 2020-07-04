@@ -5,13 +5,13 @@ class FMedia
     public static function addMedia (MMedia $media):bool
     {
         if ($media instanceof MMediaAgenzia)
-            FMediaAgenzia::storeMedia();
+            return FMediaAgenzia::storeMedia($media);
         else if ($media instanceof MMediaUtente)
             if ($media->getUtente() instanceof MCliente)
-                FMediaCliente::storeMedia();
-            else FMediaAgenteImmobiliare::storeMedia();
+                return FMediaCliente::storeMedia($media);
+            else return FMediaAgenteImmobiliare::storeMedia($media);
         else if ($media instanceof MMediaImmobileImmobile)
-            FMediaImmobile::storeMedia();
+            return FMediaImmobile::storeMedia($media);
     }
 
     public static function getMedia (string $id): ?array
