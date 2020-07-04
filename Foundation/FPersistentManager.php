@@ -114,6 +114,16 @@ class FPersistentManager
         return FUtente::loadIDbyEmail($email);
     }
 
+    /**
+     * Ritorna un array con tutti gli utenti del tipo passato cme parametro
+     * @param string $type
+     * @return array
+     */
+    public static function visualizzaUtenti(string $type)
+    {
+        return FUtente::getUtenti($type);
+    }
+
     // -------AMMINISTRATORE -------
 
     /**

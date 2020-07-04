@@ -108,5 +108,45 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
+    public static function visualizzaClienti()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $clienti = FPersistentManager::visualizzaUtenti("CLIENTE");
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showImmobili($smarty, $clienti);
+                }
+                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+            }
+            //ERRORE DA VEDERE
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+    public static function visualizzaAgenti()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $agenti = FPersistentManager::visualizzaUtenti("AGENTE");
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showImmobili($smarty, $agenti);
+                }
+                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+            }
+            //ERRORE DA VEDERE
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+
+
 
 }
