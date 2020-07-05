@@ -8,21 +8,13 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
 
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Clienti</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fas fa-times"></i></button>
-                </div>
+                <h3 class="card-title">Appuntamenti</h3>
             </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
@@ -33,7 +25,7 @@
                         <th style="width: 15%"> Cliente </th>
                         <th style="width: 20%"> Agente Immobiliare </th>
                         <th style="width: 15%"> Immobile </th>
-                        <th style="width: 60%"> </th>
+                        <th style="width: 29%"> </th>
 
                     </tr>
                     </thead>

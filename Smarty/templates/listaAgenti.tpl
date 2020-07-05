@@ -14,51 +14,24 @@
 
         <!-- Default box -->
         <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Agenti Immobiliari</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fas fa-times"></i></button>
-                </div>
-            </div>
+            <div class="card-header"> <h3 class="card-title">Agenti Immobiliari</h3> </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
                     <thead>
                     <tr>
-                        <th style="width: 1%">
-                            Foto
-                        </th>
-                        <th style="width: 1%">
-                            ID
-                        </th>
-                        <th style="width: 15%">
-                            Nome
-                        </th>
-                        <th style="width: 15%">
-                            Email
-                        </th>
-                        <th style="width: 15%">
-                            Data di nascita
-                        </th>
-                        <th style="width: 15%" class="text-center">
-                            Data di iscrizione
-                        </th>
-
-                        <th style="width: 5%" class="text-center">
-                            Verificato
-                        </th>
-
-                        <th style="width: 40%" class="text-center">
-                        </th>
-
+                        <th style="width: 1%"> Foto </th>
+                        <th style="width: 1%"> ID </th>
+                        <th style="width: 15%"> Nome </th>
+                        <th style="width: 15%"> Email </th>
+                        <th style="width: 15%"> Data di nascita </th>
+                        <th style="width: 15%"> Data di iscrizione </th>
+                        <th style="width: 3%"> Stato </th>
+                        <th style="width: 35%"> </th>
                     </tr>
                     </thead>
                     <tbody>
 
-                        {foreach $agenti as $agente}
+                    {foreach $agenti as $agente}
                     <tr>
                         <td>
                             <ul class="list-inline">
@@ -70,36 +43,18 @@
                                 </li>
                             </ul>
                         </td>
-                        <td>
-                            {$agente->getId()}
-                        </td>
-                        <td>
-                            <a>
-                                {$agente->getNome()} {$agente->getCognome()}
-                            </a>
-
-                        </td>
-                        <td>
-                            <a>{$agente->getEmail()}</a>
-                        </td>
-                        <td >
-                            <a>
-                                {$agente->getDataNascita()->getDateString()}
-                            </a>
-                        </td>
-
-                        <td >
-                            <a>{$agente->getIscrizione()->getDateString()}</a>
-                        </td>
-
+                        <td> {$agente->getId()} </td>
+                        <td> {$agente->getNome()} {$agente->getCognome()} </td>
+                        <td> {$agente->getEmail()} </td>
+                        <td> {$agente->getDataNascita()->getDateString()} </td>
+                        <td> {$agente->getIscrizione()->getDateString()} </td>
                         <td class="project-state">
                             {if $agente->isAttivato()}
                                 <span class="badge badge-success">Attivo</span>
-                            {else} <span class="badge badge-danger">Non Attivo</span>
+                            {else}
+                                <span class="badge badge-danger">Non Attivo</span>
                             {/if}
                         </td>
-
-
 
                         <td class="project-actions text-right">
                             <a class="project-state" href="{$path}Admin/modificaAgente/id/{$agente->getId()}">

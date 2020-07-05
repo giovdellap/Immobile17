@@ -16,13 +16,6 @@
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Immobili</h3>
-
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                        <i class="fas fa-minus"></i></button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-                        <i class="fas fa-times"></i></button>
-                </div>
             </div>
             <div class="card-body p-0">
                 <table class="table table-striped projects">
@@ -37,7 +30,7 @@
                         <th style="width: 15%"> Dimensione </th>
                         <th style="width: 15%"> Vendita/Affitto </th>
                         <th style="width: 15%"> Prezzo </th>
-                        <th style="width: 5%"> Attivo </th>
+                        <th style="width: 5%"> Stato </th>
                         <th style="width: 40%"> </th>
 
                     </tr>
@@ -64,7 +57,8 @@
                         <td class="project-state">
                             {if $immobile->isAttivo()}
                                 <span class="badge badge-success">Attivo</span>
-                            {else} <span class="badge badge-danger">Non Attivo</span>
+                            {else}
+                                <span class="badge badge-danger">Non Attivo</span>
                             {/if}
                         </td>
 

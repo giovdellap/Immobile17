@@ -70,10 +70,10 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{$path}Smarty/img/bg-img/editor.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="{$path}Smarty/img/bg-img/editor.jpg" class="img-circle elevation-2" alt="Admin">
         </div>
         <div class="info">
-          <a href="#" class="d-block">ADMIN ISTRATOR</a>
+          <a class="d-block">ADMIN ISTRATOR</a>
         </div>
       </div>
 
@@ -135,7 +135,7 @@
             </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="../../index.html" class="nav-link">
+              <a href="{$path}Admin/visualizzaAgenzia" class="nav-link">
                 <i class="fas fa-info-circle nav-icon"></i>
                 <p>Visualizza</p>
               </a>
