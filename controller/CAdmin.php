@@ -149,7 +149,23 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
-
-
-
+    public static function visualizzaAgenzia()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showAgenzia($smarty, $agenzia);
+                }
+                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+            }
+            //ERRORE DA VEDERE
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+    
 }

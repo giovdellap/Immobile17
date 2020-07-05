@@ -26,12 +26,8 @@
                 <div class="card card-dark">
                     <div class="card-header">
                         <h3 class="card-title">Immobile</h3>
-
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                <i class="fas fa-minus"></i></button>
-                        </div>
                     </div>
+
                     <div class="card-body">
                         <div class="form-group">
                             <label for="inputName">Nome</label>

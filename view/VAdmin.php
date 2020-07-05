@@ -38,4 +38,11 @@ class VAdmin
         $smarty->assign('toAppend', 'listaAgenti.tpl');
         $smarty->display('adminPage.tpl');
     }
+
+    public static function showAgenzia(Smarty $smarty,MAgenzia $agenzia)
+    {
+        $smarty->assign('agenzia', $agenzia);
+        $smarty->assign('toAppend', 'visualizzaAgenzia.tpl');
+        $smarty->display('adminPage.tpl');
+    }
 }
