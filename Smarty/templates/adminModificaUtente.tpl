@@ -52,7 +52,7 @@
 
                         <td>
                             <div class="form-group">
-                                <input type="date" class="form-control" name="date">
+                                <input type="text" class="form-control" name="date" value="{$utente->getDataNascita()->getDateString()}">
                             </div>
                         </td>
 
