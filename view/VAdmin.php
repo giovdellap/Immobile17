@@ -63,7 +63,9 @@ class VAdmin
 
     public static function showModificaUtente(Smarty $smarty, MUtente $utente)
     {
-
+        $smarty->assign('utente', $utente);
+        $smarty->assign('toAppend','adminModificaUtente.tpl' );
+        $smarty->display('adminPage.tpl');
     }
 
     public static function showAggiuntaUtente(Smarty $smarty)

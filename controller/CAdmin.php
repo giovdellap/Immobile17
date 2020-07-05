@@ -77,9 +77,12 @@ class CAdmin
                 }
                 else if(VReceiverProxy::postRequest())
                 {
-                    $immobile = self::getImmobilebyPostRequest();
+                    $immobile = VReceiverProxy::immobileByPostRequest();
+
                     FPersistentManager::addImmobile($immobile);
-                    header('Location: '.$GLOBALS['path'].'Admin/visualizzaImmobili');
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showAggiuntaImmobile($smarty);
+                    //header('Location: '.$GLOBALS['path'].'Admin/visualizzaImmobili');
                 }
             }
             //ERRORE DA VEDERE
@@ -304,6 +307,25 @@ class CAdmin
                     else header('Location: '.$GLOBALS['path'].'Admin/visualizzaAgenti');
                 }
                 else header('Location: ' . $GLOBALS['path']);
+            }
+            else header('Location: ' . $GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+    public static function visualizzaAgenzia()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $agenzia = FPersistentManager::visualizzaAgenzia("AZ1");
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showAgenzia($smarty, $agenzia);
+                }
+                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
             }
             else header('Location: ' . $GLOBALS['path']);
         }

@@ -51,7 +51,9 @@
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{$path}" class="nav-link">Logout</a>
+      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -60,7 +62,7 @@
   <aside class="main-sidebar sidebar-dark-white elevation-4">
     <!-- Brand Logo -->
     <a href="{$path}" class="brand-link">
-      <img src="{$path}Smarty/img/icons/favicon_1.ico" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="{$path}Smarty/img/icons/favicon_1.ico" alt="logo I17" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Immobile17</span>
     </a>

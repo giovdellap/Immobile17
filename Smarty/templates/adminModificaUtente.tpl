@@ -11,7 +11,7 @@
 
     <!-- Main content -->
     <section class="content">
-
+        <form method="post" action="{$path}Admin/modificaUtente/{$utente->getId()}">
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
@@ -21,7 +21,6 @@
                 <table class="table table-striped projects">
                     <thead>
                     <tr>
-                        <th style="width: 1%"> Foto </th>
                         <th style="width: 20%"> Nome </th>
                         <th style="width: 20%"> Cognome </th>
                         <th style="width: 20%"> Email </th>
@@ -35,50 +34,35 @@
                     <tr>
                         <td>
                             <div class="form-group">
-                                <label for="exampleInputFile"></label>
-                                <div class="input-group">
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                                        <label class="custom-file-label" for="exampleInputFile">Choose Image</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" >
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" >
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" >
-                            </div>
-                        </td>
-                        <td >
-
-                            <div class="form-group">
-                                <input type="date" class="form-control" >
-                            </div>
-
-                        </td>
-
-                        <td >
-                            <div class="form-group">
-
-                                <input type="text" class="form-control" >
+                                <input type="text" class="form-control" name="nome" value="{$utente->getNome()}">
                             </div>
                         </td>
 
                         <td>
-
-                            <button type="submit" class="btn btn-primary">Conferma</button>
-
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="cognome" value="{$utente->getCognome()}">
+                            </div>
                         </td>
+
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="email" value="{$utente->getEmail()}">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="form-group">
+                                <input type="date" class="form-control" name="date">
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="password" value="{$utente->getPassword()}">
+                            </div>
+                        </td>
+
+                        <td> <button type="submit" class="btn btn-primary">Conferma</button> </td>
                     </tr>
 
                     </tbody>
@@ -87,7 +71,7 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-
+        </form>
     </section>
     <!-- /.content -->
 </div>
