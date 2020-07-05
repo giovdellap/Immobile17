@@ -315,6 +315,11 @@ class FPersistentManager
         return FAppuntamento::deleteAppuntamento($id);
     }
 
+    public static function visualizzaAppuntamento(string $id): MAppuntamento
+    {
+        return FAppuntamento::getAppuntamento($id);
+    }
+
     // ------- MEDIA -------
 
     /**

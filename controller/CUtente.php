@@ -138,4 +138,16 @@ class CUtente
         //ipotetico else
     }
 
+    public static function visualizzaAppuntamento(string $id)
+    {
+        if (VReceiverProxy::getRequest()) {
+            if (CSessionManager::sessionExists()) {
+                $utente = CSessionManager::getUtenteLoggato();
+                $appuntamento = FPersistentManager::visualizzaAppuntamento($id);
+                VUtente::showAppuntamento(VSmartyFactory::userSmarty($utente), $appuntamento);
+            } else VUtente::loginForm(VSmartyFactory::basicSmarty());
+        }
+        else header('Location: '.$GLOBALS['path']);
+    }
+
 }

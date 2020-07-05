@@ -138,6 +138,13 @@ class FAppuntamento extends FObject
             $to_return[]=self::unbindAppuntamento($item);
         return $to_return;
     }
+
+    public static function getAppuntamento(string $id)
+    {
+        $db = FDataBase::getInstance();
+        $db_result = $db->loadDB(self::class, "id", $id);
+        return self::unbindAppuntamento($db_result);
+    }
 }
 
 

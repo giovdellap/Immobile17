@@ -43,4 +43,10 @@ class VUtente
         $smarty->display('calendarioUtente.tpl');
     }
 
+    public static function showAppuntamento(Smarty $smarty, MAppuntamento $appuntamento)
+    {
+        $smarty->assign('appuntamento', $appuntamento);
+
+    }
+
 }
