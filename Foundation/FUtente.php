@@ -158,7 +158,11 @@ class FUtente extends FObject
         if($utente->getIscrizione() != $oldUtente->getIscrizione())
             $mods["iscrizione"] = $utente->getIscrizione()->getDateString();
         if($utente->isAttivato() != $oldUtente->isAttivato())
-            $mods["verifica"] = $utente->isAttivato();
+        {
+            if(!$utente->isAttivato())
+                $mods['verifica'] = 0;
+            else $mods['verifica'] = 1;
+        }
 
         foreach (array_keys($mods) as &$key)
         {

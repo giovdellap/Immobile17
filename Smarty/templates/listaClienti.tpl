@@ -118,10 +118,9 @@
 <script>
     function disattiva(idParam)
     {
-        alert('pippo');
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/attivazioneUtente');
+        form.setAttribute('action', '{$path}'+'Admin/attivazioneUtente');
 
         const id = document.createElement('input');
         id.type = 'hidden';
@@ -151,7 +150,7 @@
 
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/eliminaUtente');
+        form.setAttribute('action', '{$path}'+'Admin/eliminaCliente');
 
         const id = document.createElement('input');
         id.type = 'hidden';

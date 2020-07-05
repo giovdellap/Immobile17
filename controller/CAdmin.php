@@ -231,6 +231,7 @@ class CAdmin
                     $utente = FPersistentManager::visualizzaUtente(VReceiverProxy::generalId());
                     print_r($_POST);
                     $utente->setAttivato(VReceiverProxy::getAttivaorNot());
+                    echo("cacca: ".VReceiverProxy::getAttivaorNot());
                     FPersistentManager::modificaUtente($utente);
                     if($utente instanceof MCliente)
                         header('Location: '.$GLOBALS['path'].'Admin/visualizzaClienti');
@@ -250,7 +251,7 @@ class CAdmin
             if(CSessionManager::adminLogged())
             {
                 if(VReceiverProxy::postRequest())
-                    FPersistentManager::eliminaUtente(VReceiverProxy::generalId());
+                    FPersistentManager::eliminaUtente(FPersistentManager::visualizzaUtente(VReceiverProxy::generalId()));
                 header('Location: '.$GLOBALS['path'].'Admin/visualizzaClienti');
             }
             else header('Location: ' . $GLOBALS['path']);

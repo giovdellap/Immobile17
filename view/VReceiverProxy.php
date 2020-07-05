@@ -184,7 +184,9 @@ class VReceiverProxy
      */
     public static function getAttivaorNot(): bool
     {
-        return $_POST['attiva'];
+        if($_POST['attiva'] === 'true')
+            return true;
+        else return false;
     }
 
     // ---- ADMIN ----
