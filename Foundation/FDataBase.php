@@ -189,7 +189,7 @@ class FDataBase
         try {
             $this->db->beginTransaction();
             $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam . "';";
-
+            echo($query);
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();

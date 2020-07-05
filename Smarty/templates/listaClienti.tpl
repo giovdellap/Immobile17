@@ -58,38 +58,22 @@
                             {/if}
                         <td class="project-actions text-right">
 
-
-                            <a class="project-state" href="{$path}Admin/visualizzaClienti">
-                                {if $cliente->isAttivato()}
-                                    <button class="btn btn-primary btn-sm" onclick="disattiva({$cliente->getId()})">
-                                        <i class="fas fa-folder" >
-
-                                        </i>
-                                        Disattiva
-                                    </button>
-
-                                {else}
-                                    <button class="btn btn-primary btn-sm" onclick="attiva({$cliente->getId()})">
-                                        <i class="fas fa-folder" >
-                                        </i>
-                                        Attiva
-                                    </button>
-                                {/if}
-                            </a>
-                            <a class="project-state" href="{$path}Admin/modificaUtente/{$cliente->getId()}">
-                                <button class="btn btn-primary btn-sm">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Modifica
+                            {if $cliente->isAttivato()}
+                                <button class="btn btn-primary btn-sm" onclick="disattiva('{$cliente->getId()}')">
+                                    <i class="fas fa-folder" >Disattiva</i>
                                 </button>
-                            </a>
-                            <a class="project-state" href="{$path}Admin/eliminaCliente/{$cliente->getId()}">
-                                <button class="btn btn-danger btn-sm" onclick="elimina({$cliente->getId()})">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Elimina
+
+                            {else}
+                                <button class="btn btn-primary btn-sm" onclick="attiva('{$cliente->getId()}')">
+                                    <i class="fas fa-folder" >Attiva</i>
                                 </button>
-                            </a>
+                            {/if}
+                                <button class="btn btn-primary btn-sm" href="{$path}Admin/modificaUtente/{$cliente->getId()}">
+                                    <i class="fas fa-trash">Modifica</i>
+                                </button>
+                            <button class="btn btn-danger btn-sm" onclick="elimina('{$cliente->getId()}')">
+                                <i class="fas fa-trash">Elimina</i>
+                            </button>
                         </td>
                     </tr>
                     {/foreach}
@@ -134,7 +118,7 @@
 <script>
     function disattiva(idParam)
     {
-
+        alert('pippo');
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
         form.setAttribute('action', '/AgenziaImmobiliare/Admin/attivazioneUtente');

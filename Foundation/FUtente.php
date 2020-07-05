@@ -141,7 +141,9 @@ class FUtente extends FObject
     public static function modificaUtente(MUtente $utente)
     {
         $db = FDataBase::getInstance();
-        $oldUtente = MData::visualizzaUtente($utente->getId());
+        $oldUtente = FUtente::visualizzaUtente($utente->getId());
+        print_r($oldUtente);
+        print_r($utente);
         $mods = array();
         if($utente->getNome() != $oldUtente->getNome())
             $mods["nome"] = $utente->getNome();
@@ -163,7 +165,7 @@ class FUtente extends FObject
             if(strcmp(self::identifyId($utente->getId()), "CLIENTE")===0)
                 $toReturn = $db->updateDB(FCliente::class, $key, $mods[$key], "id", $utente->getId());
             else
-                $toReturn = $db->updateDB(FCliente::class, $key, $mods[$key], "id", $utente->getId());
+                $toReturn = $db->updateDB(FAgenteImmobiliare::class, $key, $mods[$key], "id", $utente->getId());
             if(!$toReturn)
                 return false;
         }
