@@ -226,13 +226,13 @@ class FUtente extends FObject
         $db = FDataBase::getInstance();
         if($type === "CLIENTE")
             $db_result = $db->loadAll(FCliente::class);
-        else $db_result = $db->loadAll(FAgenteImmobiliare::class);
+        elseif($type==="AGENTE") $db_result = $db->loadAll(FAgenteImmobiliare::class);
         $utenti = array();
         foreach ($db_result as &$item)
         {
             if($type === "CLIENTE")
                 $utente = new MCliente();
-            else $utente = new MAgenteImmobiliare();
+            elseif($type==="AGENTE") $utente = new MAgenteImmobiliare();
             self::setAttributiUtente($utente, $item);
             $utenti[] = $utente;
         }

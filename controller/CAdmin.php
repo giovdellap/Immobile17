@@ -226,11 +226,12 @@ class CAdmin
                 if(VReceiverProxy::postRequest())
                 {
                     $utente = FPersistentManager::visualizzaUtente(VReceiverProxy::generalId());
+                    print_r($_POST);
                     $utente->setAttivato(VReceiverProxy::getAttivaorNot());
                     FPersistentManager::modificaUtente($utente);
                     if($utente instanceof MCliente)
-                        header('Location: '.$GLOBALS['path'].'Admin/visualizaClienti');
-                    else header('Location: '.$GLOBALS['path'].'Admin/visualizaClienti');
+                        header('Location: '.$GLOBALS['path'].'Admin/visualizzaClienti');
+                    elseif($utente instanceof MAgenteImmobiliare) header('Location: '.$GLOBALS['path'].'Admin/visualizzaAgenti');
                 }
                 else header('Location: '.$GLOBALS['path'].'Admin/homepage');
             }
@@ -247,7 +248,7 @@ class CAdmin
             {
                 if(VReceiverProxy::postRequest())
                     FPersistentManager::eliminaUtente(VReceiverProxy::generalId());
-                header('Location: '.$GLOBALS['path'].'Admin/visualizaClienti');
+                header('Location: '.$GLOBALS['path'].'Admin/visualizzaClienti');
             }
             else header('Location: ' . $GLOBALS['path']);
         }

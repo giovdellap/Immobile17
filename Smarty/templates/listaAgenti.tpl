@@ -102,22 +102,33 @@
 
 
                         <td class="project-actions text-right">
-                            <a class="btn btn-info btn-sm" href="{$path}Admin/modificaAgente/id/{$agente->getId()}">
-                                <i class="fas fa-pencil-alt">
-                                </i>
-                                Modifica
-                            </a>
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                                Attiva/Disattiva
-                            </a>
-                            <a class="btn btn-danger btn-sm" href="#">
-                                <i class="fas fa-trash">
-                                </i>
-                                Cancella
-                            </a>
+                            <a class="project-state" href="{$path}Admin/modificaAgente/id/{$agente->getId()}">
+                                {if $agente->isAttivato()}
+                                    <button class="btn btn-primary btn-sm" onclick="disattiva({$agente->getId()})">
+                                        <i class="fas fa-folder" >
 
+                                        </i>
+                                        Disattiva
+                                    </button>
+                                {else}
+                                    <button class="btn btn-primary btn-sm" onclick="attiva({$agente->getId()})">
+                                        <i class="fas fa-folder" >
+                                        </i>
+                                        Attiva
+                                    </button>
+                                {/if}
+
+                                <button class="btn btn-primary btn-sm" onclick="modifica({$agente->getId()})">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Modifica
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="elimina({$agente->getId()})">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Elimina
+                                </button>
+                            </a>
                         </td>
                     </tr>
                     {/foreach}
@@ -133,3 +144,100 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script>
+    function attiva(idParam)
+
+    {
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '{$path}'+'Admin/attivazioneUtente');
+
+        const id = document.createElement('input');
+        id.type = 'hidden';
+        id.name = 'id';
+        id.value = idParam;
+        form.appendChild(id);
+
+        const attiva = document.createElement('input');
+        attiva.type = 'hidden';
+        attiva.name = 'attiva';
+        attiva.value = 'true';
+        form.appendChild(attiva);
+
+        document.body.appendChild(form);
+        form.submit();
+
+    }
+</script>
+<script>
+    function disattiva(idParam)
+    {
+
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/AgenziaImmobiliare/Admin/attivazioneUtente');
+
+        const id = document.createElement('input');
+        id.type = 'hidden';
+        id.name = 'id';
+        id.value = idParam;
+        form.appendChild(id);
+
+        const attiva = document.createElement('input');
+        attiva.type = 'hidden';
+        attiva.name = 'attiva';
+        attiva.value = 'false';
+        form.appendChild(attiva);
+
+        document.body.appendChild(form);
+        form.submit();
+
+    }
+
+</script>
+
+
+<script>
+    function modifica(idParam)
+    {
+
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/AgenziaImmobiliare/Admin/modificaUtente');
+
+        const id = document.createElement('input');
+        id.type = 'hidden';
+        id.name = 'id';
+        id.value = idParam;
+        form.appendChild(id);
+
+
+        document.body.appendChild(form);
+        form.submit();
+
+    }
+
+</script>
+
+<script>
+    function elimina(idParam)
+    {
+
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '/AgenziaImmobiliare/Admin/eliminaUtente');
+
+        const id = document.createElement('input');
+        id.type = 'hidden';
+        id.name = 'id';
+        id.value = idParam;
+        form.appendChild(id);
+
+
+        document.body.appendChild(form);
+        form.submit();
+
+    }
+
+</script>

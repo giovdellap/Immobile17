@@ -34,7 +34,7 @@
         {
             // Verifico che il campo password sia valorizzato in caso contrario
             // avverto dell'errore tramite un Alert
-            if (modulo.password.value == "")
+            if (modulo.password.value === "")
             {
                 alert("Errore: inserire una password!")
                 modulo.password.focus()
@@ -42,7 +42,7 @@
             }
             // Verifico che le due password siano uguali, in caso contrario avverto
             // dell'errore con un Alert
-            if (modulo.password.value != modulo.password2.value)
+            if (modulo.password.value !== modulo.password2.value)
             {
                 alert("La password inserita non coincide con la prima!")
                 modulo.password.focus()
