@@ -240,6 +240,11 @@ class FPersistentManager
         return FImmobile::getImmobiliByParameters($parameters);
     }
 
+    public static function eliminaImmobile(string $id): bool
+    {
+        return FImmobile::eliminaImmobile($id);
+    }
+
 
     // ------- AGENZIA -------
 

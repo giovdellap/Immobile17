@@ -132,7 +132,7 @@ class CImmobile
 
                 if ($fullAgenzia->getCalendario()->addAppuntamento($appuntamento)) {
                     FPersistentManager::addAppuntamento($appuntamento);
-                    VImmobile::confermaAppuntamento($utente, $appuntamento);
+                    header('Location: '.$GLOBALS['path'].'Utente/calendario');
                 }
                 else
                 {

@@ -207,6 +207,13 @@ class MData
         return new MData($anno, $mese, $giorno, $orario);
     }
 
+    public static function getToday(): MData
+    {
+        return new MData(date("Y", strtotime("today")),
+                        date("m", strtotime("today")),
+                        date("d", strtotime("today")), 0);
+    }
+
 
 
 }

@@ -73,6 +73,8 @@
                 editable: false,
                 selectable: false,
 
+
+
                 eventClick: function(info)
                 {
                     var id = info.event.id;

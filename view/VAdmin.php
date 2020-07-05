@@ -39,10 +39,24 @@ class VAdmin
         $smarty->display('adminPage.tpl');
     }
 
-    public static function showAgenzia(Smarty $smarty,MAgenzia $agenzia)
+    public static function showAggiuntaImmobile(Smarty $smarty)
     {
-        $smarty->assign('agenzia', $agenzia);
-        $smarty->assign('toAppend', 'visualizzaAgenzia.tpl');
-        $smarty->display('adminPage.tpl');
+
     }
+
+    public static function showModificaImmobile(Smarty $smarty, MImmobile $immobile)
+    {
+
+    }
+
+    public static function showModificaUtente(Smarty $smarty, MUtente $utente)
+    {
+
+    }
+
+    public static function showAggiuntaUtente(Smarty $smarty)
+    {
+
+    }
+
 }

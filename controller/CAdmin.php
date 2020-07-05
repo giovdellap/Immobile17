@@ -24,6 +24,8 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
+    // ---- IMMOBILE ----
+
     public static function immobiliAttivi()
     {
         if(CSessionManager::sessionExists())
@@ -62,7 +64,7 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
-    public static function aggiungiImmobile()
+    public static function aggiuntaImmobile()
     {
         if(CSessionManager::sessionExists())
         {
@@ -77,13 +79,35 @@ class CAdmin
                 {
                     $immobile = self::getImmobilebyPostRequest();
                     FPersistentManager::addImmobile($immobile);
-
+                    header('Location: '.$GLOBALS['path'].'Admin/visualizzaImmobili');
                 }
             }
             //ERRORE DA VEDERE
         }
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
+
+    public static function attivazioneImmobile()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::postRequest())
+                {
+                    $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::generalId());
+                    $attivazione = VReceiverProxy::getAttivaorNot();
+                    $immobile->setAttivo($attivazione);
+                    FPersistentManager::modificaImmobile($immobile);
+                }
+                header('Location: '.$GLOBALS['path'].'Admin/visualizzaImmobili');
+            }
+            else header('Location: '.$GLOBALS['path']);
+        }
+        else header('Location: '.$GLOBALS['path'].'Utente/login');
+    }
+
+
 
     public static function visualizzaImmobile(string $id)
     {
@@ -110,6 +134,50 @@ class CAdmin
         }
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
+
+    public static function eliminaImmobile()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::postRequest())
+                    FPersistentManager::eliminaImmobile(VReceiverProxy::generalId());
+                header('Location: '.$GLOBALS['path'].'Admin/visualizzaImmobili');
+            }
+            else header('Location: ' . $GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+    public static function modificaImmobile($id)
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $immobile = FPersistentManager::visualizzaImmobile($id);
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showModificaImmobile($smarty, $immobile);
+                }
+                elseif (VReceiverProxy::postRequest())
+                {
+                    $immobile = VReceiverProxy::immobileByPostRequest();
+                    $immobile->setId($id);
+                    FPersistentManager::modificaImmobile($immobile);
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showModificaImmobile($smarty, $immobile);
+                }
+                else header('Location: ' . $GLOBALS['path']);
+            }
+            else header('Location: ' . $GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+    // ---- UTENTE ----
 
     public static function visualizzaClienti()
     {
@@ -149,7 +217,44 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
-    public static function visualizzaAgenzia()
+    public static function attivazioneUtente()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::postRequest())
+                {
+                    $utente = FPersistentManager::visualizzaUtente(VReceiverProxy::generalId());
+                    $utente->setAttivato(VReceiverProxy::getAttivaorNot());
+                    FPersistentManager::modificaUtente($utente);
+                    if($utente instanceof MCliente)
+                        header('Location: '.$GLOBALS['path'].'Admin/visualizaClienti');
+                    else header('Location: '.$GLOBALS['path'].'Admin/visualizaClienti');
+                }
+                else header('Location: '.$GLOBALS['path'].'Admin/homepage');
+            }
+            else header('Location: ' . $GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+    public static function eliminaCliente()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::postRequest())
+                    FPersistentManager::eliminaUtente(VReceiverProxy::generalId());
+                header('Location: '.$GLOBALS['path'].'Admin/visualizaClienti');
+            }
+            else header('Location: ' . $GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+    public static function modificaUtente(string $id)
     {
         if(CSessionManager::sessionExists())
         {
@@ -157,15 +262,52 @@ class CAdmin
             {
                 if(VReceiverProxy::getRequest())
                 {
-                    $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
+                    $utente = FPersistentManager::visualizzaUtente($id);
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
-                    VAdmin::showAgenzia($smarty, $agenzia);
+                    VAdmin::showModificaUtente($smarty, $utente);
                 }
-                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+                elseif (VReceiverProxy::postRequest())
+                {
+                    if(str_split($id, 2)[0] === "CL")
+                        $utente = new MCliente();
+                    else $utente = new MAgenteImmobiliare();
+                    $utente->setId($id);
+                    VReceiverProxy::utenteByPostRequest($utente);
+                    FPersistentManager::modificaUtente($utente);
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showModificaUtente($smarty, $utente);
+                }
+                else header('Location: ' . $GLOBALS['path']);
             }
-            //ERRORE DA VEDERE
+            else header('Location: ' . $GLOBALS['path']);
         }
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
-    
+
+    public static function aggiuntaUtente()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showAggiuntaUtente($smarty);
+                }
+                elseif (VReceiverProxy::postRequest())
+                {
+                    FPersistentManager::registrazione(VReceiverProxy::aggiuntaUtente());
+                    if(VReceiverProxy::aggiuntaUtente() instanceof MCliente)
+                        header('Location: '.$GLOBALS['path'].'Admin/visualizzaClienti');
+                    else header('Location: '.$GLOBALS['path'].'Admin/visualizzaAgenti');
+                }
+                else header('Location: ' . $GLOBALS['path']);
+            }
+            else header('Location: ' . $GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+
 }
