@@ -45,6 +45,26 @@ class VReceiverProxy
         return new MData($date[0],$date[1],$date[2], 0);
     }
 
+    public static function utenteByPostRequest(MUtente $utente)
+    {
+        $utente->setNome($_POST['nome']);
+        $utente->setCognome($_POST['cognome']);
+        $utente->setEmail($_POST['email']);
+        $utente->setPassword($_POST['password']);
+        $utente->setDataNascita(self::getDateFromRegistrazione());
+        $utente->setIscrizione(MData::getCurrentTime());
+        $utente->setAttivato($_POST['attivato']);
+    }
+
+    public static function aggiuntaUtente(): MUtente
+    {
+        if($_POST['tipologia'] == 'UTENTE')
+            $utente = new MCliente();
+        else $utente = new MAgenteImmobiliare();
+        self::utenteByPostRequest($utente);
+        return $utente;
+    }
+
     // ---- IMMOBILE ----
 
     public static function ricercaParametersFiller(array $parameters): array
@@ -155,7 +175,7 @@ class VReceiverProxy
         $immobile->setTipoAnnuncio($_POST['tipoAnnuncio']);
         $immobile->setTipologia($_POST['tipologia']);
         $immobile->setAttivo($_POST['attivo']);
-        return$immobile;
+        return $immobile;
     }
 
     /**

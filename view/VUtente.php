@@ -38,7 +38,9 @@ class VUtente
 
     public static function showCalendario(Smarty $smarty, array $appuntamenti)
     {
-        // TO DO
+        $smarty->assign('appuntamenti', $appuntamenti);
+        $smarty->assign('today', MData::getToday());
+        $smarty->display('calendarioUtente.tpl');
     }
 
 }

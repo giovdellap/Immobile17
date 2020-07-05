@@ -38,4 +38,25 @@ class VAdmin
         $smarty->assign('toAppend', 'listaAgenti.tpl');
         $smarty->display('adminPage.tpl');
     }
+
+    public static function showAggiuntaImmobile(Smarty $smarty)
+    {
+
+    }
+
+    public static function showModificaImmobile(Smarty $smarty, MImmobile $immobile)
+    {
+
+    }
+
+    public static function showModificaUtente(Smarty $smarty, MUtente $utente)
+    {
+
+    }
+
+    public static function showAggiuntaUtente(Smarty $smarty)
+    {
+
+    }
+
 }
