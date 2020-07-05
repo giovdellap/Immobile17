@@ -57,28 +57,21 @@
                         </td>
 
                         <td class="project-actions text-right">
-                            <a class="project-state" href="{$path}Admin/modificaAgente/id/{$agente->getId()}">
                                 {if $agente->isAttivato()}
-                                    <button class="btn btn-primary btn-sm" onclick="disattiva({$agente->getId()})">
-                                        <i class="fas fa-folder" >
-
-                                        </i>
-                                        Disattiva
+                                    <button class="btn btn-primary btn-sm"
+                                            onclick="disattiva('{$agente->getId()}')">
+                                        <i class="fas fa-folder" >Disattiva</i>
                                     </button>
                                 {else}
-                                    <button class="btn btn-primary btn-sm" onclick="attiva({$agente->getId()})">
-                                        <i class="fas fa-folder" >
-                                        </i>
-                                        Attiva
+                                    <button class="btn btn-primary btn-sm"
+                                            onclick="attiva('{$agente->getId()}')">
+                                        <i class="fas fa-folder" >Attiva</i>
                                     </button>
                                 {/if}
-
-                                <button class="btn btn-primary btn-sm"href="{$path}Admin/modificaUtente/{$agente->getId()}">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Modifica
+                            <a href="{$path}Admin/modificaUtente/{$agente->getId()}">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-trash">Modifica</i>
                                 </button>
-
                             </a>
                         </td>
                     </tr>
@@ -127,7 +120,7 @@
 
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/attivazioneUtente');
+        form.setAttribute('action', '{$path}'+'Admin/attivazioneUtente');
 
         const id = document.createElement('input');
         id.type = 'hidden';

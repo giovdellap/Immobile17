@@ -68,9 +68,11 @@
                                     <i class="fas fa-folder" >Attiva</i>
                                 </button>
                             {/if}
-                                <button class="btn btn-primary btn-sm" href="{$path}Admin/modificaUtente/{$cliente->getId()}">
+                            <a href="{$path}Admin/modificaUtente/{$cliente->getId()}">
+                                <button class="btn btn-primary btn-sm">
                                     <i class="fas fa-trash">Modifica</i>
                                 </button>
+                            </a>
                             <button class="btn btn-danger btn-sm" onclick="elimina('{$cliente->getId()}')">
                                 <i class="fas fa-trash">Elimina</i>
                             </button>
