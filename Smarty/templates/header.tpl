@@ -15,7 +15,7 @@
 
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
-                    <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    <span class="navbarToggler"><span> </span> <span> </span> <span> </span> </span>
                 </div>
 
                 <!-- Menu -->
@@ -23,7 +23,7 @@
 
                     <!-- close btn -->
                     <div class="classycloseIcon">
-                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        <div class="cross-wrap"><span class="top"> </span> <span class="bottom"></span></div>
                     </div>
 
                     <!-- Nav Start -->

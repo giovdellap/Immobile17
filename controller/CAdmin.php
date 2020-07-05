@@ -334,4 +334,10 @@ class CAdmin
     }
 
 
+    public static function logout()
+    {
+        CSessionManager::sessionDestroy();
+        header("Location: " . $GLOBALS['path']);
+    }
+
 }
