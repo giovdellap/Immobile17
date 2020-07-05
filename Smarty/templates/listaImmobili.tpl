@@ -63,34 +63,28 @@
                         </td>
 
                         <td class="project-actions text-right">
-                            <a class="project-state" href="{$path}Admin/modificaImmobile/{$immobile->getId()}">
-                                {if $immobile->isAttivo()}
-                                    <button class="btn btn-primary btn-sm" onclick="disattiva({$immobile->getId()})">
-                                        <i class="fas fa-folder" >
-
-                                        </i>
-                                        Disattiva
-                                    </button>
-                                {else}
-                                    <button class="btn btn-primary btn-sm" onclick="attiva({$immobile->getId()})">
-                                        <i class="fas fa-folder" >
-                                        </i>
-                                        Attiva
-                                    </button>
-                                {/if}
-
-                            <button class="btn btn-danger btn-sm" href="{$path}Admin/modificaImmobile/{$immobile->getId()}">
-                                <i class="fas fa-trash">
-                                </i>
-                                Modifica
+                            {if $immobile->isAttivo()}
+                                <button class="btn btn-primary btn-sm"
+                                        onclick="disattiva('{$immobile->getId()}')">
+                                    <i class="fas fa-folder" >Disattiva</i>
+                                </button>
+                            {else}
+                                <button class="btn btn-primary btn-sm"
+                                        onclick="attiva('{$immobile->getId()}')">
+                                    <i class="fas fa-folder" >Attiva</i>
+                                </button>
+                            {/if}
+                            <a href="{$path}Admin/modificaImmobile/{$immobile->getId()}">
+                            <button class="btn btn-danger btn-sm" >
+                                <i class="fas fa-trash">Modifica</i>
                             </button>
-                            <button class="btn btn-danger btn-sm" onclick=" elimina({$immobile->getId()})">
-                                <i class="fas fa-trash">
-                                </i>
-                                Cancella
-                            </button>
-
                             </a>
+
+                            <button class="btn btn-danger btn-sm"
+                                    onclick="elimina('{$immobile->getId()}')">
+                                <i class="fas fa-trash">Cancella</i>
+                            </button>
+
                         </td>
                     </tr>
                     {/foreach}
@@ -112,7 +106,7 @@
     {
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '{$path}'+'Admin/attivazioneUtente');
+        form.setAttribute('action', '{$path}'+'Admin/attivazioneImmobile');
 
         const id = document.createElement('input');
         id.type = 'hidden';
@@ -137,7 +131,7 @@
 
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/attivazioneUtente');
+        form.setAttribute('action', '/AgenziaImmobiliare/Admin/attivazioneImmobile');
 
         const id = document.createElement('input');
         id.type = 'hidden';

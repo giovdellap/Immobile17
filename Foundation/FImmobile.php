@@ -160,7 +160,11 @@ class FImmobile extends FObject
             if ($oldImmobile->getDescrizione() != $immobile->getDescrizione())
                 $mods["descrizione"] = $immobile->getDescrizione();
             if ($oldImmobile->isAttivo() != $immobile->isAttivo())
-                $mods["attivo"] = $immobile->isAttivo();
+            {
+                if(!$immobile->isAttivo())
+                    $mods['attivo'] = 0;
+                else $mods['attivo'] = 1;
+            }
 
             foreach (array_keys($mods) as $key)
             {
