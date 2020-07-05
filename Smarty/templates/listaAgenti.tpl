@@ -73,16 +73,12 @@
                                     </button>
                                 {/if}
 
-                                <button class="btn btn-primary btn-sm" onclick="modifica({$agente->getId()})">
+                                <button class="btn btn-primary btn-sm"href="{$path}Admin/modificaUtente/{$agente->getId()}">
                                     <i class="fas fa-trash">
                                     </i>
                                     Modifica
                                 </button>
-                                <button class="btn btn-danger btn-sm" onclick="elimina({$agente->getId()})">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Elimina
-                                </button>
+
                             </a>
                         </td>
                     </tr>
@@ -152,28 +148,6 @@
 
 </script>
 
-
-<script>
-    function modifica(idParam)
-    {
-
-        var form = document.createElement('form');
-        form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/modificaUtente');
-
-        const id = document.createElement('input');
-        id.type = 'hidden';
-        id.name = 'id';
-        id.value = idParam;
-        form.appendChild(id);
-
-
-        document.body.appendChild(form);
-        form.submit();
-
-    }
-
-</script>
 
 <script>
     function elimina(idParam)

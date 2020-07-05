@@ -79,7 +79,7 @@
                                     </button>
                                 {/if}
 
-                            <button class="btn btn-danger btn-sm" onclick=" modifica({$immobile->getId()})">
+                            <button class="btn btn-danger btn-sm" href="{$path}Admin/modificaImmobile/{$immobile->getId()}">
                                 <i class="fas fa-trash">
                                 </i>
                                 Modifica
@@ -156,27 +156,7 @@
 
     }
 </script>
-<script>
-    function modifica(idParam)
-    {
 
-        var form = document.createElement('form');
-        form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/modificaImmobile');
-
-        const id = document.createElement('input');
-        id.type = 'hidden';
-        id.name = 'id';
-        id.value = idParam;
-        form.appendChild(id);
-
-
-        document.body.appendChild(form);
-        form.submit();
-
-    }
-
-</script>
 <script>
     function elimina(idParam)
     {

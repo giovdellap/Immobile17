@@ -57,7 +57,9 @@
                                 <span class="badge badge-danger">Non Attivo</span>
                             {/if}
                         <td class="project-actions text-right">
-                            <a class="project-state" href="{$path}Admin/modificaAgente/id/{$cliente->getId()}">
+
+
+                            <a class="project-state" href="{$path}Admin/visualizzaClienti">
                                 {if $cliente->isAttivato()}
                                     <button class="btn btn-primary btn-sm" onclick="disattiva({$cliente->getId()})">
                                         <i class="fas fa-folder" >
@@ -65,6 +67,7 @@
                                         </i>
                                         Disattiva
                                     </button>
+
                                 {else}
                                     <button class="btn btn-primary btn-sm" onclick="attiva({$cliente->getId()})">
                                         <i class="fas fa-folder" >
@@ -72,12 +75,15 @@
                                         Attiva
                                     </button>
                                 {/if}
-
-                                <button class="btn btn-primary btn-sm" onclick="modifica({$cliente->getId()})">
+                            </a>
+                            <a class="project-state" href="{$path}Admin/modificaUtente/{$cliente->getId()}">
+                                <button class="btn btn-primary btn-sm">
                                     <i class="fas fa-trash">
                                     </i>
                                     Modifica
                                 </button>
+                            </a>
+                            <a class="project-state" href="{$path}Admin/eliminaCliente/{$cliente->getId()}">
                                 <button class="btn btn-danger btn-sm" onclick="elimina({$cliente->getId()})">
                                     <i class="fas fa-trash">
                                     </i>
@@ -153,27 +159,7 @@
 </script>
 
 
-<script>
-    function modifica(idParam)
-    {
 
-        var form = document.createElement('form');
-        form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/modificaUtente');
-
-        const id = document.createElement('input');
-        id.type = 'hidden';
-        id.name = 'id';
-        id.value = idParam;
-        form.appendChild(id);
-
-
-        document.body.appendChild(form);
-        form.submit();
-
-    }
-
-</script>
 
 <script>
     function elimina(idParam)
