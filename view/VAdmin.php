@@ -39,14 +39,26 @@ class VAdmin
         $smarty->display('adminPage.tpl');
     }
 
+    public static function showAgenzia(Smarty $smarty, MAgenzia $agenzia)
+    {
+        $smarty->assign('agenzia', $agenzia);
+        $smarty->assign('toAppend', 'visualizzaAgenzia.tpl');
+        $smarty->display('adminPage.tpl');
+    }
+
     public static function showAggiuntaImmobile(Smarty $smarty)
     {
-
+        $smarty->assign('toAppend','adminAggiuntaImmobile.tpl' );
+        $smarty->display('adminPage.tpl');
     }
 
     public static function showModificaImmobile(Smarty $smarty, MImmobile $immobile)
     {
-
+        $smarty->assign('immobile', $immobile);
+        $smarty->assign('tipologie', VSmartyFactory::listTipologie($immobile->getTipologia()));
+        $smarty->assign('tipoAnnuncio', VSmartyFactory::listTipoAnnuncio($immobile->getTipoAnnuncio()));
+        $smarty->assign('toAppend','adminModificaImmobile.tpl' );
+        $smarty->display('adminPage.tpl');
     }
 
     public static function showModificaUtente(Smarty $smarty, MUtente $utente)
@@ -56,7 +68,8 @@ class VAdmin
 
     public static function showAggiuntaUtente(Smarty $smarty)
     {
-
+        $smarty->assign('toAppend','adminAggiuntaUtente.tpl' );
+        $smarty->display('adminPage.tpl');
     }
 
 }

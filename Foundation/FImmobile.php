@@ -5,7 +5,7 @@ class FImmobile extends FObject
 {
     private static string $table="immobile";
     private static string $values="(:id,:nome,:citta,:indirizzo,:tipologia,:dimensione,
-                                    :descrizione,:tipo_annuncio,:attivo)";
+                                    :descrizione,:tipo_annuncio,:attivo, :prezzo)";
     private static string $idString = "IM";
 
 
@@ -19,7 +19,7 @@ class FImmobile extends FObject
         $stmt->bindValue(':dimensione',$obj->getGrandezza(),PDO::PARAM_STR);
         $stmt->bindValue(':descrizione',$obj->getDescrizione(),PDO::PARAM_STR);
         $stmt->bindValue(':tipo_annuncio',$obj->getTipoAnnuncio(),PDO::PARAM_STR);
-        $stmt->bindValue(':attivo',$obj->getAttivo(),PDO::PARAM_STR);
+        $stmt->bindValue(':attivo',$obj->isAttivo(),PDO::PARAM_STR);
         $stmt->bindValue(':prezzo',$obj->getPrezzo(),PDO::PARAM_STR);
 
     }
@@ -148,7 +148,7 @@ class FImmobile extends FObject
             if ($oldImmobile->getNome() != $immobile->getNome())
                 $mods["nome"] = $immobile->getNome();
             if ($oldImmobile->getComune() != $immobile->getComune())
-                $mods["comune"] = $immobile->getComune();
+                $mods["citta"] = $immobile->getComune();
             if ($oldImmobile->getTipologia() != $immobile->getTipologia())
                 $mods["tipologia"] = $immobile->getTipologia();
             if ($oldImmobile->getTipoAnnuncio() != $immobile->getTipoAnnuncio())

@@ -53,12 +53,12 @@ class VReceiverProxy
         $utente->setPassword($_POST['password']);
         $utente->setDataNascita(self::getDateFromRegistrazione());
         $utente->setIscrizione(MData::getCurrentTime());
-        $utente->setAttivato($_POST['attivato']);
+        $utente->setAttivato(true);
     }
 
     public static function aggiuntaUtente(): MUtente
     {
-        if($_POST['tipologia'] == 'UTENTE')
+        if($_POST['tipologia'] == 'Cliente')
             $utente = new MCliente();
         else $utente = new MAgenteImmobiliare();
         self::utenteByPostRequest($utente);
@@ -174,7 +174,7 @@ class VReceiverProxy
         $immobile->setDescrizione($_POST['descrizione']);
         $immobile->setTipoAnnuncio($_POST['tipoAnnuncio']);
         $immobile->setTipologia($_POST['tipologia']);
-        $immobile->setAttivo($_POST['attivo']);
+        $immobile->setAttivo(true);
         return $immobile;
     }
 

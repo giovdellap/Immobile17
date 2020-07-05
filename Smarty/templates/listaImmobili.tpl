@@ -63,7 +63,7 @@
                         </td>
 
                         <td class="project-actions text-right">
-                            <a class="project-state" href="{$path}Admin/modificaImmobile/id/{$immobile->getId()}">
+                            <a class="project-state" href="{$path}Admin/modificaImmobile/{$immobile->getId()}">
                                 {if $immobile->isAttivo()}
                                     <button class="btn btn-primary btn-sm" onclick="disattiva({$immobile->getId()})">
                                         <i class="fas fa-folder" >

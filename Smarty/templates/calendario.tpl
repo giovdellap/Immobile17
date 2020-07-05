@@ -176,8 +176,8 @@
 <body>
 
 {if ($error=="Appuntamento non disponibile")}
-    <div class="sign__group">
-        <span class="sign__text" style="color: #ff0000">Appuntamento non disponibile</span>
+    <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+        <span class="txt1 p-b-11" style="color: greenyellow">Appuntamento non disponibile!</span>
     </div>
 {/if}
 

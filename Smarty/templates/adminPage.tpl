@@ -170,24 +170,17 @@
 
           <li class="nav-header">AGGIUNGI</li>
           <li class="nav-item">
-            <a href="{$path}Admin/aggiungiCliente" class="nav-link">
+            <a href="{$path}Admin/aggiuntaUtente" class="nav-link">
               <i class="nav-icon fas fa-user-plus"></i>
               <p>
-                Clienti
+                Utenti
               </p>
             </a>
           </li>
+
           <li class="nav-item">
-            <a href="{$path}Admin/aggiungiAgente" class="nav-link">
-              <i class="nav-icon fas fa-people-arrows"></i>
-              <p>
-                Agenti Immobiliari
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{$path}Admin/aggiungiImmobile" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
+            <a href="{$path}Admin/aggiuntaImmobile" class="nav-link">
+              <i class="nav-icon far fa-plus-square"> </i>
               <p>
                 Immobili
               </p>

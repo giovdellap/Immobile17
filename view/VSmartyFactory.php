@@ -70,7 +70,7 @@ class VSmartyFactory
         return $smarty;
     }
 
-    private static function listTipoAnnuncio(string $selected):array
+    public static function listTipoAnnuncio(string $selected):array
     {
         $tipologie=array("Affitto e Vendita","Vendita", "Affitto");
         if (array_search($selected,$tipologie)==false)
@@ -88,7 +88,7 @@ class VSmartyFactory
         }
     }
 
-    private static function listTipologie(string $selected):array
+    public static function listTipologie(string $selected):array
     {
         $tipologie=array("Tutte le Tipologie","Monolocale","Bilocale", "Villa","Mansarda","Garage","Locale");
         if (array_search($selected,$tipologie)==false)
