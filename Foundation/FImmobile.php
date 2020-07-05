@@ -243,4 +243,10 @@ class FImmobile extends FObject
             $immobile[] = self::unBindImmobile($item);
         return $immobile;
     }
+
+    public static function eliminaImmobile(string $id): bool
+    {
+        $db = FDataBase::getInstance();
+        return $db->deleteDB(self::class, 'id', $id);
+    }
 }

@@ -3,6 +3,9 @@
 
 class VReceiverProxy
 {
+
+    // ---- GENERAL METHODS ----
+
     public static function getRequest():bool
     {
         return $_SERVER['REQUEST_METHOD'] == 'GET';
@@ -12,6 +15,8 @@ class VReceiverProxy
     {
         return $_SERVER['REQUEST_METHOD'] == 'POST';
     }
+
+    // ---- UTENTE ----
 
     public static function loginUser()
     {
@@ -39,6 +44,8 @@ class VReceiverProxy
         $date=explode("-", $_POST["date"]);
         return new MData($date[0],$date[1],$date[2], 0);
     }
+
+    // ---- IMMOBILE ----
 
     public static function ricercaParametersFiller(array $parameters): array
     {
@@ -141,13 +148,31 @@ class VReceiverProxy
         $immobile = new MImmobile();
         $immobile->setNome($_POST['nome']);
         $immobile->setComune($_POST['comune']);
-        $immobile->setIndirizzo($_SERVER['indirizzo']);
-        $immobile->setGrandezza($_SERVER['grandezza']);
-        $immobile->setPrezzo($_SERVER['prezzo']);
-        $immobile->setDescrizione($_SERVER['descrizione']);
-        $immobile->setTipoAnnuncio($_SERVER['tipoAnnuncio']);
-        $immobile->setTipologia($_SERVER['tipologia']);
-        $immobile->setAttivo($_SERVER['attivo']);
+        $immobile->setIndirizzo($_POST['indirizzo']);
+        $immobile->setGrandezza($_POST['grandezza']);
+        $immobile->setPrezzo($_POST['prezzo']);
+        $immobile->setDescrizione($_POST['descrizione']);
+        $immobile->setTipoAnnuncio($_POST['tipoAnnuncio']);
+        $immobile->setTipologia($_POST['tipologia']);
+        $immobile->setAttivo($_POST['attivo']);
         return$immobile;
     }
+
+    /**
+     * Può essere true o false
+     * @return bool
+     */
+    public static function getAttivaorNot(): bool
+    {
+        return $_POST['attiva'];
+    }
+
+    // ---- ADMIN ----
+
+    public static function generalId(): string
+    {
+        return $_POST['id'];
+    }
+
+
 }
