@@ -124,6 +124,19 @@ class FPersistentManager
         return FUtente::getUtenti($type);
     }
 
+    // -------CODICE -------
+
+    public static function addCodice(MCliente $cliente, string $codice)
+    {
+        FConfermaEmail::addCode($cliente, $codice);
+    }
+
+    public static function confermaCodice(MCliente $cliente, string $codice): bool
+    {
+        FConfermaEmail::verifyCode($cliente, $codice);
+    }
+
+
     // -------AMMINISTRATORE -------
 
     /**

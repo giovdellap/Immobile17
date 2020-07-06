@@ -329,8 +329,43 @@ class FDataBase
         $query = $query . "prezzo BETWEEN " . $parameters['pmin'] . " AND " .$parameters['pmax'] .
         " AND dimensione BETWEEN " . $parameters['gmin'] . " AND " . $parameters['gmax'] . ";";
 
-
         return $this->executeLoadQuery($query);
+    }
+
+    public function storeCode(string $id, string $code): bool
+    {
+        try{
+            $this->db->beginTransaction();
+            $query = "INSERT INTO conferma_email (id_cliente,codice) VALUES ('".$id."','".$code."');";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            print_r($stmt->errorInfo());
+            $this->db->commit();
+            $this->closeDbConnection();
+            print_r($this->db->errorInfo());
+            return true;
+        } catch (PDOException $e) {
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            $this->db->rollBack();
+            return false;
+        }
+
+    }
+
+    public function loadCode(string $id, string $code): bool
+    {
+        try {
+            $query = "SELECT * FROM conferma_email WHERE id_cliente = '" . $id . "' AND = codice = '" . $code . "'";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (count($result) > 0) return true;
+            else
+                return false;
+        } catch (PDOException $e) {
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            return false;
+        }
     }
 }
 

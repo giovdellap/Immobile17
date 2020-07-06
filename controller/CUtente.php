@@ -72,6 +72,7 @@ class CUtente
             if ($db_result === "OK") {
                 CSessionManager::createSession(FPersistentManager::loadIDbyEMail($utente->getEmail()));
                 FPersistentManager::addMedia(VImageReceiver::uploadImage(CSessionManager::getUtenteLoggato()));
+                self::confermationEmail(CSessionManager::getUtenteLoggato());
                 VUtente::registrationOK(VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato()));
             } else {
                 $db_result = "ERRORE";
@@ -148,6 +149,34 @@ class CUtente
             } else VUtente::loginForm(VSmartyFactory::basicSmarty());
         }
         else header('Location: '.$GLOBALS['path']);
+    }
+
+    public static function confermaAccount(array $parameters)
+    {
+        if(VReceiverProxy::getRequest() && VReceiverProxy::confermaAccountValidator($parameters))
+        {
+            $cliente = FPersistentManager::visualizzaUtente(VReceiverProxy::getParametersId($parameters));
+            $smarty = VSmartyFactory::userSmarty($cliente);
+            $codice = VReceiverProxy::getParametersCode($parameters);
+
+            if(FPersistentManager::confermaCodice($cliente, $codice))
+            {
+                $cliente->setAttivato(true);
+                FPersistentManager::modificaUtente($cliente);
+            }
+            else $smarty = VSmartyFactory::errorSmarty($smarty, "ATTIVAZIONE FALLITA");
+
+            VUtente::visualizzaProfilo($smarty);
+
+        }
+    }
+
+    private static function confermationEmail(MCliente $cliente)
+    {
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $code = substr(str_shuffle($permitted_chars), 0, 10);
+        FPersistentManager::addCodice($cliente, $code);
+        CMail::sendConfermationEmail($cliente, $code);
     }
 
 }

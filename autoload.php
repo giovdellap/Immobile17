@@ -6,24 +6,19 @@ function my_autoloader($classname)
     {
         case 'M':
 
-            if(strcmp(str_split($classname, 10)[0], "MValidator") === 0) {
+            if(strcmp(str_split($classname, 10)[0], "MValidator") === 0)
                 include_once('model/validators/' . $classname . '.php');
-            }
-            else if (strcmp($classname, "MDataChecker") === 0) {
+            else if (strcmp($classname, "MDataChecker") === 0)
                 include_once('model/utils/MDataChecker.php');
-            }
-            else if(strcmp(str_split($classname, 6)[0], "MMedia") === 0){
+            else if (strcmp($classname, "MMail") === 0)
+                    include_once('model/utils/MMail.php');
+            else if(strcmp(str_split($classname, 6)[0], "MMedia") === 0)
                 include_once('model/media/' . $classname . ".php");
-            }
-            else {
-                include_once('model/' . $classname . '.php');
-            }
+            else include_once('model/' . $classname . '.php');
             break;
         case 'F':
             if (strcmp(str_split($classname, 6)[0], "FMedia" )===0)
-            {
                 include_once ('Foundation/FMedia/' . $classname . '.php');
-            }
             else include_once('Foundation/' . $classname . '.php');
             break;
         case 'C':
@@ -31,7 +26,11 @@ function my_autoloader($classname)
             break;
         case 'V':
             include_once ('view/'. $classname . '.php');
+            break;
+        default:
+            include_once('PHPMailer/src/' . $classname . '.php');
     }
+
 
 }
 

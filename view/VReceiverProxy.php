@@ -65,6 +65,23 @@ class VReceiverProxy
         return $utente;
     }
 
+    public static function confermaAccountValidator(array $parameters)
+    {
+        if(key_exists('id', $parameters) && key_exists('codice', $parameters))
+            return true;
+        else return false;
+    }
+
+    public static function getParametersId(array $parameters): string
+    {
+        return $parameters['id'];
+    }
+
+    public static function getParametersCode(array $parameters): string
+    {
+        return $parameters['codice'];
+    }
+
     // ---- IMMOBILE ----
 
     public static function ricercaParametersFiller(array $parameters): array
