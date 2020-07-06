@@ -22,7 +22,6 @@ class CImmobile
         if(VReceiverProxy::getRequest())
         {
             $parameters = VReceiverProxy::ricercaParametersFiller($parameters);
-            print_r($parameters);
             $immobili = FPersistentManager::getImmobiliByParameters($parameters);
             if(CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
@@ -114,8 +113,7 @@ class CImmobile
     public static function prenota()
     {
         if (VReceiverProxy::postRequest()) {
-            print_r($_POST);
-            print_r(VReceiverProxy::prenotaAppuntamentoInizio());
+
             if (CSessionManager::sessionExists()) {
                 $inizio = VReceiverProxy::prenotaInizioAgenzia();
                 $fine = VReceiverProxy::prenotaFineAgenzia();

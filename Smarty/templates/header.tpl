@@ -1,7 +1,6 @@
-<!-- ##### Header Area Start ##### -->
-<header class="header-area">
+<header class="header-area" style="{$path}Smarty/style.css">
 
-
+<div style=""
 
     <!-- Main Header Area -->
     <div class="main-header-area" id="stickyHeader">
@@ -23,7 +22,7 @@
 
                     <!-- close btn -->
                     <div class="classycloseIcon">
-                        <div class="cross-wrap"><span class="top"> </span> <span class="bottom"></span></div>
+                        <div class="cross-wrap"><span class="top"> </span> <span class="bottom"> </span></div>
                     </div>
 
                     <!-- Nav Start -->

@@ -229,7 +229,6 @@ class CAdmin
                 if(VReceiverProxy::postRequest())
                 {
                     $utente = FPersistentManager::visualizzaUtente(VReceiverProxy::generalId());
-                    print_r($_POST);
                     $utente->setAttivato(VReceiverProxy::getAttivaorNot());
                     echo("cacca: ".VReceiverProxy::getAttivaorNot());
                     FPersistentManager::modificaUtente($utente);

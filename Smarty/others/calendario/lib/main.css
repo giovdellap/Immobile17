@@ -174,7 +174,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
        -moz-user-select: none;
         -ms-user-select: none;
             user-select: none;
-    background-color: transparent;
+    background-color: #ff000;
     border: 1px solid transparent;
     padding: 0.4em 0.65em;
     font-size: 1em;

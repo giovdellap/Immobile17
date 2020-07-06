@@ -17,7 +17,22 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/"/>
+
+    <!-- Bootstrap core CSS -->
+    <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous"/>
+
+    <!-- Font Awesome -->
+    <link href="{$path}Smarty/css/fonts/font-awesome.min.css" rel="stylesheet"/>
+    <!--href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
 
 </head>
 
@@ -47,31 +62,8 @@
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/"/>
-
-    <!-- Bootstrap core CSS -->
-    <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"/>
-
-    <!-- Font Awesome -->
-    <link href="{$path}Smarty/css/fonts/font-awesome.min.css" rel="stylesheet"/>
-            <!--href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"-->
-
-
-
-    <!-- Custom styles for this template -->
-    <link href="{$path}Smarty/css/style.css" rel="stylesheet" />
-</head>
-
-<body>
 <!-- Begin page content -->
 <main role="main" class="container">
     <div class="mt-20"></div>

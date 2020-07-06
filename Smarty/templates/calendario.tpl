@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+
+    <!-- Style CSS for header -->
+    <link rel="stylesheet" href="{$path}Smarty/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Style CSS for calendar -->
     <meta charset='utf-8' />
     <link href='{$path}Smarty/others/calendario/lib/main.css' rel='stylesheet' />
+    <link href='{$path}Smarty/others/calendario/lib/bootstrap.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
     <script src='{$path}Smarty/others/calendario/lib/main.js'></script>
-    <link rel="icon" type="image/png" href="{$path}Smarty/img/icons/favicon_1.ico"/>
+    <link rel="icon" type="image/ico" href="{$path}Smarty/img/icons/favicon_1.ico"/>
+
+    <title>Prenotazione</title>
+
+
+
 
     <script>
+
 
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -29,7 +44,7 @@
 
                 customButtons: {
                     prevCustomButton: {
-                        icon: 'left-single-arrow',
+                        text: "<",
                         click: function() {
                             var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}'
                                 +'/inizio/'+'{$prevInizio->getDateString()}'
@@ -38,7 +53,7 @@
                         }
                     },
                     nextCustomButton: {
-                        icon: 'right-single-arrow',
+                        text: ">",
                         click: function() {
                             var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}'
                                 +'/inizio/'+'{$nextInizio->getDateString()}'
@@ -51,20 +66,13 @@
                             var url = '{$path}'+'Immobile/calendario/id/'+'{$immobile->getId()}';
                             window.location.href=url;
                         }
-                    },
-                    logoCustomButton: {
-                        icon: logo,
-                        click: function() {
-                            window.location.href='{$path}';
-                        }
                     }
-
                 },
 
                 headerToolbar: {
-                    left: 'prevCustomButton,nextCustomButton todayCustomButton',
+                    left: 'prevCustomButton,nextCustomButton',
                     center: 'title',
-                    right: 'logo'
+                    right: 'todayCustomButton'
                 },
                 initialDate: aaaa+'-'+mm+'-'+dd,
                 initialView: 'timeGridWeek',
@@ -72,7 +80,10 @@
                 businessHours: false, // display business hours
                 editable: false,
                 selectable: false,
-
+                themeSystem: 'bootstrap',
+                slotMinTime: '07:00:00',
+                slotMaxTime: '22:00:00',
+                contentHeight: 715,
 
 
                 eventClick: function(info)
@@ -138,7 +149,7 @@
                                 '{$app->getAgenteImmobiliare()->getId()}',
                         start: '{$app->getOrarioInizio()->getFullDataString()}',
                         end: '{$app->getOrarioFine()->getFullDataString()}',
-                        color: '#ff0523'
+                        color: 'grey'
                     },
                     {/foreach}
                     {
@@ -160,7 +171,7 @@
     <style>
 
         body {
-            margin: 40px 10px;
+            /*margin: 40px 10px;*/
             padding: 0;
             font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
             font-size: 14px;
@@ -174,14 +185,45 @@
     </style>
 </head>
 <body>
-
+{include file="header.tpl"}
+<section class="breadcumb-area bg-img" style="background-image: url({$path}Smarty/img/bg-img/calendar.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-content">
+                    <h3 class="breadcumb-title">PRENOTAZIONE</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+    <p> <br> </p>
+    <p> <br> </p>
+</div>
 {if ($error=="Appuntamento non disponibile")}
+
     <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
         <span class="txt1 p-b-11" style="color: greenyellow">Appuntamento non disponibile!</span>
     </div>
 {/if}
 
 <div id='calendar'></div>
+
+{include file="footer.tpl"}
+
+<!-- jQuery (Necessary for All JavaScript Plugins) -->
+<script src={$path}/Smarty/js/jquery/jquery-2.2.4.min.js></script>
+<!-- Popper js -->
+<script src={$path}/Smarty/js/popper.min.js></script>
+<!-- Bootstrap js -->
+<script src={$path}/Smarty/js/bootstrap.min.js></script>
+<!-- Plugins js -->
+<script src={$path}/Smarty/js/plugins.js></script>
+<script src={$path}/Smarty/js/classy-nav.min.js></script>
+<script src={$path}/Smarty/js/jquery-ui.min.js></script>
+<!-- Active js -->
+<script src={$path}/Smarty/js/active.js></script>
 
 </body>
 </html>

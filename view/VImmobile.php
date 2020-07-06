@@ -36,9 +36,6 @@ class VImmobile
      */
     public static function calendario(Smarty $smarty, array $appLiberi, MData $inizio, MData $fine, MImmobile $immobile)
     {
-        //print_r($appLiberi[0]);
-        print_r($inizio->getDateString());
-
         $smarty->assign("immobile", $immobile);
         $smarty->assign("inizio", $inizio);
         $smarty->assign("fine", $fine);

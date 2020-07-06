@@ -142,8 +142,6 @@ class FUtente extends FObject
     {
         $db = FDataBase::getInstance();
         $oldUtente = FUtente::visualizzaUtente($utente->getId());
-        print_r($oldUtente);
-        print_r($utente);
         $mods = array();
         if($utente->getNome() != $oldUtente->getNome())
             $mods["nome"] = $utente->getNome();
