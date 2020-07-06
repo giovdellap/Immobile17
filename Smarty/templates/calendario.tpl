@@ -149,14 +149,15 @@
                                 '{$app->getAgenteImmobiliare()->getId()}',
                         start: '{$app->getOrarioInizio()->getFullDataString()}',
                         end: '{$app->getOrarioFine()->getFullDataString()}',
-                        color: 'grey'
+                        color: '#ff8000',
+
                     },
                     {/foreach}
                     {
                         title: 'Festivo',
                         start: '{$inizio->getFullDataString()}',
                         allDay: true,
-                        color: '#257e4a'
+                        color: 'white'
                     }
                 ]
             });
@@ -180,7 +181,8 @@
         #calendar {
             max-width: 1100px;
             margin: 0 auto;
-        }
+                    }
+
 
     </style>
 </head>
