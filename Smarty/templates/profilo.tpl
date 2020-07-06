@@ -9,13 +9,15 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>South - Real Estate Agency Template | Blog</title>
+    <title>{$utente->getNome()} {$utente->getCognome()}</title>
 
     <!-- Favicon  -->
-    <link rel="icon" alt="{$path}Smarty/img/icons/favicon_1.ico">
+    <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
+
+
 
 </head>
 
@@ -26,38 +28,38 @@
 </div>
 
 {include file="header.tpl"}
+<section class="breadcumb-area bg-img" style="background-image: url({$path}Smarty/img/bg-img/areapersonale.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <div class="breadcumb-content">
+                    <h3 class="breadcumb-title">Area Personale</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section>
     <p>&nbsp;	</p>
     <p>&nbsp;	</p>
-    <p>&nbsp;	</p>
-    <p>&nbsp;	</p>
+
 
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
 <head>
     <meta charset="utf-8" />
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="author" content="YOUR NAME HERE" />
-    <link rel="icon" href="{$path}Smarty/img/icon/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>Profile Page</title>
 
-    <link
-            rel="canonical"
-            href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/"
-    />
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sticky-footer/"/>
 
     <!-- Bootstrap core CSS -->
     <link
             rel="stylesheet"
             href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-    />
+            crossorigin="anonymous"/>
 
     <!-- Font Awesome -->
     <link href="{$path}Smarty/css/fonts/font-awesome.min.css" rel="stylesheet"/>
@@ -80,12 +82,12 @@
                     <img
                             src="{$utente->getImmagine()->viewImageHTML()}"
                             alt="{$path}Smarty/img/icons/avatar.png"
-                            class="rounded-circle profile-image"
+                            class="profile-image"
                     />
                 </div>
                 <div class="col-md- top-col">
-                    <h1 class="">{$utente->getNome()} {$utente->getCognome()}</h1>
-                    <p class="lead">{$utente->getEmail()}</p>
+                    <h5 class="">{$utente->getNome()} {$utente->getCognome()}</h5>
+                    <p class="lead"> </p>
 
 
 
@@ -99,14 +101,15 @@
 
 
     <hr class="divider" />
-    <h5>I miei Dati&nbsp;</h5>
-    <p>{$utente->getId()}</p>
+    <h5>Dati Personali &nbsp;</h5>
+    <span style="color: #0b0b0b">Email:</span> <p> {$utente->getEmail()} </p>
+    <span style="color: #0b0b0b">Data di Nascita:</span> <p> {$utente->getDataNascita()->getDateString()}</p>
     <p></p>
-    <p></p>
-    <p>boh</p>
-    <hr class="divider" />
+
+    <hr class="divider">
     <h5>I miei Appuntamenti</h5>
-    <p>*INSERT CALENDARIO*</p>
+
+
     <p>&nbsp;</p>
     <p>&nbsp;</p>
 

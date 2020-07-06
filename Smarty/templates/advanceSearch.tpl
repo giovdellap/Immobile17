@@ -73,18 +73,18 @@
 
                             <div class="col-12 col-md-8 col-xl-2">
                                 <div class="row">
-                                    <p>Prezzo massimo: € <span id="outputPrezzo"></span></p>
+                                    <p>Prezzo massimo: <br> € <span id="outputPrezzo"> </span></p>
                                 </div>
                                 <div class="row">
-                                    <div class="slider-range">
-                                        <input type="range" min="{$pmin}" max="300000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
+                                    <div class="slider-range" >
+                                        <input type="range"  min="{$pmin}" max="300000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
                                     </div>
                                 </div>
 
                             </div>
                             <div class="col-12 col-md-8 col-xl-2">
                                 <div class="row">
-                                    <p>Grandezza minima: mq <span id="outputGrandezza"></span></p>
+                                    <p>Grandezza minima: <br> mq <span id="outputGrandezza"> </span></p>
                                 </div>
                                 <div class="row">
                                     <div class="slider-range">
