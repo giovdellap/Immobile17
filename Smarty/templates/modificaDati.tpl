@@ -27,33 +27,8 @@
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/util.css">
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/main.css">
     <!--===============================================================================================-->
-
-    <script>
-
-        function testpass(modulo)
-        {
-            // Verifico che il campo password sia valorizzato in caso contrario
-            // avverto dell'errore tramite un Alert
-            if (modulo.password.value === "")
-            {
-                alert("Errore: inserire una password!")
-                modulo.password.focus()
-                return false
-            }
-            // Verifico che le due password siano uguali, in caso contrario avverto
-            // dell'errore con un Alert
-            if (modulo.password.value !== modulo.password2.value)
-            {
-                alert("La password inserita non coincide con la prima!")
-                modulo.password.focus()
-                modulo.password.select()
-                return false
-            }
-            return true
-        }
-    </script>
-
 </head>
+
 <body>
 
 <div class="limiter">
@@ -63,15 +38,15 @@
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
-					<span class="login100-form-title p-b-32">
-						Registrati
+                <span class="login100-form-title p-b-32">
+						Modifica Dati
 					</span>
 
                 <span class="txt1 p-b-11">
 						Nome
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il nome">
-                    <input class="input100" type="text" required name="nome">
+                    <input class="input100" type="text" required name="nome" value="{$utente->getNome()}">
                     <span class="focus-input100"> </span>
                 </div>
 
@@ -79,7 +54,7 @@
 						Cognome
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire il cognome">
-                    <input class="input100" type="text" required name="cognome" >
+                    <input class="input100" type="text" required name="cognome" value="{$utente->getCognome()}">
                     <span class="focus-input100"> </span>
                 </div>
 
@@ -87,7 +62,7 @@
 						Data di nascita
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "inserire la data di nascita">
-                    <input class="input100" type="date" name="date" required name="date"  >
+                    <input class="input100" type="text" name="date" required name="date"  value="{$utente->getDataNascita->getDataString}">
                     <span class="focus-input100"> </span>
                 </div>
 
@@ -95,34 +70,16 @@
 						Email
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
-                    <input class="input100" type="text" required name="email"  >
+                    <input class="input100" type="text" required name="email" value="{$utente->getEmail()}" >
                     <span class="focus-input100"> </span>
                 </div>
 
                 <span class="txt1 p-b-11">
 						Password
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"> </i>
-						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"> </span>
-                </div>
-
-                <span class="txt1 p-b-11">
-						Conferma Password
-					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"> </i>
-						</span>
-                    <input class="input100" type="password" required name="password2" placeholder="**********">
-                    <span class="focus-input100"> </span>
-                </div>
 
                 <span class="txt1 p-b-7">Immagine del Profilo:</span>
-                    <input type="file" name="propic" />
+                <input type="file" name="propic" />
                 <br>
                 <br>
                 <br>

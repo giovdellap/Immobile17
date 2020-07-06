@@ -179,4 +179,6 @@ class CUtente
         CMail::sendConfermationEmail($cliente, $code);
     }
 
+
+
 }

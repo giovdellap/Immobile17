@@ -26,8 +26,9 @@ class VUtente
         $smarty->display("profilo.tpl");
     }
 
-    public static function modificaDati(Smarty $smarty)
+    public static function showModificaUtente(Smarty $smarty, MUtente $utente)
     {
+        $smarty->assign('utente', $utente);
         $smarty->display("modificaDati.tpl");
     }
 
