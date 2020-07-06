@@ -7,9 +7,6 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h2><span>AGGIUNGI</span></h2>
-                </div>
-                <div class="col-sm-6">
 
 
                 </div>
@@ -21,7 +18,9 @@
     <section class="content">
         <form method="post" action="{$path}Admin/AggiuntaImmobile">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12 col-md-3 col-xl-3">
+            </div>
+            <div class="col-md-12 col-md-6 col-xl-6">
 
                 <div class="card card-dark">
                     <div class="card-header">
@@ -78,6 +77,10 @@
                             <textarea id="Descrizione" class="form-control" rows="4" name="descrizione"> </textarea>
                         </div>
 
+                        <div class="form-group">
+                            <p> <br> </p>
+                        </div>
+
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -91,8 +94,8 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <a href="#" class="btn btn-secondary">Cancella</a>
-                <input type="submit" value="Conferma" class="btn btn-success float-right">
+                <a href="#" class="btn btn-secondary" style="position:absolute; top:-70px; left:345px; z-index:1">Cancella</a>
+                <input type="submit" value="Conferma" class="btn btn-success float-right"style="position:absolute; top:-70px; left:831px; z-index:1">
             </div>
         </div>
         </form>

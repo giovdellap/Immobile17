@@ -6,9 +6,7 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h2><span>MODIFICA</span></h2>
-                </div>
+
                 <div class="col-sm-6">
 
 
@@ -21,7 +19,9 @@
     <section class="content">
         <form method="post" action="{$path}Admin/modificaImmobile/{$immobile->getId()}">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12 col-md-3 col-xl-3">
+            </div>
+            <div class="col-md-12 col-md-6 col-xl-6">
                 <div class="card card-dark">
                     <div class="card-header">
                         <h3 class="card-title">Modifica</h3>
@@ -68,11 +68,13 @@
                             </select>
                         </div>
 
-
-
                         <div class="form-group">
                             <label for="Descrizione">Descrizione</label>
                             <textarea id="Descrizione" class="form-control" rows="4" name="descrizione">{$immobile->getDescrizione()}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <p> <br> </p>
                         </div>
 
                     </div>
@@ -87,8 +89,8 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <a href="#" class="btn btn-secondary">Cancella</a>
-                <input type="submit" value="Conferma" class="btn btn-success float-right">
+                <a href="#" class="btn btn-secondary" style="position:absolute; top:-70px; left:345px; z-index:1">Cancella</a>
+                <input type="submit" value="Conferma" class="btn btn-success float-right" style="position:absolute; top:-70px; left:831px; z-index:1">
             </div>
         </div>
         </form>

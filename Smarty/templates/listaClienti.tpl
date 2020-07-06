@@ -59,22 +59,22 @@
                         <td class="project-actions text-right">
 
                             {if $cliente->isAttivato()}
-                                <button class="btn btn-primary btn-sm" onclick="disattiva('{$cliente->getId()}')">
-                                    <i class="fas fa-folder" >Disattiva</i>
+                                <button class="btn btn-dark btn-xs" onclick="disattiva('{$cliente->getId()}')">
+                                    <i class="fas fa-ban" > </i>
                                 </button>
 
                             {else}
-                                <button class="btn btn-primary btn-sm" onclick="attiva('{$cliente->getId()}')">
-                                    <i class="fas fa-folder" >Attiva</i>
+                                <button class="btn btn-dark btn-xs" onclick="attiva('{$cliente->getId()}')">
+                                    <i class="fas fa-smile" > </i>
                                 </button>
                             {/if}
                             <a href="{$path}Admin/modificaUtente/{$cliente->getId()}">
-                                <button class="btn btn-primary btn-sm">
-                                    <i class="fas fa-trash">Modifica</i>
+                                <button class="btn btn-primary btn-xs">
+                                    <i class="fas fa-pen"> </i>
                                 </button>
                             </a>
-                            <button class="btn btn-danger btn-sm" onclick="elimina('{$cliente->getId()}')">
-                                <i class="fas fa-trash">Elimina</i>
+                            <button class="btn btn-danger btn-xs" onclick="elimina('{$cliente->getId()}')">
+                                <i class="fas fa-trash"> </i>
                             </button>
                         </td>
                     </tr>

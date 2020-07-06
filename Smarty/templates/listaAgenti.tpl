@@ -58,19 +58,19 @@
 
                         <td class="project-actions text-right">
                                 {if $agente->isAttivato()}
-                                    <button class="btn btn-primary btn-sm"
+                                    <button class="btn btn-dark btn-xs"
                                             onclick="disattiva('{$agente->getId()}')">
-                                        <i class="fas fa-folder" >Disattiva</i>
+                                        <i class="fas fa-ban" > </i>
                                     </button>
                                 {else}
-                                    <button class="btn btn-primary btn-sm"
+                                    <button class="btn btn-dark btn-xs"
                                             onclick="attiva('{$agente->getId()}')">
-                                        <i class="fas fa-folder" >Attiva</i>
+                                        <i class="fas fa-smile" > </i>
                                     </button>
                                 {/if}
                             <a href="{$path}Admin/modificaUtente/{$agente->getId()}">
-                                <button class="btn btn-primary btn-sm">
-                                    <i class="fas fa-trash">Modifica</i>
+                                <button class="btn btn-primary btn-xs">
+                                    <i class="fas fa-pen"> </i>
                                 </button>
                             </a>
                         </td>

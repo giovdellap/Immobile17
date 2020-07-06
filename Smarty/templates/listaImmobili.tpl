@@ -64,25 +64,25 @@
 
                         <td class="project-actions text-right">
                             {if $immobile->isAttivo()}
-                                <button class="btn btn-primary btn-sm"
+                                <button class="btn btn-dark btn-xs"
                                         onclick="disattiva('{$immobile->getId()}')">
-                                    <i class="fas fa-folder" >Disattiva</i>
+                                    <i class="fas fa-ban" > </i>
                                 </button>
                             {else}
-                                <button class="btn btn-primary btn-sm"
+                                <button class="btn btn-dark btn-xs"
                                         onclick="attiva('{$immobile->getId()}')">
-                                    <i class="fas fa-folder" >Attiva</i>
+                                    <i class="fas fa-smile" > </i>
                                 </button>
                             {/if}
                             <a href="{$path}Admin/modificaImmobile/{$immobile->getId()}">
-                            <button class="btn btn-danger btn-sm" >
-                                <i class="fas fa-trash">Modifica</i>
+                            <button class="btn btn-primary btn-xs" >
+                                <i class="fas fa-pen"> </i>
                             </button>
                             </a>
 
-                            <button class="btn btn-danger btn-sm"
+                            <button class="btn btn-danger btn-xs"
                                     onclick="elimina('{$immobile->getId()}')">
-                                <i class="fas fa-trash">Cancella</i>
+                                <i class="fas fa-trash"> </i>
                             </button>
 
                         </td>
