@@ -16,7 +16,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <form method="post" action="{$path}Admin/AggiuntaImmobile">
+        <form method="post" action="{$path}Admin/AggiuntaImmobile"  enctype="multipart/form-data" >
         <div class="row">
             <div class="col-md-12 col-md-3 col-xl-3">
             </div>
@@ -71,6 +71,11 @@
                                 <option>Affitto</option>
                             </select>
                         </div>
+                    <div>
+                            <span class="txt1 p-b-7">Carica Immagini: </span>
+                            <input type="file" name="my_file[]" multiple="multiple"/>
+
+                        </div>
 
                         <div class="form-group">
                             <label for="Descrizione">Descrizione</label>
@@ -103,3 +108,4 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+

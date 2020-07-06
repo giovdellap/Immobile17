@@ -218,14 +218,19 @@ class FDataBase
             $stmt->setFetchMode(PDO::FETCH_ASSOC);
             while ($row = $stmt->fetch())
                 $result[] = $row;
+
             return $result;
 
         } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
             $this->db->rollBack();
+
             return null;
         }
     }
+
+
+
 
     /**
      * Controlla che $mail sia uguale a $password

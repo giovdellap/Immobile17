@@ -75,7 +75,6 @@ class CUtente
                 self::confermationEmail(CSessionManager::getUtenteLoggato());
                 VUtente::registrationOK(VSmartyFactory::userSmarty(CSessionManager::getUtenteLoggato()));
             } else {
-                $db_result = "ERRORE";
                 $smarty = VSmartyFactory::userSmarty($utente);
                 VUtente::showRegistrationForm(VSmartyFactory::errorSmarty($smarty, $db_result));
             }

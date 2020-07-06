@@ -168,7 +168,12 @@ class FPersistentManager
      * @return bool
      */
     public static function addImmobile (MImmobile $immobile){
-        return FImmobile::addImmobile($immobile);
+
+        $db_result= FImmobile::addImmobile($immobile);
+        if ($db_result)
+            return "OK";
+        else
+            return "ADD FAILED";
     }
 
     /**
@@ -332,8 +337,6 @@ class FPersistentManager
     {
         return FAppuntamento::getAppuntamento($id);
     }
-
-    // ------- MEDIA -------
 
     /**
      * Aggiunge l'MMedia passato come parametro al DB

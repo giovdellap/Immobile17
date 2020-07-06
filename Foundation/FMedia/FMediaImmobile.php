@@ -11,16 +11,15 @@ class FMediaImmobile extends FObject
 
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
-
-        $path = $_FILES[$obj->getData()]['tmp_name'];
-        $file=fopen($path,'rb') or die ("Attenzione! Impossibile da aprire!");
+       // $path = $_FILES[$obj->getData()]['tmp_name'];
+       // $file=fopen($path,'rb') or die ("Attenzione! Impossibile da aprire!");
         $stmt->bindValue(':id',$newId, PDO::PARAM_STR);
         $stmt->bindValue(':nome',$obj->getNome(), PDO::PARAM_STR);
         $stmt->bindValue(':type',$obj->getType(), PDO::PARAM_STR);
-        $stmt->bindValue(':immagine', fread($file,filesize($path)), PDO::PARAM_LOB);
-        $stmt->bindValue(':id_immobile', $obj->getUtente()->getId(), PDO::PARAM_STR);
-        unset($file);
-        unlink($path);
+        $stmt->bindValue(':immagine', $obj->getData(), PDO::PARAM_LOB);
+        $stmt->bindValue(':id_immobile', $obj->getImmobile()->getId(), PDO::PARAM_STR);
+       // unset($file);
+      // unlink($path);
     }
 
     public static function getTable(): string
@@ -36,7 +35,7 @@ class FMediaImmobile extends FObject
     public static function storeMedia(MMediaImmobile $mediaImmobile):bool
     {
         $db=FDataBase::getInstance();
-        $db->storeDb(self::class,$mediaImmobile);
+        return $db->storeDb(self::class,$mediaImmobile);
     }
 
     public static function loadMedia(string $id):?array

@@ -10,7 +10,7 @@ class FMedia
             if ($media->getUtente() instanceof MCliente)
                 return FMediaCliente::storeMedia($media);
             else return FMediaAgenteImmobiliare::storeMedia($media);
-        else if ($media instanceof MMediaImmobileImmobile)
+        else if ($media instanceof MMediaImmobile)
             return FMediaImmobile::storeMedia($media);
     }
 

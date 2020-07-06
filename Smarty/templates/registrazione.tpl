@@ -121,8 +121,9 @@
                     <span class="focus-input100"> </span>
                 </div>
 
-                <span class="txt1 p-b-7">Immagine del Profilo:</span>
+               <span class="txt1 p-b-7">Immagine del Profilo:</span>
                     <input type="file" name="propic" />
+
                 <br>
                 <br>
                 <br>

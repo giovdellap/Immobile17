@@ -5,7 +5,7 @@ class FImmobile extends FObject
 {
     private static string $table="immobile";
     private static string $values="(:id,:nome,:citta,:indirizzo,:tipologia,:dimensione,
-                                    :descrizione,:tipo_annuncio,:attivo, :prezzo)";
+                                    :descrizione,:tipo_annuncio,:prezzo,:attivo)";
     private static string $idString = "IM";
 
 
@@ -19,8 +19,8 @@ class FImmobile extends FObject
         $stmt->bindValue(':dimensione',$obj->getGrandezza(),PDO::PARAM_STR);
         $stmt->bindValue(':descrizione',$obj->getDescrizione(),PDO::PARAM_STR);
         $stmt->bindValue(':tipo_annuncio',$obj->getTipoAnnuncio(),PDO::PARAM_STR);
-        $stmt->bindValue(':attivo',$obj->isAttivo(),PDO::PARAM_STR);
         $stmt->bindValue(':prezzo',$obj->getPrezzo(),PDO::PARAM_STR);
+        $stmt->bindValue(':attivo',$obj->isAttivo(),PDO::PARAM_STR);
 
     }
 

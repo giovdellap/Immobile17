@@ -1,6 +1,8 @@
 <?php
-
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require "PHPMailer/src/PHPMailer.php";
+require "PHPMailer/src/SMTP.php";
 class CMail
 {
     public static function sendConfermationEmail(MCliente $cliente, string $code)
@@ -28,7 +30,7 @@ class CMail
         $mailer->Password   = 'Ciro1dinoi';
 
         $mailer->setFrom('immobile17@gmail.com', 'Immobile17');
-        $mailer->addAddress($email->getTo(), $email->getName());
+        $mailer->addAddress($email->getRecipient(), $email->getRecipientName());
         $mailer->Subject    = $email->getSubject();
         $mailer->Body       = $email->getBody();
         $mailer->AltBody    = $email->getBody(); //Non HTML clients

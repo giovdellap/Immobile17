@@ -1,7 +1,7 @@
 <?php
 
 function my_autoloader($classname)
-{
+{ echo $classname;
     switch ($classname[0])
     {
         case 'M':
@@ -27,7 +27,7 @@ function my_autoloader($classname)
             include_once ('view/'. $classname . '.php');
             break;
     }
-    if($classname === 'OAuth' || $classname === 'PHPMailer' || $classname === 'POP3' || $classname === 'SMTP')
+    if($classname === 'OAuth' || strcmp($classname,"PHPMailer") === 0 || $classname === 'POP3' || $classname === 'SMTP')
         include_once ('PHPMailer/src/'.$classname.'.php');
 
 

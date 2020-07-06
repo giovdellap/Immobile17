@@ -66,30 +66,37 @@ class CAdmin
 
     public static function aggiuntaImmobile()
     {
-        if(CSessionManager::sessionExists())
-        {
-            if(CSessionManager::adminLogged())
-            {
-                if(VReceiverProxy::getRequest())
-                {
+        if (CSessionManager::sessionExists()) {
+            if (CSessionManager::adminLogged()) {
+                if (VReceiverProxy::getRequest()) {
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     VAdmin::showAggiuntaImmobile($smarty);
-                }
-                else if(VReceiverProxy::postRequest())
-                {
+                } else if (VReceiverProxy::postRequest()) {
                     $immobile = VReceiverProxy::immobileByPostRequest();
+                    $db_result = FPersistentManager::addImmobile($immobile);
 
-                    FPersistentManager::addImmobile($immobile);
-                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
-                    VAdmin::showAggiuntaImmobile($smarty);
-                    //header('Location: '.$GLOBALS['path'].'Admin/visualizzaImmobili');
+                    if ($db_result === "OK") {
+                        $immobile=FPersistentManager::getByKeyword($immobile->getNome())[0];
+                        $immagini=VImageReceiver::uploadMultipleImages($immobile);
+                        foreach ($immagini as $immagine)
+                            FPersistentManager::addMedia($immagine);
+                        $smarty=VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                        VAdmin::showAggiuntaImmobile($smarty);
+                        //header('Location: '.$GLOBALS['path'].'Admin/visualizzaImmobili');
+                    }
+
+
                 }
-            }
-            //ERRORE DA VEDERE
-        }
-        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
-    }
 
+                //ERRORE DA VEDERE
+            } else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+        }
+    }
+public static function uploadImage($immobile)
+{
+    FPersistentManager::addMedia(VImageReceiver::uploadImageImmobili(FPersistentManager::visualizzaImmobile($immobile->getId())));
+
+}
     public static function attivazioneImmobile()
     {
         if(CSessionManager::sessionExists())
