@@ -5,7 +5,6 @@ function my_autoloader($classname)
     switch ($classname[0])
     {
         case 'M':
-
             if(strcmp(str_split($classname, 10)[0], "MValidator") === 0)
                 include_once('model/validators/' . $classname . '.php');
             else if (strcmp($classname, "MDataChecker") === 0)
@@ -27,9 +26,9 @@ function my_autoloader($classname)
         case 'V':
             include_once ('view/'. $classname . '.php');
             break;
-        default:
-            include_once('PHPMailer/src/' . $classname . '.php');
     }
+    if($classname === 'OAuth' || $classname === 'PHPMailer' || $classname === 'POP3' || $classname === 'SMTP')
+        include_once ('PHPMailer/src/'.$classname.'.php');
 
 
 }
