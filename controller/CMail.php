@@ -16,6 +16,11 @@ class CMail
         self::send($mail);
     }
 
+    /**
+     * @param MMail $email
+     * @return bool
+     * @throws Exception
+     */
     private static function send(MMail $email): bool {
         $mailer = new PHPMailer(true);
 
@@ -25,11 +30,11 @@ class CMail
         $mailer->SMTPAuth   = true;
         $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mailer->Host       = 'smtp.gmail.com';
-        $mailer->Port       = 587;
-        $mailer->Username   = 'immobile17@gmail.com';
-        $mailer->Password   = 'Ciro1dinoi';
+        $mailer->Port       = '465';
+        $mailer->Username   = 'immobile17.agenzia@gmail.com';
+        $mailer->Password   = 'CiroImmobile';
 
-        $mailer->setFrom('immobile17@gmail.com', 'Immobile17');
+        $mailer->setFrom('immobile17.agenzia@gmail.com', 'Immobile17');
         $mailer->addAddress($email->getRecipient(), $email->getRecipientName());
         $mailer->Subject    = $email->getSubject();
         $mailer->Body       = $email->getBody();
