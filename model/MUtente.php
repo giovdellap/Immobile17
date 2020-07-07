@@ -201,7 +201,7 @@ class MUtente
 
     public function getFullName(): string
     {
-        return $this->getNome() . $this->getCognome();
+        return $this->getNome() . " " . $this->getCognome();
     }
 
     /**

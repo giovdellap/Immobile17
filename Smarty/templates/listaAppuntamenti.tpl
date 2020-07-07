@@ -47,15 +47,13 @@
                         </td>
 
                         <td>
-                            <a class="btn btn-info btn-sm" href="#">
-                                <i class="fas fa-pencil-alt">
-                                </i>
-                                Modifica
+
+
                             </a>
-                            <a class="btn btn-danger btn-sm" href="#">
+                            <a class="btn btn-danger btn-xs" href="#">
                                 <i class="fas fa-trash">
                                 </i>
-                                Cancella
+
                             </a>
                         </td>
                     </tr>

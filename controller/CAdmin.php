@@ -366,4 +366,24 @@ public static function uploadImage($immobile)
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
+    public static function aggiuntaAppuntamento()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $clienti = FPersistentManager::visualizzaUtenti('CLIENTE');
+                    $immobili= FPersistentManager::visualizzaImmobili();
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::aggiuntaAppParameters($smarty, $clienti, $immobili);
+                }
+                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+            }
+            //ERRORE DA VEDERE
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
 }

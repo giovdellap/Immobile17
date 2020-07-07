@@ -118,7 +118,7 @@
                   <i class="fas fa-calendar-day nav-icon"> </i>
                   <p>Visualizza</p>
                 </a>
-                <a href="../../index.html" class="nav-link">
+                <a href="{$path}Admin/aggiuntaAppuntamento" class="nav-link">
                   <i class="fas fa-calendar-plus nav-icon"> </i>
                   <p>Aggiungi</p>
                 </a>

@@ -81,4 +81,11 @@ class VAdmin
         $smarty->display('adminPage.tpl');
     }
 
+    public static function aggiuntaAppParameters(Smarty $smarty, array $clienti, array $immobili)
+    {
+        $smarty->assign('clienti', $clienti);
+        $smarty->assign('immobili', $immobili);
+        $smarty->assign('toAppend','adminParametriAppuntamento.tpl' );
+        $smarty->display('adminPage.tpl');
+    }
 }
