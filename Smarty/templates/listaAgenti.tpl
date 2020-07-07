@@ -46,8 +46,8 @@
                         <td> {$agente->getId()} </td>
                         <td> {$agente->getNome()} {$agente->getCognome()} </td>
                         <td> {$agente->getEmail()} </td>
-                        <td> {$agente->getDataNascita()->getDateString()} </td>
-                        <td> {$agente->getIscrizione()->getDateString()} </td>
+                        <td> {$agente->getDataNascita()->getDateFormat()} </td>
+                        <td> {$agente->getIscrizione()->getDateFormat()} </td>
                         <td class="project-state">
                             {if $agente->isAttivato()}
                                 <span class="badge badge-success">Attivo</span>

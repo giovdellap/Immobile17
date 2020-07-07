@@ -61,7 +61,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-white elevation-4">
     <!-- Brand Logo -->
-    <a href="{$path}" class="brand-link">
+    <a href="{$path}Admin/logout" class="brand-link">
       <img src="{$path}Smarty/img/icons/favicon_1.ico" alt="logo I17" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Immobile17</span>
@@ -72,7 +72,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{$path}Smarty/img/bg-img/editor.jpg" class="img-circle elevation-2" alt="Admin">
+          <img src="{$path}Smarty/img/bg-img/editor.jpg"  class="img-circle elevation-2" alt="Admin">
         </div>
         <div class="info">
           <a class="d-block">ADMIN ISTRATOR</a>

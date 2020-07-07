@@ -48,8 +48,8 @@
                         <td> {$cliente->getId()} </td>
                         <td> {$cliente->getNome()} {$cliente->getCognome()} </td>
                         <td> {$cliente->getEmail()} </td>
-                        <td>{$cliente->getDataNascita()->getDateString()} </td>
-                        <td> {$cliente->getIscrizione()->getDateString()} </td>
+                        <td>{$cliente->getDataNascita()->getDateFormat()} </td>
+                        <td> {$cliente->getIscrizione()->getDateFormat()} </td>
                         <td class="project-state">
                             {if $cliente->isAttivato()}
                                 <span class="badge badge-success">Attivo</span>

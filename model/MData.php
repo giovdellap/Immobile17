@@ -135,6 +135,11 @@ class MData
         return date("Y-m-d", $this->data->getTimestamp());
     }
 
+    public function getDateFormat(): string
+    {
+        return date("d/m/Y", $this->data->getTimestamp());
+    }
+
     /**
      * Converte una stringa data in formato YYYY--mm--dd in un MData
      * @param string $str

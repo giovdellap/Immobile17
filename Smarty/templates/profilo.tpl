@@ -95,7 +95,7 @@
     <hr class="divider" />
     <h5>Dati Personali &nbsp;</h5>
     <span style="color: #0b0b0b">Email:</span> <p> {$utente->getEmail()} </p>
-    <span style="color: #0b0b0b">Data di Nascita:</span> <p> {$utente->getDataNascita()->getDateString()}</p>
+    <span style="color: #0b0b0b">Data di Nascita:</span> <p> {$utente->getDataNascita()->getDateFormat()}</p>
     <p></p>
 
     <hr class="divider">
