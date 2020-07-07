@@ -128,10 +128,11 @@ class CImmobile
                 $appuntamento->setImmobile(FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile()));
                 $appuntamento->setOrarioInizio(VReceiverProxy::prenotaAppuntamentoInizio());
                 $appuntamento->setOrarioFine(VReceiverProxy::prenotaAppuntamentoFine());
-
+                //print_r($appuntamento);
                 if ($fullAgenzia->getCalendario()->addAppuntamento($appuntamento)) {
                     FPersistentManager::addAppuntamento($appuntamento);
                     header('Location: '.$GLOBALS['path'].'Utente/calendario');
+
                 }
                 else
                 {

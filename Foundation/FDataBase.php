@@ -56,10 +56,10 @@ class FDataBase
             $foundation::bind($stmt, $model, $foundation::calculateNewID($lastID));
 
             $stmt->execute();
-            print_r($stmt->errorInfo());
+            //print_r($stmt->errorInfo());
             $this->db->commit();
             $this->closeDbConnection();
-            print_r($this->db->errorInfo());
+            //print_r($this->db->errorInfo());
             return true;
         } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
@@ -72,9 +72,18 @@ class FDataBase
     {
         $query = "SELECT id FROM " . $table . " GROUP BY " . "id" . " ORDER BY " . "id";
         $result = $this->executeLoadQuery($query);
-
+        $idCode = str_split($result[0]['id'], 2 )[0];
+        $numbers = [];
+        foreach ($result as &$item)
+        {
+            $arrayNumbers = str_split($item['id'], 1);
+            array_shift($arrayNumbers);
+            array_shift($arrayNumbers);
+            $numbers[] = intval(implode('', $arrayNumbers));
+        }
+        $max = max($numbers);
         //$a=$result[0]
-        return $result[sizeof($result) - 1]["id"];
+        return $idCode . strval($max);
     }
 
     /**
@@ -344,10 +353,10 @@ class FDataBase
             $query = "INSERT INTO conferma_email (id_cliente,codice) VALUES ('".$id."','".$code."');";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
-            print_r($stmt->errorInfo());
+            //print_r($stmt->errorInfo());
             $this->db->commit();
             $this->closeDbConnection();
-            print_r($this->db->errorInfo());
+            //print_r($this->db->errorInfo());
             return true;
         } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();

@@ -58,11 +58,12 @@ class VImageReceiver
     }
 
         public static function uploadMultipleImages($immobile):array
-    {   print_r($_FILES);
+    {
+        //print_r($_FILES);
         if (isset($_FILES['my_file'])) {
             $myFile = $_FILES['my_file'];
             $fileCount = count($myFile["name"]);
-            print_r("PENINERI". "   ".$fileCount);
+            //print_r("conteggio". "   ".$fileCount);
             $immagini=array();
             for($i = 0; $i < $fileCount; $i++) {
 

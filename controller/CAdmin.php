@@ -346,4 +346,24 @@ public static function uploadImage($immobile)
         header("Location: " . $GLOBALS['path']);
     }
 
+    //---APPUNTAMENTO---//
+    public static function visualizzaAppuntamenti()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $appuntamenti = FPersistentManager::visualizzaAppuntamenti();
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showAppuntamenti($smarty, $appuntamenti);
+                }
+                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+            }
+            //ERRORE DA VEDERE
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
 }

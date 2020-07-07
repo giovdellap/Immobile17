@@ -30,7 +30,6 @@ class CUtente
     {
         $loginUser = VReceiverProxy::loginUser();
         $db_result = FPersistentManager::login($loginUser->getEmail(), $loginUser->getPassword());
-        //print_r($db_result);
         switch ($db_result) {
 
             case "OK ADMIN":
@@ -162,7 +161,6 @@ class CUtente
 
             if(FPersistentManager::confermaCodice($cliente, $codice))
             {
-                print_r('sto qua');
                 $cliente->setAttivato(1);
                 FPersistentManager::modificaUtente($cliente);
             }

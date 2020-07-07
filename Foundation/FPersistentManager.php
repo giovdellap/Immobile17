@@ -338,6 +338,11 @@ class FPersistentManager
         return FAppuntamento::getAppuntamento($id);
     }
 
+    public static function visualizzaAppuntamenti(): array
+    {
+        return FAppuntamento::getAppuntamenti();
+    }
+
     /**
      * Aggiunge l'MMedia passato come parametro al DB
      * @param MMedia $media
@@ -357,5 +362,7 @@ class FPersistentManager
     {
         return FMedia::removeMedia($id);
     }
+
+
 
 }

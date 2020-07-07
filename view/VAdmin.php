@@ -74,4 +74,11 @@ class VAdmin
         $smarty->display('adminPage.tpl');
     }
 
+    public static function showAppuntamenti(Smarty $smarty, array $appuntamenti)
+    {
+        $smarty->assign('appuntamenti', $appuntamenti);
+        $smarty->assign('toAppend','listaAppuntamenti.tpl' );
+        $smarty->display('adminPage.tpl');
+    }
+
 }

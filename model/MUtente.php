@@ -199,6 +199,11 @@ class MUtente
 
     }
 
+    public function getFullName(): string
+    {
+        return $this->getNome() . $this->getCognome();
+    }
+
     /**
      * Se l'appuntamento è nella lista appuntamenti, lo elimina
      * @param MAppuntamento $appuntamento

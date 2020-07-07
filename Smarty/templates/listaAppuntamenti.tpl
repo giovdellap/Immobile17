@@ -30,22 +30,23 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {foreach $appuntamenti as $appuntamento}
                     <tr>
 
-                        <td> AP1 </td>
-                        <td> <a>2020-07-27</a> </td>
-                        <td> <a>11:30/12:00</a> </td>
-                        <td > <a>Marco Di Domenica<br></a> <small>(CL2)</small></td>
-                        <td > <a>Gabriele Gatti<br> </a> <small>(AG2)</small> </td>
-                        <td > <a>casa2<br></a> <small>(IM2)</small> </td>
+                        <td> {$appuntamento->getId()} </td>
+                        <td> <a>{$appuntamento->getOrarioInizio()->getDateFormat()}</a> </td>
+                        <td> <a>{$appuntamento->getOrarioInizio()->getOrario()}/{$appuntamento->getOrarioFine()->getOrario()}</a> </td>
+                        <td > <a>{$appuntamento->getCliente()->getFullName()}<br></a>
+                            <small>{$appuntamento->getCliente()->getId()}</small>
+                        </td>
+                        <td > <a>{$appuntamento->getAgenteImmobiliare()->getFullName()}<br> </a>
+                            <small>{$appuntamento->getCliente()->getId()}</small>
+                        </td>
+                        <td > <a>{$appuntamento->getImmobile()->getNome()}<br></a>
+                            <small>{$appuntamento->getImmobile()->getId()}</small>
+                        </td>
 
-
-                        <td class="project-actions text-right">
-                            <a class="btn btn-primary btn-sm" href="#">
-                                <i class="fas fa-folder">
-                                </i>
-                                Visualizza
-                            </a>
+                        <td>
                             <a class="btn btn-info btn-sm" href="#">
                                 <i class="fas fa-pencil-alt">
                                 </i>
@@ -58,7 +59,7 @@
                             </a>
                         </td>
                     </tr>
-
+                    {/foreach}
                     </tbody>
                 </table>
             </div>

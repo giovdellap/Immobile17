@@ -24,8 +24,8 @@ abstract class FObject
         $splitted = str_split($id, 1);
         if (strlen($id) <=3)
             $number = $splitted[2] + 1;
-        else if (strlen($id)==4)
-            $number = $splitted[2]*10 + $splitted[3]+1;
+        else if (strlen($id)==4){
+            $number = $splitted[2]*10 + $splitted[3]+1; echo('peniviolaceitendentialprussiano' . $number );}
         else if (strlen($id)==5)
             $number = $splitted[2]*100 + $splitted[3]*10 + $splitted[4]+1;
         else if (strlen($id)==6)

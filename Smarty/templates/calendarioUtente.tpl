@@ -38,9 +38,10 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
 
                 headerToolbar: {
-                    left: 'prevCustomButton,nextCustomButton',
+                    left: 'prev,next today',
                     center: 'title',
-                    right: 'todayCustomButton'
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+
                 },
                 initialDate: aaaa+'-'+mm+'-'+dd,
                 initialView: 'timeGridWeek',

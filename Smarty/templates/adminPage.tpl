@@ -86,17 +86,17 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-tachometer-alt"> </i>
               <span>
                 DASHBOARD
                 </span>
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left"> </i>
 
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{$path}Admin/homepage" class="nav-link">
-                  <i class="fas fa-eye nav-icon"></i>
+                  <i class="fas fa-eye nav-icon"> </i>
                   <p>Homepage</p>
                 </a>
               </li>
@@ -105,21 +105,21 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-calendar-alt"></i>
+              <i class="nav-icon fas fa-calendar-alt"> </i>
               <span>
                 APPUNTAMENTI
                 </span>
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left"> </i>
 
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="fas fa-calendar-day nav-icon"></i>
+                <a href="{$path}Admin/visualizzaAppuntamenti" class="nav-link">
+                  <i class="fas fa-calendar-day nav-icon"> </i>
                   <p>Visualizza</p>
                 </a>
                 <a href="../../index.html" class="nav-link">
-                  <i class="fas fa-calendar-plus nav-icon"></i>
+                  <i class="fas fa-calendar-plus nav-icon"> </i>
                   <p>Aggiungi</p>
                 </a>
               </li>
@@ -128,17 +128,17 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-house-user"></i>
+              <i class="nav-icon fas fa-house-user"> </i>
               <span>
                 AGENZIA
                 </span>
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left"> </i>
 
             </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{$path}Admin/visualizzaAgenzia" class="nav-link">
-                <i class="fas fa-info-circle nav-icon"></i>
+                <i class="fas fa-info-circle nav-icon"> </i>
                 <p>Visualizza</p>
               </a>
           </ul>
@@ -147,7 +147,7 @@
           <li class="nav-header">VISUALIZZA</li>
           <li class="nav-item">
             <a href="{$path}Admin/visualizzaClienti" class="nav-link">
-              <i class="nav-icon far fa-user"></i>
+              <i class="nav-icon far fa-user"> </i>
               <p>
                 Clienti
               </p>
@@ -155,7 +155,7 @@
           </li>
           <li class="nav-item">
             <a href="{$path}Admin/visualizzaAgenti" class="nav-link">
-              <i class="nav-icon far fa-user-circle"></i>
+              <i class="nav-icon far fa-user-circle"> </i>
               <p>
                 Agenti Immobiliari
               </p>
@@ -163,7 +163,7 @@
           </li>
           <li class="nav-item">
             <a href="{$path}Admin/visualizzaImmobili" class="nav-link">
-              <i class="nav-icon fas fa-laptop-house"></i>
+              <i class="nav-icon fas fa-laptop-house"> </i>
               <p>
                 Immobili
               </p>
@@ -173,7 +173,7 @@
           <li class="nav-header">AGGIUNGI</li>
           <li class="nav-item">
             <a href="{$path}Admin/aggiuntaUtente" class="nav-link">
-              <i class="nav-icon fas fa-user-plus"></i>
+              <i class="nav-icon fas fa-user-plus"> </i>
               <p>
                 Utenti
               </p>
