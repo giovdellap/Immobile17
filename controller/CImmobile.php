@@ -88,7 +88,8 @@ class CImmobile
                 $immobile = FPersistentManager::visualizzaImmobile($parameters["id"]);
                 $fullAgenzia = FPersistentManager::getBusyWeek($parameters["id"],
                     CSessionManager::getUtenteLoggato()->getId(), $inizio, $fine);
-                $appLiberi = $fullAgenzia->checkDisponibilità(CSessionManager::getUtenteLoggato(), $immobile, $inizio, $fine);
+                $utenteApp = FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId());
+                $appLiberi = $fullAgenzia->checkDisponibilità($utenteApp, $immobile, $inizio, $fine);
                 $utente = CSessionManager::getUtenteLoggato();
                 VImmobile::calendario(VSmartyFactory::userSmarty($utente), $appLiberi, $inizio, $fine, $immobile);
             }

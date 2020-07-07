@@ -133,7 +133,7 @@ class FPersistentManager
 
     public static function confermaCodice(MCliente $cliente, string $codice): bool
     {
-        FConfermaEmail::verifyCode($cliente, $codice);
+        return FConfermaEmail::verifyCode($cliente, $codice);
     }
 
 

@@ -156,7 +156,7 @@ class MData
     {
         if($days > 0)
             $this->data->modify("+".$days." days");
-        else $this->data->modify("-".$days." days");
+        else $this->data->modify("-".abs($days)." days");
     }
 
     public static function shiftedData(MData $data, int $days): MData
@@ -209,9 +209,13 @@ class MData
 
     public static function getToday(): MData
     {
+        $ora = date("G");
+        $minuto = date("i");
+        $orario = $ora + ($minuto/100);
+
         return new MData(date("Y", strtotime("today")),
                         date("m", strtotime("today")),
-                        date("d", strtotime("today")), 0);
+                        date("d", strtotime("today")), $orario);
     }
 
 

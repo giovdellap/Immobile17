@@ -360,7 +360,8 @@ class FDataBase
     public function loadCode(string $id, string $code): bool
     {
         try {
-            $query = "SELECT * FROM conferma_email WHERE id_cliente = '" . $id . "' AND = codice = '" . $code . "'";
+            $query = "SELECT * FROM conferma_email WHERE id_cliente = '" . $id . "' AND codice = '" . $code . "';";
+            echo $query;
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

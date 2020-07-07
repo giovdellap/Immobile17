@@ -1,7 +1,8 @@
 <?php
 
 function my_autoloader($classname)
-{ echo $classname. "\n";
+{
+    //echo ("Classe: ".$classname."\n");
     switch ($classname[0])
     {
         case 'M':

@@ -5,15 +5,20 @@ require "PHPMailer/src/PHPMailer.php";
 require "PHPMailer/src/SMTP.php";
 class CMail
 {
-    public static function sendConfermationEmail(MCliente $cliente, string $code)
+    /**
+     * @param MCliente $cliente
+     * @param string $code
+     * @throws Exception
+     */
+    public static function sendConfermationEmail(MCliente $cliente, string $code): bool
     {
         $name = $cliente->getNome()." ".$cliente->getCognome();
         $subject = 'CONFERMA REGISTRAZIONE - IMMOBILE17';
-        $url = $GLOBALS['path'].'Utente/confermaAccount/id/'.$cliente->getId().'/codice/'.$code;
+        $url = 'localhost'.$GLOBALS['path'].'Utente/confermaAccount/id/'.$cliente->getId().'/codice/'.$code;
         $body = 'Ciao '.$name.'<br>
-                    Clicca sul link per attivare il tuo account <a href='.$url.'></a>';
+                    Clicca sul link per attivare il tuo account <br><a href='.$url.'>ATTIVA ACCOUNT</a>';
         $mail = new MMail($cliente->getEmail(), $name, $subject, $body);
-        self::send($mail);
+        return self::send($mail);
     }
 
     /**
@@ -27,10 +32,12 @@ class CMail
         $mailer->isSMTP();
         $mailer->isHTML(true);
 
+        $mailer->SMTPDebug = 2;
         $mailer->SMTPAuth   = true;
-        $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mailer->SMTPSecure = 'ssl';
+        $mailer->SMTPAutoTLS = false;
         $mailer->Host       = 'smtp.gmail.com';
-        $mailer->Port       = '465';
+        $mailer->Port       = 465;
         $mailer->Username   = 'immobile17.agenzia@gmail.com';
         $mailer->Password   = 'CiroImmobile';
 
@@ -43,6 +50,7 @@ class CMail
         try {
             return $mailer->send();
         } catch (Exception $e) {
+            echo $mailer->ErrorInfo();
             return false;
         }
     }

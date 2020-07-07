@@ -41,6 +41,8 @@ class VImmobile
         $smarty->assign("fine", $fine);
         $smarty->assign("appLiberi", $appLiberi);
 
+
+
         $smarty->assign("prevInizio", MData::shiftedData($inizio, -7));
         $smarty->assign("prevFine", MData::shiftedData($fine, -7));
         $smarty->assign("nextInizio", MData::shiftedData($inizio, 7));

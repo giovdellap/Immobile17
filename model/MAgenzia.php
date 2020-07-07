@@ -237,6 +237,7 @@ class MAgenzia
         $toCycleInizio = $orarioinizio->dateClone();
         $toCycleFine = $orarioinizio->dateClone();
         $toCycleFine->incrementoOrario(30);
+        print_r($cliente->getListAppuntamenti());
 
         //echo("\ntoCycleInizio: ");
         //print_r($toCycleInizio);

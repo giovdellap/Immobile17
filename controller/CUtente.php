@@ -59,6 +59,7 @@ class CUtente
      * Metodo POST: Effettua la registrazione sul DB
      *              Nel caso vada a buon fine, lo comunica all'utente
      *              Nel caso non vada a buon fine, mostra all'utente la registration form con l'errore riscontrato
+     * @throws \PHPMailer\PHPMailer\Exception
      */
     public static function registrazione()
     {
@@ -157,10 +158,12 @@ class CUtente
             $cliente = FPersistentManager::visualizzaUtente(VReceiverProxy::getParametersId($parameters));
             $smarty = VSmartyFactory::userSmarty($cliente);
             $codice = VReceiverProxy::getParametersCode($parameters);
+            echo('codice: '.$codice);
 
             if(FPersistentManager::confermaCodice($cliente, $codice))
             {
-                $cliente->setAttivato(true);
+                print_r('sto qua');
+                $cliente->setAttivato(1);
                 FPersistentManager::modificaUtente($cliente);
             }
             else $smarty = VSmartyFactory::errorSmarty($smarty, "ATTIVAZIONE FALLITA");
@@ -170,12 +173,16 @@ class CUtente
         }
     }
 
+    /**
+     * @param MCliente $cliente
+     * @throws \PHPMailer\PHPMailer\Exception
+     */
     private static function confermationEmail(MCliente $cliente)
     {
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $code = substr(str_shuffle($permitted_chars), 0, 10);
         FPersistentManager::addCodice($cliente, $code);
-        CMail::sendConfermationEmail($cliente, $code);
+        echo ("cacca: ".CMail::sendConfermationEmail($cliente, $code));
     }
 
 
