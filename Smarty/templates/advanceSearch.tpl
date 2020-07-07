@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="slider-range">
-                                        <input type="range" min="{$gmin}" max="2000" value="{$gmax}" class="slider" name="gmax" id="grandezza">
+                                        <input type="range" min="{$gmin}" max="2000" value="{$gmax}" class="slider2" name="gmax" id="grandezza">
                                     </div>
                                 </div>
                             </div>
@@ -142,11 +142,11 @@
 }
 </script>
 <script>
-    var slider = document.getElementById("grandezza");
-    var output = document.getElementById("outputGrandezza");
-    output.innerHTML = slider.value; // Display the default slider value
+    var slider2 = document.getElementById("grandezza");
+    var output2 = document.getElementById("outputGrandezza");
+    output2.innerHTML = slider2.value; // Display the default slider value
 
     // Update the current slider value (each time you drag the slider handle)
-    slider.oninput = function() {
-        output.innerHTML = this.value;
+    slider2.oninput = function() {
+        output2.innerHTML = this.value;
     }</script>
