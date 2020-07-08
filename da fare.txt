@@ -4,7 +4,7 @@ COSE DA FARE:
 -APERITIVO POST ESAME
 
 Admin:
--Calendario per aggiunta appuntamento
+-Calendario per aggiunta appuntamento (fatto)
 -Aggiunta immagine Utente
 
 Utente:

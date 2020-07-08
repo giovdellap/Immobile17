@@ -22,6 +22,22 @@ class CMail
     }
 
     /**
+     * @param MCliente $cliente
+     * @param string $password
+     * @return bool
+     * @throws Exception
+     */
+    public static function sendForgotPasswordEmail(MCliente $cliente, string $password): bool
+    {
+        $name = $cliente->getNome()." ".$cliente->getCognome();
+        $subject = 'NUOVA PASSWORD - IMMOBILE17';
+        $body = 'Ciao '.$name.'<br>
+                    Questa è la tua nuova password: <br>'.$password.'</a>';
+        $mail = new MMail($cliente->getEmail(), $name, $subject, $body);
+        return self::send($mail);
+    }
+
+    /**
      * @param MMail $email
      * @return bool
      * @throws Exception

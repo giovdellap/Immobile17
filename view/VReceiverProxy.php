@@ -72,6 +72,11 @@ class VReceiverProxy
         else return false;
     }
 
+    public static function getEmail(): string
+    {
+        return $_POST['email'];
+    }
+
     public static function getParametersId(array $parameters): string
     {
         return $parameters['id'];

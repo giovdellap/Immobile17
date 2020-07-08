@@ -183,6 +183,21 @@ class CUtente
         echo ("cacca: ".CMail::sendConfermationEmail($cliente, $code));
     }
 
+    public static function forgotPassword()
+    {
+        if(VReceiverProxy::postRequest())
+        {
+            $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $password = substr(str_shuffle($permitted_chars), 0, 10);
+            $utente = FPersistentManager::visualizzaUtente(
+                FPersistentManager::loadIDbyEMail(VReceiverProxy::getEmail()));
+            $utente->setPassword($password);
+            FPersistentManager::modificaUtente($utente);
+            CMail::sendForgotPasswordEmail($utente, $password);
+            //manca la view
+        }
+    }
+
 
 
 }
