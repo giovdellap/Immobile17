@@ -10,10 +10,11 @@ Admin:
 Utente:
 -link al calendario Utente(fatto!)
 -modifica password(fatto!)
--forgot password
+-forgot password (manca il collegamento)
 -messaggi di errore di login e registrazione(fatto!)
 -ricordami?
 -password criptata
+-sistemare gli agenti in about ass
 
 Immobili:
 -Mappa (fatto!)

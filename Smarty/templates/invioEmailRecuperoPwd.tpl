@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Login</title>
+    <title>Registrazione Effettuta</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -27,91 +27,49 @@
     <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/main.css">
 
     <!--===============================================================================================-->
-
 </head>
-
 <body>
 
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/login" method="POST" class="login100-form validate-form flex-sb flex-w">
-                <div>
-                    <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
-                </div>
+            <form class="login100-form validate-form flex-sb flex-w">
+                <a class="nav-brand" >
+                    <img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
 
-					<span class="login100-form-title p-b-32">
-                        <br>
-
-						Account Login
+                <span class="login100-form-title p-b-30">
+                    <br>
+						CI SIAMO QUASI!
 					</span>
 
-                <span class="txt1 p-b-11">
-						email
+
+                <span class="txt1 p-b-3">
+					controlla la tua email
 					</span>
 
-                <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-                    <input class="input100" type="text" required name="email"  >
-                    <span class="focus-input100"> </span>
-                </div>
 
-                <span class="txt1 p-b-11">
-						Password
+                <span class="txt3 p-b-11">
+						Ti abbiamo mandato la tua nuova password all'indirizzo email fornitoci in fase di registrazione
+                        <br>
+                    <br>
+                    <br>
+
 					</span>
 
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"> </i>
-						</span>
-
-                    <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"> </span>
-                </div>
-
-                <div class="flex-sb-m w-full p-b-48">
-                    <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-                            Ricordami
-                        </label>
-                    </div>
-
-                    <div>
-                        <a href="#" class="txt3">
-                            Forgot Password?
-                        </a>
-                    </div>
-                </div>
-                {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
-                    <!-- <span class="txt_error" >Username o password errate</span> -->
-                    <div>
-                        <span class="txt1" style="color: red">Si è verificato un problema!   </span>
-                        <span class="txt3" > Email e/o password errati</span>
-                        <br>
-                        <br>
-                    </div>
-                {/if}
-
-                <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
-                        Login
-                    </button>
-                </div>
-                <div>
-                    <a href="{$path}Utente/registrazione" class="txt2">
-                        <br>
-                        Non hai un account? Registrati.
+                <div style="position:absolute; top:260px; left:370px; z-index:1">
+                    <a href = "{$path}">
+                        <span class="txt1 p-b-3">
+                        Torna alla Home
+                        </span>
                     </a>
-                </div>
 
+                </div>
 
 
             </form>
-
         </div>
     </div>
 </div>
-
 
 
 <div id="dropDownSelect1"></div>
