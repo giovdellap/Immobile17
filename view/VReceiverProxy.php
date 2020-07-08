@@ -163,6 +163,11 @@ class VReceiverProxy
         return $_POST['idIm'];
     }
 
+    public static function prenotaCliente()
+    {
+        return $_POST['idCl'];
+    }
+
     public static function prenotaAppuntamentoInizio()
     {
         return self::calendarDataConverter($_POST['inizio']);
@@ -211,6 +216,16 @@ class VReceiverProxy
     public static function generalId(): string
     {
         return $_POST['id'];
+    }
+
+    public static function getIdCliente(array $parameters)
+    {
+        return $parameters['cliente'];
+    }
+
+    public static function getIdImmobile(array $parameters)
+    {
+        return $parameters['immobile'];
     }
 
 

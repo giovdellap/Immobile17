@@ -160,7 +160,7 @@ public static function uploadImage($immobile)
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
-    public static function modificaImmobile($id)
+    public static function modificaImmobile(string $id)
     {
         if(CSessionManager::sessionExists())
         {
@@ -379,9 +379,70 @@ public static function uploadImage($immobile)
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
                     VAdmin::aggiuntaAppParameters($smarty, $clienti, $immobili);
                 }
+                elseif(VReceiverProxy::postRequest())
+                {
+                    $inizio = MData::getToday();
+                    $fine = MData::getToday();
+                    $fine->sumDays(60);
+                    $cliente = FPersistentManager::visualizzaAppUtente(VReceiverProxy::prenotaCliente());
+                    $fullAgenzia = FPersistentManager::getBusyWeek(VReceiverProxy::prenotaImmobile(), $cliente->getId(),
+                        $inizio, $fine);
+
+                    $appuntamento = new MAppuntamento();
+                    $appuntamento->setCliente($cliente);
+                    $appuntamento->setAgenteImmobiliare(FPersistentManager::visualizzaAppUtente(VReceiverProxy::prenotaAgente()));
+                    $appuntamento->setImmobile(FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile()));
+                    $appuntamento->setOrarioInizio(VReceiverProxy::prenotaAppuntamentoInizio());
+                    $appuntamento->setOrarioFine(VReceiverProxy::prenotaAppuntamentoFine());
+                    //print_r($appuntamento);
+                    if ($fullAgenzia->getCalendario()->addAppuntamento($appuntamento)) {
+                        FPersistentManager::addAppuntamento($appuntamento);
+                        header('Location: '.$GLOBALS['path'].'Admin/visualizzaAppuntamenti');
+                    }
+                    else
+                    {
+                        $error = "Appuntamento non disponibile";
+                        $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile());
+                        $appLiberi = $fullAgenzia->checkDisponibilità($cliente, $immobile, $inizio, $fine);
+                        $smarty = VSmartyFactory::adminSmarty(CSessionManager::adminLogged());
+                        VAdmin::showCalendarioAppuntamento(VSmartyFactory::errorSmarty($smarty, $error),
+                                $appLiberi, $cliente, $immobile);
+                    }
+                } else
+                {
+                    $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile());
+                    VImmobile::visualizza(VSmartyFactory::basicSmarty(), $immobile);
+                }
+            }
+            else header('Location: '.$GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+    public static function calendarioAggiuntaAppuntamento(array $parameters)
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $cliente = FPersistentManager::visualizzaAppUtente(VReceiverProxy::getIdCliente($parameters));
+                    $inizio = MData::getToday();
+                    $fine = MData::getToday();
+                    $fine->sumDays(60);
+                    $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::getIdImmobile($parameters));
+
+                    $fullAgenzia = FPersistentManager::getBusyWeek(VReceiverProxy::getIdImmobile($parameters),
+                        VReceiverProxy::getIdCliente($parameters), $inizio, $fine);
+                    $appLiberi = $fullAgenzia->checkDisponibilità($cliente, $immobile, $inizio, $fine);
+
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+                    VAdmin::showCalendarioAppuntamento($smarty, $appLiberi, $cliente, $immobile);
+                }
                 else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
             }
-            //ERRORE DA VEDERE
+            else header('Location: '.$GLOBALS['path']);
         }
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }

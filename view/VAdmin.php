@@ -88,4 +88,13 @@ class VAdmin
         $smarty->assign('toAppend','adminParametriAppuntamento.tpl' );
         $smarty->display('adminPage.tpl');
     }
+
+    public static function showCalendarioAppuntamento(Smarty $smarty, array $appLiberi, MCliente $cliente, MImmobile $immobile)
+    {
+        $smarty->assign("appLiberi", $appLiberi);
+        $smarty->assign('cliente', $cliente);
+        $smarty->assign('immobile', $immobile);
+        $smarty->assign('toAppend','adminCalendario.tpl' );
+        $smarty->display('adminPage.tpl');
+    }
 }
