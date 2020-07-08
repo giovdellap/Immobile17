@@ -1,5 +1,5 @@
 <!-- ##### Footer Area Start ##### -->
-<footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url(img/bg-img/cta.jpg);">
+<footer class="footer-area section-padding-100-0 bg-img gradient-background-overlay" style="background-image: url({$path}Smarty/img/bg-img/emiciclo.jpg);">
     <!-- Main Footer Area -->
     <div class="main-footer-area">
         <div class="container">
@@ -54,7 +54,7 @@
     <!-- Copywrite Text -->
     <div class="copywrite-text d-flex align-items-center justify-content-center">
         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"> </i> by <a href="https://colorlib.com" >Colorlib</a>
         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
     </div>
 </footer>

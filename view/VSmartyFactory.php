@@ -60,7 +60,7 @@ class VSmartyFactory
         $smarty->assign("tipologie", self::listTipologie($parameters["tp"]) );
         $smarty->assign("tipoAnnuncio", self::listTipoAnnuncio($parameters["ti"]) );
         if(!key_exists('pmin', $parameters))
-            $smarty->assign('pmin', 100);
+            $smarty->assign('pmin', 0);
         if(!key_exists('pmax', $parameters))
             $smarty->assign('pmax', 1000000);
         if(!key_exists('gmin', $parameters))

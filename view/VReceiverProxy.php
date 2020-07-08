@@ -87,6 +87,16 @@ class VReceiverProxy
         return $parameters['codice'];
     }
 
+    public static function getOldPW()
+    {
+        return $_POST['oldPassword'];
+    }
+
+    public static function getNewPW()
+    {
+        return $_POST['password'];
+    }
+
     // ---- IMMOBILE ----
 
     public static function ricercaParametersFiller(array $parameters): array

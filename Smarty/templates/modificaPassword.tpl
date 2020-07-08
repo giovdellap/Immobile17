@@ -60,7 +60,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/registrazione" method="POST" class="login100-form validate-form flex-sb flex-w" name="modulo" onsubmit="return testpass(this)">
+            <form action="{$path}Utente/modificaPassword" method="POST" class="login100-form validate-form flex-sb flex-w" name="modulo" onsubmit="return testpass(this)">
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png"style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
@@ -71,23 +71,36 @@
                 <span class="txt1 p-b-11">
 						Vecchia Password
 					</span>
+
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
 						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
+							<i class="fa fa-eye"> </i>
 						</span>
-                    <input class="input100" type="password" required name="old_password" placeholder="**********">
-                    <span class="focus-input100"></span>
+                    <input class="input100" type="password" required name="oldPassword" placeholder="**********">
+                    <span class="focus-input100"> </span>
                 </div>
+
+                {if $error !== 'noError'}
+                <div>
+                    <span class="txt1" style="color: red" >Si è verificato un problema! <br>  </span>
+                    <span class="txt3" > La password che hai immesso non coincide con la tua vecchia password</span>
+                    <br>
+                    <br>
+                    <br>
+
+                </div>
+                {/if}
+
 
                 <span class="txt1 p-b-11">
 						Nuova Password
 					</span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire la password">
 						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
+							<i class="fa fa-eye"> </i>
 						</span>
                     <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"></span>
+                    <span class="focus-input100"> </span>
                 </div>
 
                 <span class="txt1 p-b-11">
@@ -95,25 +108,27 @@
                 </span>
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
 						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
+							<i class="fa fa-eye"> </i>
 						</span>
                     <input class="input100" type="password" required name="password2" placeholder="**********">
-                    <span class="focus-input100"></span>
+                    <span class="focus-input100"> </span>
                 </div>
 
                 <font color="white">
                     space
+                    <br>
+                    <br>
                     <br>
                 </font>
 
                <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn" style="position:absolute; top:440px; left:370px; z-index:1">
+                        <button class="login100-form-btn" style="position:absolute; top:580px; left:370px; z-index:1">
                             Conferma
                         </button>
                     </div>
-                    <div style="position:absolute; top:460px; left:82px; z-index:1">
+                    <div style="position:absolute; top:580px; left:82px; z-index:1">
                         <a href = "{$path}Utente/visualizzaProfilo">
                         <span class="txt1 p-b-40">
                         torna Inidietro

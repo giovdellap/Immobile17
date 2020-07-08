@@ -61,7 +61,7 @@
                         start: '{$app->getOrarioInizio()->getFullDataString()}',
                         end: '{$app->getOrarioFine()->getFullDataString()}',
                         color: '#ff8000',
-                        url: '{$path}'+'/Utente/visualizzaAppuntamento/'+'{$app->getId()}'
+                        url: '{$path}'+'Utente/visualizzaAppuntamento/'+'{$app->getId()}'
                     },
                     {/foreach}
                     {

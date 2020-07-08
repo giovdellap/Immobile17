@@ -57,7 +57,6 @@
 
                     <!-- Single Slide -->
                         <img src="{$imgs->viewImageHTML()}" alt="">
-                    <img src="{$imgs->viewImageHTML()}" alt="">
                    {/foreach}
                 </div>
             </div>
@@ -72,7 +71,7 @@
                     </div>
                     <h5>{$immobile->getNome()}</h5>
                     <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile->getIndirizzo()}</p>
-                    <p> {$immobile->getDescrizione()}</p>
+                    <p> {$immobile->getDescrizioneVista()}</p>
                     <!-- Meta -->
                     <div class="property-meta-data d-flex align-items-end">
                         <div class="new-tag">
@@ -96,9 +95,9 @@
 
         <!-- Listing Maps -->
         <div class="row">
-            <div>
+            <div class="col-12">
                 <div class="listings-maps mt-80">
-                    <div id="googleMap" style="overflow: visible"></div>
+                        <div id="googleMap" style="overflow: visible"></div>
                 </div>
             </div>
         </div>

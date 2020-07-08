@@ -73,13 +73,16 @@
             <div class="row">
                 <div class="col-md-4">
                     <img
-                            src="{$utente->getImmagine()->viewImageHTML()}"
-                            alt="{$path}Smarty/img/icons/avatar.png"
+                            {if isset($utente->getImmagine())}
+                                src="{$utente->getImmagine()->viewImageHTML()}"
+                            {else}
+                                src="{$path}Smarty/img/icons/avatar.png"
+                            {/if}
                             class="profile-image"
                     />
                 </div>
                 <div class="col-md- top-col">
-                    <h5 class="">{$utente->getNome()} {$utente->getCognome()}</h5>
+                    <h5 class="">{$utente->getFullName()}</h5>
                     <p class="lead"> </p>
 
 
@@ -102,7 +105,7 @@
     <hr class="divider">
     <h5>I miei Appuntamenti</h5>
 
-    <a href="{$path}"> <img src="{$path}Smarty/img/icons/calendario_app2.jpg" height="90" width="110"> </a>
+    <a href="{$path}Utente/calendario"> <img src="{$path}Smarty/img/icons/calendario_app2.jpg" height="90" width="110"> </a>
 
     <hr class="divider" />
     <h5>Impostazioni&nbsp;</h5>

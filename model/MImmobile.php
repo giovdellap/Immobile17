@@ -267,4 +267,9 @@ class MImmobile
     {
         $this->list_appuntamenti = $list_appuntamenti;
     }
+
+    public function getDescrizioneVista(): string
+    {
+        return str_replace("\n", "<br>", $this->descrizione);
+    }
 }

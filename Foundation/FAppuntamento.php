@@ -143,7 +143,7 @@ class FAppuntamento extends FObject
     {
         $db = FDataBase::getInstance();
         $db_result = $db->loadDB(self::class, "id", $id);
-        return self::unbindAppuntamento($db_result);
+        return self::unbindAppuntamento($db_result[0]);
     }
 
     public static function getAppuntamenti()

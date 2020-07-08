@@ -4,19 +4,21 @@ COSE DA FARE:
 -APERITIVO POST ESAME
 
 Admin:
--Calendario per aggiunta appuntamento (fatto)
--Aggiunta immagine Utente
+-Calendario per aggiunta appuntamento (fatto!)
+-Aggiunta immagine Utente (abbriele)
 
 Utente:
--link al calendario Utente
--modifica password
+-link al calendario Utente(fatto!)
+-modifica password(fatto!)
 -forgot password
--messaggi di errore di login e registrazione
+-messaggi di errore di login e registrazione(fatto!)
 -ricordami?
+-password criptata
 
 Immobili:
--Mappa
+-Mappa (fatto!)
 -togliere il new da quelle in affitto
+-advanceSearch
 
 -API -----> DA VEDERE ASSOLUTAMENTE DOMANI!!!
 -DOCUMENTAZIONE:

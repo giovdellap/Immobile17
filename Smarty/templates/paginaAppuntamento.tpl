@@ -40,7 +40,7 @@
     </div>
 </section>
 <!-- ##### Breadcumb Area End ##### -->
-<section class="about-content-wrapper section-padding-100">
+<section class="about-content-wrapper section-padding-100-50">
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-12">
@@ -51,8 +51,8 @@
         </div>
     </div>
 </div>
-
-    <section class="featured-properties-area section-padding-100-50">
+</section>
+    <section class="featured-properties-area section-padding-50-50-20">
         <div class="container">
             <div class="row">
 
@@ -60,61 +60,78 @@
     <div class="col-12 col-md-6 col-xl-8">
         <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="300ms">
             <!-- Property Thumbnail -->
+            <a href="{$path}Immobile/visualizza/{$immobile->getId()}">
             <div class="property-thumb">
-                <img src="{$path}Smarty/img/bg-img/feature3.jpg" alt="">
+                <img src="{$immobile->getPresentationImg()}" alt="">
 
                 <div class="tag">
-                    <span>For Sale</span>
+                    <span>{$immobile->getTipoAnnuncio()}</span>
                 </div>
                 <div class="list-price">
-                    <p>$945 679</p>
+                    <p>€ {$immobile->getPrezzo()}</p>
                 </div>
             </div>
             <!-- Property Content -->
             <div class="property-content">
-                <h5>Town House in Los Angeles</h5>
-                <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">Upper Road 3411, no.34 CA</p>
-                <p>Integer nec bibendum lacus. Suspendisse dictum enim sit amet libero malesuada.</p>
+                <h5>{$immobile->getNome()}</h5>
+                <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile->getIndirizzo()}, {$immobile->getComune()}</p>
+                <p>{$immobile->getDescrizioneBreve()}</p>
                 <div class="property-meta-data d-flex align-items-end justify-content-between">
                     <div class="new-tag">
                         <img src="{$path}Smarty/img/icons/new.png" alt="">
                     </div>
-                    <div class="bathroom">
-                        <img src="{$path}Smarty/img/icons/bathtub.png" alt="">
-                        <span>2</span>
-                    </div>
-                    <div class="garage">
-                        <img src="{$path}Smarty/img/icons/garage.png" alt="">
-                        <span>2</span>
-                    </div>
+
                     <div class="space">
                         <img src="{$path}Smarty/img/icons/space.png" alt="">
-                        <span>120 sq ft</span>
+                        <span>{$immobile->getGrandezza()} mq</span>
                     </div>
                 </div>
             </div>
+            </a>
         </div>
+
     </div>
 
     <!-- Single Featured Property -->
                 <div class="col-12 col-md-6 col-xl-4">
                     <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="300ms">
-                        <!-- Property Thumbnail -->
-                        <div class="property-thumb">
-                            <img src="{$path}Smarty/img/bg-img/team3.jpg" alt="">
+                        <!-- Property Thumbnail-->
+                        {if $userType === 'AGENTE'}
+                            <div class="property-thumb">
+                            {if isset ($cliente->getImmagine())}
+                                <img src="{$cliente->getImmagine()->viewImageHTML()}" >
+                            {else}
+                                <img src="{$path}Smarty/img/icons/avatar.png">
+                            {/if}
 
                         </div>
                         <!-- Property Content -->
                         <div class="property-content">
-                            <h5>Gesù Cristo</h5>
-                            <p>Agente Immobiliare</p>
+                            <h5>{$cliente->getFullName()}</h5>
+                            <p>Cliente</p>
                         </div>
+                        {else}
+                            <div class="property-thumb">
+                                {if isset ($agente->getImmagine())}
+                                    <img src="{$agente->getImmagine()->viewImageHTML()}" >
+                                {else}
+                                    <img src="{$path}Smarty/img/icons/avatar.png">
+                                {/if}
 
+                            </div>
+                            <!-- Property Content -->
+                            <div class="property-content">
+                                <h5>{$agente->getFullName()}</h5>
+                                <p>Agente Immobiliare</p>
+                            </div>
+                        {/if}
                         <div class="property-content">
-                            <h4>ORA INIZIO: </h4>
-                            <p>adesso</p>
-                            <h4>ORA FINE: </h4>
-                            <p> dopo</p>
+                            <h4>DATA:</h4>
+                            <p>{$appuntamento->getOrarioInizio()->getDateFormat()}</p>
+                            <h5>ORA INIZIO: </h5>
+                            <p>{$appuntamento->getOrarioInizio()->getOrario()}</p>
+                            <h5>ORA FINE: </h5>
+                            <p> {$appuntamento->getOrarioFine()->getOrario()}</p>
                         </div>
                         </div>
                     </div>
@@ -123,9 +140,8 @@
 
 
         </div>
-
+    </section>
         <!-- Single Featured Property -->
-
 
 
 {include file="footer.tpl"}

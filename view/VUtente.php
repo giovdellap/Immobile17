@@ -44,10 +44,20 @@ class VUtente
         $smarty->display('calendarioUtente.tpl');
     }
 
-    public static function showAppuntamento(Smarty $smarty, MAppuntamento $appuntamento)
+    public static function showAppuntamento(Smarty $smarty, MAppuntamento $appuntamento, string $userType)
     {
         $smarty->assign('appuntamento', $appuntamento);
+        $smarty->assign('immobile', $appuntamento->getImmobile());
+        $smarty->assign('userType', $userType);
+        $smarty->assign('agente', $appuntamento->getAgenteImmobiliare());
+        $smarty->assign('cliente', $appuntamento->getCliente());
+        $smarty->display('paginaAppuntamento.tpl');
 
+    }
+
+    public static function showModificaPassword(Smarty $smarty)
+    {
+        $smarty->display('modificaPassword.tpl');
     }
 
 }

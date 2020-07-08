@@ -144,7 +144,10 @@ class CUtente
             if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 $appuntamento = FPersistentManager::visualizzaAppuntamento($id);
-                VUtente::showAppuntamento(VSmartyFactory::userSmarty($utente), $appuntamento);
+                if($utente instanceof MCliente)
+                    VUtente::showAppuntamento(VSmartyFactory::userSmarty($utente), $appuntamento, 'CLIENTE');
+                else
+                    VUtente::showAppuntamento(VSmartyFactory::userSmarty($utente), $appuntamento, 'AGENTE');
             } else VUtente::loginForm(VSmartyFactory::basicSmarty());
         }
         else header('Location: '.$GLOBALS['path']);
@@ -180,7 +183,6 @@ class CUtente
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $code = substr(str_shuffle($permitted_chars), 0, 10);
         FPersistentManager::addCodice($cliente, $code);
-        echo ("cacca: ".CMail::sendConfermationEmail($cliente, $code));
     }
 
     public static function forgotPassword()
@@ -196,6 +198,40 @@ class CUtente
             CMail::sendForgotPasswordEmail($utente, $password);
             //manca la view
         }
+    }
+
+    public static function modificaPassword()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(VReceiverProxy::getRequest())
+            {
+                $utente = CSessionManager::getUtenteLoggato();
+                $smarty = VSmartyFactory::userSmarty($utente);
+                VUtente::showModificaPassword($smarty);
+
+            }
+            elseif (VReceiverProxy::postRequest())
+            {
+                $oldPassword = VReceiverProxy::getOldPW();
+                $newPassword = VReceiverProxy::getNewPW();
+                $utente = CSessionManager::getUtenteLoggato();
+                if($utente->getPassword() === $oldPassword )
+                {
+                    $utente->setPassword($newPassword);
+                    FPersistentManager::modificaUtente($utente);
+                    header('Location: ' . $GLOBALS['path'] . 'Utente/visualizzaProfilo');
+                }
+                else
+                {
+                    $smarty = VSmartyFactory::userSmarty($utente);
+                    VUtente::showModificaPassword(VSmartyFactory::errorSmarty($smarty, 'WRONG PASSWORD'));
+                }
+            }
+            //ipotetico else
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+
     }
 
 

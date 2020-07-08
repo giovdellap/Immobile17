@@ -85,7 +85,7 @@
                 {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
                     <!-- <span class="txt_error" >Username o password errate</span> -->
                     <div>
-                        <span class="txt1" >Si è verifiacto un problema!   </span>
+                        <span class="txt1" >Si è verificato un problema!   </span>
                         <span class="txt3" > Email e/o password errati</span>
                         <br>
                         <br>
