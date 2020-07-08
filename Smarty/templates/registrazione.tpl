@@ -168,6 +168,7 @@
 <script src="{$path}Smarty/others/login/js/main.js"></script>
 
 </body>
+
 <script>
     function validateImage() {
         var formData = new FormData();

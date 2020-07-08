@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="{$path}Smarty/others/admin/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- update icons-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 </head>
 
@@ -128,7 +130,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-house-user"> </i>
+              <i class="nav-icon fas fa-info"> </i>
               <span>
                 AGENZIA
                 </span>
@@ -163,7 +165,7 @@
           </li>
           <li class="nav-item">
             <a href="{$path}Admin/visualizzaImmobili" class="nav-link">
-              <i class="nav-icon fas fa-laptop-house"> </i>
+              <i class="nav-icon fas fa-home"> </i>
               <p>
                 Immobili
               </p>

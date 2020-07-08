@@ -164,9 +164,9 @@ iframe {
 }
 
 .txt_error {
-  font-family: Raleway-Regular;
-  font-size: 10px;
-  color: red;
+  font-family: Calibri;
+  font-size: 20px;
+  color: darkred;
   line-height: 1.4;
 }
 

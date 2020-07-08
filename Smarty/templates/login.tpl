@@ -52,7 +52,7 @@
 
                 <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
                     <input class="input100" type="text" required name="email"  >
-                    <span class="focus-input100"></span>
+                    <span class="focus-input100"> </span>
                 </div>
 
                 <span class="txt1 p-b-11">
@@ -61,21 +61,12 @@
 
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
 						<span class="btn-show-pass">
-							<i class="fa fa-eye"></i>
+							<i class="fa fa-eye"> </i>
 						</span>
 
                     <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"></span>
+                    <span class="focus-input100"> </span>
                 </div>
-
-
-
-                {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
-
-                        <span class="txt_error" >Username o password errate</span>
-
-                {/if}
-
 
                 <div class="flex-sb-m w-full p-b-48">
                     <div class="contact100-form-checkbox">
@@ -91,6 +82,15 @@
                         </a>
                     </div>
                 </div>
+                {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
+                    <!-- <span class="txt_error" >Username o password errate</span> -->
+                    <div>
+                        <span class="txt1" >Si è verifiacto un problema!   </span>
+                        <span class="txt3" > Email e/o password errati</span>
+                        <br>
+                        <br>
+                    </div>
+                {/if}
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
@@ -104,11 +104,14 @@
                     </a>
                 </div>
 
+
+
             </form>
 
         </div>
     </div>
 </div>
+
 
 
 <div id="dropDownSelect1"></div>

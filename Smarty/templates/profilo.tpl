@@ -16,6 +16,7 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
+    <link rel="stylesheet" type="text/css" href="{$path}Smarty/others/login/css/util.css">
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -101,20 +102,17 @@
     <hr class="divider">
     <h5>I miei Appuntamenti</h5>
 
-
-    <p>&nbsp;</p>
-    <p>&nbsp;</p>
+    <a href="{$path}"> <img src="{$path}Smarty/img/icons/calendario_app2.jpg" height="90" width="110"> </a>
 
     <hr class="divider" />
     <h5>Impostazioni&nbsp;</h5>
 
     <div class="row">
         <div class="col-sm-6">
-            <ul>
-                <li><a href="{$path}Utente/privacy">Privacy e Sicurezza </a> </li>
-                <li><a href="{$path}Utente/modificaDati" >Modifica Dati Personali </a></li>
-                <li><a href="{$path}Utente/eliminaAccount" > Elimina Account&nbsp; </a></li>
-            </ul>
+
+                <a href="{$path}Utente/modificaPassword"  class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Modifica Password </a>
+                <a href="{$path}Utente/eliminaAccount"  class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30"> Elimina Account&nbsp; </a>
+
         </div>
 
     </div>
