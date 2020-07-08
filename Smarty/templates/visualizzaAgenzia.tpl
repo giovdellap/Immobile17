@@ -39,10 +39,10 @@
                         <td> {$agenzia->getProvincia()}   </td>
                         <td> {$agenzia->getIndirizzo()}   </td>
                         <td >
-                            <a class="btn btn-info btn-sm" href="#">
+                            <a class="btn btn-info btn-xs" href="#">
                                 <i class="fas fa-pencil-alt">
                                 </i>
-                                Modifica
+
                             </a>
                         </td>
                     </tr>

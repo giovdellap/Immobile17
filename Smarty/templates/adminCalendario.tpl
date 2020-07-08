@@ -1,5 +1,12 @@
 <script src='{$path}Smarty/others/calendario/lib/main.js'></script>
 
+<meta charset='utf-8' />
+<link href='{$path}Smarty/others/calendario/lib/main.css' rel='stylesheet' />
+<link href='{$path}Smarty/others/calendario/lib/bootstrap.css' rel='stylesheet' />
+<link href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.1/css/all.css' rel='stylesheet'>
+<script src='{$path}Smarty/others/calendario/lib/main.js'></script>
+<link rel="icon" type="image/ico" href="{$path}Smarty/img/icons/favicon_1.ico"/>
+
 
 <script>
 
@@ -121,3 +128,16 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<!-- jQuery (Necessary for All JavaScript Plugins) -->
+<script src={$path}/Smarty/js/jquery/jquery-2.2.4.min.js></script>
+<!-- Popper js -->
+<script src={$path}/Smarty/js/popper.min.js></script>
+<!-- Bootstrap js -->
+<script src={$path}/Smarty/js/bootstrap.min.js></script>
+<!-- Plugins js -->
+<script src={$path}/Smarty/js/plugins.js></script>
+<script src={$path}/Smarty/js/classy-nav.min.js></script>
+<script src={$path}/Smarty/js/jquery-ui.min.js></script>
+<!-- Active js -->
+<script src={$path}/Smarty/js/active.js></script>
