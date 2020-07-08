@@ -50,7 +50,7 @@
 
                         <td>
                             <div class ="form-group">
-                                <label>Cliente</label>
+                                <label>Immobile</label>
                                 <select class="form-control" id="immobile" name="immobile">
                                     <option selected disabled> Seleziona Immobile</option>
                                     {foreach $immobili as $immobile}
