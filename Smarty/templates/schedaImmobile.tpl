@@ -19,6 +19,7 @@
 
 </head>
 
+
 <body>
 <!-- Preloader -->
 <div id="preloader">
@@ -93,17 +94,14 @@
         </div>
 
 
-        <!--QUA SOTTO CI VA TIPO LA POSIZIONE SULLA MAPPA -->
-
-        <!-- Listing Maps
+        <!-- Listing Maps -->
         <div class="row">
             <div>
                 <div class="listings-maps mt-80">
-                    <div id="googleMap"></div>
+                    <div id="googleMap" style="overflow: visible"></div>
                 </div>
             </div>
         </div>
-        -->
     </div>
 </section>
  <!--##### Listings Content Area End ##### -->
@@ -121,9 +119,55 @@
 <script src="{$path}Smarty/js/jquery-ui.min.js"></script>
 <!-- Active js -->
 <script src="{$path}Smarty/js/active.js"></script>
-<!-- Google Maps
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwuyLRa1uKNtbgx6xAJVmWy-zADgegA2s"></script>-->
-<script src="{$path}Smarty/js/map-active.js"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsKBFy70Mv9pah4QrR39P8xzBbWQThDIU"></script>
+<script>
+    var map;
+    var latlng = new google.maps.LatLng(56.9496, 24.1052);
+    var stylez = [{
+        featureType: "all",
+        elementType: "all",
+        stylers: [{
+            saturation: -25
+        }]
+    }];
+    var mapOptions = {
+        zoom: 15,
+        center: latlng,
+        scrollwheel: false,
+        scaleControl: false,
+        disableDefaultUI: true,
+        mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'gMap']
+        }
+    };
+    map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+
+    var geocoder_map = new google.maps.Geocoder();
+    var address = '{$immobile->getIndirizzo()}' + ', ' + "{$immobile->getComune()}";
+    geocoder_map.geocode({
+        'address': address
+    }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                icon: '',
+                position: map.getCenter()
+            });
+        } else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+    var mapType = new google.maps.StyledMapType(stylez, {
+        name: "Grayscale"
+    });
+    map.mapTypes.set('gMap', mapType);
+    map.setMapTypeId('gMap');
+
+</script>
+
+
 
 </body>
 
