@@ -8,6 +8,7 @@ class CMail
     /**
      * @param MCliente $cliente
      * @param string $code
+     * @return bool
      * @throws Exception
      */
     public static function sendConfermationEmail(MCliente $cliente, string $code): bool

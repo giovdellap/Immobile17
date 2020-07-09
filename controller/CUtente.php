@@ -222,6 +222,7 @@ class CUtente
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $code = substr(str_shuffle($permitted_chars), 0, 10);
         FPersistentManager::addCodice($cliente, $code);
+        CMail::sendConfermationEmail(CSessionManager::getUtenteLoggato(), $code);
     }
 
     public static function forgotPassword(bool $api)
