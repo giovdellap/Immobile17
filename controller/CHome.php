@@ -3,21 +3,22 @@
 
 class CHome
 {
-    public static function homepage()
+    public static function homepage(bool $api)
     {
         if(VReceiverProxy::getRequest())
         {
             $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
             $immobili = FPersistentManager::getImmobiliHomepage();
-            if(CSessionManager::sessionExists()) {
-                $utente = CSessionManager::getUtenteLoggato();
-                VHome::homepage(VSmartyFactory::userSmarty($utente), $agenzia, $immobili);
-            }
-            else VHome::homepage(VSmartyFactory::basicSmarty(), $agenzia, $immobili);
+
+            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy->setApi($api);
+            if(CSessionManager::sessionExists())
+                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
+            $senderProxy->homepage($agenzia, $immobili);
         }
         // ipotetico else
     }
-    public static function aboutUs()
+    public static function aboutUs(bool $api)
     {
         if(VReceiverProxy::getRequest())
         {

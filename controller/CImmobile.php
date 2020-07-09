@@ -17,32 +17,34 @@ class CImmobile
      *  pmax = Prezzo Massimo
      * @param array $parameters
      */
-    public static function ricerca(array $parameters)
+    public static function ricerca(array $parameters, bool $api)
     {
         if(VReceiverProxy::getRequest())
         {
             $parameters = VReceiverProxy::ricercaParametersFiller($parameters);
             $immobili = FPersistentManager::getImmobiliByParameters($parameters);
-            if(CSessionManager::sessionExists()) {
-                $utente = CSessionManager::getUtenteLoggato();
-                VImmobile::ricerca(VSmartyFactory::userSmarty($utente), $immobili, $parameters);
-            }
-            else VImmobile::ricerca(VSmartyFactory::basicSmarty(), $immobili, $parameters);
+            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy->setApi($api);
+            if(CSessionManager::sessionExists())
+                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
+            $senderProxy->ricerca($immobili, $parameters);
         }
+        else header('Location: '.$GLOBALS['path'].'Immobile/visualizzaImmobili');
 
     }
 
     /**
      * Visualizza tutti gli immobili presenti nel DB
      */
-    public static function visualizzaImmobili()
+    public static function visualizzaImmobili(bool $api)
     {
         if (VReceiverProxy::getRequest()) {
             $immobili = FPersistentManager::visualizzaImmobili();
-            if (CSessionManager::sessionExists()) {
-                $utente = CSessionManager::getUtenteLoggato();
-                VImmobile::visualizzaImmobili(VSmartyFactory::userSmarty($utente), $immobili);
-            } else VImmobile::visualizzaImmobili(VSmartyFactory::basicSmarty(), $immobili);
+            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy->setApi($api);
+            if (CSessionManager::sessionExists())
+                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
+            $senderProxy->visualizzaImmobili($immobili);
         }
     }
 
@@ -50,17 +52,16 @@ class CImmobile
      * Visualizza la pagina del singolo immobile
      * @param string $id ID Immobile
      */
-    public static function visualizza(string $id)
+    public static function visualizza(string $id, bool $api)
     {
         if(VReceiverProxy::getRequest())
         {
             $immobile= FPersistentManager::visualizzaImmobile($id);
+            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy->setApi($api);
             if(CSessionManager::sessionExists())
-            {
-                $utente=CSessionManager::getUtenteLoggato();
-                VImmobile::visualizza(VSmartyFactory::userSmarty($utente),$immobile);
-            }
-            else VImmobile::visualizza(VSmartyFactory::basicSmarty(),$immobile);
+                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
+            $senderProxy->visualizzaImmobile($immobile);
         }
     }
 
@@ -75,7 +76,7 @@ class CImmobile
      * @param array $parameters
      * @throws SmartyException
      */
-    public static function calendario(array $parameters)
+    public static function calendario(array $parameters, bool $api)
     {
         if(VReceiverProxy::getRequest() && key_exists('id', $parameters))
         {
@@ -90,8 +91,10 @@ class CImmobile
                     CSessionManager::getUtenteLoggato()->getId(), $inizio, $fine);
                 $utenteApp = FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId());
                 $appLiberi = $fullAgenzia->checkDisponibilità($utenteApp, $immobile, $inizio, $fine);
-                $utente = CSessionManager::getUtenteLoggato();
-                VImmobile::calendario(VSmartyFactory::userSmarty($utente), $appLiberi, $inizio, $fine, $immobile);
+                $senderProxy = VSenderProxy::getInstance();
+                $senderProxy->setApi($api);
+                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
+                $senderProxy->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
             }
             else CImmobile::visualizza($parameters["id"]);
         }
@@ -111,7 +114,7 @@ class CImmobile
      *  - idAg = ID Agente Immobiliare
      * @throws SmartyException
      */
-    public static function prenota()
+    public static function prenota(bool $api)
     {
         if (VReceiverProxy::postRequest()) {
 
@@ -139,15 +142,21 @@ class CImmobile
                     $error = "Appuntamento non disponibile";
                     $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile());
                     $appLiberi = $fullAgenzia->checkDisponibilità($utente, $immobile, $inizio, $fine);
-                    $smarty = VSmartyFactory::userSmarty($utente);
-                    VImmobile::calendario(VSmartyFactory::errorSmarty($smarty, $error), $appLiberi, $inizio, $fine, $immobile);
+
+                    $senderProxy = VSenderProxy::getInstance();
+                    $senderProxy->setApi($api);
+                    $senderProxy->setUtente($utente);
+                    $senderProxy->setError($error);
+                    $senderProxy->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
                 }
             } else
             {
                 $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile());
-                VImmobile::visualizza(VSmartyFactory::basicSmarty(), $immobile);
+                $senderProxy = VSenderProxy::getInstance();
+                $senderProxy->setApi($api);
+                $senderProxy->visualizzaImmobile($immobile);
             }
-        } else CHome::homepage();
+        } else header('Location: '.$GLOBALS['path']);
     }
 
 

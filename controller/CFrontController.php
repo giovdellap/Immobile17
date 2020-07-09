@@ -8,34 +8,46 @@ class CFrontController
         $path = $_SERVER['REQUEST_URI'];
         $resource = explode('/', $path);
 
-
         array_shift($resource);
         array_shift($resource);
         if (!isset($resource[0]))
             $this->wrongUrl();
 
 
-        else if ($resource[0] != 'api')
+        else
         {
+            $api = false;
+            if($resource[0] === 'api')
+            {
+                $api = true;
+                array_shift($resource);
+            }
             $controller = "C" . $resource[0];
             $dir = 'controller';
-
             if (in_array($controller . ".php", scandir($dir))){
                 if(isset($resource[1]))
                 {
                     $function=$resource[1];
                     if(count($resource) == 2)
                     {
-                        $controller::$function();
+                        if($controller === 'CAdmin')
+                            $controller::$function();
+                        else $controller::$function($api);
                     }
                     elseif (count($resource)== 3)
-                        $controller::$function($resource[2]);
+                    {
+                        if($controller === 'CAdmin')
+                            $controller::$function($resource[2]);
+                        else $controller::$function($resource[2], $api);
+                    }
                     else
                     {
                         $parameters = $resource;
                         array_shift($parameters);
                         array_shift($parameters);
-                        $controller::$function($this->queryUnpacker($parameters));
+                        if($controller === 'CAdmin')
+                            $controller::$function($this->queryUnpacker($parameters));
+                        else $controller::$function($this->queryUnpacker($parameters), $api);
                     }
                 }
                 else $this->wrongUrl();
@@ -80,10 +92,10 @@ class CFrontController
             if($utente instanceof MAmministratore)
                 CAdmin::homepage();
             else
-                CHome::homepage();
+                CHome::homepage(false);
 
         }
-        else CHome::homepage();
+        else CHome::homepage(false);
     }
 
     /**
