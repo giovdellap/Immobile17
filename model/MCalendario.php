@@ -31,9 +31,9 @@ class MCalendario
             $valido = $context->validateAppuntamento(new MValidatorAgenteImmobiliare());
         if($valido)
             $valido = $context->validateAppuntamento(new MValidatorCliente());
-        echo('immobile' . $context->validateAppuntamento(new MValidatorImmobile()));
-        echo('agente' . $context->validateAppuntamento(new MValidatorAgenteImmobiliare()));
-        echo('cliente' . $context->validateAppuntamento(new MValidatorCliente()));
+        //echo('immobile' . $context->validateAppuntamento(new MValidatorImmobile()));
+        //echo('agente' . $context->validateAppuntamento(new MValidatorAgenteImmobiliare()));
+        //echo('cliente' . $context->validateAppuntamento(new MValidatorCliente()));
 
         if($valido)
         {

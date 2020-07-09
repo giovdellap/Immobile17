@@ -11,8 +11,10 @@ class MData
         $this->data = new DateTime();
         $this->data->setDate($anno, $mese, $giorno);
         $ora = intval($orario);
-        $minuto = ($orario - $ora)*100;
-        $this->data->setTime($ora, $minuto);
+        $minuto = round(($orario - $ora), 2)*100;
+        $this->data->setTime(0,0);
+        $this->data->modify('+ '. $ora . ' hours');
+        $this->data->modify('+'.$minuto.' minutes');
     }
 
     /**
@@ -22,7 +24,7 @@ class MData
     {
         $ora = date("G", $this->data->getTimestamp());
         $minuto = date("i", $this->data->getTimestamp());
-        return round($ora+($minuto/100),2);
+        return round($ora+($minuto/100),2, PHP_ROUND_HALF_UP);
     }
 
     /**
@@ -32,7 +34,9 @@ class MData
     {
         $ora = intval($orario);
         $minuto = ($orario - $ora)*100;
-        $this->data->setTime($ora, $minuto);
+        $this->data->setTime(0,0);
+        $this->data->modify('+ '. $ora . ' hours');
+        $this->data->modify('+'.$minuto.' minutes');
     }
 
     /**
@@ -221,6 +225,12 @@ class MData
         return new MData(date("Y", strtotime("today")),
                         date("m", strtotime("today")),
                         date("d", strtotime("today")), $orario);
+    }
+
+    public function minutoTest()
+    {
+        $minuto = date("i", $this->data->getTimestamp());
+        echo ('lalala '.$minuto);
     }
 
 
