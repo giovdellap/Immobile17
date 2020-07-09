@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Registrazione Effettuta</title>
+    <title>Recupera Password</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -49,7 +49,7 @@
 
 
                 <span class="txt3 p-b-11">
-						Ti abbiamo mandato la tua nuova password all'indirizzo email fornitoci in fase di registrazione
+						Ti abbiamo mandato la tua nuova password all'indirizzo email fornitoci precedentememnte
                         <br>
                     <br>
                     <br>

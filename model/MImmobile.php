@@ -152,14 +152,14 @@ class MImmobile
 
     public function getDescrizioneBreve():string
     {
-        if(strlen($this->descrizione)<85) {
-            $spacesToAdd = 85 - strlen($this->descrizione);
+        if(strlen($this->descrizione)<60) {
+            $spacesToAdd = 60 - strlen($this->descrizione);
             return $this->descrizione . str_repeat(" ", $spacesToAdd);
         }
-        else if (strlen($this->descrizione) == 85)
+        else if (strlen($this->descrizione) == 60)
             return $this->descrizione;
         else {
-            return str_split($this->descrizione, 82)[0] . "...";
+            return str_split($this->descrizione, 60)[0] . "...";
         }
         //return str_split($this->descrizione,50)[0];
     }

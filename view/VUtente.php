@@ -60,4 +60,9 @@ class VUtente
         $smarty->display('modificaPassword.tpl');
     }
 
+    public static function showForgotPassword(Smarty $smarty)
+    {
+        $smarty->display('forgotPassword.tpl');
+    }
+
 }

@@ -9,11 +9,13 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>About us</title>
+    <title>Chi Siamo</title>
 
-    <!-- Favicon-->
 
-    <link rel="icon" href={$path}Smarty/img/icons/favicon_1.ico">
+
+    <!-- Favicon  -->
+    <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
+
     <!-- Style CSS -->
     <link rel="stylesheet" href="{$path}Smarty/style.css">
 
@@ -28,12 +30,12 @@
 {include file="header.tpl"}
 
 <!-- ##### Breadcumb Area Start ##### -->
-<section class="breadcumb-area bg-img" style="background-image: url({$path}Smarty/img/bg-img/hero1.jpg);">
+<section class="breadcumb-area bg-img" style="background-image: url({$path}Smarty/img/bg-img/auditoriumG.jpg);">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="breadcumb-content">
-                    <h3 class="breadcumb-title">About us</h3>
+                    <h3 class="breadcumb-title">Chi Siamo</h3>
                 </div>
             </div>
         </div>
@@ -48,13 +50,16 @@
             <div class="col-12 col-lg-8">
                 <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
                     <h2>Selezioniamo le case perfette per te</h2>
-                    <p>Suspendisse dictum enim sit amet libero</p>
+
                 </div>
                 <div class="about-content">
-                    <img class="wow fadeInUp" data-wow-delay="350ms" src="{$path}Smarty/img/bg-img/about.jpg" alt="">
-                    <p class="wow fadeInUp" data-wow-delay="450ms">L'agenzia Immobile17 nasce dal desiderio di valorizzare al massimo l'esperienza maturata nel settore dal 1999.
-                        L'utilizzo del proprio nome nel marchio vuol essere sinonimo di massima serietà, trasparenza e correttezza, VALORI CONCRETI sui quali è fondata la nostra piccola ma efficiente struttura.
-                        Un'attività giovane e contemporanea che opera selezionando minuziosamente le migliori opportunità immobiliari, sia in vendita che in locazione. Ogni immobile che scegliamo di trattare è altamente qualificato, completo di documentazione e preparato alla vendita.
+                    <img class="wow fadeInUp" data-wow-delay="350ms" src="{$path}Smarty/img/bg-img/hero4.jpg" >
+                    <p class="wow fadeInUp" data-wow-delay="450ms" style="text-align: justify;">
+                        L'agenzia Immobile17 nasce dal desiderio di valorizzare al massimo l'esperienza maturata nel settore dal 2015.
+                        L'utilizzo del proprio nome nel marchio vuol essere sinonimo di massima serietà, trasparenza e correttezza, valori concreti sui quali è fondata la nostra
+                        piccola ma efficiente struttura.
+                        Un'attività giovane e contemporanea che opera selezionando minuziosamente le migliori opportunità immobiliari, sia in vendita che in locazione.
+                        Ogni immobile che scegliamo di trattare è altamente qualificato, completo di documentazione e preparato alla vendita.
                        <br>
                     </p>
                 </div>
@@ -62,29 +67,29 @@
             <div class="col-12 col-lg-4">
                 <div class="section-heading text-left wow fadeInUp" data-wow-delay="250ms">
                     <h2>Immobili in vista</h2>
-                    <p>Suspendisse dictum enim sit amet libero</p>
+                    <p></p>
                 </div>
 
                 <div class="featured-properties-slides owl-carousel wow fadeInUp" data-wow-delay="350ms">
-
+                    {foreach $immobili as $item}
                     <!-- Single Slide -->
                     <div class="single-featured-property">
                         <!-- Property Thumbnail -->
                         <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$immobile0->getId()}"><img src="{$imgTop1[0]->viewImageHTML()}"></a>
+                            <a href="{$path}Immobile/visualizza/{$item->getId()}"><img src="{$item->getPresentationImg()}"  style="width: 450px; height: 270px"></a>
 
                             <div class="tag">
-                                <span>{$immobile0->getTipoAnnuncio()}</span>
+                                <span>{$item->getTipoAnnuncio()}</span>
                             </div>
                             <div class="list-price">
-                                <p>{$immobile0->getPrezzo()}</p>
+                                <p>{$item->getPrezzo()}</p>
                             </div>
                         </div>
                         <!-- Property Content -->
                         <div class="property-content">
-                            <h5>{$immobile0->getNome()}</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile0->getIndirizzo()}</p>
-                            <p>{$immobile0->getDescrizioneBreve()}</p>
+                            <h5>{$item->getNome()}</h5>
+                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$item->getIndirizzo()}</p>
+                            <p>{$item->getDescrizioneBreve()}</p>
                             <div class="property-meta-data d-flex align-items-end justify-content-between">
                                 <div class="new-tag">
                                     <img src="{$path}Smarty/img/icons/new.png" alt="">
@@ -92,82 +97,22 @@
 
                                 <div class="space">
                                     <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                    <span>{$immobile0->getGrandezza()}</span>
+                                    <span>{$item->getGrandezza()}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Single Slide -->
-                    <div class="single-featured-property">
-                        <!-- Property Thumbnail -->
-                        <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$immobile1->getId()}"><img src="{$imgTop2[0]->viewImageHTML()}"></a>
-
-                            <div class="tag">
-                                <span>{$immobile1->getTipoAnnuncio()}</span>
-                            </div>
-                            <div class="list-price">
-                                <p>{$immobile1->getPrezzo()}</p>
-                            </div>
-                        </div>
-                        <!-- Property Content -->
-                        <div class="property-content">
-                            <h5>{$immobile1->getNome()}</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile1->getIndirizzo()}</p>
-                            <p>{$immobile1->getDescrizioneBreve()}</p>
-                            <div class="property-meta-data d-flex align-items-end justify-content-between">
-                                <div class="new-tag">
-                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
-                                </div>
-
-                                <div class="space">
-                                    <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                    <span>{$immobile1->getGrandezza()}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--Single Slide -->
-                    <div class="single-featured-property">
-                        <!-- Property Thumbnail -->
-                        <div class="property-thumb">
-                            <a href="{$path}Immobile/visualizza/{$immobile2->getId()}"><img src="{$imgTop3[0]->viewImageHTML()}"></a>
-
-                            <div class="tag">
-                                <span>{$immobile2->getTipoAnnuncio()}</span>
-                            </div>
-                            <div class="list-price">
-                                <p>{$immobile2->getPrezzo()}</p>
-                            </div>
-                        </div>
-                        <!-- Property Content -->
-                        <div class="property-content">
-                            <h5>{$immobile2->getNome()}</h5>
-                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile2->getIndirizzo()}</p>
-                            <p>{$immobile2->getDescrizioneBreve()}</p>
-                            <div class="property-meta-data d-flex align-items-end justify-content-between">
-                                <div class="new-tag">
-                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
-                                </div>
-
-                                <div class="space">
-                                    <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                    <span>{$immobile2->getGrandezza()}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                    {/foreach}
 
                 </div>
             </div>
 
+
+
+
             <div class="col-12 col-lg-12">
                 <div class="about-content">
-                    <p class="wow fadeInUp" data-wow-delay="450ms">
+                    <p class="wow fadeInUp" data-wow-delay="450ms" style="text-align: justify;S">
                         Rivolgersi alla nostra Agenzia Immobiliare significa affidarsi a giovani e dinamici professionisti, regolarmente iscritti alla Camera di Commercio e alla Fiaip (Federazione Italiana Agenti Immobiliari Professionali) costantemente aggiornati mediante corsi di alta formazione professionale, pronti ad ascoltarvi attentamente al fine di risolvere ogni tipo di esigenza legata all'abitare.Siamo in grado di offrire un'assistenza precisa e puntuale sin dal primo incontro. Tutto su misura e personalizzato come un abito sartoriale, tutto seguito direttamente da noi in prima persona: dalla valutazione dell'immobile al piano marketing dedicato, dalle visite coi clienti ai feed-back programmati, dalle trattative sino alla stipula dell'atto definitivo.
                         La nostra figura è quella dell'AGENTE IMMOBILIARE PROFESSIONISTA e l'attenzione è principalmente rivolta, prima ancora che all'immobile, alla Persona ed alle sue esigenze: in questo modo gli interessi del Cliente sono sempre preminenti.
                         Condividiamo ogni passaggio della compravendita con i nostri Clienti, in piena armonia e con la massima condivisione: la finalità è quella di raggiungere gli obiettivi prefissati con determinazione, spiccato dinamismo ed entusiasmo, mantenendo sempre un approccio diretto ed un'attenzione costante. Il rapporto confidenziale che si stabilisce è fondamentale per affrontare con serenità il delicato percorso di compravendita.
@@ -208,76 +153,51 @@
             <div class="col-12">
                 <div class="section-heading">
                     <h2>incontra il nostro team</h2>
-                    <p>Suspendisse dictum enim sit amet libero</p>
+                    <p></p>
                 </div>
             </div>
         </div>
 
+
         <div class="row justify-content-center">
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-team-member mb-100 wow fadeInUp" data-wow-delay="250ms">
-                    <!-- Team Member Thumb -->
-                    <div class="team-member-thumb">
-                        <img src="{$path}Smarty/img/bg-img/team1.jpg" alt="">
-                    </div>
-                    <!-- Team Member Info -->
-                    <div class="team-member-info">
-                        <div class="section-heading">
-                            <img src="{$path}Smarty/img/icons/prize.png" alt="">
-                            <h2>Admin Istrator</h2>
-                            <p>C.E.O.</p>
-                        </div>
-                        <div class="address">
-                            <h6><img src="{$path}Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                            <h6><img src="{$path}Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            {foreach $agenti as $agente}
+
+
             <!-- Single Team Member -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-team-member mb-100 wow fadeInUp" data-wow-delay="500ms">
                     <!-- Team Member Thumb -->
                     <div class="team-member-thumb">
-                        <img src="{$path}Smarty/img/bg-img/team2.jpg" alt="">
+
+                        <img
+                                {if isset($agente->getImmagine())}
+                                    src="{$agente->getImmagine()->viewImageHTML()}"
+                                {else}
+                                    src="{$path}Smarty/img/icons/avatar.png"
+                                {/if}
+
+                        />
                     </div>
                     <!-- Team Member Info -->
                     <div class="team-member-info">
                         <div class="section-heading">
                             <img src="{$path}Smarty/img/icons/prize.png" alt="">
-                            <h2>Vanessa Marchesani</h2>
+                            <h2>{$agente->getFullName()}</h2>
                             <p>Agente immobiliare</p>
                         </div>
                         <div class="address">
-                            <h6><img src="{$path}Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                            <h6><img src="{$path}Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
+
+                            <h6><img src="{$path}Smarty/img/icons/envelope.png" alt="">{$agente->getEmail()}</h6>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Single Team Member -->
-            <div class="col-12 col-sm-6 col-lg-4">
-                <div class="single-team-member mb-100 wow fadeInUp" data-wow-delay="750ms">
-                    <!-- Team Member Thumb -->
-                    <div class="team-member-thumb">
-                        <img src="{$path}Smarty/img/bg-img/team3.jpg" alt="">
-                    </div>
-                    <!-- Team Member Info -->
-                    <div class="team-member-info">
-                        <div class="section-heading">
-                            <img src="{$path}Smarty/img/icons/prize.png" alt="">
-                            <h2>Gabriele Gatti</h2>
-                            <p>agente immobiliare</p>
-                        </div>
-                        <div class="address">
-                            <h6><img src="{$path}Smarty/img/icons/phone-call.png" alt=""> +45 677 8993000 223</h6>
-                            <h6><img src="{$path}Smarty/img/icons/envelope.png" alt=""> office@template.com</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+            {/foreach}
+
+
+
     </div>
 </section>
 <!-- ##### Meet The Team Area End ##### -->

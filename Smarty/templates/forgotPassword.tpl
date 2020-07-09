@@ -35,16 +35,17 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/login" method="POST" class="login100-form validate-form flex-sb flex-w">
+            <form action="{$path}Utente/forgotPassword" method="POST" class="login100-form validate-form flex-sb flex-w">
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
 
-					<span class="login100-form-title p-b-32">
+                <span class="login100-form-title p-b-32">
                         <br>
 
-						Account Login
+						Recupera Password
 					</span>
+
 
                 <span class="txt1 p-b-11">
 						email
@@ -55,54 +56,12 @@
                     <span class="focus-input100"> </span>
                 </div>
 
-                <span class="txt1 p-b-11">
-						Password
-					</span>
-
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
-						<span class="btn-show-pass">
-							<i class="fa fa-eye"> </i>
-						</span>
-
-                    <input class="input100" type="password" required name="password" placeholder="**********">
-                    <span class="focus-input100"> </span>
-                </div>
-
-                <div class="flex-sb-m w-full p-b-48">
-                    <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                        <label class="label-checkbox100" for="ckb1">
-                            Ricordami
-                        </label>
-                    </div>
-
-                    <div>
-                        <a href="{$path}Utente/forgotPassword" class="txt3">
-                            Forgot Password?
-                        </a>
-                    </div>
-                </div>
-                {if ($error=="WRONG PASSWORD"||$error=="WRONG EMAIL")}
-                    <!-- <span class="txt_error" >Username o password errate</span> -->
-                    <div>
-                        <span class="txt1" style="color: red">Si è verificato un problema!   </span>
-                        <span class="txt3" > Email e/o password errati</span>
-                        <br>
-                        <br>
-                    </div>
-                {/if}
-
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Login
+                        Conferma
                     </button>
                 </div>
-                <div>
-                    <a href="{$path}Utente/registrazione" class="txt2">
-                        <br>
-                        Non hai un account? Registrati.
-                    </a>
-                </div>
+
 
 
 

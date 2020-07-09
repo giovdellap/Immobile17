@@ -58,7 +58,7 @@
                                 </li>
                             {/if}
 
-                            <li><a href="{$path}Home/aboutUs">About Us</a></li>
+                            <li><a href="{$path}Home/aboutUs">Chi Siamo</a></li>
 
                         </ul>
                     </div>

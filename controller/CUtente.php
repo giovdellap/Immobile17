@@ -235,7 +235,7 @@ class CUtente
             $utente->setPassword($password);
             FPersistentManager::modificaUtente($utente);
             CMail::sendForgotPasswordEmail($utente, $password);
-            //manca la view
+
         }
     }
 

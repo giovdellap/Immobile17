@@ -3,6 +3,8 @@
 
 class VHome
 {
+
+
     public static function homepage (Smarty $smarty, MAgenzia $agenzia, array $immobili)
     {
         $smarty->assign("path"          , $GLOBALS["path"]);
@@ -17,26 +19,35 @@ class VHome
         $smarty->assign("imgTop2"       , $immobili[1]->getImmagini());
         $smarty->assign("imgTop3"       , $immobili[2]->getImmagini());
         $smarty->display("home.tpl");
-
-
     }
-    public static function aboutUs(Smarty $smarty,  array $immobili)
+    /*
+    public static function aboutUs(Smarty $smarty,  array $immobili, array $agenti)
     {
         $smarty->assign("immobile0"     , $immobili[0]);
         $smarty->assign("immobile1"     , $immobili[1]);
         $smarty->assign("immobile2"     , $immobili[2]);
+
+        $smarty->assign('agenti', $agenti );
 
         $smarty->assign("imgTop1"       , $immobili[0]->getImmagini());
         $smarty->assign("imgTop2"       , $immobili[1]->getImmagini());
         $smarty->assign("imgTop3"       , $immobili[2]->getImmagini());
         $smarty->display("aboutUs.tpl");
     }
+*/
+    public static function aboutUs(Smarty $smarty,  array $immobili, array $agenti)
+    {
+        $smarty->assign("immobili" , $immobili);
 
+        $smarty->assign('agenti', $agenti );
+
+        $smarty->display("aboutUs.tpl");
+    }
 
     /*funzione che serve a testare i templates di prova (da rimuovere)*/
     public static function provatpl(Smarty $smarty)
     {
-        $smarty->display('invioEmailRecuperoPwd.tpl');
+        $smarty->display('forgotPassword.tpl');
     }
 
 }

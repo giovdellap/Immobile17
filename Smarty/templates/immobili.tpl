@@ -33,7 +33,15 @@
         <div class="row h-100 align-items-center">
             <div class="col-12">
                 <div class="breadcumb-content">
-                    <h3 class="breadcumb-title">immobili In Vendita</h3>
+
+                    {if $immobili[0]->getTipoAnnuncio() == 'Vendita'}
+                        <h3 class="breadcumb-title">immobili In Vendita</h3>
+                    {elseif $immobili[0]->getTipoAnnuncio() == 'Affitto'}
+                        <h3 class="breadcumb-title">immobili In Affitto</h3>
+                    {else}
+                        <h3 class="breadcumb-title">immobili</h3>
+
+                    {/if}
                 </div>
             </div>
         </div>
@@ -70,7 +78,10 @@
                         <p>{$item->getDescrizioneBreve()}</p>
                         <div class="property-meta-data d-flex align-items-end justify-content-between">
                             <div class="new-tag">
-                                <img src="{$path}Smarty/img/icons/new.png" alt="">
+                                {if $item->getTipoAnnuncio() == 'Vendita'}
+                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
+                                {/if}
+
                             </div>
                             <div class="space">
                                 <img src="{$path}Smarty/img/icons/space.png" alt="">

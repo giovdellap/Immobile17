@@ -22,12 +22,16 @@ class CHome
     {
         if(VReceiverProxy::getRequest())
         {
-            $immobili = FPersistentManager::getImmobiliHomepage();
+            $immobili = FPersistentManager::getImmobiliAttivi();
+
+            $agenti = FPersistentManager::visualizzaUtenti('AGENTE');
+
+
             if(CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
-                VHome::aboutUs(VSmartyFactory::userSmarty($utente),$immobili);
+                VHome::aboutUs(VSmartyFactory::userSmarty($utente),$immobili, $agenti);
             }
-            else VHome::aboutUs(VSmartyFactory::basicSmarty(),$immobili);
+            else VHome::aboutUs(VSmartyFactory::basicSmarty(),$immobili, $agenti );
         }
         // ipotetico else
     }
