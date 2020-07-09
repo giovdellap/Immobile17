@@ -243,5 +243,34 @@ class VReceiverProxy
         return $parameters['immobile'];
     }
 
+    // --- INSTALLATION ----
+
+    public static function getNomeDB(): string
+    {
+        return $_POST['nomeDB'];
+    }
+
+    public static function getPasswordDB(): string
+    {
+        return $_POST['passwordDB'];
+    }
+
+    public static function getUsernameDB(): string
+    {
+        return $_POST['usernameDB'];
+    }
+
+    public static function getPasswordAdmin(): string
+    {
+        return $_POST['passwordAdmin'];
+    }
+
+    public static function populateDB(): bool
+    {
+        return $_POST['populateDB'];
+    }
+
+
+
 
 }
