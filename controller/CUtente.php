@@ -264,7 +264,7 @@ class CUtente
                 $oldPassword = VReceiverProxy::getOldPW();
                 $newPassword = VReceiverProxy::getNewPW();
                 $utente = CSessionManager::getUtenteLoggato();
-                if($utente->getPassword() === $oldPassword )
+                if(password_verify($utente->getPassword(),$oldPassword))
                 {
                     $utente->setPassword($newPassword);
                     FPersistentManager::modificaUtente($utente);

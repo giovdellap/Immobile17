@@ -26,7 +26,7 @@ class FUtente extends FObject
         $stmt->bindValue(':cognome',     $obj->getCognome(),                          PDO::PARAM_STR);
         $stmt->bindValue(':datanascita', $obj->getDataNascita()->getDateString(), PDO::PARAM_STR);
         $stmt->bindValue(':mail',        $obj->getEmail(),                            PDO::PARAM_STR);
-        $stmt->bindValue(':password',    $obj->getPassword(),                         PDO::PARAM_STR);
+        $stmt->bindValue(':password',    password_hash($obj->getPassword(), PASSWORD_BCRYPT),                         PDO::PARAM_STR);
         $stmt->bindValue(':iscrizione',  $obj->getIscrizione()->getDateString(),  PDO::PARAM_STR);
         $stmt->bindValue(':verifica',    $obj->isAttivato(),                          PDO::PARAM_BOOL);
     }
@@ -70,9 +70,14 @@ class FUtente extends FObject
     {
         $db = FDataBase::getInstance();
         if(strpos($mail, "@info.it"))
-            return $db->login(FAgenteImmobiliare::class, $mail, $password);
-        else
-            return $db->login(FCliente::class, $mail, $password);
+            $utenti = self::getUtenti('AGENTE');
+        else $utenti = self::getUtenti('CLIENTE');
+        foreach ($utenti as $utente)
+        {
+            if(password_verify($password, $utente->getPassword()))
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -149,8 +154,8 @@ class FUtente extends FObject
             $mods["cognome"] = $utente->getCognome();
         if($utente->getEmail() != $oldUtente->getEmail())
             $mods["mail"] = $utente->getEmail();
-        if($utente->getPassword() != $oldUtente)
-            $mods["password"] = $utente->getPassword();
+        if($utente->getPassword() != $oldUtente->getPassword())
+            $mods["password"] = password_hash($utente->getPassword());
         if($utente->getDataNascita() != $oldUtente->getDataNascita())
             $mods["datanascita"] = $utente->getDataNascita()->getDateString();
         if($utente->getIscrizione() != $oldUtente->getIscrizione())
@@ -203,8 +208,6 @@ class FUtente extends FObject
         $db = FDataBase::getInstance();
         if(strpos($email, '@info.it'))
             return $db->getSomethingby(FAgenteImmobiliare::class, "id", "mail", $email)[0]["id"];
-
-
         else
             return $db-> getSomethingby(FCliente::class, "id", "mail", $email)[0]["id"];
 
@@ -242,8 +245,5 @@ class FUtente extends FObject
         }
         return $utenti;
     }
-
-
-
 
 }
