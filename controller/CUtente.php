@@ -104,11 +104,12 @@ class CUtente
     public static function visualizzaProfilo(bool $api)
     {
         if (VReceiverProxy::getRequest()) {
-            $senderProxy = VSenderProxy::getInstance();
-            $senderProxy->setApi($api);
+
             if (CSessionManager::sessionExists()) {
+                $senderProxy = VSenderProxy::getInstance();
+                $senderProxy->setApi($api);
                 $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                VUtente::visualizzaProfilo(VSmartyFactory::userSmarty($utente));
+                $senderProxy->visualizzaProfilo();
             } else header('Location: '.$GLOBALS['path'].'Utente/login');
         } else header('Location: '.$GLOBALS['path']);
 
