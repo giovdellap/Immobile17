@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Registrati</title>
+    <title>Cambia Password</title>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -106,7 +106,7 @@
                 <span class="txt1 p-b-11">
 						ripeti nuova Password
                 </span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Reinserire la password">
+                <div class="wrap-input100 validate-input m-b-40" data-validate = "Reinserire la password">
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"> </i>
 						</span>
@@ -114,21 +114,15 @@
                     <span class="focus-input100"> </span>
                 </div>
 
-                <font color="white">
-                    space
-                    <br>
-                    <br>
-                    <br>
-                </font>
 
                <div class="container-login100-form-btn">
                     <div class="wrap-login100-form-btn">
                         <div class="login100-form-bgbtn"></div>
-                        <button class="login100-form-btn" style="position:absolute; top:580px; left:370px; z-index:1">
+                        <button class="login100-form-btn" style="position:absolute; top:430px; left:370px; z-index:1">
                             Conferma
                         </button>
                     </div>
-                    <div style="position:absolute; top:580px; left:82px; z-index:1">
+                    <div style="position:absolute; top:446px; left:82px; z-index:1">
                         <a href = "{$path}Utente/visualizzaProfilo">
                         <span class="txt1 p-b-40">
                         torna Inidietro

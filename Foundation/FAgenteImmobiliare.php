@@ -37,4 +37,5 @@ class FAgenteImmobiliare extends FUtente
     {
         return self::$idString;
     }
+
 }

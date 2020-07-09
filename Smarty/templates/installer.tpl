@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <title>Recupera Password</title>
+    <title>Installazione</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -35,33 +35,70 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path}Utente/forgotPassword" method="POST" class="login100-form validate-form flex-sb flex-w">
+            <form action="{$path} method="POST" class="login100-form validate-form flex-sb flex-w">
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
 
                 <span class="login100-form-title p-b-32">
                         <br>
-
-						Recupera Password
+						Installazione
 					</span>
+
+                <span class="txt1 p-b-11"> Scegli il nome del database </span>
+
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Scrivere il nome del Database">
+                    <input class="input100" type="text" required name="nomeDB"  >
+                    <span class="focus-input100"> </span>
+                </div>
+
+                <span class="txt1 p-b-11"> Nome Utente </span> <small> (database)</small>
+
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Scrivere il nome utente per accedere al Database">
+                    <input class="input100" type="text" required name="usernameDB"  >
+                    <span class="focus-input100"> </span>
+                </div>
+
+
+                <span class="txt1 p-b-11"> Password </span> <small> (database)</small>
+
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Scrivere la password per accedere al Database">
+                    <input class="input100" type="text" required name="passwordDB" placeholder="**********">
+                    <span class="focus-input100"> </span>
+                </div>
+
+                <span class="txt1 p-b-11"> Email Amministratore </span> <small> (non modificabile)</small>
+
+                <div class="wrap-input100 validate-input m-b-36" data-validate = "Email dell'admin per il login">
+                    <input class="input100" type="text" required value="admin@admin.it"  readonly>
+                    <span class="focus-input100"> </span>
+                </div>
 
 
                 <span class="txt1 p-b-11">
-						email
+						Scegli la password dell'Amministratore
 					</span>
 
-                <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-                    <input class="input100" type="text" required name="email"  >
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Scrivere la password per il login dell'Amministratore">
+                    <input class="input100" type="text" required name="password" placeholder="**********">
                     <span class="focus-input100"> </span>
+                </div>
+
+                <div class="flex-sb-m w-full p-b-48">
+                    <div class="contact100-form-checkbox">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <label class="label-checkbox100" for="ckb1">
+                            Popola il Database
+                        </label>
+                    </div>
+
                 </div>
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn">
-                        Conferma
+                        Installa
                     </button>
                 </div>
-
 
 
 
@@ -73,7 +110,6 @@
 
 
 
-<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
 <script src="{$path}Smarty/others/login/vendor/jquery/jquery-3.2.1.min.js"></script>

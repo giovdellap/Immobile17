@@ -9,8 +9,13 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Immobili</title>
-
+    {if $ti === 'Vendita'}
+    <title>Vendita</title>
+    {elseif $ti === 'Affitto'}
+    <title>Affitto</title>
+    {else}
+    <title>Tutti gli Immobili</title>
+    {/if}
     <!-- Favicon  -->
     <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
 

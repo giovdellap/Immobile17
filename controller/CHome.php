@@ -24,7 +24,8 @@ class CHome
         {
             $immobili = FPersistentManager::getImmobiliAttivi();
 
-            $agenti = FPersistentManager::visualizzaUtenti('AGENTE');
+            $agentii = FPersistentManager::visualizzaUtenti('AGENTE');
+            $agenti = array_slice($agentii,0, 3);
 
 
             if(CSessionManager::sessionExists()) {

@@ -153,7 +153,7 @@
             <div class="col-12">
                 <div class="section-heading">
                     <h2>incontra il nostro team</h2>
-                    <p></p>
+                    <p>i nostri migliori Agenti Immobiliari</p>
                 </div>
             </div>
         </div>
@@ -161,8 +161,7 @@
 
         <div class="row justify-content-center">
 
-            {foreach $agenti as $agente}
-
+                {foreach $agenti as $agente}
 
             <!-- Single Team Member -->
             <div class="col-12 col-sm-6 col-lg-4">

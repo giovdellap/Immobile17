@@ -47,7 +47,7 @@ class VHome
     /*funzione che serve a testare i templates di prova (da rimuovere)*/
     public static function provatpl(Smarty $smarty)
     {
-        $smarty->display('forgotPassword.tpl');
+        $smarty->display('installer.tpl');
     }
 
 }

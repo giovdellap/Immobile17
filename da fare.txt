@@ -5,17 +5,15 @@ COSE DA FARE:
 
 Admin:
 -Aggiunta immagine Utente (abbriele)
--tastini(marco)
+
 
 Utente:
 -ricordami?
--password criptata(giovanni)
--sistemare gli agenti in about as(quasi  marco)
+-risolvere il mancato caricamento della foto
 
 Immobili:
 -advanceSearch
 
--API (fatto!!!)
 -DOCUMENTAZIONE:
     -UML
     -Commenti PHP DOC
