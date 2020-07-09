@@ -110,7 +110,15 @@ class VSenderProxy
 
         }
         else
-            VImmobile::visualizza($this->getSmarty(), $immobile);
+        {
+            if (!isset($this->utente))
+                $tipoUtente = 'VISITATORE';
+            elseif ($this->utente instanceof MCliente)
+                $tipoUtente='CLIENTE';
+            else $tipoUtente = 'AGENTE';
+            VImmobile::visualizza($this->getSmarty(), $immobile, $tipoUtente);
+        }
+
     }
 
     public function visualizzaImmobili(array $immobili)
@@ -147,7 +155,7 @@ class VSenderProxy
     {
         if($this->api == true)
         {
-            echo 'cacca';
+
         }
         else VUtente::loginForm($this->getSmarty());
     }
@@ -218,6 +226,23 @@ class VSenderProxy
 
         }
         else VUtente::showModificaPassword($this->getSmarty());
+    }
+
+    public function forgotPassword()
+    {
+        if($this->api == true)
+        {
+
+        }
+        else VUtente::showForgotPassword($this->getSmarty());
+    }
+
+    public function forgotPasswordForm()
+    {
+        if ($this->api == true) {
+
+        }
+        else VUtente::formForgotPassword($this->getSmarty());
     }
 
     private function getSmarty():Smarty

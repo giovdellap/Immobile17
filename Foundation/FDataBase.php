@@ -52,14 +52,20 @@ class FDataBase
             $this->db->beginTransaction();
             $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
 
+            echo('peni neri: ' . $lastID);
             $stmt = $this->db->prepare($query);
-            $foundation::bind($stmt, $model, $foundation::calculateNewID($lastID));
+            if ($lastID === '0')
+                $newId = $foundation::getID() . strval(1);
+            else
+                $newId = $foundation::calculateNewID($lastID);
+            echo('peni verdastri: ' . $newId);
+            $foundation::bind($stmt, $model, $newId);
 
             $stmt->execute();
-            //print_r($stmt->errorInfo());
+            print_r($stmt->errorInfo());
             $this->db->commit();
             $this->closeDbConnection();
-            //print_r($this->db->errorInfo());
+            print_r($this->db->errorInfo());
             return true;
         } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
@@ -72,6 +78,8 @@ class FDataBase
     {
         $query = "SELECT id FROM " . $table . " GROUP BY " . "id" . " ORDER BY " . "id";
         $result = $this->executeLoadQuery($query);
+        if (count($result) == 0)
+            return 0;
         $idCode = str_split($result[0]['id'], 2 )[0];
         $numbers = [];
         foreach ($result as &$item)
@@ -198,7 +206,6 @@ class FDataBase
         try {
             $this->db->beginTransaction();
             $query = " UPDATE " . $foundation::getTable() . " SET " . $field . "='" . $newvalue . "' WHERE " . $searchfield . "='" . $searchparam . "';";
-            echo($query);
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();
@@ -302,6 +309,13 @@ class FDataBase
     public function loadAppInBetween($foundation, string $field, string $param, string $inizio, string $fine)
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "' AND " . "data" . " BETWEEN '" . $inizio . "' AND '" . $fine . "';";
+
+        return $this->executeLoadQuery($query);
+    }
+
+    public function loadAppWeek($foundation, string $inizio, string $fine)
+    {
+        $query = " SELECT * FROM " . $foundation::getTable() . " WHERE data BETWEEN '" . $inizio . "' AND '" . $fine . "';";
 
         return $this->executeLoadQuery($query);
     }

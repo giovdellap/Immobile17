@@ -32,6 +32,12 @@ class FMediaImmobile extends FObject
         return self::$values;
     }
 
+    public static function getID(): string
+    {
+        return self::$idString;
+    }
+
+
     public static function storeMedia(MMediaImmobile $mediaImmobile):bool
     {
         $db=FDataBase::getInstance();

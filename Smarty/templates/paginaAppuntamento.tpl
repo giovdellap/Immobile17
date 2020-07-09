@@ -129,9 +129,9 @@
                             <h4>DATA:</h4>
                             <p>{$appuntamento->getOrarioInizio()->getDateFormat()}</p>
                             <h5>ORA INIZIO: </h5>
-                            <p>{$appuntamento->getOrarioInizio()->getOrario()}</p>
+                            <p>{$appuntamento->getOrarioInizio()->getTimeFormat()}</p>
                             <h5>ORA FINE: </h5>
-                            <p> {$appuntamento->getOrarioFine()->getOrario()}</p>
+                            <p> {$appuntamento->getOrarioFine()->getTimeFormat()}</p>
                         </div>
                         </div>
                     </div>

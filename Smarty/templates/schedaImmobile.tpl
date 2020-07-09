@@ -54,9 +54,8 @@
                 <div class="single-listings-sliders owl-carousel">
 
                     {foreach $immobile->getImmagini() as $imgs}
-
                     <!-- Single Slide -->
-                        <img src="{$imgs->viewImageHTML()}" alt="">
+                        <img src="{$imgs->viewImageHTML()}" alt="PIPPA">
                    {/foreach}
                 </div>
             </div>
@@ -71,7 +70,7 @@
                     </div>
                     <h5>{$immobile->getNome()}</h5>
                     <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$immobile->getIndirizzo()}</p>
-                    <p> {$immobile->getDescrizioneVista()}</p>
+                    <p style="text-align: justify;"> {$immobile->getDescrizioneVista()}</p>
                     <!-- Meta -->
                     <div class="property-meta-data d-flex align-items-end">
                         <div class="new-tag">
@@ -84,9 +83,15 @@
                     </div>
                     <br>
                     <br>
-                    <div class="listings-btn-groups">
-                        <a href="{$path}Immobile/calendario/id/{$immobile->getId()}" class="btn south-btn">prenota un appuntamento</a>
 
+                    <div class="listings-btn-groups">
+                        {if $tipoUtente == 'CLIENTE' && $utente->isAttivato()}
+                            <a href="{$path}Immobile/calendario/id/{$immobile->getId()}" class="btn south-btn">prenota un appuntamento</a>
+                        {elseif $tipoUtente == 'VISITATORE'}
+                            <a href="{$path}Utente/login" class="btn south-btn">prenota un appuntamento</a>
+                        {elseif $tipoUtente == 'CLIENTE' && !$utente->isAttivato()}
+                            <a onclick="alert('Verifica il tuo Account');" class="btn south-btn">prenota un appuntamento</a>
+                        {/if}
                     </div>
                 </div>
             </div>
@@ -97,7 +102,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="listings-maps mt-80">
-                        <div id="googleMap" style="overflow: visible"></div>
+                        <div id="googleMap" ></div>
                 </div>
             </div>
         </div>

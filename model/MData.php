@@ -233,6 +233,13 @@ class MData
         echo ('lalala '.$minuto);
     }
 
+    public function getTimeFormat(): string
+    {
+        $ora = intval($this->getOrario());
+        $minuto = round(($this->getOrario() - $ora), 2)*100;
+        return strval($this->get2digit($ora)) . ":" . strval($this->get2digit($minuto));
+    }
+
 
 
 }

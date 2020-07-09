@@ -155,6 +155,16 @@ class FAppuntamento extends FObject
             $to_return[] = self::unbindAppuntamento($row);
         return $to_return;
     }
+
+    public static function getAppWeek(MData $inizio, MData $fine): array
+    {
+        $db = FDataBase::getInstance();
+        $db_result = $db->loadAppWeek(self::class, $inizio->getDateString(), $fine->getDateString());
+        $to_return = [];
+        foreach ($db_result as $row)
+            $to_return[] = self::unbindAppuntamento($row);
+        return $to_return;
+    }
 }
 
 

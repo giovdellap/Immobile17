@@ -72,6 +72,7 @@ class CUtente
         if (VReceiverProxy::getRequest())
         {
             $senderProxy = VSenderProxy::getInstance();
+            $senderProxy->setApi($api);
             $senderProxy->registrationForm();
         }
         else if (VReceiverProxy::postRequest()) {
@@ -235,6 +236,15 @@ class CUtente
             FPersistentManager::modificaUtente($utente);
             CMail::sendForgotPasswordEmail($utente, $password);
 
+            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy->setApi($api);
+            $senderProxy->forgotPassword();
+        }
+        elseif(VReceiverProxy::getRequest())
+        {
+            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy->setApi($api);
+            $senderProxy->forgotPasswordForm();
         }
     }
 

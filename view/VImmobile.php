@@ -4,8 +4,9 @@
 class VImmobile
 {
 
-    public static function visualizza(Smarty $smarty, MImmobile $immobile)
+    public static function visualizza(Smarty $smarty, MImmobile $immobile, string $tipoUtente)
     {
+        $smarty->assign('tipoUtente', $tipoUtente);
         $smarty = VSmartyFactory::searchBarSmarty($smarty, array());
         $smarty->assign("immobile", $immobile);
         $smarty->display("schedaImmobile.tpl");

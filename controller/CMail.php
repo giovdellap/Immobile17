@@ -48,7 +48,7 @@ class CMail
         $mailer->isSMTP();
         $mailer->isHTML(true);
 
-        $mailer->SMTPDebug = 2;
+        $mailer->SMTPDebug = 0;
         $mailer->SMTPAuth   = true;
         $mailer->SMTPSecure = 'ssl';
         $mailer->SMTPAutoTLS = false;

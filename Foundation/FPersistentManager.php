@@ -343,6 +343,11 @@ class FPersistentManager
         return FAppuntamento::getAppuntamenti();
     }
 
+    public static function loadAppWeek(MData $inizio, MData $fine):array
+    {
+        return FAppuntamento::getAppWeek($inizio, $fine);
+    }
+
     /**
      * Aggiunge l'MMedia passato come parametro al DB
      * @param MMedia $media
@@ -362,6 +367,8 @@ class FPersistentManager
     {
         return FMedia::removeMedia($id);
     }
+
+
 
 
 

@@ -34,9 +34,9 @@
             <div class="col-12">
                 <div class="breadcumb-content">
 
-                    {if $immobili[0]->getTipoAnnuncio() == 'Vendita'}
+                    {if $ti === 'Vendita'}
                         <h3 class="breadcumb-title">immobili In Vendita</h3>
-                    {elseif $immobili[0]->getTipoAnnuncio() == 'Affitto'}
+                    {elseif $ti === 'Affitto'}
                         <h3 class="breadcumb-title">immobili In Affitto</h3>
                     {else}
                         <h3 class="breadcumb-title">immobili</h3>

@@ -62,6 +62,11 @@ class VUtente
 
     public static function showForgotPassword(Smarty $smarty)
     {
+        $smarty->display('invioEmailRecuperoPwd.tpl');
+    }
+
+    public static function formForgotPassword(Smarty $smarty)
+    {
         $smarty->display('forgotPassword.tpl');
     }
 

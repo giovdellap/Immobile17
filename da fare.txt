@@ -4,24 +4,18 @@ COSE DA FARE:
 -APERITIVO POST ESAME
 
 Admin:
--Calendario per aggiunta appuntamento (fatto!)
 -Aggiunta immagine Utente (abbriele)
+-tastini(marco)
 
 Utente:
--link al calendario Utente(fatto!)
--modifica password(fatto!)
--forgot password (manca il collegamento)
--messaggi di errore di login e registrazione(fatto!)
 -ricordami?
--password criptata
--sistemare gli agenti in about ass
+-password criptata(giovanni)
+-sistemare gli agenti in about as(quasi  marco)
 
 Immobili:
--Mappa (fatto!)
--togliere il new da quelle in affitto
 -advanceSearch
 
--API -----> DA VEDERE ASSOLUTAMENTE DOMANI!!!
+-API (fatto!!!)
 -DOCUMENTAZIONE:
     -UML
     -Commenti PHP DOC

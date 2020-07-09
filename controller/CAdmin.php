@@ -14,8 +14,11 @@ class CAdmin
                     $immobili = FPersistentManager::visualizzaImmobili();
                     $clienti = FPersistentManager::visualizzaUtenti('CLIENTE');
                     $agenti = FPersistentManager::visualizzaUtenti('AGENTE');
+                    $inizio = MData::getToday();
+                    $fine = MData::shiftedData(MData::getToday(),7);
+                    $appuntamenti =FPersistentManager::loadAppWeek($inizio, $fine);
                     $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
-                    VAdmin::showHomepage($smarty, $immobili, $clienti, $agenti);
+                    VAdmin::showHomepage($smarty, $immobili, $clienti, $agenti, $appuntamenti);
                 }
                 else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
             }
@@ -449,5 +452,6 @@ class CAdmin
         }
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
+
 
 }

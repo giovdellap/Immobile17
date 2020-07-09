@@ -164,6 +164,13 @@ class MImmobile
         //return str_split($this->descrizione,50)[0];
     }
 
+
+
+    public function getDescrizioneVista(): string
+    {
+        return str_replace("\n", "<br>", $this->descrizione);
+    }
+
     /**
      * @return array
      */
@@ -268,8 +275,5 @@ class MImmobile
         $this->list_appuntamenti = $list_appuntamenti;
     }
 
-    public function getDescrizioneVista(): string
-    {
-        return str_replace("\n", "<br>", $this->descrizione);
-    }
+
 }

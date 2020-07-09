@@ -77,7 +77,7 @@
                     </div>
 
                     <div>
-                        <a href="{$path}Utente/forgotPassword" class="txt3">
+                        <a onclick="forgotForm();" class="txt3">
                             Forgot Password?
                         </a>
                     </div>
@@ -115,7 +115,14 @@
 
 
 <div id="dropDownSelect1"></div>
+<script>
+    function forgotForm()
+    {
+        window.location.href="{$path}"+"Utente/forgotPassword";
 
+    }
+
+</script>
 <!--===============================================================================================-->
 <script src="{$path}Smarty/others/login/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

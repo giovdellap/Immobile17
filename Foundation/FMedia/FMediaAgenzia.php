@@ -34,6 +34,12 @@ class FMediaAgenzia extends FObject
         return self::$values;
     }
 
+    public static function getID(): string
+    {
+        return self::$idString;
+    }
+
+
 
     public static function storeMedia(MMediaAgenzia $mediaAgenzia):bool
     {
