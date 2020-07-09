@@ -233,7 +233,6 @@ class CAdmin
                 {
                     $utente = FPersistentManager::visualizzaUtente(VReceiverProxy::generalId());
                     $utente->setAttivato(VReceiverProxy::getAttivaorNot());
-                    echo("cacca: ".VReceiverProxy::getAttivaorNot());
                     FPersistentManager::modificaUtente($utente);
                     if($utente instanceof MCliente)
                         header('Location: '.$GLOBALS['path'].'Admin/visualizzaClienti');

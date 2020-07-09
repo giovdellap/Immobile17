@@ -194,7 +194,6 @@ class CUtente
         {
             $cliente = FPersistentManager::visualizzaUtente(VReceiverProxy::getParametersId($parameters));
             $codice = VReceiverProxy::getParametersCode($parameters);
-            echo('codice: '.$codice);
 
             if(FPersistentManager::confermaCodice($cliente, $codice))
             {
