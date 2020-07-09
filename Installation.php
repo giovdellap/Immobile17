@@ -1,5 +1,5 @@
 <?php
-
+require_once "DBInstaller.php";
 
 class Installation
 {
@@ -26,7 +26,12 @@ class Installation
                 setcookie('verifica', '',time()-3600);
                 setcookie('checkjs', '',time()-3600);
                 // si procede con l'installazione e il popolamento del db
-                static::installDB();
+                DBInstaller::installDB();
+
+                $admin = FAmministratore::getAmministratore();
+                $admin->setPassword(VReceiverProxy::getPasswordAdmin());
+                FAmministratore::modificaAmministratore($admin);
+
                 header ('Location: '.$GLOBALS['path']);
             }
 
