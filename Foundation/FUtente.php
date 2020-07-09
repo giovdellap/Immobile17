@@ -155,7 +155,7 @@ class FUtente extends FObject
         if($utente->getEmail() != $oldUtente->getEmail())
             $mods["mail"] = $utente->getEmail();
         if($utente->getPassword() != $oldUtente->getPassword())
-            $mods["password"] = password_hash($utente->getPassword());
+            $mods["password"] = password_hash($utente->getPassword(), PASSWORD_BCRYPT);
         if($utente->getDataNascita() != $oldUtente->getDataNascita())
             $mods["datanascita"] = $utente->getDataNascita()->getDateString();
         if($utente->getIscrizione() != $oldUtente->getIscrizione())
