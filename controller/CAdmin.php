@@ -92,11 +92,7 @@ class CAdmin
             } else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
         }
     }
-public static function uploadImage($immobile)
-{
-    FPersistentManager::addMedia(VImageReceiver::uploadImageImmobili(FPersistentManager::visualizzaImmobile($immobile->getId())));
 
-}
     public static function attivazioneImmobile()
     {
         if(CSessionManager::sessionExists())
@@ -308,10 +304,17 @@ public static function uploadImage($immobile)
                 }
                 elseif (VReceiverProxy::postRequest())
                 {
-                    FPersistentManager::registrazione(VReceiverProxy::aggiuntaUtente());
-                    if(VReceiverProxy::aggiuntaUtente() instanceof MCliente)
-                        header('Location: '.$GLOBALS['path'].'Admin/visualizzaClienti');
-                    else header('Location: '.$GLOBALS['path'].'Admin/visualizzaAgenti');
+                    $newUtente=VReceiverProxy::aggiuntaUtente();
+                    FPersistentManager::registrazione($newUtente);
+                    $utenteId=FPersistentManager::loadIDbyEMail($newUtente->getEmail());
+                    FPersistentManager::addMedia(VImageReceiver::uploadImage(FPersistentManager::visualizzaUtente($utenteId)));
+                    if(VReceiverProxy::aggiuntaUtente() instanceof MCliente) {
+
+                        header('Location: ' . $GLOBALS['path'] . 'Admin/visualizzaClienti');
+                    }
+                    else
+                        header('Location: '.$GLOBALS['path'].'Admin/visualizzaAgenti');
+
                 }
                 else header('Location: ' . $GLOBALS['path']);
             }
@@ -319,6 +322,7 @@ public static function uploadImage($immobile)
         }
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
+
 
     public static function visualizzaAgenzia()
     {
