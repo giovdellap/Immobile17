@@ -1,3 +1,4 @@
+
 <script>
     function advanceSearchScript(parameters)
     {
@@ -76,8 +77,8 @@
                                     <p>Prezzo massimo: <br> € <span id="outputPrezzo"> </span></p>
                                 </div>
                                 <div class="row">
-                                    <div class="slider-range" >
-                                        <input type="range"  min="{$pmin}" max="300000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
+                                    <div class="myslider" >
+                                        <input type="range"  min="{$pmin}" max="1000000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
                                     </div>
                                 </div>
 
@@ -87,38 +88,14 @@
                                     <p>Grandezza minima: <br> mq <span id="outputGrandezza"> </span></p>
                                 </div>
                                 <div class="row">
-                                    <div class="slider-range">
+                                    <div class="myslider">
 
                                         <input  type="range" min="{$gmin}" max="2000" value="{$gmax}" class="" name="gmax" id="grandezza">
                                     </div>
                                 </div>
                             </div>
 
-                            <!--<div class="col-12 col-md-8 col-lg-12 col-xl-4 d-flex">
-                                 Space Range
-                                <div class="slider-range">
-                                    <div data-min="{$gmin}" data-max="{$gmax}" data-unit=" mq" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="0" data-value-max="2000">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                    <div class="range">{$gmin} mq - {$gmax} mq</div>
-                                </div>
 
-                                 Distance Range
-                                <div class="slider-range">
-                                    <div  data-min="{$pmin}" data-max="{$pmax}" data-unit=" € " class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="100" data-value-max="1000000">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                    <div class="range">{$pmin} € - {$pmax} € </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-12 col-lg-12 col-xl-10 d-flex">
-                            </div>
-
-                            <div class="col-12 col-md-6 col-lg-12 col-xl-2 d-flex "> -->
                                 <!-- Submit -->
                                 <div class="form-group mb-0">
                                     <button type="submit" class="btn south-btn">Cerca</button>

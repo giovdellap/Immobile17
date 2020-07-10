@@ -10,7 +10,10 @@ Utente:
 Immobili:
 -advanceSearch
 
+SQL:
+-tabbbella BBBBase
+-quella per popolare
+
 -DOCUMENTAZIONE:
     -UML
     -Commenti PHP DOC
-    -INSTALLER

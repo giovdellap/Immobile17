@@ -20,7 +20,9 @@
     <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
 
     <!-- Style CSS -->
+    <link rel="stylesheet" href="{$path}Smarty/css/mySliderRange.css">
     <link rel="stylesheet" href="{$path}Smarty/style.css">
+
 
 </head>
 

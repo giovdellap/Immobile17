@@ -61,12 +61,16 @@ class VSmartyFactory
         $smarty->assign("tipoAnnuncio", self::listTipoAnnuncio($parameters["ti"]) );
         if(!key_exists('pmin', $parameters))
             $smarty->assign('pmin', 0);
+        else $smarty->assign('pmin',$parameters['pmin']);
         if(!key_exists('pmax', $parameters))
             $smarty->assign('pmax', 1000000);
+        else $smarty->assign('pmax',$parameters['pmax']);
         if(!key_exists('gmin', $parameters))
             $smarty->assign('gmin', 0);
+        else $smarty->assign('gmin',$parameters['gmin']);
         if(!key_exists('gmax', $parameters))
             $smarty->assign('gmax', 2000);
+        else $smarty->assign('gmax',$parameters['gmax']);
         return $smarty;
     }
 

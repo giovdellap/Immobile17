@@ -336,7 +336,8 @@ class CAdmin
                     $newUtente=VReceiverProxy::aggiuntaUtente();
                     FPersistentManager::registrazione($newUtente);
                     $utenteId=FPersistentManager::loadIDbyEMail($newUtente->getEmail());
-                    FPersistentManager::addMedia(VImageReceiver::uploadImage(FPersistentManager::visualizzaUtente($utenteId)));
+                    if(VImageReceiver::imgIsUploaded())
+                        FPersistentManager::addMedia(VImageReceiver::uploadImage(FPersistentManager::visualizzaUtente($utenteId)));
                     if(VReceiverProxy::aggiuntaUtente() instanceof MCliente) {
                         header('Location: ' . $GLOBALS['path'] . 'Admin/visualizzaClienti');
                     }
