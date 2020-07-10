@@ -1,6 +1,8 @@
 <?php
 
 
+
+
 class FDataBase
 {
 
@@ -12,10 +14,15 @@ class FDataBase
 
     private function __construct()
     {
+        $dbName=$GLOBALS['database'];
+        $dbUser=$GLOBALS['username'];
+        $dbPassword=$GLOBALS['password'];
         try {
-            $this->db = new PDO ("mysql:dbname=" . "agenzia_immobiliare" .
-                ";host=127.0.0.1;", "root", "");
-        } catch (PDOException $e) {
+            $this->db = new PDO ("mysql:dbname=" . $dbName . "; host=127.0.0.1; charset=utf8;",
+                $dbUser, $dbPassword) ;
+        }
+
+        catch (PDOException $e) {
             echo "Errore costruttore FDatabase: " . $e->getMessage();
             die;
         }

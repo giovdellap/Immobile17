@@ -4,7 +4,7 @@
 class DBInstaller
 {
     /**
-     * Creazione del file config.inc.php per l'accesso e la creazione del db
+     * Creazione del file confDB.conf.php per l'accesso e la creazione del db
      */
     static function installDB(){
         try
@@ -22,7 +22,7 @@ class DBInstaller
             $db->exec($query);
             $db->commit();
 
-            $file = fopen('config.inc.php', 'c+');
+            $file = fopen('confDB.conf.php', 'c+');
             $script = '<?php $GLOBALS[\'database\']= \'' . $dbName . '\'; 
                 $GLOBALS[\'username\']=  \'' . $dbUsername . '\'; 
                 $GLOBALS[\'password\']= \'' . $dbPassword . '\';?>';

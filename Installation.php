@@ -14,7 +14,7 @@ class Installation
 
             $smarty = VSmartyFactory::basicSmarty();
             // controllo versione PHP
-            if (version_compare(PHP_VERSION,'7.0.0' , '<' ))
+            if (version_compare(PHP_VERSION,'7.4.0' , '<' ))
                 VSmartyFactory::errorSmarty($smarty, 'PHP')->display('installazione.tpl');
             // controllo cookie
             if (!isset($_COOKIE['verifica']))
@@ -43,7 +43,7 @@ class Installation
      */
     static function verificaInstallazione(){
         $verifica = false;
-        if(file_exists('config.inc.php'))
+        if(file_exists('confDB.conf.php'))
             $verifica = true;
         return $verifica;
     }
