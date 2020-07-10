@@ -18,7 +18,7 @@ class DBInstaller
             $query = 'DROP DATABASE IF EXISTS ' .$dbName. '; 
                 CREATE DATABASE ' . $dbName . ' ; 
                 USE ' . $dbName . ';' . 'SET GLOBAL max_allowed_packet=16777216;';
-            $query = $query . file_get_contents('sql/immobile17.sql');
+            $query = $query . file_get_contents('immobile17.sql');
             $db->exec($query);
             $db->commit();
 

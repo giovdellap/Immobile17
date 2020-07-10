@@ -81,7 +81,8 @@ class CUtente
 
             if ($db_result === "OK") {
                 CSessionManager::createSession(FPersistentManager::loadIDbyEMail($utente->getEmail()));
-                FPersistentManager::addMedia(VImageReceiver::uploadImage(CSessionManager::getUtenteLoggato()));
+                if(VImageReceiver::imgIsUploaded())
+                    FPersistentManager::addMedia(VImageReceiver::uploadImage(CSessionManager::getUtenteLoggato()));
                 self::confermationEmail(CSessionManager::getUtenteLoggato());
 
                 $senderProxy = VSenderProxy::getInstance();

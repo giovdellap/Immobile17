@@ -105,4 +105,8 @@ class VImageReceiver
                 return false;
         }
     }
+    public static function imgIsUploaded()
+    {
+        return  is_uploaded_file($_FILES["propic"]["tmp_name"]);
+    }
 }
