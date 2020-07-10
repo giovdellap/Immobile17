@@ -13,6 +13,12 @@ class VAdmin
         $smarty->display('adminPage.tpl');
     }
 
+    public static function showPasswordAdmin(Smarty $smarty)
+    {
+        $smarty->assign('toAppend', 'adminModificaPassword.tpl');
+        $smarty->display('adminPage.tpl');
+    }
+
     public static function showImmobili(Smarty $smarty,array $immobili)
     {
         $smarty->assign('immobili', $immobili);

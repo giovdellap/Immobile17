@@ -27,6 +27,33 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
+    public static function modificaPassword()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::getRequest())
+                {
+                    $smarty = VSmartyFactory::adminSmarty(CSessionManager::getUtenteLoggato());
+
+                    VAdmin::showPasswordAdmin($smarty);
+                }
+                else if(VReceiverProxy::postRequest())
+                {
+                    $admin = CSessionManager::getUtenteLoggato();
+                    $admin->setPassword(VReceiverProxy::getPasswordAdmin());
+                    FPersistentManager::modificaAmministratore($admin);
+
+                    header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+                }
+            }
+            //ERRORE DA VEDERE
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
+
     // ---- IMMOBILE ----
 
     public static function immobiliAttivi()
@@ -120,7 +147,7 @@ class CAdmin
 
     public static function visualizzaImmobile(string $id)
     {
-        if(CUtente::isLogged())
+        if(CSessionManager::sessionExists())
         {
             if(CSessionManager::adminLogged())
             {

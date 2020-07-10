@@ -88,7 +88,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="slider-range">
-                                        <input class="ui-slider" type="range" min="{$gmin}" max="2000" value="{$gmax}" class="slider2" name="gmax" id="grandezza">
+
+                                        <input  type="range" min="{$gmin}" max="2000" value="{$gmax}" class="" name="gmax" id="grandezza">
                                     </div>
                                 </div>
                             </div>

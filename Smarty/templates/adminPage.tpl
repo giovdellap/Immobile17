@@ -143,6 +143,11 @@
                 <i class="fas fa-info-circle nav-icon"> </i>
                 <p>Visualizza</p>
               </a>
+              <a href="{$path}Admin/modificaPassword" class="nav-link">
+                <i class="fas fa-info-circle nav-icon"> </i>
+                <p>Modifica Admin</p>
+              </a>
+
           </ul>
           </li>
 

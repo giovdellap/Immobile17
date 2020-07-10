@@ -14,7 +14,7 @@ class FAmministratore
         $stmt->bindValue(':nome', $obj->getNome(), PDO::PARAM_STR);
         $stmt->bindValue(':cognome', $obj->getCognome(), PDO::PARAM_STR);
         $stmt->bindValue(':mail', $obj->getMail(), PDO::PARAM_STR);
-        $stmt->bindValue(':password', $obj->getPassword(), PDO::PARAM_STR);}
+        $stmt->bindValue(':password', password_hash($obj->getPassword(), PASSWORD_BCRYPT), PDO::PARAM_STR);}
 
     /**
      * @return string
@@ -85,8 +85,8 @@ class FAmministratore
                 $mods["cognome"] = $amministratore->getCognome();
             if ($oldAmministratore->getMail() != $amministratore->getMail())
                 $mods["mail"] = $amministratore->getMail();
-            if ($oldAmministratore->getPassword() != $amministratore->getPassword())
-                $mods["password"] = $amministratore->getPassword();
+            if($amministratore->getPassword() != $oldAmministratore->getPassword())
+                $mods["password"] = password_hash($amministratore->getPassword(), PASSWORD_BCRYPT);
 
             foreach (array_keys($mods) as &$key)
             {
@@ -108,7 +108,11 @@ class FAmministratore
     public static function login(string $mail, string $password): bool
     {
         $db = FDataBase::getInstance();
-        return $db->login(self::class, $mail, $password);
+        $amministratore=self::getAmministratore('AM1');
+        if (password_verify($password, $amministratore->getPassword()))
+            return true;
+        else return false;
+
     }
 
     /**
