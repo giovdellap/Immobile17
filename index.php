@@ -5,7 +5,7 @@ require_once 'StartSmarty.php';
 require_once 'Installation.php';
 require_once 'DBInstaller.php';
 
-$GLOBALS["path"] = "/AgenziaImmobiliare/";
+$GLOBALS["path"] = "/Immobile17/";
 
 if(Installation::verificaInstallazione())
 {
