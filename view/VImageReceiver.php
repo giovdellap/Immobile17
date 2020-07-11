@@ -4,7 +4,8 @@
 class VImageReceiver
 {
     public static function uploadImage($utente): MMediaUtente
-    {print_r($_FILES);
+    {
+        //print_r($_FILES);
         $nomeFile = 'propic';
         if(!is_uploaded_file($_FILES[$nomeFile]["tmp_name"])) {
             $nome = "";

@@ -94,7 +94,7 @@ class VSmartyFactory
 
     public static function listTipologie(string $selected):array
     {
-        $tipologie=array("Tutte le Tipologie","Monolocale","Bilocale", "Villa","Mansarda","Garage","Locale");
+        $tipologie=array("Tutte le Tipologie","Monolocale","Bilocale", "Trilocale","Quadrilocale","Appartamento" ,"Villa","Mansarda","Garage","Locale");
         if (array_search($selected,$tipologie)==false)
             return $tipologie;
         else

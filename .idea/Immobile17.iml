@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/PHPMailer/src" isTestSource="false" packagePrefix="PHPMailer\PHPMailer\" />
+      <sourceFolder url="file://$MODULE_DIR$/PHPMailer/test" isTestSource="true" packagePrefix="PHPMailer\Test\" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="@fortawesome/fontawesome-free" level="application" />
+    <orderEntry type="library" name="all" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="ionic" level="application" />
+    <orderEntry type="library" name="ionic.bundle" level="application" />
+    <orderEntry type="library" name="ionicons" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-3.1.1" level="application" />
+    <orderEntry type="library" name="jquerysctipttop" level="application" />
+    <orderEntry type="library" name="show_ads" level="application" />
+  </component>
+</module>

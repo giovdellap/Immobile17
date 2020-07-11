@@ -46,6 +46,9 @@
                                 <option selected disabled>Tutte le tipologie</option>
                                 <option>Monolocale</option>
                                 <option>Bilocale</option>
+                                <option>Trilocale</option>
+                                <option>Quadrilocale</option>
+                                <option>Appartamento</option>
                                 <option>Villa</option>
                                 <option>Mansarda</option>
                                 <option>Garage</option>

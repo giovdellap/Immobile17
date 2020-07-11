@@ -9,6 +9,7 @@ class FImmobile extends FObject
     private static string $idString = "IM";
 
 
+
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',$newId,PDO::PARAM_STR);
@@ -45,7 +46,7 @@ class FImmobile extends FObject
      */
     public static function getID():string
     {
-        return self::$id;
+        return self::$idString;
     }
 
 
