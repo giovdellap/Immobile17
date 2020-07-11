@@ -6,13 +6,13 @@ class Installation
     static function installationStart(){
 
         if (VReceiverProxy::getRequest()){
-            echo('PENIGET');
+
             // viene inviato un cookie per verificare se questi sono abilitati
             setcookie('verifica', 'verifica',time()+3600);
             VSmartyFactory::basicSmarty()->display('installer.tpl');
         }
         else {
-            echo('PENIpost');
+
             $smarty = VSmartyFactory::basicSmarty();
             // controllo versione PHP
             if (version_compare(PHP_VERSION,'7.4.0' , '<' ))
