@@ -148,7 +148,7 @@
 
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/eliminaUtente');
+        form.setAttribute('action', '{$path}'+'Admin/eliminaUtente');
 
         const id = document.createElement('input');
         id.type = 'hidden';

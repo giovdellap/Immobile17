@@ -131,7 +131,7 @@
 
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/attivazioneImmobile');
+        form.setAttribute('action', '{$path}'+'Admin/attivazioneImmobile');
 
         const id = document.createElement('input');
         id.type = 'hidden';
@@ -157,7 +157,7 @@
 
         var form = document.createElement('form');
         form.setAttribute('method', 'post');
-        form.setAttribute('action', '/AgenziaImmobiliare/Admin/eliminaImmobile');
+        form.setAttribute('action', '{$path}'+'Admin/eliminaImmobile');
 
         const id = document.createElement('input');
         id.type = 'hidden';
