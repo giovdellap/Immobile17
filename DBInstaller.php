@@ -21,6 +21,7 @@ class DBInstaller
             $query = $query . file_get_contents('immobile17.sql');
             $db->exec($query);
             $db->commit();
+            print_r($db->errorInfo());
 
             $file = fopen('confDB.conf.php', 'c+');
             $script = '<?php $GLOBALS[\'database\']= \'' . $dbName . '\'; 

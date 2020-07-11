@@ -1,7 +1,3 @@
-<?php
-
-$GLOBALS['database']= 'agenzia_immobiliare';
-$GLOBALS['username']= 'root';
-$GLOBALS['password']= '';
-
-?>
+<?php $GLOBALS['database']= 'immobile17'; 
+                $GLOBALS['username']=  'root'; 
+                $GLOBALS['password']= 'cirodellap';?>

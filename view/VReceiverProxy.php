@@ -267,7 +267,9 @@ class VReceiverProxy
 
     public static function populateDB(): bool
     {
-        return $_POST['populateDB'];
+        if(key_exists('populate', $_POST))
+            return true;
+        else return false;
     }
 
 

@@ -35,7 +35,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form action="{$path} method="POST" class="login100-form validate-form flex-sb flex-w">
+            <form method="post" action="{$path}"  enctype="multipart/form-data" class="login100-form validate-form flex-sb flex-w">
                 <div>
                     <a href="{$path}"><img src="{$path}Smarty/img/core-img/logo_1.png" style="position:absolute; top:15px; left:340px; z-index:1"></a>
                 </div>
@@ -80,13 +80,13 @@
 					</span>
 
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Scrivere la password per il login dell'Amministratore">
-                    <input class="input100" type="text" required name="password" placeholder="**********">
+                    <input class="input100" type="text" required name="passwordAdmin" placeholder="**********">
                     <span class="focus-input100"> </span>
                 </div>
 
                 <div class="flex-sb-m w-full p-b-48">
                     <div class="contact100-form-checkbox">
-                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                        <input class="input-checkbox100" id="ckb1" type="checkbox" name="populate">
                         <label class="label-checkbox100" for="ckb1">
                             Popola il Database
                         </label>
@@ -95,11 +95,11 @@
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn">
+                    <button class="login100-form-btn" type="submit" onclick="document.cookie= 'checkjs=true'">
                         Installa
                     </button>
                 </div>
-
+                <h3> {$error} </h3>
 
 
             </form>
