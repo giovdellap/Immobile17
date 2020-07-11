@@ -41,7 +41,7 @@ class Installation
     /**
      * Funzione che verifica la presenza del cookie di installazione; quindi se l'installazione è stata effettuata
      */
-    static function verificaInstallazione(){
+    public static function verificaInstallazione(){
         $verifica = false;
         if(file_exists('confDB.conf.php'))
             $verifica = true;
