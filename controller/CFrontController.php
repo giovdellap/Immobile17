@@ -21,6 +21,9 @@ class CFrontController
             {
                 $api = true;
                 array_shift($resource);
+                $token = $resource[0];
+                array_shift();
+                CSessionManager::tokenValidation($token);
             }
             $controller = "C" . $resource[0];
             $dir = 'controller';

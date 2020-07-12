@@ -12,15 +12,13 @@ class FMediaCliente extends FObject
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
 
-      //  $path = $_FILES[$obj->getData()]['tmp_name'];
-        //$file=fopen($path,'rb') or die ("Attenzione! Impossibile da aprire!");
+
         $stmt->bindValue(':id',$newId, PDO::PARAM_STR);
         $stmt->bindValue(':nome',$obj->getNome(), PDO::PARAM_STR);
         $stmt->bindValue(':type',$obj->getType(), PDO::PARAM_STR);
         $stmt->bindValue(':immagine', $obj->getData(), PDO::PARAM_LOB);
         $stmt->bindValue(':id_cliente', $obj->getUtente()->getId(), PDO::PARAM_STR);
-        //unset($file);
-       // unlink($path);
+
     }
 
     public static function getTable(): string

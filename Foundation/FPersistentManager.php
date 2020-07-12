@@ -124,6 +124,17 @@ class FPersistentManager
         return FUtente::getUtenti($type);
     }
 
+    // ------- TOKEN -------
+    public static function createToken(string $token)
+    {
+
+    }
+
+    public static function validateToken(string $token):?string
+    {
+
+    }
+
     // -------CODICE -------
 
     public static function addCodice(MCliente $cliente, string $codice)

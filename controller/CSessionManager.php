@@ -46,4 +46,10 @@ class CSessionManager
         session_unset();
         session_destroy();
     }
+
+    public static function tokenValidation()
+    {
+        if(FPersistentManager::validateToken != null)
+            self::createSession(FPersistentManager::validateToken());
+    }
 }

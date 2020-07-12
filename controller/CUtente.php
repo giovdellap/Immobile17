@@ -287,6 +287,12 @@ class CUtente
 
     }
 
-
+    private static function tokenCreator(): string
+    {
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $token = substr(str_shuffle($permitted_chars), 0, 15);
+        FPersistentManager::createToken($token);
+        return $token;
+    }
 
 }
