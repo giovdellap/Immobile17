@@ -59,13 +59,13 @@ class FDataBase
             $this->db->beginTransaction();
             $query = "INSERT INTO " . $foundation::getTable() . " VALUES " . $foundation::getValues();
 
-            echo('peni neri: ' . $lastID);
+
             $stmt = $this->db->prepare($query);
             if ($lastID === '0')
                 $newId = $foundation::getID() . strval(1);
             else
                 $newId = $foundation::calculateNewID($lastID);
-            echo('peni verdastri: ' . $newId);
+
             $foundation::bind($stmt, $model, $newId);
 
             $stmt->execute();

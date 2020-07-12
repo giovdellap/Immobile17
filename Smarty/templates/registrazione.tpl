@@ -49,6 +49,13 @@
                 modulo.password.select()
                 return false
             }
+
+            if (modulo.password.length < 6)
+            {
+                alert("Errore: Inserire una password di almeno 6 caratteri!")
+                modulo.password.focus()
+                return false
+            }
             return true
         }
     </script>
@@ -94,10 +101,15 @@
                 <span class="txt1 p-b-11">
 						Email
 					</span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email">
+                <div class="wrap-input100 validate-input m-b-12" data-validate = "Inserire l'indirizzo Email" >
                     <input class="input100" type="text" required name="email"  >
                     <span class="focus-input100"> </span>
                 </div>
+
+                {if $error === "EMAIL ALREADY EXISTS!"}  <span class="txt1" style="color: red">Attenzione!</span>
+                    <span class="txt3" > Esiste già un account associato a questo indirizzo email</span><br><br>{/if}
+
+
 
                 <span class="txt1 p-b-11">
 						Password
@@ -189,4 +201,5 @@
         }
         return true;
 </script>
+
 </html>

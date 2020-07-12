@@ -64,12 +64,12 @@
 <!-- ##### Breadcumb Area End ##### -->
 
 
-//pseudocode starts here
+<!--pseudocode starts here
 //first, let's create a variable and assign it to the original image's element
 someImage = get the image html element
 
 //tell javascript what to do when that element is clicked
-someImage.onclick =
+someImage.onclick = --->
 <script>change() {
 //executes when the element is clicked
 //at this point you'll already have which element was clicked on

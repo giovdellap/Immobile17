@@ -176,7 +176,7 @@
                                     src="{$path}Smarty/img/icons/avatar.png"
                                 {/if}
 
-                        />
+                                style="height: 315px" />
                     </div>
                     <!-- Team Member Info -->
                     <div class="team-member-info">

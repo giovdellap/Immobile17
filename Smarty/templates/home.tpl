@@ -31,19 +31,7 @@
 <section class="hero-area">
     <div class="hero-slides owl-carousel">
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: url({$imgSlide1});">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center">
-                    <div class="col-12">
-                        <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">Fai goal insieme a Ciro</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: url({$imgSlide2});">
+        <div class="single-hero-slide bg-img" style="background-image: url({$path}Smarty/img/bg-img/home2.jpg);">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
@@ -55,12 +43,25 @@
             </div>
         </div>
         <!-- Single Hero Slide -->
-        <div class="single-hero-slide bg-img" style="background-image: url({$imgSlide3});" >
+        <div class="single-hero-slide bg-img" style="background-image: url({$path}Smarty/img/bg-img/home1.jpg);">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="hero-slides-content">
-                            <h2 data-animation="fadeInUp" data-delay="100ms">collemaggio</h2>
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Sfoglia le nostre proposte</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Hero Slide -->
+        <div class="single-hero-slide bg-img" style="background-image: url({$path}Smarty/img/bg-img/home3.png);" >
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="hero-slides-content">
+                            <h2 data-animation="fadeInUp" data-delay="100ms">Siamo a tua disposizione</h2>
                         </div>
                     </div>
                 </div>
