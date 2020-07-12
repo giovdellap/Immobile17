@@ -125,14 +125,14 @@ class FPersistentManager
     }
 
     // ------- TOKEN -------
-    public static function createToken(string $token)
+    public static function storeToken(string $id, string $token)
     {
-
+        FToken::addToken($id, $token);
     }
 
-    public static function validateToken(string $token):?string
+    public static function verifyToken(string $token):?string
     {
-
+        return FToken::verifyToken();
     }
 
     // -------CODICE -------

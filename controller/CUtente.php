@@ -38,7 +38,6 @@ class CUtente
         $loginUser = VReceiverProxy::loginUser();
         $db_result = FPersistentManager::login($loginUser->getEmail(), $loginUser->getPassword());
         switch ($db_result) {
-
             case "OK ADMIN":
                 CSessionManager::createSession("AM1");
                 CAdmin::homepage();
@@ -46,7 +45,16 @@ class CUtente
 
             case "OK USER":
                 CSessionManager::createSession(FPersistentManager::loadIDbyEMail($loginUser->getEmail()));
-                header('Location: '.$GLOBALS['path']);
+                if($api)
+                {
+                    $token = self::tokenCreator();
+                    FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token);
+                    $senderProxy = VSenderProxy::getInstance();
+                    $senderProxy->setApi($api);
+                    $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
+                    $senderProxy->sendToken($token);
+                }
+                else header('Location: ' . $GLOBALS['path']);
                 break;
 
             case "WRONG EMAIL":

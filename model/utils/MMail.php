@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class MMail
+ * Descrive i parametri delle mail inviate agli utenti
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model/utils
+ */
 class MMail
 {
     private string $recipient;

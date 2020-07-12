@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Class MCalendario
+ * Contiene tutti gli appuntamenti dell'Agenzia.
+ * Permette l'aggiunta di un appuntamento controllando prima che rispetti i parametri imposti tramite i validators.
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model
+ */
 class MCalendario
 {
     private array $appuntamenti;
@@ -8,13 +15,7 @@ class MCalendario
     {
         $this->appuntamenti = array();
     }
-    
-    public function fromFoundation(array $appuntamenti): void
-    {
-        $this->appuntamenti = $appuntamenti;
-        //forse vanno costruite le list_appuntamenti di tutti gli altri a partire da quella generale
-    }
-    
+
     /**
      * Controlla se un appuntamento da aggiungere è compatibile con lo stato del calendario.
      * In caso affermativo, lo aggiunge al calendario e agli appuntamenti di immobile, agente immobiliare e cliente coinvolti.

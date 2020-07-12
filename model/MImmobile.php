@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class MImmobile
+ * Classe che descrive l'immobile e le sue caratteristiche
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model
+ */
 class MImmobile
 {
     private string $id;
@@ -150,6 +155,10 @@ class MImmobile
         $this->descrizione = $descrizione;
     }
 
+    /**
+     * Ritorna una descrizione tagliata al 60esimo carattere
+     * @return string
+     */
     public function getDescrizioneBreve():string
     {
         if(strlen($this->descrizione)<60) {
@@ -164,8 +173,10 @@ class MImmobile
         //return str_split($this->descrizione,50)[0];
     }
 
-
-
+    /**
+     * Restituisce una stringa descrizione con il br dell'html al posto di \n
+     * @return string
+     */
     public function getDescrizioneVista(): string
     {
         return str_replace("\n", "<br>", $this->descrizione);
@@ -179,7 +190,11 @@ class MImmobile
         return $this->immagini;
     }
 
-    public function getPresentationImg()
+    /**
+     * Ritorna la prima immagine dell'immobile in formato base64
+     * @return mixed
+     */
+    public function getPresentationImg(): string
     {
         return $this->immagini[0]->viewImageHTML();
     }

@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class MDataChecker
+ * Contiene metodi per i validators, che controllano la sovrapposizione degli appuntamenti in base agli MData di inizio e fine
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model/utils
+ */
 class MDataChecker
 {
     /**

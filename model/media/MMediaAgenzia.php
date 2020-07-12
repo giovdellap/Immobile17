@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class MMediaAgenzia
+ * Classe che estende MMedia, contiene il parametro MAgenzia e i suoi metodi
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model/media
+ */
 class MMediaAgenzia extends MMedia
 {
     private MAgenzia $agenzia;

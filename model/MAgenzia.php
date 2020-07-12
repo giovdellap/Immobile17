@@ -1,25 +1,20 @@
 <?php
 
-
+/**
+ * Class MAgenzia
+ * Classe che descrive l'Agenzia.
+ * Contiene:
+ *  - Attributi che descrivono l'Agenzia(nome, città, indirizzo...)
+ *  - Liste di tutti i clienti, immobili e agenti immobiliari
+ *  - Un oggetto di tipo MCalendario
+ * Possiede metodi che permettono di interagire con gli attributi e il metodo checkDisponibilità
+ * @access public
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model
+ */
 class MAgenzia
 {
     private string $id;
-
-    /**
-     * @return string
-     */
-    public function getId(): string
-    {
-        return $this->id;
-    }
-
-    /**
-     * @param string $id
-     */
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
     private string $nome;
     private string $citta;
     private string $cap;
@@ -39,6 +34,22 @@ class MAgenzia
         $this->list_Immobili = array();
         $this->calendario = new MCalendario();
         $this->immagini = array();
+    }
+
+    /**
+     * @return string
+     */
+    public function getId(): string
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param string $id
+     */
+    public function setId(string $id): void
+    {
+        $this->id = $id;
     }
 
     /**
@@ -216,7 +227,7 @@ class MAgenzia
      */
     public function removeImmobile(MImmobile $Immobile):void{
 
-        if(in_array($Immobile, $this ->list_Immobilii))
+        if(in_array($Immobile, $this->list_Immobili))
         {
             unset($this->list_Clienti[array_search($Immobile, $this->list_Immobili)]);
         }

@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Class MAmministratore
+ * Classe che descrive un amministratore e gli consente di accedere all'MAgenzia
+ * @access public
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model
+ */
 class MAmministratore
 {
     private String $id;

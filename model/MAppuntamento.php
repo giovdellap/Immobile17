@@ -1,6 +1,12 @@
 <?php
 
-
+/**
+ * Class MAppuntamento
+ * Classe che descrive un appuntamento.
+ * Contiene i parametri dello stesso (cliente, agente, immobile), una data di inizio ed una di fine
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model
+ */
 class MAppuntamento
 {
     private string $id;
@@ -12,7 +18,7 @@ class MAppuntamento
 
 
     /**
-     * Imposta gli attributi della classe
+     * Imposta gli attributi dell'oggetto
      * @param MData $inizio
      * @param MData $fine
      * @param MCliente $cliente

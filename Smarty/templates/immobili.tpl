@@ -64,40 +64,42 @@
 
         <div class="row">
             {foreach $immobili as $item}
-            <!-- Single Featured Property -->
-            <div class="col-12 col-md-6 col-xl-4">
-                <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
-                    <!-- Property Thumbnail -->
-                    <div class="property-thumb"   >
-                        <a href="{$path}Immobile/visualizza/{$item->getId()}"><img src="{$item->getPresentationImg()}" alt=""  style="width: 450px; height: 270px">
+                {if $item->isAttivo()}
+                <!-- Single Featured Property -->
+                <div class="col-12 col-md-6 col-xl-4">
+                    <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms">
+                        <!-- Property Thumbnail -->
+                        <div class="property-thumb"   >
+                            <a href="{$path}Immobile/visualizza/{$item->getId()}"><img src="{$item->getPresentationImg()}" alt=""  style="width: 450px; height: 270px">
 
-                        <div class="tag">
-                            <span>{$item->getTipoAnnuncio()}</span>
-                        </div>
-                        <div class="list-price">
-                            <p>€ {$item->getPrezzo()}</p>
-                        </div>
-                    </div>
-                    <!-- Property Content -->
-                    <div class="property-content">
-                        <h5>{$item->getNome()}</h5>
-                        <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$item->getIndirizzo()}</p>
-                        <p>{$item->getDescrizioneBreve()}</p>
-                        <div class="property-meta-data d-flex align-items-end justify-content-between">
-                            <div class="new-tag">
-                                {if $item->getTipoAnnuncio() == 'Vendita'}
-                                    <img src="{$path}Smarty/img/icons/new.png" alt="">
-                                {/if}
-
+                            <div class="tag">
+                                <span>{$item->getTipoAnnuncio()}</span>
                             </div>
-                            <div class="space">
-                                <img src="{$path}Smarty/img/icons/space.png" alt="">
-                                <span>{$item->getGrandezza()} mq</span>
+                            <div class="list-price">
+                                <p>€ {$item->getPrezzo()}</p>
+                            </div>
+                        </div>
+                        <!-- Property Content -->
+                        <div class="property-content">
+                            <h5>{$item->getNome()}</h5>
+                            <p class="location"><img src="{$path}Smarty/img/icons/location.png" alt="">{$item->getIndirizzo()}</p>
+                            <p>{$item->getDescrizioneBreve()}</p>
+                            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                                <div class="new-tag">
+                                    {if $item->getTipoAnnuncio() == 'Vendita'}
+                                        <img src="{$path}Smarty/img/icons/new.png" alt="">
+                                    {/if}
+
+                                </div>
+                                <div class="space">
+                                    <img src="{$path}Smarty/img/icons/space.png" alt="">
+                                    <span>{$item->getGrandezza()} mq</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                {/if}
             {/foreach}
         </div>
     </div>

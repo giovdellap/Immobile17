@@ -1,7 +1,11 @@
 <?php
 
-
-
+/**
+ * Class MUtente
+ * Descrive gli attributi dell'Utente
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model
+ */
 class MUtente
 {
     private string $nome;
@@ -196,9 +200,12 @@ class MUtente
             return true;
         }
         else return false;
-
     }
 
+    /**
+     * Ritorna nome e cognome intervallati da uno spazio
+     * @return string
+     */
     public function getFullName(): string
     {
         return $this->getNome() . " " . $this->getCognome();

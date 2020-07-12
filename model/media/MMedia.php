@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class MMedia
+ * Contiene le caratteristiche dell'immagine. Il parametro data contiene una stringa in formato base64
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model/media
+ */
 class MMedia
 {
     private string $id;
@@ -66,13 +71,17 @@ class MMedia
     }
 
     /**
-     * @param string $immagine
+     * @param string $data
      */
     public function setData(string $data)
     {
         $this->data = $data;
     }
 
+    /**
+     * Ritorna l'immagine in formato base64
+     * @return string
+     */
     public function viewImageHTML():string
     {
        return  "data:image/" . explode("/", $this->getType())[1] . ";base64," . $this->getData();

@@ -245,6 +245,15 @@ class VSenderProxy
         else VUtente::formForgotPassword($this->getSmarty());
     }
 
+    public function sendToken($token)
+    {
+        if($this->api)
+        {
+
+        }
+
+    }
+
     private function getSmarty():Smarty
     {
         if(isset($this->utente))

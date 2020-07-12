@@ -1,10 +1,16 @@
 <?php
 
-
+/**
+ * Class MData
+ * Gestisce date e orari sotto ogni aspetto.
+ * Contiene un oggetto DateTime e metodi per la sua modifica e visualizzazione.
+ * I metodi per la visualizzazione ritornano stringhe in formati accettati da componenti esterne dei package Foundation e View
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package model
+ */
 class MData
 {
     private DateTime $data;
-
 
     public function __construct(int $anno, int $mese, int $giorno, float $orario)
     {
@@ -116,22 +122,8 @@ class MData
         return self::getMDataFromString(date("Y-m-d"));
     }
 
-    public function getNomeMese()
-    {
-        $mesi=array("Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre");
-        return $mesi[$this->mese-1];
-    }
-
-    public function getNomeGiorno()
-    {
-        $giorni=array("Domenica", "Lunedì", "Martedì", "Mercoledì", "Giovedì" ,"Venerdì", "Sabato");
-        $sett = date("w", mktime(0,0,0,$this->mese, $this->giorno, $this->anno));
-        return $giorni[$sett];
-    }
-
     /**
-     * Converte un oggetto MData in una data in formato YYYY-mm-dd
-     * @param MData $data
+     * Ritorna una stringa data in formato YYYY-mm-dd
      * @return string
      */
     public function getDateString(): string
@@ -139,6 +131,10 @@ class MData
         return date("Y-m-d", $this->data->getTimestamp());
     }
 
+    /**
+     * Ritorna una stringa data in formato dd/mm/YYYY
+     * @return string
+     */
     public function getDateFormat(): string
     {
         return date("d/m/Y", $this->data->getTimestamp());
@@ -152,8 +148,7 @@ class MData
     public static function getMDataFromString(string $str): MData
     {
         list($anno, $mese, $giorno) = explode("-", $str);
-        $data = new MData($anno, $mese, $giorno, 0);
-        return $data;
+        return new MData($anno, $mese, $giorno, 0);
     }
 
     /**
@@ -168,6 +163,13 @@ class MData
         else $this->data->modify("-".abs($days)." days");
     }
 
+    /**
+     * Applica sumDays ad una copia dell'MData passato come parametro e lo ritorna
+     * @param MData $data
+     * @param int $days
+     * @return MData
+     * @throws Exception
+     */
     public static function shiftedData(MData $data, int $days): MData
     {
         $toReturn = $data->dateClone();
@@ -175,6 +177,10 @@ class MData
         return $toReturn;
     }
 
+    /**
+     * Ritorna data e ora in formato accettabile dal calendario presente nella View
+     * @return string
+     */
     public function getFullDataString()
     {
         $ora = date("G", $this->data->getTimestamp());
@@ -195,16 +201,29 @@ class MData
         else return strval($val);
     }
 
+    /**
+     * Ritorna una copia dell'oggetto
+     * @return MData
+     */
     public function dateClone()
     {
         return new MData($this->getAnno(), $this->getMese(), $this->getGiorno(), $this->getOrario());
     }
 
+    /**
+     * Ritorna il giorno della settimana
+     * @return false|string
+     */
     public function getWeekDay()
     {
         return date("w", $this->data->getTimestamp());
     }
 
+    /**
+     * Ritorna un MData da un timeStamp passato come parametro
+     * @param int $timeStamp
+     * @return MData
+     */
     public static function getMdataFromTimestamp(int $timeStamp): MData
     {
         $anno = date("Y", $timeStamp);
@@ -216,6 +235,10 @@ class MData
         return new MData($anno, $mese, $giorno, $orario);
     }
 
+    /**
+     * Ritorna un MData con data e orario attuali
+     * @return MData
+     */
     public static function getToday(): MData
     {
         $ora = date("G");
@@ -233,6 +256,10 @@ class MData
         echo ('lalala '.$minuto);
     }
 
+    /**
+     * Ritorna l'orario in formato hh:mm
+     * @return string
+     */
     public function getTimeFormat(): string
     {
         $ora = intval($this->getOrario());

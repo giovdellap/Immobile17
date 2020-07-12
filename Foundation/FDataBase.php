@@ -403,6 +403,43 @@ class FDataBase
             return false;
         }
     }
+
+    public function addToken(string $id, string $token): bool
+    {
+        try {
+            $this->db->beginTransaction();
+            $query = "DELETE FROM token_login WHERE id_utente ='" . $id . "';";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $this->db->commit();
+            $this->closeDbConnection();
+
+            $this->db->beginTransaction();
+            $query = "INSERT INTO token_login (id_utente,token) VALUES ('" . $id . "','" . $token . "');";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            $this->db->commit();
+            $this->closeDbConnection();
+
+            return true;
+        } catch (PDOException $e) {
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    public function loadToken($id):array
+    {
+        try {
+            $query = "SELECT * FROM token_login ;";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "ATTENTION ERROR: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 
 
