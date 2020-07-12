@@ -3,6 +3,8 @@ COSE DA FARE:
 -PRENDERE 30L
 -APERITIVO POST ESAME
 
+Admin:
+-aggiungere controlli nell'aggiunta immobili e clienti
 
 Utente:
 -ricordami?

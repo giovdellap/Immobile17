@@ -68,13 +68,13 @@ class VImageReceiver
             $immagini=array();
             for($i = 0; $i < $fileCount; $i++) {
 
-                echo "File #" . ($i + 1);
+                //echo "File #" . ($i + 1);
 
-                echo "Name: " . $myFile["name"][$i];
-                echo "Temporary file: " . $myFile["tmp_name"][$i];
-                echo "Type:  " . $myFile["type"][$i];
-                echo "Size: " . $myFile["size"][$i];
-                echo "Error: " . $myFile["error"][$i];
+                //echo "Name: " . $myFile["name"][$i];
+                //echo "Temporary file: " . $myFile["tmp_name"][$i];
+                //echo "Type:  " . $myFile["type"][$i];
+                //echo "Size: " . $myFile["size"][$i];
+                //echo "Error: " . $myFile["error"][$i];
                 $img = $_FILES["my_file"];
                 $name = $img["name"][$i];
                 $type = $img["type"][$i];

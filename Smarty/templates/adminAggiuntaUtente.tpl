@@ -38,7 +38,7 @@
                     <tr>
                         <td>
                             <div class="form-group">
-                                <select class="form-control custom-select" name="tipologia">
+                                <select class="form-control custom-select" name="tipologia" required>
                                     <option selected disabled>Scegli</option>
                                     <option>Cliente</option>
                                     <option>Agente Immobiliare</option>
@@ -47,23 +47,23 @@
                         </td>
                         <td>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nome">
+                                <input type="text" class="form-control" name="nome" required>
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="cognome" >
+                                <input type="text" class="form-control" name="cognome" required>
                             </div>
                         </td>
                         <td>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="email">
+                                <input type="text" class="form-control" name="email" required>
                             </div>
                         </td>
                         <td >
 
                                 <div class="form-group">
-                                    <input type="date" class="form-control" name="date">
+                                    <input type="date" class="form-control" name="date" required>
                                 </div>
 
                         </td>
@@ -71,12 +71,12 @@
                         <td >
                             <div class="form-group">
 
-                                <input type="text" class="form-control" name="password">
+                                <input type="text" class="form-control" name="password" required>
                             </div>
                         </td>
                         <td>
                             <span class="txt1 p-b-7"></span>
-                            <input type="file" name="propic"/>
+                            <input type="file" name="propic" required/>
                         </td>
                         <td>
 

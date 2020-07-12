@@ -17,11 +17,11 @@ class DBInstaller
             $db->beginTransaction();
             $query = 'DROP DATABASE IF EXISTS ' .$dbName. '; 
                 CREATE DATABASE ' . $dbName . ' ; 
-                USE ' . $dbName . ';' . 'SET GLOBAL max_allowed_packet=16777216;';
+                USE ' . $dbName . ';' . 'SET GLOBAL max_allowed_packet=40000000;';
             $query = $query . file_get_contents('immobile17.sql');
             $db->exec($query);
             $db->commit();
-            print_r($db->errorInfo());
+            //print_r($db->errorInfo());
 
             $file = fopen('confDB.conf.php', 'c+');
             $script = '<?php $GLOBALS[\'database\']= \'' . $dbName . '\'; 
@@ -52,6 +52,7 @@ class DBInstaller
             $query = file_get_contents('sql/'.$sqlFile);
             $db->exec($query);
             $db->commit();
+
         }
     }
 }

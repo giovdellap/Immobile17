@@ -89,7 +89,7 @@
         </div>
         <div class="row">
             <div class="col-12">
-                <a href="#" class="btn btn-secondary" style="position:absolute; top:-70px; left:440px; z-index:1">Cancella</a>
+                <a href="{$path}Admin/visualizzaImmobili" class="btn btn-secondary" style="position:absolute; top:-70px; left:440px; z-index:1">Cancella</a>
                 <input type="submit" value="Conferma" class="btn btn-success float-right" style="position:absolute; top:-70px; left:1121px; z-index:1">
             </div>
         </div>

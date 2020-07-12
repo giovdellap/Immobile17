@@ -30,19 +30,19 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="inputName">Nome</label>
-                            <input type="text" id="inputName" class="form-control" name="nome">
+                            <input type="text" id="inputName" class="form-control" name="nome" required>
                         </div>
                         <div class="form-group">
                             <label for="inputName">Città</label>
-                            <input type="text" id="inputName" class="form-control" name="comune">
+                            <input type="text" id="inputName" class="form-control" name="comune" required>
                         </div>
                         <div class="form-group">
                             <label for="inputName">Indirizzo</label>
-                            <input type="text" id="inputName" class="form-control" name="indirizzo">
+                            <input type="text" id="inputName" class="form-control" name="indirizzo" required>
                         </div>
                         <div class="form-group">
                             <label for="inputStatus">Tipologia</label>
-                            <select class="form-control custom-select"  name="tipologia">
+                            <select class="form-control custom-select"  name="tipologia" required>
                                 <option selected disabled>Tutte le tipologie</option>
                                 <option>Monolocale</option>
                                 <option>Bilocale</option>
@@ -58,17 +58,17 @@
 
                         <div class="form-group">
                             <label for="inputName">Dimensione</label>
-                            <input type="text" id="inputName" class="form-control" name="grandezza">
+                            <input type="text" id="inputName" class="form-control" name="grandezza" required>
                         </div>
 
                         <div class="form-group">
                             <label for="inputName">Prezzo</label>
-                            <input type="text" id="inputName" class="form-control" name="prezzo">
+                            <input type="text" id="inputName" class="form-control" name="prezzo" required>
                         </div>
 
                         <div class="form-group">
                             <label for="inputStatus">Vendita/Affitto</label>
-                            <select class="form-control custom-select" name="tipoAnnuncio">
+                            <select class="form-control custom-select" name="tipoAnnuncio" required>
                                 <option selected disabled>Vendita/Affitto</option>
                                 <option>Vendita</option>
                                 <option>Affitto</option>
@@ -76,13 +76,13 @@
                         </div>
                     <div>
                             <span class="txt1 p-b-7">Carica Immagini: </span>
-                            <input type="file" name="my_file[]" multiple="multiple"/>
+                            <input type="file" name="my_file[]" multiple="multiple" required/>
 
                         </div>
 
                         <div class="form-group">
                             <label for="Descrizione">Descrizione</label>
-                            <textarea id="Descrizione" class="form-control" rows="4" name="descrizione"> </textarea>
+                            <textarea id="Descrizione" class="form-control" rows="4" name="descrizione" required> </textarea>
                         </div>
 
                         <div class="form-group">

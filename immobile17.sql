@@ -101,6 +101,17 @@ CREATE TABLE `appuntamento` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `token_login`
+--
+
+CREATE TABLE `token_login` (
+                               `id_utente` varchar(10) NOT NULL,
+                               `token` varchar(81) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `cliente`
 --
 
@@ -306,6 +317,12 @@ ALTER TABLE `appuntamento`
   ADD CONSTRAINT `appuntamento_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appuntamento_ibfk_2` FOREIGN KEY (`id_agenteimm`) REFERENCES `agente_immobiliare` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `appuntamento_ibfk_3` FOREIGN KEY (`id_immobile`) REFERENCES `immobile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Indici per le tabelle `token_login`
+--
+ALTER TABLE `token_login`
+    ADD PRIMARY KEY (`id_utente`);
 
 --
 -- Limiti per la tabella `conferma_email`

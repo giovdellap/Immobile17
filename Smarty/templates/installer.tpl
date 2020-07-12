@@ -63,7 +63,7 @@
                 <span class="txt1 p-b-11"> Password </span> <small> (database)</small>
 
                 <div class="wrap-input100 validate-input m-b-12" data-validate = "Scrivere la password per accedere al Database">
-                    <input class="input100" type="text" required name="passwordDB" placeholder="**********">
+                    <input class="input100" type="text" name="passwordDB" placeholder="**********">
                     <span class="focus-input100"> </span>
                 </div>
 
@@ -94,12 +94,23 @@
 
                 </div>
 
+
+                {if $error==='PHP'}
+                    <span class="txt1" style="color: red"> aggiorna PHP a una versione uguale o superiore alla 7.4.0 </span>
+                {elseif $error === 'Cookie'}
+                    <span class="txt1" style="color: red">Abilita i cookie sul tuo browser per continuare</span>
+                {elseif $error=== 'JS'}
+                    <span class="txt1" style="color: red">Abilita JavaScript sul tuo browser per continuare</span>
+                {/if}
+
                 <div class="container-login100-form-btn">
-                    <button class="login100-form-btn" type="submit" onclick="document.cookie= 'checkjs=true'">
+                    <button class="login100-form-btn" type="submit" onclick="document.cookie= 'checkjs=true';">
                         Installa
                     </button>
                 </div>
-                <h3> {$error} </h3>
+
+
+
 
 
             </form>

@@ -150,7 +150,11 @@
             <h2>Admin Istrator</h2>
             <p>Amministratore</p>
         </div>
-        <p class="wow fadeInUp" data-wow-delay="500ms">Admin Istrator è un dirigente d'azienda italiano con cittadinanza statunitense. Da sempre appassionato di immobili e barbe, è diventato il nuovo amministratore di Immobile17 nell'aprile 2020. Muove i suoi primi passi in azienda assumendo la carica di agente immobiliare nel reparto I17 research.</p>
+        <p class="wow fadeInUp" data-wow-delay="500ms" style="text-align: justify;">
+            Admin Istrator è un dirigente d'azienda italiano con cittadinanza statunitense.
+            Da sempre appassionato di immobili e barbe, è diventato il nuovo amministratore
+            di Immobile17 nell'aprile 2020. Muove i suoi primi passi in azienda assumendo
+            la carica di agente immobiliare nel reparto I17 research.</p>
         <div class="address wow fadeInUp" data-wow-delay="750ms">
             <h6><img src={$path}Smarty/img/icons/phone-call.png alt=""> +39 0862 433812</h6>
             <h6><img src={$path}Smarty/img/icons/envelope.png alt=""> admin@admin.it</h6>

@@ -69,10 +69,10 @@ class FDataBase
             $foundation::bind($stmt, $model, $newId);
 
             $stmt->execute();
-            print_r($stmt->errorInfo());
+            //print_r($stmt->errorInfo());
             $this->db->commit();
             $this->closeDbConnection();
-            print_r($this->db->errorInfo());
+            //print_r($this->db->errorInfo());
             return true;
         } catch (PDOException $e) {
             echo "ATTENTION ERROR: " . $e->getMessage();
