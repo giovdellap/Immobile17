@@ -2,7 +2,7 @@
 <script>
     function advanceSearchScript(parameters)
     {
-        var url = '/AgenziaImmobiliare/Immobile/ricerca';
+        var url = '/Immobile17/Immobile/ricerca';
         if(parameters.tipo_annuncio.value!=='Affitto e Vendita')
         {
             url = url + "/ti/" + parameters.tipo_annuncio.value;
