@@ -35,7 +35,7 @@
 {include file="header.tpl"}
 
 <!-- ##### Breadcumb Area Start ##### -->
-<section class="breadcumb-area bg-img" style="background-image: url({$path}Smarty/img/bg-img/hero1.jpg);">
+<section class="breadcumb-area bg-img" style="background-image: url({$path}Smarty/img/bg-img/immobili.jpg);">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">

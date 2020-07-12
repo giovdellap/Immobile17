@@ -1,4 +1,4 @@
-<script src='{$path}Smarty/others/calendario/lib/main.js'></script>
+
 
 <meta charset='utf-8' />
 <link href='{$path}Smarty/others/calendario/lib/main.css' rel='stylesheet' />
@@ -89,7 +89,7 @@
                         '{$app->getAgenteImmobiliare()->getId()}',
                     start: '{$app->getOrarioInizio()->getFullDataString()}',
                     end: '{$app->getOrarioFine()->getFullDataString()}',
-                    color: '#ff8000',
+                    color: 'darkgrey',
 
                 },
                 {/foreach}

@@ -151,7 +151,9 @@
                                 '{$app->getAgenteImmobiliare()->getId()}',
                         start: '{$app->getOrarioInizio()->getFullDataString()}',
                         end: '{$app->getOrarioFine()->getFullDataString()}',
-                        color: 'brown',
+                        color: '#a48464',
+
+
 
                     },
                     {/foreach}

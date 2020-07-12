@@ -4,3 +4,4 @@
 /phpunit.phar
 /.phpunit.result.cache
 /Smarty/templates_c
+/confDB.conf.php
