@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class FMediaAgenzia
+ * Si occupa dell'aggiunta, rimozione e caricamento degli oggetti MMediaAgenzia dal database
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation/FMedia
+ */
 class FMediaAgenzia extends FObject
 {
 
@@ -8,7 +13,11 @@ class FMediaAgenzia extends FObject
     private static string $idString = "MZ";
     private static string $values="(:id, :nome, :type, :immagine,:id_agenzia)";
 
-
+    /**
+     * @param PDOStatement $stmt
+     * @param oggetto $obj
+     * @param string $newId
+     */
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
 
@@ -23,30 +32,46 @@ class FMediaAgenzia extends FObject
         unlink($path);
     }
 
-
+    /**
+     * @return string
+     */
     public static function getTable(): string
     {
         return self::$table;
     }
 
+    /**
+     * @return string
+     */
     public static function getValues(): string
     {
         return self::$values;
     }
 
+    /**
+     * @return string
+     */
     public static function getID(): string
     {
         return self::$idString;
     }
 
-
-
+    /**
+     * Aggiunge l'MMediaAgenzia al db
+     * @param MMediaAgenzia $mediaAgenzia
+     * @return bool
+     */
     public static function storeMedia(MMediaAgenzia $mediaAgenzia):bool
     {
         $db=FDataBase::getInstance();
         $db->storeDb(self::class,$mediaAgenzia);
     }
 
+    /**
+     * Carica l'MMediaAgenzia con l'id passato come parametro dal DB
+     * @param string $id
+     * @return array|null
+     */
     public static function loadMedia(string $id):?array
     {
         $db=FDataBase::getInstance();
@@ -57,18 +82,26 @@ class FMediaAgenzia extends FObject
         return $toReturn;
     }
 
-    public static function unbindMedia(array $db_result):MMediaAgenzia
+    /**
+     * Ritorna un MMediaAgenzia dall'array ricevuto da FDatabase
+     * @param array $db_result
+     * @return MMediaAgenzia
+     */
+    private static function unbindMedia(array $db_result):MMediaAgenzia
     {
         $media=new MMediaAgenzia();
         $media->setId($db_result["id"]);
         $media->setNome($db_result["nome"]);
         $media->setType($db_result["type"]);
         $media->setData($db_result["immagine"]);
-        //$media->setAgenzia(FAgenzia::getAgenzia($db_result["id_agenzia"]));
         return $media;
     }
 
-
+    /**
+     * Rimuove l'MMediaAgenzia con l'id passato come parametro dal database
+     * @param string $id
+     * @return bool
+     */
     public static function removeMedia(string $id):bool
     {
         $db=FDatabase::getInstance();

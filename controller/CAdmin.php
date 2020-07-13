@@ -480,5 +480,25 @@ class CAdmin
         else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
     }
 
+    public static function eliminaAppuntamento()
+    {
+        if(CSessionManager::sessionExists())
+        {
+            if(CSessionManager::adminLogged())
+            {
+                if(VReceiverProxy::postRequest())
+                {
+                    $appuntamento = FPersistentManager::visualizzaAppuntamento(VReceiverProxy::generalId());
+                    FPersistentManager::deleteAppuntamento(VReceiverProxy::generalId());
+                    CMail::modificaAppuntamentoMail($appuntamento->getCliente());
+                    header('Location: '.$GLOBALS['path'].'Admin/visualizzaAppuntamenti');
+                }
+                else header('Location: ' . $GLOBALS['path'] . 'Admin/homepage');
+            }
+            else header('Location: '.$GLOBALS['path']);
+        }
+        else header('Location: ' . $GLOBALS['path'] . 'Utente/login');
+    }
+
 
 }

@@ -1,13 +1,22 @@
 <?php
 
-
-class FAmministratore
+/**
+ * Class FAmministratore
+ * Si occupa delle iterazioni con FDataBase per quanto riguarda gli oggetti MAmministratore
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
+class FAmministratore extends FObject
 {
     private static string $table= "amministratore";
     private static string $idString= "AD";
     private static string $values="(:id, :nome, :cognome, :password)";
 
-
+    /**
+     * @param PDOStatement $stmt
+     * @param oggetto $obj
+     * @param string $newId
+     */
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id', $newId, PDO::PARAM_STR);
@@ -39,6 +48,7 @@ class FAmministratore
     {
         return self::$idString;
     }
+
     /**
      * Ritorna l'MAmministratore corrispondente all'Id passato come parametro
      * @param string $id
@@ -107,7 +117,6 @@ class FAmministratore
      */
     public static function login(string $mail, string $password): bool
     {
-        $db = FDataBase::getInstance();
         $amministratore=self::getAmministratore('AM1');
         if (password_verify($password, $amministratore->getPassword()))
             return true;
@@ -124,7 +133,6 @@ class FAmministratore
     {
         $db=FDataBase::getInstance();
         return $db->existDB(self::class, "mail", $mail);
-
     }
 }
 

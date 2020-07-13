@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class FPersistentManager
+ * Classe che
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
 class FPersistentManager
 {
 
@@ -9,7 +14,7 @@ class FPersistentManager
     /**
      * Controlla che la mail dell'utente non esista, e prova ad aggiungerlo al DB
      * @param MUtente $utente
-     * @return string
+     * @return string risultato dell'operazione
      */
     public static function registrazione(MUtente $utente):string
     {
@@ -30,7 +35,7 @@ class FPersistentManager
      * Controlla che mail e password corrispondano ad un Utente/Amministratore presente nel DB
      * @param string $mail
      * @param string $password
-     * @return string
+     * @return string risultato dell'operazione
      */
     public static function login(string $mail, string $password):string
     {
@@ -109,7 +114,12 @@ class FPersistentManager
         return FUtente::visualizzaAppUtente($id);
     }
 
-    public static function loadIDbyEMail(string $email)
+    /**
+     * Ritorna l'id dell'utente con la mail passata come parametro
+     * @param string $email
+     * @return string
+     */
+    public static function loadIDbyEMail(string $email): string
     {
         return FUtente::loadIDbyEmail($email);
     }
@@ -125,11 +135,23 @@ class FPersistentManager
     }
 
     // ------- TOKEN -------
+
+    /**
+     * Aggiunge al DB la tupla id-token
+     * Se esiste un token con lo stesso id, lo elimina e aggiunge quello passato come parametro
+     * @param string $id
+     * @param string $token
+     */
     public static function storeToken(string $id, string $token)
     {
         FToken::addToken($id, $token);
     }
 
+    /**
+     * Ritorna l'id associato al token passato come parametro, null altrimenti
+     * @param string $token
+     * @return string|null
+     */
     public static function verifyToken(string $token):?string
     {
         return FToken::verifyToken();
@@ -137,11 +159,22 @@ class FPersistentManager
 
     // -------CODICE -------
 
+    /**
+     * Aggiunge la tupla idCliente - codice al DB
+     * @param MCliente $cliente
+     * @param string $codice
+     */
     public static function addCodice(MCliente $cliente, string $codice)
     {
         FConfermaEmail::addCode($cliente, $codice);
     }
 
+    /**
+     * Ritorna true o false a seconda che la tupla cliente - codice sia presente o meno nel DB
+     * @param MCliente $cliente
+     * @param string $codice
+     * @return bool
+     */
     public static function confermaCodice(MCliente $cliente, string $codice): bool
     {
         return FConfermaEmail::verifyCode($cliente, $codice);
@@ -242,17 +275,34 @@ class FPersistentManager
         return FImmobile::getByType("attivo", true);
     }
 
-
+    /**
+     * Ritorna un array di immobili nei quali il parametro field è uguale a type
+     * @param $field
+     * @param $type
+     * @return array
+     */
     public static function getByType($field,$type):array
     {
         return FImmobile::getByType($field, $type);
     }
 
+    /**
+     * Ritorna un array di immobili nel cui nome è contenuta la keyword
+     * @param string $keyword
+     * @return array
+     */
     public static function getByKeyword(string $keyword):array
     {
         return FImmobile::getByKeyword($keyword);
     }
 
+    /**
+     * Ritorna un array di immobili dove dove il parametro field è compreso fra min e max
+     * @param $field
+     * @param $min
+     * @param $max
+     * @return array
+     */
     public static function getByPriceOrSize($field, $min, $max)
     {
         return FImmobile::getByPriceOrSize($field, $min, $max);
@@ -269,6 +319,11 @@ class FPersistentManager
         return FImmobile::getImmobiliByParameters($parameters);
     }
 
+    /**
+     * Elimina l'immobile con l'id in questione dal DB
+     * @param string $id
+     * @return bool
+     */
     public static function eliminaImmobile(string $id): bool
     {
         return FImmobile::eliminaImmobile($id);
@@ -315,12 +370,6 @@ class FPersistentManager
         return FAgenzia::getBusyWeek($idImm, $idCliente, $dataInizio, $dataFine);
     }
 
-    /**
-     * Prende in ingresso un'array di parametri della tipologia descritta in CImmobile::ricerca()
-     * Restituisce un array di Immobili che matchano i parametri
-     * @param array $parameters
-     * @return array
-     */
 
     // ------- APPUNTAMENTO -------
 
@@ -344,16 +393,31 @@ class FPersistentManager
         return FAppuntamento::deleteAppuntamento($id);
     }
 
+    /**
+     *Ritorna l'MAppuntamento con l'id passato come parametro
+     * @param string $id
+     * @return MAppuntamento
+     */
     public static function visualizzaAppuntamento(string $id): MAppuntamento
     {
         return FAppuntamento::getAppuntamento($id);
     }
 
+    /**
+     * Ritorna tutti gli appuntamenti presenti nel DB
+     * @return array
+     */
     public static function visualizzaAppuntamenti(): array
     {
         return FAppuntamento::getAppuntamenti();
     }
 
+    /**
+     * Ritorna tutti gli appuntamenti compresi fra inizio e fine
+     * @param MData $inizio
+     * @param MData $fine
+     * @return array
+     */
     public static function loadAppWeek(MData $inizio, MData $fine):array
     {
         return FAppuntamento::getAppWeek($inizio, $fine);
@@ -370,7 +434,7 @@ class FPersistentManager
     }
 
     /**
-     * Rimuove il Media con Id $id dal DB
+     * Rimuove l'MMedia con Id $id dal DB
      * @param string $id
      * @return bool
      */

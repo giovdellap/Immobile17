@@ -2,7 +2,13 @@
 require_once 'confDB.conf.php';
 
 
-
+/**
+ * Class FDataBase
+ * Singleton che si occupa della creazione di query e della gestione dei risultati delle stesse
+ * Possiede un oggetto PDO
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
 class FDataBase
 {
 
@@ -48,6 +54,7 @@ class FDataBase
 
     /**
      * Aggiunge l'oggetto $model al DB utilizzando metodi di $foundation
+     * L'id dell'oggetto aggiunto al DB viene generato tramite l'incremento dell'ultimo id presente
      * @param FObject $foundation
      * @param $model
      * @return bool
@@ -81,6 +88,12 @@ class FDataBase
         }
     }
 
+    /**
+     * Ritorna l'id con la componente numerica maggiore presente nella table di riferimento
+     * Nel caso la table sia vuota ritorna 0
+     * @param string $table
+     * @return string
+     */
     public function getLastId(string $table): string
     {
         $query = "SELECT id FROM " . $table . " GROUP BY " . "id" . " ORDER BY " . "id";
@@ -208,7 +221,7 @@ class FDataBase
      * @param $searchparam valore identificativo della riga
      * @return bool
      */
-    public function updateDB($foundation, $field, $newvalue, $searchfield, $searchparam)
+    public function updateDB($foundation, $field, $newvalue, $searchfield, $searchparam): bool
     {
         try {
             $this->db->beginTransaction();
@@ -231,7 +244,7 @@ class FDataBase
      * @param $foundation
      * @return array|null
      */
-    public function loadAll($foundation)
+    public function loadAll($foundation): ?array
     {
         try {
             $query = "SELECT * FROM " . $foundation::getTable();
@@ -252,58 +265,6 @@ class FDataBase
         }
     }
 
-
-
-
-    /**
-     * Controlla che $mail sia uguale a $password
-     * @param $foundation
-     * @param string $mail
-     * @param string $password
-     * @return bool
-     */
-    public function login($foundation, string $mail, string $password): bool
-    {
-        try {
-            $query = "SELECT * FROM " . $foundation::getTable() . " WHERE mail = '" . $mail . " ' AND password = '" . $password . "';";
-
-            $stmt = $this->db->prepare($query);
-            $stmt->execute();
-            $stmt->setFetchMode(PDO::FETCH_ASSOC);
-            if ($stmt->fetch() != 0)
-                return true;
-            else return false;
-
-        } catch (PDOException $e) {
-            echo "ATTENTION ERROR: " . $e->getMessage();
-            $this->db->rollBack();
-            return false;
-        }
-    }
-    /**  BISOGNA VEDERE COME IMPOSTARLA PER IL NOSTRO DB
-     *
-     *
-     * public function storeMedia ($foundation , $obj,$nome_file) {
-     * try {
-     * $lastID = $this->db->lastInsertId("id");
-     * $this->db->beginTransaction();
-     * $query = "INSERT INTO ".$foundation::getTable()." VALUES ".$foundation::getValues();
-     *
-     * $stmt = $this->db->prepare($query);
-     * $foundation::bind($stmt,$obj,$nome_file);
-     * $stmt->execute();
-     * $id=$this->db->lastInsertId();
-     * $this->db->commit();
-     * $this->closeDbConnection();
-     * return $id;
-     * }
-     * catch(PDOException $e) {
-     * echo "Attenzione errore: ".$e->getMessage();
-     * $this->db->rollBack();
-     * return null;
-     * }
-     * }**/
-
     /**
      * Ritorna tutti gli appuntamenti per i quali $field = $param e data è compresa fra $inizio e $fine
      * @param $foundation
@@ -313,21 +274,36 @@ class FDataBase
      * @param string $fine
      * @return array|null
      */
-    public function loadAppInBetween($foundation, string $field, string $param, string $inizio, string $fine)
+    public function loadAppInBetween($foundation, string $field, string $param, string $inizio, string $fine): ?array
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "' AND " . "data" . " BETWEEN '" . $inizio . "' AND '" . $fine . "';";
 
         return $this->executeLoadQuery($query);
     }
 
-    public function loadAppWeek($foundation, string $inizio, string $fine)
+    /**
+     * Ritorna tutti gli appuntamenti compresi fra inizio e fine
+     * @param $foundation
+     * @param string $inizio
+     * @param string $fine
+     * @return array|null
+     */
+    public function loadAppWeek($foundation, string $inizio, string $fine): ?array
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE data BETWEEN '" . $inizio . "' AND '" . $fine . "';";
 
         return $this->executeLoadQuery($query);
     }
 
-    public function loadOrderBy($foundation, string $field, string $orderBy)
+    /**
+     * Ritorna gli elementi della table descritta da foundation raggruppati per field
+     * Gli elementi sono ordinati in base al campo orderBy
+     * @param $foundation
+     * @param string $field
+     * @param string $orderBy
+     * @return array|null
+     */
+    public function loadOrderBy($foundation, string $field, string $orderBy):?array
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " GROUP BY " . $field . " ORDER BY " . $orderBy . " DESC " . ";";
 
@@ -335,23 +311,54 @@ class FDataBase
         //SELECT * FROM immobile GROUP BY id ORDER BY prezzo DESC
     }
 
-    public function getSomethingby($foundation, string $something, string $field, string $param)
+    /**
+     * Ritorna un array di elementi della colonna something della table descritta da foundation per i quali field = param
+     * @param $foundation
+     * @param string $something
+     * @param string $field
+     * @param string $param
+     * @return array|null
+     */
+    public function getSomethingby($foundation, string $something, string $field, string $param): ?array
     {
         $query = " SELECT " .$something . "  FROM " . $foundation::getTable() . " WHERE " . $field . " ='" . $param . "';";
         return $this->executeLoadQuery($query);
     }
+
+    /**
+     * Ritorna un array di elementi della table descritta da foundation per i quali il campo field è compreso fra min e max
+     * @param $foundation
+     * @param string $field
+     * @param string $min
+     * @param string $max
+     * @return array|null
+     */
     public function loadValuesIncluded($foundation, string $field, string $min, string $max)
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field .  " BETWEEN '" . $min . "' AND '" . $max . "';";
         return $this->executeLoadQuery($query);
     }
 
-    public function loadByKeyword($foundation, string $field, string $param )
+    /**
+     * Ritorna un array di elementi di foundation per i quali nel campo field è compreso param
+     * @param $foundation
+     * @param string $field
+     * @param string $param
+     * @return array|null
+     */
+    public function loadByKeyword($foundation, string $field, string $param): ?array
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " LIKE '%" . $param . "%' ;";
         return $this->executeLoadQuery($query);
     }
 
+    /**
+     * Ritorna un array di elementi della table descritta da foundation
+     * Gli elementi sono filtrati in base a parametri del tipo utilizzato dalla ricerca degli immobili
+     * @param $foundation
+     * @param array $parameters
+     * @return array|null
+     */
     public function loadIntersect($foundation,array $parameters)
     {
         $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " ;
@@ -367,6 +374,14 @@ class FDataBase
         return $this->executeLoadQuery($query);
     }
 
+    // ------- CODICE -------
+
+    /**
+     * Aggiunge la tupla id cliente - codice alla table conferma_email
+     * @param string $id
+     * @param string $code
+     * @return bool
+     */
     public function storeCode(string $id, string $code): bool
     {
         try{
@@ -384,9 +399,14 @@ class FDataBase
             $this->db->rollBack();
             return false;
         }
-
     }
 
+    /**
+     * Ritorna true o false a seconda che la tupla id cliente - codice sia presente nella table conferma_email o meno
+     * @param string $id
+     * @param string $code
+     * @return bool
+     */
     public function loadCode(string $id, string $code): bool
     {
         try {
@@ -404,6 +424,14 @@ class FDataBase
         }
     }
 
+    // ------- TOKEN -------
+
+    /**
+     * Aggiunge una tupla id utente - token alla table token_login
+     * @param string $id
+     * @param string $token
+     * @return bool
+     */
     public function addToken(string $id, string $token): bool
     {
         try {
@@ -428,7 +456,11 @@ class FDataBase
         }
     }
 
-    public function loadToken($id):array
+    /**
+     * Ritorna un array contenente tutte le tuple id utente - token criptato presenti nella table token_login
+     * @return array
+     */
+    public function loadToken():array
     {
         try {
             $query = "SELECT * FROM token_login ;";
@@ -441,5 +473,3 @@ class FDataBase
         }
     }
 }
-
-

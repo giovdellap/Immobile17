@@ -1,6 +1,12 @@
 <?php
 
-
+/**
+ * Class FObject
+ * Descrive il metodo binfd utilizzato da FDatabase
+ * Contiene metodi generici per gli oggetti Foundation
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
 abstract class FObject
 {
 

@@ -1,13 +1,22 @@
 <?php
 
-
+/**
+ * Class FAgenzia
+ * Si occupa delle iterazioni con FDataBase per quanto riguarda gli oggetti MAgenzia
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
 class FAgenzia extends FObject
 {
     private static string $table = "agenzia";
     private static string $values= "(:id, :nome, :citta, :CAP, :provincia, :indirizzo)";
     private static string $idString = "AG";
 
-
+    /**
+     * @param PDOStatement $stmt
+     * @param oggetto $obj
+     * @param string $newId
+     */
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',        $newId, PDO::PARAM_STR);
@@ -18,6 +27,11 @@ class FAgenzia extends FObject
         $stmt->bindValue(':indirizzo', $obj->getIndirizzo(), PDO::PARAM_STR);
     }
 
+    /**
+     * Aggiunge l'MAgenzia passata come parametro al DB
+     * @param MAgenzia $agenzia
+     * @return bool esito dell'operazione
+     */
     public static function addAgenzia(MAgenzia $agenzia)
     {
         $db= FDataBase::getInstance();
@@ -49,8 +63,6 @@ class FAgenzia extends FObject
                     foreach ($agenzia->getImmagini() as &$immagine)
                         $immagine->setAgenzia($agenzia);
                 }
-
-
                 return $agenzia;
             }
             else return null;
@@ -72,11 +84,12 @@ class FAgenzia extends FObject
     {
         return self::$values;
     }
+
     /**
      * Controlla quali argomenti differiscono fra l'MAgenzia passata come parametro e quella presente nel DB
      * Aggiorna il DB con le modifiche
      * @param MAgenzia $agenzia
-     * @return bool
+     * @return bool esito dell'operazione
      */
     public static function modificaAgenzia(MAgenzia $agenzia):bool{
 

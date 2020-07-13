@@ -1,18 +1,17 @@
 <?php
 
-
+/**
+ * Class FUtente
+ * Si occupa delle iterazioni con FDataBase per quanto riguarda gli oggetti MUtente
+ * Poiché le tabelle cliente e agente_immobiliare possiedono gli stessi campi, le operazioni vengono svolte sull'una o sull'altra a seconda della tipologia di utente
+ * Vengono utilizzate le sottoclassi FCliente e FAgenteImmobiliare per i parametri statici
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
 class FUtente extends FObject
 {
     private static string $values="(:id, :nome, :cognome, :datanascita, :mail, 
                                     :password, :iscrizione, :verifica)";
-
-    /**
-     * @return string
-     */
-    public static function getValues(): string
-    {
-        return self::$values;
-    }
 
     /**
      * @param PDOStatement $stmt
@@ -29,6 +28,14 @@ class FUtente extends FObject
         $stmt->bindValue(':password',    password_hash($obj->getPassword(), PASSWORD_BCRYPT),                         PDO::PARAM_STR);
         $stmt->bindValue(':iscrizione',  $obj->getIscrizione()->getDateString(),  PDO::PARAM_STR);
         $stmt->bindValue(':verifica',    $obj->isAttivato(),                          PDO::PARAM_BOOL);
+    }
+
+    /**
+     * @return string
+     */
+    public static function getValues(): string
+    {
+        return self::$values;
     }
 
     /**
@@ -203,6 +210,11 @@ class FUtente extends FObject
         return $utente;
     }
 
+    /**
+     * Ritorna l'id dell'utente la cui mail viene passata come parametro
+     * @param string $email
+     * @return mixed
+     */
     public static function loadIDbyEmail(string $email)
     {
         $db = FDataBase::getInstance();
@@ -228,6 +240,11 @@ class FUtente extends FObject
         }
     }
 
+    /**
+     * Ritorna tutti gli utenti il cui tipo(CLIENTE/AGENTE) viene passato come parametro
+     * @param string $type
+     * @return array
+     */
     public static function getUtenti(string $type)
     {
         $db = FDataBase::getInstance();

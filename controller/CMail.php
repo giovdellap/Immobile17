@@ -30,12 +30,23 @@ class CMail
      */
     public static function sendForgotPasswordEmail(MCliente $cliente, string $password): bool
     {
-        $name = $cliente->getNome()." ".$cliente->getCognome();
+        $name = $cliente->getFullName();
         $subject = 'NUOVA PASSWORD - IMMOBILE17';
         $body = 'Ciao '.$name.'<br>
-                    Questa è la tua nuova password: <br>'.$password.'</a>';
+                    Questa è la tua nuova password: <br>'.$password;
         $mail = new MMail($cliente->getEmail(), $name, $subject, $body);
         return self::send($mail);
+    }
+
+    public static function modificaAppuntamentoMail(MCliente $cliente)
+    {
+        $name = $cliente->getFullName();
+        $subject = 'MODIFICA APPUNTAMENTO - IMMOBILE17';
+        $body = 'Ciao '.$name.'<br>
+                    La tua lista appuntamenti è stata modificata <br>
+                    Controlla il tuo calendario per visualizzare le modifiche';
+        $mail = new MMail($cliente->getEmail(), $name, $subject, $body);
+        self::send($mail);
     }
 
     /**
