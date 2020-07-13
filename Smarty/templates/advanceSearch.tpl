@@ -23,6 +23,7 @@
     }
 </script>
 
+<link rel="stylesheet" href="{$path}Smarty/css/mySliderRange.css">
 
 <!--START-->
 <div class="south-search-area" >
@@ -77,7 +78,7 @@
                                     <p>Prezzo massimo: <br> € <span id="outputPrezzo"> </span></p>
                                 </div>
                                 <div class="row">
-                                    <div class="myslider" >
+                                    <div class="webkit-slider-runnable-track" >
                                         <input type="range"  min="{$pmin}" max="1000000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
                                     </div>
                                 </div>
