@@ -230,6 +230,16 @@ class FPersistentManager
     }
 
     /**
+     * Ritorna l'MImmobile con l'id passato come parametro con la lista appuntamenti completa
+     * @param string $id
+     * @return MImmobile
+     */
+    public static function visualizzaAppImmobile(string $id):MImmobile
+    {
+        return FImmobile::getAppImmobile($id);
+    }
+
+    /**
      * Ritorna un array contenente tutti gli MImmobili presenti nel DB
      * @return array
      */

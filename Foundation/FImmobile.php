@@ -203,6 +203,18 @@ class FImmobile extends FObject
     }
 
     /**
+     * Ritorna l'immobile con l'id passato come parametro con la lista appuntamenti completa
+     * @param string $id
+     * @return MImmobile
+     */
+    public static function getAppImmobile(string $id):MImmobile
+    {
+        $immobile = self::getImmobile($id);
+        $immobile->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
+        return $immobile;
+    }
+
+    /**
      * Ritorna un array contente i 3 immobili più costosi
      * @return array
      */

@@ -424,7 +424,7 @@ class CAdmin
                     $appuntamento = new MAppuntamento();
                     $appuntamento->setCliente($cliente);
                     $appuntamento->setAgenteImmobiliare(FPersistentManager::visualizzaAppUtente(VReceiverProxy::prenotaAgente()));
-                    $appuntamento->setImmobile(FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile()));
+                    $appuntamento->setImmobile(FPersistentManager::visualizzaAppImmobile(VReceiverProxy::prenotaImmobile()));
                     $appuntamento->setOrarioInizio(VReceiverProxy::prenotaAppuntamentoInizio());
                     $appuntamento->setOrarioFine(VReceiverProxy::prenotaAppuntamentoFine());
                     //print_r($appuntamento);
@@ -435,7 +435,7 @@ class CAdmin
                     else
                     {
                         $error = "Appuntamento non disponibile";
-                        $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile());
+                        $immobile = FPersistentManager::visualizzaAppImmobile(VReceiverProxy::prenotaImmobile());
                         $appLiberi = $fullAgenzia->checkDisponibilità($cliente, $immobile, $inizio, $fine);
                         $smarty = VSmartyFactory::adminSmarty(CSessionManager::adminLogged());
                         VAdmin::showCalendarioAppuntamento(VSmartyFactory::errorSmarty($smarty, $error),
@@ -443,7 +443,7 @@ class CAdmin
                     }
                 } else
                 {
-                    $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::prenotaImmobile());
+                    $immobile = FPersistentManager::visualizzaAppImmobile(VReceiverProxy::prenotaImmobile());
                     VImmobile::visualizza(VSmartyFactory::basicSmarty(), $immobile);
                 }
             }
@@ -464,7 +464,7 @@ class CAdmin
                     $inizio = MData::getToday();
                     $fine = MData::getToday();
                     $fine->sumDays(60);
-                    $immobile = FPersistentManager::visualizzaImmobile(VReceiverProxy::getIdImmobile($parameters));
+                    $immobile = FPersistentManager::visualizzaAppImmobile(VReceiverProxy::getIdImmobile($parameters));
 
                     $fullAgenzia = FPersistentManager::getBusyWeek(VReceiverProxy::getIdImmobile($parameters),
                         VReceiverProxy::getIdCliente($parameters), $inizio, $fine);
