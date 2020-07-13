@@ -1,7 +1,18 @@
 <?php
 
+/**
+ * Class FMedia
+ * Si occupa di passare alle classi preposte gli oggetti FMedia per le operazioni di aggiunta, rimozione e lettura dal Database
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation/FMedia
+ */
 class FMedia
 {
+    /**
+     * Chiama il metodo di aggiunta al database della classe preposta per la tipologia di MMedia
+     * @param MMedia $media
+     * @return bool
+     */
     public static function addMedia (MMedia $media):bool
     {
         if ($media instanceof MMediaAgenzia)
@@ -14,6 +25,11 @@ class FMedia
             return FMediaImmobile::storeMedia($media);
     }
 
+    /**
+     * Chiama il metodo di lettura dal database della classe preposta per la tipologia di MMedia
+     * @param string $id
+     * @return array|null
+     */
     public static function getMedia (string $id): ?array
     {
         if (FObject::identifyId($id)=="CLIENTE")
@@ -27,6 +43,11 @@ class FMedia
         else return null;
     }
 
+    /**
+     * Chiama il metodo di rimozione dal database della classe preposta per la tipologia di MMedia
+     * @param string $id
+     * @return bool
+     */
     public static function removeMedia(string $id):bool
     {
         if (FObject::identifyId($id)=="CLIENTE")
