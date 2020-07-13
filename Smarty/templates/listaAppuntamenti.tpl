@@ -40,7 +40,7 @@
                             <small>{$appuntamento->getCliente()->getId()}</small>
                         </td>
                         <td > <a>{$appuntamento->getAgenteImmobiliare()->getFullName()}<br> </a>
-                            <small>{$appuntamento->getCliente()->getId()}</small>
+                            <small>{$appuntamento->getAgenteImmobiliare()->getId()}</small>
                         </td>
                         <td > <a>{$appuntamento->getImmobile()->getNome()}<br></a>
                             <small>{$appuntamento->getImmobile()->getId()}</small>
