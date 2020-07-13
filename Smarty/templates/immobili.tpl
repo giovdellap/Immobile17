@@ -16,6 +16,7 @@
     {else}
     <title>Tutti gli Immobili</title>
     {/if}
+
     <!-- Favicon  -->
     <link rel="icon" href="{$path}Smarty/img/icons/favicon_1.ico">
 

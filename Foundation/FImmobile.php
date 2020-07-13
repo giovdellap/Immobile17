@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class FImmobile
+ * Si occupa delle iterazioni con FDataBase per quanto riguarda gli oggetti MImmobile
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
 class FImmobile extends FObject
 {
     private static string $table="immobile";
@@ -8,8 +13,11 @@ class FImmobile extends FObject
                                     :descrizione,:tipo_annuncio,:prezzo,:attivo)";
     private static string $idString = "IM";
 
-
-
+    /**
+     * @param PDOStatement $stmt
+     * @param oggetto $obj
+     * @param string $newId
+     */
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',$newId,PDO::PARAM_STR);
@@ -193,6 +201,11 @@ class FImmobile extends FObject
         $immobile->setListAppuntamenti(FAppuntamento::getAppInBetween($id,$inizio,$fine));
         return $immobile;
     }
+
+    /**
+     * Ritorna un array contente i 3 immobili più costosi
+     * @return array
+     */
     public static function getImmobiliHomepage()
     {
         $db=FDataBase::getInstance();
@@ -204,7 +217,12 @@ class FImmobile extends FObject
         return array_slice($immobili,0,3);
     }
 
-
+    /**
+     * Ritorna un array contenente gli immobili per i quali il campo field è type
+     * @param $field
+     * @param $type
+     * @return array
+     */
     public static function getByType($field ,$type):array
     {
         $db=FDataBase::getInstance();
@@ -215,8 +233,13 @@ class FImmobile extends FObject
         return $immobile;
     }
 
-
-
+    /**
+     * Ritorna un array contenente gli immobili in cui il campo field è compreso fra min e max
+     * @param $field
+     * @param $min
+     * @param $max
+     * @return array
+     */
     public static function getByPriceOrSize($field, $min, $max):array
     {
         $db = FDataBase::getInstance();
@@ -227,7 +250,12 @@ class FImmobile extends FObject
         return $immobile;
     }
 
-    public static function getByKeyword ($keyword):array
+    /**
+     * Ritorna un array contenente gli immobili nel cui nome è contenuta la keyword
+     * @param $keyword
+     * @return array
+     */
+    public static function getByKeyword (string $keyword):array
     {
         $db = FDataBase::getInstance();
         $db_result = $db-> loadByKeyword(self::class, 'nome', $keyword);
@@ -237,8 +265,12 @@ class FImmobile extends FObject
         return $immobile;
     }
 
-
-
+    /**
+     * Ritorna un array di iimobili che rispettano i parametri contenuti in parameters
+     * parameters è un array che rispetta le norme descritte per i parametri della ricerca immobili
+     * @param array $parameters
+     * @return array
+     */
     public static function getImmobiliByParameters(array $parameters)
     {
         $db = FDataBase::getInstance();
@@ -249,6 +281,11 @@ class FImmobile extends FObject
         return $immobile;
     }
 
+    /**
+     * Elimina dal DB l'immobile con l'id id
+     * @param string $id
+     * @return bool
+     */
     public static function eliminaImmobile(string $id): bool
     {
         $db = FDataBase::getInstance();

@@ -50,11 +50,11 @@
 
 
                             </a>
-                            <a class="btn btn-danger btn-xs" href="#">
+                            <button class="btn btn-danger btn-xs" onclick="eliminaAppuntamento('{$appuntamento->getId()}');">
                                 <i class="fas fa-trash">
                                 </i>
 
-                            </a>
+                            </button>
                         </td>
                     </tr>
                     {/foreach}
@@ -69,3 +69,22 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<script>
+    function eliminaAppuntamento(id)
+    {
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '{$path}'+'Admin/eliminaAppuntamento');
+
+        const idForm = document.createElement('input');
+        idForm.type = 'hidden';
+        idForm.name = 'id';
+        idForm.value = id;
+        form.appendChild(idForm);
+
+        document.body.appendChild(form);
+        form.submit();
+
+    }
+</script>

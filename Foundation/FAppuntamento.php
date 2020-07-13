@@ -1,13 +1,22 @@
 <?php
 
-
+/**
+ * Class FAppuntamento
+ * Si occupa delle iterazioni con FDataBase per quanto riguarda gli oggetti MAppuntamento
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package foundation
+ */
 class FAppuntamento extends FObject
 {
     private static string $table="appuntamento";
     private static string $values="(:id,:data,:ora_inizio,:ora_fine,:id_cliente,:id_agenteimm,:id_immobile)";
     private static string $id="AP";
 
-
+    /**
+     * @param PDOStatement $stmt
+     * @param oggetto $obj
+     * @param string $newId
+     */
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
     {
         $stmt->bindValue(':id',$newId,PDO::PARAM_STR);
@@ -139,14 +148,23 @@ class FAppuntamento extends FObject
         return $to_return;
     }
 
-    public static function getAppuntamento(string $id)
+    /**
+     * Ritorna l'MAppuntamento con id passato come parametro
+     * @param string $id
+     * @return MAppuntamento
+     */
+    public static function getAppuntamento(string $id):MAppuntamento
     {
         $db = FDataBase::getInstance();
         $db_result = $db->loadDB(self::class, "id", $id);
         return self::unbindAppuntamento($db_result[0]);
     }
 
-    public static function getAppuntamenti()
+    /**
+     * Ritorna un array contenente tutti gli appuntamenti presenti nel DB
+     * @return array
+     */
+    public static function getAppuntamenti(): array
     {
         $db = FDataBase::getInstance();
         $db_result = $db->loadAll(self::class);
@@ -156,6 +174,12 @@ class FAppuntamento extends FObject
         return $to_return;
     }
 
+    /**
+     * Ritorna tutti gli appuntamenti presenti nel DB che abbiano la data d'inizio comprese fra inizio e fine
+     * @param MData $inizio
+     * @param MData $fine
+     * @return array
+     */
     public static function getAppWeek(MData $inizio, MData $fine): array
     {
         $db = FDataBase::getInstance();
