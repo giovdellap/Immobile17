@@ -5,12 +5,12 @@ class CHome
 {
     public static function homepage(bool $api)
     {
-        if(VReceiverProxy::getRequest())
+        if(VReceiver::getRequest())
         {
             $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
             $immobili = FPersistentManager::getImmobiliHomepage();
 
-            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy = VSenderAdapter::getInstance();
             $senderProxy->setApi($api);
             if(CSessionManager::sessionExists())
                 $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
@@ -20,7 +20,7 @@ class CHome
     }
     public static function aboutUs(bool $api)
     {
-        if(VReceiverProxy::getRequest())
+        if(VReceiver::getRequest())
         {
             $immobili = FPersistentManager::getImmobiliAttivi();
 

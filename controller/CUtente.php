@@ -11,16 +11,16 @@ class CUtente
      */
     public static function login(bool $api)
     {
-        if (VReceiverProxy::getRequest()) {
+        if (VReceiver::getRequest()) {
             if (CSessionManager::sessionExists())
                 header('Location: '.$GLOBALS['path']);
             else
             {
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->loginForm();
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->loginForm();
             }
-        } elseif (VReceiverProxy::postRequest())
+        } elseif (VReceiver::postRequest())
             self::checkLogin($api);
     }
 
@@ -35,7 +35,7 @@ class CUtente
      */
     public static function checkLogin(bool $api)
     {
-        $loginUser = VReceiverProxy::loginUser();
+        $loginUser = VReceiver::loginUser();
         $db_result = FPersistentManager::login($loginUser->getEmail(), $loginUser->getPassword());
         switch ($db_result) {
             case "OK ADMIN":
@@ -49,21 +49,20 @@ class CUtente
                 {
                     $token = self::tokenCreator();
                     FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token);
-                    $senderProxy = VSenderProxy::getInstance();
-                    $senderProxy->setApi($api);
-                    $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                    $senderProxy->sendToken($token);
+                    $sender = VSenderAdapter::getInstance();
+                    $sender->setApi($api);
+                    $sender->setUtente(CSessionManager::getUtenteLoggato());
+                    $sender->sendToken($token);
                 }
                 else header('Location: ' . $GLOBALS['path']);
                 break;
 
             case "WRONG EMAIL":
             case "WRONG PASSWORD":
-                $senderProxy = VSenderProxy::getInstance();
-            $senderProxy->setApi($api);
-
-            $senderProxy->setError($db_result);
-                $senderProxy->loginForm();
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setError($db_result);
+                $sender->loginForm();
         }
     }
 
@@ -77,14 +76,14 @@ class CUtente
      */
     public static function registrazione(bool $api)
     {
-        if (VReceiverProxy::getRequest())
+        if (VReceiver::getRequest())
         {
-            $senderProxy = VSenderProxy::getInstance();
-            $senderProxy->setApi($api);
-            $senderProxy->registrationForm();
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
+            $sender->registrationForm();
         }
-        else if (VReceiverProxy::postRequest()) {
-            $utente = VReceiverProxy::registrationUser();
+        else if (VReceiver::postRequest()) {
+            $utente = VReceiver::registrationUser();
             $db_result = FPersistentManager::registrazione($utente);
 
             if ($db_result === "OK") {
@@ -93,16 +92,16 @@ class CUtente
                     FPersistentManager::addMedia(VImageReceiver::uploadImage(CSessionManager::getUtenteLoggato()));
                 self::confermationEmail(CSessionManager::getUtenteLoggato());
 
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                $senderProxy->registrationOK();
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->registrationOK();
             } else {
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->setError($db_result);
-                $senderProxy->setUtente($utente);
-                $senderProxy->registrationForm();
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setError($db_result);
+                $sender->setUtente($utente);
+                $sender->registrationForm();
             }
         } // ipotetico else
     }
@@ -113,17 +112,15 @@ class CUtente
      */
     public static function visualizzaProfilo(bool $api)
     {
-        if (VReceiverProxy::getRequest()) {
+        if (VReceiver::getRequest()) {
 
             if (CSessionManager::sessionExists()) {
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                $senderProxy->visualizzaProfilo();
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->visualizzaProfilo();
             } else header('Location: '.$GLOBALS['path'].'Utente/login');
         } else header('Location: '.$GLOBALS['path']);
-
-
     }
 
     /**
@@ -131,16 +128,16 @@ class CUtente
      */
     public static function calendario(bool $api)
     {
-        if (VReceiverProxy::getRequest()) {
+        if (VReceiver::getRequest()) {
             if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 $utente = FPersistentManager::visualizzaAppUtente($utente->getId());
                 $appuntamenti = $utente->getListAppuntamenti();
 
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->setUtente($utente);
-                $senderProxy->showCalendario($appuntamenti);
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setUtente($utente);
+                $sender->showCalendario($appuntamenti);
 
             } else header('Location: '.$GLOBALS['path'].'Utente/login');
         } else header('Location: '.$GLOBALS['path']);
@@ -155,7 +152,7 @@ class CUtente
 
     public static function eliminaAccount(bool $api)
     {
-        if (VReceiverProxy::postRequest()) {
+        if (VReceiver::postRequest()) {
             if (CSessionManager::sessionExists()) {
                 $utente = CSessionManager::getUtenteLoggato();
                 CSessionManager::sessionDestroy();
@@ -163,21 +160,21 @@ class CUtente
                     header('Location: ' . $GLOBALS['path']);
                 else {
                     CSessionManager::createSession($utente->getId());
-                    $senderProxy = VSenderProxy::getInstance();
-                    $senderProxy->setApi($api);
-                    $senderProxy->setError('ERRORE ELIMINAZIONE');
-                    $senderProxy->eliminaAccount();
+                    $sender = VSenderAdapter::getInstance();
+                    $sender->setApi($api);
+                    $sender->setError('ERRORE ELIMINAZIONE');
+                    $sender->eliminaAccount();
                 }
             } else header('Location: '.$GLOBALS['path'].'Utente/login');
         }
-        elseif (VReceiverProxy::getRequest())
+        elseif (VReceiver::getRequest())
         {
             if (CSessionManager::sessionExists())
             {
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                $senderProxy->eliminaAccount();
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->eliminaAccount();
             }  else header('Location: '.$GLOBALS['path'].'Utente/login');
         }
         //ipotetico else
@@ -185,14 +182,14 @@ class CUtente
 
     public static function visualizzaAppuntamento(string $id, bool $api)
     {
-        if (VReceiverProxy::getRequest()) {
+        if (VReceiver::getRequest()) {
             if (CSessionManager::sessionExists()) {
                 $appuntamento = FPersistentManager::visualizzaAppuntamento($id);
 
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                $senderProxy->setApi($api);
-                $senderProxy->visualizzaAppuntamento($appuntamento);
+                $sender = VSenderAdapter::getInstance();
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->setApi($api);
+                $sender->visualizzaAppuntamento($appuntamento);
             } else header('Location: '.$GLOBALS['path'].'Utente/login');
         }
         else header('Location: '.$GLOBALS['path']);
@@ -200,10 +197,10 @@ class CUtente
 
     public static function confermaAccount(array $parameters, bool $api)
     {
-        if(VReceiverProxy::getRequest() && VReceiverProxy::confermaAccountValidator($parameters))
+        if(VReceiver::getRequest() && VReceiver::confermaAccountValidator($parameters))
         {
-            $cliente = FPersistentManager::visualizzaUtente(VReceiverProxy::getParametersId($parameters));
-            $codice = VReceiverProxy::getParametersCode($parameters);
+            $cliente = FPersistentManager::visualizzaUtente(VReceiver::getParametersId($parameters));
+            $codice = VReceiver::getParametersCode($parameters);
 
             if(FPersistentManager::confermaCodice($cliente, $codice))
             {
@@ -213,11 +210,11 @@ class CUtente
             }
             else
             {
-                $senderProxy =  VSenderProxy::getInstance();
-                $senderProxy->setUtente($cliente);
-                $senderProxy->setError('ATTIVAZIONE FALLITA');
-                $senderProxy->setApi($api);
-                $senderProxy->visualizzaProfilo();
+                $sender =  VSenderAdapter::getInstance();
+                $sender->setUtente($cliente);
+                $sender->setError('ATTIVAZIONE FALLITA');
+                $sender->setApi($api);
+                $sender->visualizzaProfilo();
             }
         }
     }
@@ -236,25 +233,25 @@ class CUtente
 
     public static function forgotPassword(bool $api)
     {
-        if(VReceiverProxy::postRequest())
+        if(VReceiver::postRequest())
         {
             $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
             $password = substr(str_shuffle($permitted_chars), 0, 10);
             $utente = FPersistentManager::visualizzaUtente(
-                FPersistentManager::loadIDbyEMail(VReceiverProxy::getEmail()));
+                FPersistentManager::loadIDbyEMail(VReceiver::getEmail()));
             $utente->setPassword($password);
             FPersistentManager::modificaUtente($utente);
             CMail::sendForgotPasswordEmail($utente, $password);
 
-            $senderProxy = VSenderProxy::getInstance();
-            $senderProxy->setApi($api);
-            $senderProxy->forgotPassword();
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
+            $sender->forgotPassword();
         }
-        elseif(VReceiverProxy::getRequest())
+        elseif(VReceiver::getRequest())
         {
-            $senderProxy = VSenderProxy::getInstance();
-            $senderProxy->setApi($api);
-            $senderProxy->forgotPasswordForm();
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
+            $sender->forgotPasswordForm();
         }
     }
 
@@ -262,17 +259,17 @@ class CUtente
     {
         if(CSessionManager::sessionExists())
         {
-            if(VReceiverProxy::getRequest())
+            if(VReceiver::getRequest())
             {
-                $senderProxy = VSenderProxy::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                $senderProxy->modificaPassword();
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->modificaPassword();
             }
-            elseif (VReceiverProxy::postRequest())
+            elseif (VReceiver::postRequest())
             {
-                $oldPassword = VReceiverProxy::getOldPW();
-                $newPassword = VReceiverProxy::getNewPW();
+                $oldPassword = VReceiver::getOldPW();
+                $newPassword = VReceiver::getNewPW();
                 $utente = CSessionManager::getUtenteLoggato();
                 if(password_verify($oldPassword, $utente->getPassword()))
                 {
@@ -282,11 +279,11 @@ class CUtente
                 }
                 else
                 {
-                    $senderProxy = VSenderProxy::getInstance();
-                    $senderProxy->setApi($api);
-                    $senderProxy->setUtente($utente);
-                    $senderProxy->setError('WRONG PASSWORD');
-                    $senderProxy->modificaPassword();
+                    $sender = VSenderAdapter::getInstance();
+                    $sender->setApi($api);
+                    $sender->setUtente($utente);
+                    $sender->setError('WRONG PASSWORD');
+                    $sender->modificaPassword();
                 }
             }
             //ipotetico else

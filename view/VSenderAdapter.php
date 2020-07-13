@@ -1,7 +1,7 @@
 <?php
 
 
-class VSenderProxy
+class VSenderAdapter
 {
     private static $instance;
 
@@ -20,7 +20,7 @@ class VSenderProxy
     public static function getInstance()
     {
         if (self::$instance == null) {
-            self::$instance = new VSenderProxy();
+            self::$instance = new VSenderAdapter();
         }
         return self::$instance;
     }

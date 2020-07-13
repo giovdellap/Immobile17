@@ -9,9 +9,9 @@ class DBInstaller
     static function installDB(){
         try
         {
-            $dbName = VReceiverProxy::getNomeDB();
-            $dbPassword = VReceiverProxy::getPasswordDB();
-            $dbUsername = VReceiverProxy::getUsernameDB();
+            $dbName = VReceiver::getNomeDB();
+            $dbPassword = VReceiver::getPasswordDB();
+            $dbUsername = VReceiver::getUsernameDB();
 
             $db = new PDO("mysql:host=127.0.0.1;", $dbUsername, $dbPassword);
             $db->beginTransaction();
@@ -30,7 +30,7 @@ class DBInstaller
             fwrite($file, $script);
             fclose($file);
 
-            if(VReceiverProxy::populateDB())
+            if(VReceiver::populateDB())
                 self::populateDB($db);
 
             $db=null;

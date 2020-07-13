@@ -5,7 +5,7 @@ class Installation
 {
     static function installationStart(){
 
-        if (VReceiverProxy::getRequest()){
+        if (VReceiver::getRequest()){
 
             // viene inviato un cookie per verificare se questi sono abilitati
             setcookie('verifica', 'verifica',time()+3600);
@@ -30,7 +30,7 @@ class Installation
                 DBInstaller::installDB();
 
                 $admin = FAmministratore::getAmministratore('AM1');
-                $admin->setPassword(VReceiverProxy::getPasswordAdmin());
+                $admin->setPassword(VReceiver::getPasswordAdmin());
                 FAmministratore::modificaAmministratore($admin);
 
                 header ('Location: '.$GLOBALS['path'] . 'Utente/login');

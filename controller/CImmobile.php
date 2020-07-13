@@ -19,11 +19,11 @@ class CImmobile
      */
     public static function ricerca(array $parameters, bool $api)
     {
-        if(VReceiverProxy::getRequest())
+        if(VReceiver::getRequest())
         {
-            $parameters = VReceiverProxy::ricercaParametersFiller($parameters);
+            $parameters = VReceiver::ricercaParametersFiller($parameters);
             $immobili = FPersistentManager::getImmobiliByParameters($parameters);
-            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy = VSenderAdapter::getInstance();
             $senderProxy->setApi($api);
             if(CSessionManager::sessionExists())
                 $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
@@ -38,9 +38,9 @@ class CImmobile
      */
     public static function visualizzaImmobili(bool $api)
     {
-        if (VReceiverProxy::getRequest()) {
+        if (VReceiver::getRequest()) {
             $immobili = FPersistentManager::visualizzaImmobili();
-            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy = VSenderAdapter::getInstance();
             $senderProxy->setApi($api);
             if (CSessionManager::sessionExists())
                 $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
@@ -54,10 +54,10 @@ class CImmobile
      */
     public static function visualizza(string $id, bool $api)
     {
-        if(VReceiverProxy::getRequest())
+        if(VReceiver::getRequest())
         {
             $immobile= FPersistentManager::visualizzaImmobile($id);
-            $senderProxy = VSenderProxy::getInstance();
+            $senderProxy = VSenderAdapter::getInstance();
             $senderProxy->setApi($api);
             if(CSessionManager::sessionExists())
                 $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
@@ -78,20 +78,20 @@ class CImmobile
      */
     public static function calendario(array $parameters, bool $api)
     {
-        if(VReceiverProxy::getRequest() && key_exists('id', $parameters))
+        if(VReceiver::getRequest() && key_exists('id', $parameters))
         {
             if(CSessionManager::sessionExists())
             {
-                $parameters = VReceiverProxy::calendarioParametersFiller($parameters);
-                $inizio = VReceiverProxy::calendarioInizio($parameters);
-                $fine = VReceiverProxy::calendarioFine($parameters);
+                $parameters = VReceiver::calendarioParametersFiller($parameters);
+                $inizio = VReceiver::calendarioInizio($parameters);
+                $fine = VReceiver::calendarioFine($parameters);
                 $fine->nextDay();
                 $immobile = FPersistentManager::visualizzaAppImmobile($parameters["id"]);
                 $fullAgenzia = FPersistentManager::getBusyWeek($parameters["id"],
                     CSessionManager::getUtenteLoggato()->getId(), $inizio, $fine);
                 $utenteApp = FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId());
                 $appLiberi = $fullAgenzia->checkDisponibilità($utenteApp, $immobile, $inizio, $fine);
-                $senderProxy = VSenderProxy::getInstance();
+                $senderProxy = VSenderAdapter::getInstance();
                 $senderProxy->setApi($api);
                 $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
                 $senderProxy->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
@@ -116,21 +116,21 @@ class CImmobile
      */
     public static function prenota(bool $api)
     {
-        if (VReceiverProxy::postRequest()) {
+        if (VReceiver::postRequest()) {
 
             if (CSessionManager::sessionExists()) {
-                $inizio = VReceiverProxy::prenotaInizioAgenzia();
-                $fine = VReceiverProxy::prenotaFineAgenzia();
+                $inizio = VReceiver::prenotaInizioAgenzia();
+                $fine = VReceiver::prenotaFineAgenzia();
                 $utente = CSessionManager::getUtenteLoggato();
-                $fullAgenzia = FPersistentManager::getBusyWeek(VReceiverProxy::prenotaImmobile(), $utente->getId(),
+                $fullAgenzia = FPersistentManager::getBusyWeek(VReceiver::prenotaImmobile(), $utente->getId(),
                     $inizio, $fine);
 
                 $appuntamento = new MAppuntamento();
                 $appuntamento->setCliente(FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId()));
-                $appuntamento->setAgenteImmobiliare(FPersistentManager::visualizzaAppUtente(VReceiverProxy::prenotaAgente()));
-                $appuntamento->setImmobile(FPersistentManager::visualizzaAppImmobile(VReceiverProxy::prenotaImmobile()));
-                $appuntamento->setOrarioInizio(VReceiverProxy::prenotaAppuntamentoInizio());
-                $appuntamento->setOrarioFine(VReceiverProxy::prenotaAppuntamentoFine());
+                $appuntamento->setAgenteImmobiliare(FPersistentManager::visualizzaAppUtente(VReceiver::prenotaAgente()));
+                $appuntamento->setImmobile(FPersistentManager::visualizzaAppImmobile(VReceiver::prenotaImmobile()));
+                $appuntamento->setOrarioInizio(VReceiver::prenotaAppuntamentoInizio());
+                $appuntamento->setOrarioFine(VReceiver::prenotaAppuntamentoFine());
                 //print_r($appuntamento);
                 if ($fullAgenzia->getCalendario()->addAppuntamento($appuntamento)) {
                     FPersistentManager::addAppuntamento($appuntamento);
@@ -140,10 +140,10 @@ class CImmobile
                 else
                 {
                     $error = "Appuntamento non disponibile";
-                    $immobile = FPersistentManager::visualizzaAppImmobile(VReceiverProxy::prenotaImmobile());
+                    $immobile = FPersistentManager::visualizzaAppImmobile(VReceiver::prenotaImmobile());
                     $appLiberi = $fullAgenzia->checkDisponibilità($utente, $immobile, $inizio, $fine);
 
-                    $senderProxy = VSenderProxy::getInstance();
+                    $senderProxy = VSenderAdapter::getInstance();
                     $senderProxy->setApi($api);
                     $senderProxy->setUtente($utente);
                     $senderProxy->setError($error);
@@ -151,8 +151,8 @@ class CImmobile
                 }
             } else
             {
-                $immobile = FPersistentManager::visualizzaAppImmobile(VReceiverProxy::prenotaImmobile());
-                $senderProxy = VSenderProxy::getInstance();
+                $immobile = FPersistentManager::visualizzaAppImmobile(VReceiver::prenotaImmobile());
+                $senderProxy = VSenderAdapter::getInstance();
                 $senderProxy->setApi($api);
                 $senderProxy->visualizzaImmobile($immobile);
             }
