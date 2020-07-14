@@ -43,7 +43,7 @@ class FAgenzia extends FObject
      * @param string $id
      * @return MAgenzia|null
      */
-    public static function getAgenzia(string $id): ?MAgenzia
+    public static function getAgenzia(string $id) :?MAgenzia
     {
         $db= FDataBase::getInstance();
         if($db->existDB(self::class,"id",$id)) {
@@ -91,7 +91,8 @@ class FAgenzia extends FObject
      * @param MAgenzia $agenzia
      * @return bool esito dell'operazione
      */
-    public static function modificaAgenzia(MAgenzia $agenzia):bool{
+    public static function modificaAgenzia(MAgenzia $agenzia) :bool
+    {
 
         $db = FDataBase::getInstance();
         if($db->existDB(self::class, "id", $agenzia->getId()))
@@ -135,7 +136,7 @@ class FAgenzia extends FObject
      * @param MData $fine
      * @return MAgenzia
      */
-    public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine): MAgenzia
+    public static function getBusyWeek(string $idImm, string $idCliente, MData $inizio, MData $fine) :MAgenzia
     {
         $agenzia = new MAgenzia();
         $agenzia->addImmobile(FImmobile::getAppImmobileInBetween($idImm,$inizio,$fine));

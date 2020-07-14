@@ -15,7 +15,7 @@ class FToken
      * @param string $type API/COOKIE
      * @return bool
      */
-    public static function addToken(string $id, string $token, string $type): bool
+    public static function addToken(string $id, string $token, string $type) :bool
     {
         if($type === "API")
             $table = 'token_login';
@@ -31,7 +31,7 @@ class FToken
      * @param string $type API/COOKIE
      * @return string|null
      */
-    public static function verifyToken(string $token, string $type): ?string
+    public static function verifyToken(string $token, string $type) :?string
     {
         if($type === "API")
             $table = 'token_login';

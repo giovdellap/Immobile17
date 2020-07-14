@@ -17,7 +17,7 @@ abstract class FObject
      * @param string $newId Id ottenuto dal DB incrementando l'ultimo Id presente nella table
      * @return void
      */
-    public static abstract function bind(PDOStatement $stmt, $obj, string $newId): void;
+    public static abstract function bind(PDOStatement $stmt, $obj, string $newId) :void;
 
 
     /**
@@ -25,7 +25,7 @@ abstract class FObject
      * @param string $id Id ottenuto dal DB
      * @return string
      */
-    public static function calculateNewID(string $id): string
+    public static function calculateNewID(string $id) :string
     {
         $splitted = str_split($id, 1);
         if (strlen($id) <=3)

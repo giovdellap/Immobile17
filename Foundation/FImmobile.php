@@ -92,7 +92,7 @@ class FImmobile extends FObject
      * @param array $db_result
      * @return MImmobile
      */
-    public static function unBindImmobile(array $db_result): MImmobile
+    public static function unBindImmobile(array $db_result) :MImmobile
     {
         $immobile= new MImmobile();
         $immobile->setId($db_result["id"]);
@@ -132,7 +132,7 @@ class FImmobile extends FObject
      * @param MImmobile $immobile
      * @return bool esito dell'operazione
      */
-    public static function disabilita(MImmobile $immobile): bool
+    public static function disabilita(MImmobile $immobile) :bool
     {
         $db=FDataBase::getInstance();
         return $db->updateDB(self::class,"attivo",false,"id",$immobile->getId());
@@ -144,7 +144,7 @@ class FImmobile extends FObject
      * @param MImmobile $immobile
      * @return bool esito dell'operazione
      */
-    public static function modificaImmobile(MImmobile $immobile):bool
+    public static function modificaImmobile(MImmobile $immobile) :bool
     {
         $db = FDataBase::getInstance();
         if($db->existDB(self::class, "id", $immobile->getId())) {
@@ -195,7 +195,7 @@ class FImmobile extends FObject
      * @param MData $fine
      * @return MImmobile|null
      */
-    public static function getAppImmobileInBetween(string $id, MData $inizio, MData $fine): ?MImmobile
+    public static function getAppImmobileInBetween(string $id, MData $inizio, MData $fine) :?MImmobile
     {
         $immobile = self::getImmobile($id);
         $immobile->setListAppuntamenti(FAppuntamento::getAppInBetween($id,$inizio,$fine));
@@ -207,7 +207,7 @@ class FImmobile extends FObject
      * @param string $id
      * @return MImmobile
      */
-    public static function getAppImmobile(string $id):MImmobile
+    public static function getAppImmobile(string $id) :MImmobile
     {
         $immobile = self::getImmobile($id);
         $immobile->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
@@ -235,7 +235,7 @@ class FImmobile extends FObject
      * @param $type
      * @return array
      */
-    public static function getByType($field ,$type):array
+    public static function getByType($field ,$type) :array
     {
         $db=FDataBase::getInstance();
         $db_result = $db->getSomethingby(self::class, "*", $field , $type);
@@ -252,7 +252,7 @@ class FImmobile extends FObject
      * @param $max
      * @return array
      */
-    public static function getByPriceOrSize($field, $min, $max):array
+    public static function getByPriceOrSize($field, $min, $max) :array
     {
         $db = FDataBase::getInstance();
         $db_result = $db-> loadValuesIncluded(self::class, $field, $min, $max);
@@ -267,7 +267,7 @@ class FImmobile extends FObject
      * @param $keyword
      * @return array
      */
-    public static function getByKeyword (string $keyword):array
+    public static function getByKeyword (string $keyword) :array
     {
         $db = FDataBase::getInstance();
         $db_result = $db-> loadByKeyword(self::class, 'nome', $keyword);
@@ -298,7 +298,7 @@ class FImmobile extends FObject
      * @param string $id
      * @return bool
      */
-    public static function eliminaImmobile(string $id): bool
+    public static function eliminaImmobile(string $id) :bool
     {
         $db = FDataBase::getInstance();
         return $db->deleteDB(self::class, 'id', $id);

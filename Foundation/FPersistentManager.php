@@ -16,7 +16,7 @@ class FPersistentManager
      * @param MUtente $utente
      * @return string risultato dell'operazione
      */
-    public static function registrazione(MUtente $utente):string
+    public static function registrazione(MUtente $utente) :string
     {
         if(FUtente::emailEsistente($utente->getEmail()))
             return "EMAIL ALREADY EXISTS!";
@@ -37,7 +37,7 @@ class FPersistentManager
      * @param string $password
      * @return string risultato dell'operazione
      */
-    public static function login(string $mail, string $password):string
+    public static function login(string $mail, string $password) :string
     {
         if(strpos($mail,"@admin.it"))
         {
@@ -73,7 +73,7 @@ class FPersistentManager
      * @param string $id
      * @return bool
      */
-    public static function esisteUtente(string $id): bool
+    public static function esisteUtente(string $id) :bool
     {
         return FUtente::idEsistente($id);
     }
@@ -83,7 +83,7 @@ class FPersistentManager
      * @param string $id
      * @return MUtente
      */
-    public static function visualizzaUtente(string $id): MUtente
+    public static function visualizzaUtente(string $id) :MUtente
     {
         return FUtente::visualizzaUtente($id);
     }
@@ -94,12 +94,12 @@ class FPersistentManager
      * @param MUtente $utente
      * @return bool
      */
-    public static function modificaUtente(MUtente $utente): bool
+    public static function modificaUtente(MUtente $utente) :bool
     {
         return FUtente::modificaUtente($utente);
     }
 
-    public static function eliminaUtente(MUtente $utente): bool
+    public static function eliminaUtente(MUtente $utente) :bool
     {
         return FUtente::eliminaUtente($utente);
     }
@@ -109,7 +109,7 @@ class FPersistentManager
      * @param string $id
      * @return MUtente
      */
-    public static function visualizzaAppUtente(string $id): MUtente
+    public static function visualizzaAppUtente(string $id) :MUtente
     {
         return FUtente::visualizzaAppUtente($id);
     }
@@ -141,22 +141,20 @@ class FPersistentManager
      * Se esiste un token con lo stesso id, lo elimina e aggiunge quello passato come parametro
      * @param string $id
      * @param string $token
-     * @param string $type API/COOKIE
      */
-    public static function storeToken(string $id, string $token, string $type)
+    public static function storeToken(string $id, string $token)
     {
-        FToken::addToken($id, $token, $type);
+        FToken::addToken($id, $token);
     }
 
     /**
      * Ritorna l'id associato al token passato come parametro, null altrimenti
      * @param string $token
-     * @param string $type API/COOKIE
      * @return string|null
      */
-    public static function verifyToken(string $token, string $type):?string
+    public static function verifyToken(string $token) :?string
     {
-        return FToken::verifyToken($token, $type);
+        return FToken::verifyToken();
     }
 
     // -------CODICE -------
@@ -177,7 +175,7 @@ class FPersistentManager
      * @param string $codice
      * @return bool
      */
-    public static function confermaCodice(MCliente $cliente, string $codice): bool
+    public static function confermaCodice(MCliente $cliente, string $codice) :bool
     {
         return FConfermaEmail::verifyCode($cliente, $codice);
     }
@@ -245,7 +243,7 @@ class FPersistentManager
      * Ritorna un array contenente tutti gli MImmobili presenti nel DB
      * @return array
      */
-    public static function visualizzaImmobili(): array
+    public static function visualizzaImmobili() :array
     {
         return FImmobile::getImmobili();
     }
@@ -255,7 +253,8 @@ class FPersistentManager
      * @param MImmobile $immobile
      * @return bool
      */
-    public static function disabilitaImmobile(MImmobile $immobile):bool{
+    public static function disabilitaImmobile(MImmobile $immobile) :bool
+    {
         return FImmobile::disabilita($immobile);
     }
 
@@ -265,7 +264,8 @@ class FPersistentManager
      * @param MImmobile $immobile
      * @return bool
      */
-    public static function modificaImmobile(MImmobile $immobile): bool{
+    public static function modificaImmobile(MImmobile $immobile): bool
+    {
         return FImmobile::modificaImmobile($immobile);
     }
 
@@ -273,7 +273,7 @@ class FPersistentManager
      * Ritorna i 3 immobili con il prezzo maggiore
      * @return array
      */
-    public static function getImmobiliHomepage():array
+    public static function getImmobiliHomepage() :array
     {
         return FImmobile::getImmobiliHomepage();
     }
@@ -282,7 +282,7 @@ class FPersistentManager
      * Ritorna un array con tutti gli immobili attivi
      * @return array
      */
-    public static function getImmobiliAttivi():array
+    public static function getImmobiliAttivi() :array
     {
         return FImmobile::getByType("attivo", true);
     }
@@ -336,7 +336,7 @@ class FPersistentManager
      * @param string $id
      * @return bool
      */
-    public static function eliminaImmobile(string $id): bool
+    public static function eliminaImmobile(string $id) :bool
     {
         return FImmobile::eliminaImmobile($id);
     }
@@ -350,7 +350,8 @@ class FPersistentManager
      * @param MAgenzia $agenzia
      * @return bool
      */
-    public static function modificaAgenzia(MAgenzia $agenzia): bool{
+    public static function modificaAgenzia(MAgenzia $agenzia) :bool
+    {
         return FAgenzia::modificaAgenzia($agenzia);
     }
 
@@ -410,7 +411,7 @@ class FPersistentManager
      * @param string $id
      * @return MAppuntamento
      */
-    public static function visualizzaAppuntamento(string $id): MAppuntamento
+    public static function visualizzaAppuntamento(string $id) :MAppuntamento
     {
         return FAppuntamento::getAppuntamento($id);
     }
@@ -430,7 +431,7 @@ class FPersistentManager
      * @param MData $fine
      * @return array
      */
-    public static function loadAppWeek(MData $inizio, MData $fine):array
+    public static function loadAppWeek(MData $inizio, MData $fine) :array
     {
         return FAppuntamento::getAppWeek($inizio, $fine);
     }
@@ -440,7 +441,7 @@ class FPersistentManager
      * @param MMedia $media
      * @return bool
      */
-    public static function addMedia(MMedia $media):bool
+    public static function addMedia (MMedia $media) :bool
     {
         return FMedia::addMedia($media);
     }
@@ -450,7 +451,7 @@ class FPersistentManager
      * @param string $id
      * @return bool
      */
-    public static function removeMedia(string $id):bool
+    public static function removeMedia(string $id) :bool
     {
         return FMedia::removeMedia($id);
     }

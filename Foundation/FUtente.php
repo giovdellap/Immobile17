@@ -33,7 +33,7 @@ class FUtente extends FObject
     /**
      * @return string
      */
-    public static function getValues(): string
+    public static function getValues() :string
     {
         return self::$values;
     }
@@ -43,7 +43,7 @@ class FUtente extends FObject
      * @param string $mail
      * @return bool
      */
-    public static function emailesistente(string $mail):bool
+    public static function emailesistente(string $mail) :bool
     {
         $db = FDataBase::getInstance();
         if(strpos($mail, "@info.it"))
@@ -57,7 +57,7 @@ class FUtente extends FObject
      * @param MUtente $utente
      * @return bool
      */
-    public static function registrazione(MUtente $utente):bool
+    public static function registrazione(MUtente $utente) :bool
     {
         $db= FDataBase::getInstance();
         if($utente instanceof MCliente)
@@ -73,7 +73,7 @@ class FUtente extends FObject
      * @param string $password
      * @return bool
      */
-    public static function login(string $mail, string $password): bool
+    public static function login(string $mail, string $password) :bool
     {
         $db = FDataBase::getInstance();
         if(strpos($mail, "@info.it"))
@@ -92,7 +92,7 @@ class FUtente extends FObject
      * @param string $id
      * @return bool
      */
-    public static function idEsistente(string $id): bool
+    public static function idEsistente(string $id) :bool
     {
         $db = FDataBase::getInstance();
         if(self::identifyId($id) === "CLIENTE")
@@ -105,7 +105,7 @@ class FUtente extends FObject
      * @param string $id
      * @return MUtente|null
      */
-    public static function visualizzaUtente(string $id): ?MUtente
+    public static function visualizzaUtente(string $id) :?MUtente
     {
         $db = FDataBase::getInstance();
         if(self::identifyId($id) === "CLIENTE") {
@@ -191,7 +191,8 @@ class FUtente extends FObject
      * @param string $id
      * @return MUtente
      */
-    public static function visualizzaAppUtente(string $id): MUtente{
+    public static function visualizzaAppUtente(string $id) :MUtente
+    {
         $utente = self::visualizzaUtente($id);
         $utente->setListAppuntamenti(FAppuntamento::visualizzaAppOggetto($id));
         return $utente;
@@ -226,7 +227,7 @@ class FUtente extends FObject
 
     }
 
-    public static function eliminaUtente(MUtente $utente): bool
+    public static function eliminaUtente(MUtente $utente) :bool
     {
         $db = FDataBase::getInstance();
         if($utente instanceof MCliente)

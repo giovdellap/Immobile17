@@ -81,7 +81,7 @@ class FAmministratore extends FObject
      * @param MAmministratore $amministratore
      * @return bool
      */
-    public static function modificaAmministratore(MAmministratore $amministratore):bool
+    public static function modificaAmministratore(MAmministratore $amministratore) :bool
     {
         $db = FDataBase::getInstance();
         if($db->existDB(self::class, "id", $amministratore->getId())) {
@@ -115,7 +115,7 @@ class FAmministratore extends FObject
      * @param string $password
      * @return bool
      */
-    public static function login(string $mail, string $password): bool
+    public static function login(string $mail, string $password) :bool
     {
         $amministratore=self::getAmministratore('AM1');
         if (password_verify($password, $amministratore->getPassword()))
@@ -129,7 +129,7 @@ class FAmministratore extends FObject
      * @param string $mail
      * @return bool
      */
-    public static function emailEsistente(string $mail): bool
+    public static function emailEsistente(string $mail) :bool
     {
         $db=FDataBase::getInstance();
         return $db->existDB(self::class, "mail", $mail);

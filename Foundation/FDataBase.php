@@ -59,7 +59,7 @@ class FDataBase
      * @param $model
      * @return bool
      */
-    public function storeDb($foundation, $model): bool
+    public function storeDb($foundation, $model) :bool
     {
         try {
             $lastID = $this->getLastId($foundation::getTable());
@@ -94,7 +94,7 @@ class FDataBase
      * @param string $table
      * @return string
      */
-    public function getLastId(string $table): string
+    public function getLastId(string $table) :string
     {
         $query = "SELECT id FROM " . $table . " GROUP BY " . "id" . " ORDER BY " . "id";
         $result = $this->executeLoadQuery($query);
@@ -160,7 +160,7 @@ class FDataBase
      * @param $param
      * @return bool
      */
-    public function deleteDB($foundation, $field, $param): bool
+    public function deleteDB($foundation, $field, $param) :bool
     {
         try {
             print_r($_FILES);
@@ -194,7 +194,7 @@ class FDataBase
      * @param $param valore da cercare
      * @return bool
      */
-    public function existDB($foundation, $field, $param): bool
+    public function existDB($foundation, $field, $param) :bool
     {
         try {
             $query = "SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . "='" . $param . "'";
@@ -222,7 +222,7 @@ class FDataBase
      * @param $searchparam valore identificativo della riga
      * @return bool
      */
-    public function updateDB($foundation, $field, $newvalue, $searchfield, $searchparam): bool
+    public function updateDB($foundation, $field, $newvalue, $searchfield, $searchparam) :bool
     {
         try {
             $this->db->beginTransaction();
@@ -347,7 +347,7 @@ class FDataBase
      * @param string $param
      * @return array|null
      */
-    public function loadByKeyword($foundation, string $field, string $param): ?array
+    public function loadByKeyword($foundation, string $field, string $param) :?array
     {
         $query = " SELECT * FROM " . $foundation::getTable() . " WHERE " . $field . " LIKE '%" . $param . "%' ;";
         return $this->executeLoadQuery($query);
@@ -383,7 +383,7 @@ class FDataBase
      * @param string $code
      * @return bool
      */
-    public function storeCode(string $id, string $code): bool
+    public function storeCode(string $id, string $code) :bool
     {
         try{
             $this->db->beginTransaction();
@@ -408,7 +408,7 @@ class FDataBase
      * @param string $code
      * @return bool
      */
-    public function loadCode(string $id, string $code): bool
+    public function loadCode(string $id, string $code) :bool
     {
         try {
             $query = "SELECT * FROM conferma_email WHERE id_cliente = '" . $id . "' AND codice = '" . $code . "';";
@@ -434,7 +434,7 @@ class FDataBase
      * @param string $table
      * @return bool
      */
-    public function addToken(string $id, string $token, string $table): bool
+    public function addToken(string $id, string $token, string $table) :bool
     {
         try {
             $this->db->beginTransaction();

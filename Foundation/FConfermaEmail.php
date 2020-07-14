@@ -14,7 +14,7 @@ class FConfermaEmail
      * @param string $code
      * @return bool
      */
-    public static function addCode(MCliente $cliente, string $code):bool
+    public static function addCode(MCliente $cliente, string $code) :bool
     {
         $db = FDataBase::getInstance();
         return $db->storeCode($cliente->getId(), $code);
@@ -26,7 +26,7 @@ class FConfermaEmail
      * @param string $code
      * @return bool
      */
-    public static function verifyCode(MCliente $cliente, string $code): bool
+    public static function verifyCode(MCliente $cliente, string $code) :bool
     {
         $db = FDataBase::getInstance();
         return $db->loadCode($cliente->getId(), $code);
