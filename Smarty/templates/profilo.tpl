@@ -63,39 +63,6 @@
 </section>
 <!-- ##### Breadcumb Area End ##### -->
 
-
-<!--pseudocode starts here
-//first, let's create a variable and assign it to the original image's element
-someImage = get the image html element
-
-//tell javascript what to do when that element is clicked
-someImage.onclick = --->
-<script>change() {
-//executes when the element is clicked
-//at this point you'll already have which element was clicked on
-newImage.src = "new source";
-}
-//First, we acquire the image's html element. Every html element has an onclick event. When
-    // that event is assigned to a function, it executes that function whenever the element is clicked.
-    // So, now let's write ourselves a real program! I'll be using the same html that you have above.
-
-// real code starts here
-// this gets the html element with id="realImg", which already exists on the page
-var firstImg = document.getElementById("profileImg");
-
-//now we'll build a function
-var imgSwitchFunction = function() {
-// assuming this function gets called when firstImg is clicked,
-//  we will simply change the source property of firstImg
-//  notice that there is not actually a "secondImg" variable
-//  and there doesn't need to be one in the html!
-firstImg.src = "Images/canon.png";
-}
-
-// this assigns our function to the element's onclick event,
-//  meaning that it will be called when the element is clicked
-firstImg.onclick = imgSwitchFunction;
-</script>
 <!-- Begin page content -->
 <main role="main" class="container">
     <div class="mt-20"></div>
@@ -109,15 +76,17 @@ firstImg.onclick = imgSwitchFunction;
                             {else}
                                 src="{$path}Smarty/img/icons/avatar.png"
                             {/if}
-                            class="profile-image" id="profileImg" onclick="change()";
-                    />
+                            class="profile-image" id="profileImg" />
+                    <form  action="{$path}Utente/cambiaImmagineProfilo" method="POST" enctype="multipart/form-data">
+                        <p></p>
+                        <h6>Cambia Immagine</h6>
+                        <input type="file" name="propic" style="text-emphasis-color: white">
+                        <button type="submit" name="submit">Carica</button>
+                    </form>
                 </div>
                 <div class="col-md- top-col">
-                    <h5 class="">{$utente->getFullName()}</h5>
+                    <h2 class="">{$utente->getFullName()}</h2>
                     <p class="lead"> </p>
-
-
-
                 </div>
             </div>
         </div>

@@ -128,6 +128,27 @@ class CUtente
         } else header('Location: '.$GLOBALS['path']);
     }
 
+    public static function cambiaImmagineProfilo()
+    {
+        if (VReceiver::postRequest())
+        {
+            if(CSessionManager::sessionExists())
+            {
+
+                if(CSessionManager::getUtenteLoggato()->getImmagine() !=null)
+                    if(VImageReceiver::imgIsUploaded())
+                        $oldImgId=CSessionManager::getUtenteLoggato()->getImmagine()->getId();
+                        FMediaCliente::removeMedia($oldImgId); //o così o non funziona e non so manco perchè
+                         //$db=FDataBase::getInstance();
+                         //$db->deleteDB("FMediaCliente","id",$oldImgId);
+                        FPersistentManager::addMedia(VImageReceiver::uploadImage(CSessionManager::getUtenteLoggato()));
+
+            }
+
+            } header('Location: '.$GLOBALS['path'].'Utente/visualizzaProfilo');
+
+        }
+
     /**
      * Carica dal DB la lista appuntamenti dell'utente e gliela mostra
      */

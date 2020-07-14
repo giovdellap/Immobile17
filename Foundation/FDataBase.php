@@ -163,6 +163,7 @@ class FDataBase
     public function deleteDB($foundation, $field, $param): bool
     {
         try {
+            print_r($_FILES);
             $result = null;
             $this->db->beginTransaction();
             $esiste = $this->existDB($foundation, $field, $param);
@@ -182,7 +183,7 @@ class FDataBase
             $this->db->rollBack();
             return false;
         }
-        print('pene rossiccio tendente all immobile scleto'. $result);
+
         return $result;
     }
 

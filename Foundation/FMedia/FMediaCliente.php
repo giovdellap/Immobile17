@@ -100,8 +100,10 @@ class FMediaCliente extends FObject
     public static function removeMedia(string $id):bool
     {
         $db=FDatabase::getInstance();
-        $db->deleteDB(self::class,"id", $id);
+       return $db->deleteDB(self::class,"id", $id);
+
     }
+
 
 
 
