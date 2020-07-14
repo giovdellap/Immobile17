@@ -3,18 +3,9 @@ COSE DA FARE:
 -PRENDERE 30L
 -APERITIVO POST ESAME
 
-Admin:
--aggiungere controlli nell'aggiunta immobili e clienti
 
 Utente:
 -ricordami?
-
-Immobili:
--advanceSearch
-
-SQL:
--tabbbella BBBBase
--quella per popolare
 
 -DOCUMENTAZIONE:
     -UML
