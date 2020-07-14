@@ -17,6 +17,7 @@ class CFrontController
         else
         {
             $api = false;
+            //CONTROLLO API E TOKEN API
             if($resource[0] === 'api')
             {
                 $api = true;
@@ -25,9 +26,13 @@ class CFrontController
                 {
                     $token = explode('=', $resource[1]);
                     array_shift($resource);
-                    CSessionManager::tokenValidation($token);
+                    CSessionManager::tokenValidation($token, "API");
                 }
             }
+            //CONTROLLO TOKEN COOKIE
+            if(VReceiver::isSetCookie())
+                CSessionManager::tokenValidation(VReceiver::getCookieToken(), "COOKIE");
+
             $controller = "C" . $resource[0];
             $dir = 'controller';
             if (in_array($controller . ".php", scandir($dir))){
@@ -57,29 +62,6 @@ class CFrontController
                     }
                 }
                 else $this->wrongUrl();
-                /**
-                if (isset($resource[1])){
-                    $function = $resource[1];
-                    if (method_exists($controller, $function)){
-                        $param = $resource; //gli array vengono copiati per valore (non c'è bisogno di clone)
-
-                        array_shift($param);
-                        array_shift($param);
-
-                        if (sizeof($param) == 0) $controller::$function();
-                        else if (sizeof($param) == 1) $controller::$function($param[0]);
-                        else if (sizeof($param) == 2) $controller::$function($param[0], $param[1]);
-
-                        else if (sizeof($param) == 3) $controller::$function($param[0], $param[1], $param[2]);
-                        else if (sizeof($param) == 4) $controller::$function($param[0], $param[1], $param[2], $param[3]);
-                        else if (sizeof($param) == 5) $controller::$function($param[0], $param[1], $param[2], $param[3], $param[4]);
-                        else if (sizeof($param) == 6) $controller::$function($param[0], $param[1], $param[2], $param[3], $param[4], $param[5]);
-                    }
-                    else $this->wrongUrl();
-
-                }
-                else $this->wrongUrl();
-                 **/
             }
             else $this->wrongUrl();
         }

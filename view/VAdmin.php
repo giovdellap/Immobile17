@@ -3,6 +3,7 @@
 
 class VAdmin
 {
+
     public static function showHomepage(Smarty $smarty, array $immobili, array $clienti, array $agenti, array $appuntamenti)
     {
         $smarty->assign('numAppWeek', count($appuntamenti));

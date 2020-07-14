@@ -427,23 +427,24 @@ class FDataBase
     // ------- TOKEN -------
 
     /**
-     * Aggiunge una tupla id utente - token alla table token_login
+     * Aggiunge una tupla id utente - token alla table passata come parametro
      * @param string $id
      * @param string $token
+     * @param string $table
      * @return bool
      */
-    public function addToken(string $id, string $token): bool
+    public function addToken(string $id, string $token, string $table): bool
     {
         try {
             $this->db->beginTransaction();
-            $query = "DELETE FROM token_login WHERE id_utente ='" . $id . "';";
+            $query = "DELETE FROM ".$table." WHERE id_utente ='" . $id . "';";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();
             $this->closeDbConnection();
 
             $this->db->beginTransaction();
-            $query = "INSERT INTO token_login (id_utente,token) VALUES ('" . $id . "','" . $token . "');";
+            $query = "INSERT INTO ".$table." (id_utente,token) VALUES ('" . $id . "','" . $token . "');";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             $this->db->commit();
@@ -457,13 +458,14 @@ class FDataBase
     }
 
     /**
-     * Ritorna un array contenente tutte le tuple id utente - token criptato presenti nella table token_login
+     * Ritorna un array contenente tutte le tuple id utente - token criptato presenti nella table passata come parametro
+     * @param string $table
      * @return array
      */
-    public function loadToken():array
+    public function loadToken(string $table):array
     {
         try {
-            $query = "SELECT * FROM token_login ;";
+            $query = "SELECT * FROM ".$table." ;";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

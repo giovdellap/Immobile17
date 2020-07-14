@@ -141,20 +141,22 @@ class FPersistentManager
      * Se esiste un token con lo stesso id, lo elimina e aggiunge quello passato come parametro
      * @param string $id
      * @param string $token
+     * @param string $type API/COOKIE
      */
-    public static function storeToken(string $id, string $token)
+    public static function storeToken(string $id, string $token, string $type)
     {
-        FToken::addToken($id, $token);
+        FToken::addToken($id, $token, $type);
     }
 
     /**
      * Ritorna l'id associato al token passato come parametro, null altrimenti
      * @param string $token
+     * @param string $type API/COOKIE
      * @return string|null
      */
-    public static function verifyToken(string $token):?string
+    public static function verifyToken(string $token, string $type):?string
     {
-        return FToken::verifyToken();
+        return FToken::verifyToken($token, $type);
     }
 
     // -------CODICE -------

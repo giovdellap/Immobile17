@@ -47,9 +47,10 @@ class CSessionManager
         session_destroy();
     }
 
-    public static function tokenValidation(string $token)
+    public static function tokenValidation(string $token, string $type)
     {
-        if(FPersistentManager::verifyToken($token) != null)
-            self::createSession(FPersistentManager::verifyToken($token));
+        if(FPersistentManager::verifyToken($token, $type) != null)
+            self::createSession(FPersistentManager::verifyToken($token, $type));
     }
+
 }

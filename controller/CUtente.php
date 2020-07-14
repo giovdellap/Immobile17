@@ -47,14 +47,18 @@ class CUtente
                 CSessionManager::createSession(FPersistentManager::loadIDbyEMail($loginUser->getEmail()));
                 if($api)
                 {
-                    $token = self::tokenCreator();
-                    FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token);
+                    $token = self::tokenCreator("API");
+                    FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token, "API");
                     $sender = VSenderAdapter::getInstance();
                     $sender->setApi($api);
                     $sender->setUtente(CSessionManager::getUtenteLoggato());
                     $sender->sendToken($token);
                 }
-                else header('Location: ' . $GLOBALS['path']);
+                else {
+                    if(VReceiver::rememberMe())
+                        self::cookieCreator();
+                    header('Location: ' . $GLOBALS['path']);
+                }
                 break;
 
             case "WRONG EMAIL":
@@ -72,6 +76,7 @@ class CUtente
      * Metodo POST: Effettua la registrazione sul DB
      *              Nel caso vada a buon fine, lo comunica all'utente
      *              Nel caso non vada a buon fine, mostra all'utente la registration form con l'errore riscontrato
+     * @param bool $api
      * @throws \PHPMailer\PHPMailer\Exception
      */
     public static function registrazione(bool $api)
@@ -292,12 +297,18 @@ class CUtente
 
     }
 
-    private static function tokenCreator(): string
+    private static function tokenCreator(string $type): string
     {
         $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $token = substr(str_shuffle($permitted_chars), 0, 15);
-        FPersistentManager::createToken($token);
-        return $token;
+        return substr(str_shuffle($permitted_chars), 0, 15);
+    }
+
+    private static function cookieCreator()
+    {
+        $token = self::tokenCreator("COOKIE");
+        $expiration_time = time() + (30*24*60*60);
+        FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token, "COOKIE");
+        setcookie('token', $token, $expiration_time, $GLOBALS['path']);
     }
 
 }

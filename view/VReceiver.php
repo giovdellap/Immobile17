@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class VReceiver
+ *
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package view
+ */
 class VReceiver
 {
 
@@ -24,6 +29,13 @@ class VReceiver
         $utente->setEmail($_POST['email']);
         $utente->setPassword($_POST['password']);
         return $utente;
+    }
+
+    public static function rememberMe():bool
+    {
+        if(!empty($_POST['remember']))
+            return true;
+        else return false;
     }
 
     public static function registrationUser(): MCliente
@@ -95,6 +107,16 @@ class VReceiver
     public static function getNewPW()
     {
         return $_POST['password'];
+    }
+
+    public static function isSetCookie(): bool
+    {
+        return isset($_COOKIE['token']);
+    }
+
+    public static function getCookieToken(): string
+    {
+        return $_COOKIE['token'];
     }
 
     // ---- IMMOBILE ----

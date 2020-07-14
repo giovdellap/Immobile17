@@ -112,6 +112,17 @@ CREATE TABLE `token_login` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `token_cookie`
+--
+
+CREATE TABLE `token_cookie` (
+                               `id_utente` varchar(10) NOT NULL,
+                               `token` varchar(81) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `cliente`
 --
 
@@ -311,6 +322,12 @@ ALTER TABLE `appuntamento`
 -- Indici per le tabelle `token_login`
 --
 ALTER TABLE `token_login`
+    ADD PRIMARY KEY (`id_utente`);
+
+--
+-- Indici per le tabelle `token_cookie`
+--
+ALTER TABLE `token_cookie`
     ADD PRIMARY KEY (`id_utente`);
 
 --
