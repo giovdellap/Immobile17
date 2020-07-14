@@ -151,6 +151,8 @@ class CUtente
 
     public static function logout(bool $api)
     {
+        if(VReceiver::isSetCookie())
+            setcookie('token', '0', time()-3600, $GLOBALS['path']);
         CSessionManager::sessionDestroy();
         header("Location: " . $GLOBALS['path']);
     }
