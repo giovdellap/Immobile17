@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Class VSmartyFactory
+ * Contiene metodi per la creazione di oggetti Smarty con parametri "base" già assegnati (utente, path, messaggi di errore...)
+ */
 class VSmartyFactory
 {
     /**
@@ -48,6 +51,13 @@ class VSmartyFactory
         return $smarty;
     }
 
+    /**
+     * Ritorna l'oggetto Smarty passato come parametro con assegnati i parametri della ricerca dell'array parameters
+     * Nel caso dei parametri fossero assenti, li imposta come "notSetted" per i parametri testuali e a valori standard per quelli numerici
+     * @param Smarty $smarty
+     * @param array $parameters
+     * @return Smarty
+     */
     public static function searchBarSmarty(Smarty $smarty, array $parameters): Smarty
     {
         $parametersNames = array('ti', 'pc', 'tp');
@@ -74,6 +84,12 @@ class VSmartyFactory
         return $smarty;
     }
 
+    /**
+     * Ritorna un'array di stringhe della tipologia "TipoAnnuncio" della ricerca
+     * In posizione 0 è presente la tipologia passata come parametro
+     * @param string $selected
+     * @return array|string[]
+     */
     public static function listTipoAnnuncio(string $selected):array
     {
         $tipologie=array("Affitto e Vendita","Vendita", "Affitto");
@@ -92,6 +108,12 @@ class VSmartyFactory
         }
     }
 
+    /**
+     * Ritorna un'array di stringhe della tipologia "Tipologia" della ricerca
+     * In posizione 0 è presente la tipologia passata come parametro
+     * @param string $selected
+     * @return array|string[]
+     */
     public static function listTipologie(string $selected):array
     {
         $tipologie=array("Tutte le Tipologie","Monolocale","Bilocale", "Trilocale","Quadrilocale","Appartamento" ,"Villa","Mansarda","Garage","Locale");
@@ -109,7 +131,5 @@ class VSmartyFactory
             return $toReturn;
         }
     }
-
-
 
 }

@@ -1,8 +1,17 @@
 <?php
 
-
+/**
+ * Class CHome
+ * Contiene metodi per caricare i dati necessari alla homepage del sito e alla pagina About Us e passarli alle rispettive View
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package controller
+ */
 class CHome
 {
+    /**
+     * Carica i dati dell'agenzia e i top 3 immobili dal database e li passa al SenderAdapter
+     * @param bool $api
+     */
     public static function homepage(bool $api)
     {
         if(VReceiver::getRequest())
@@ -10,14 +19,19 @@ class CHome
             $agenzia = FPersistentManager::visualizzaAgenzia('AZ1');
             $immobili = FPersistentManager::getImmobiliHomepage();
 
-            $senderProxy = VSenderAdapter::getInstance();
-            $senderProxy->setApi($api);
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
             if(CSessionManager::sessionExists())
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-            $senderProxy->homepage($agenzia, $immobili);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+            $sender->homepage($agenzia, $immobili);
         }
-        // ipotetico else
+        else header('Location: '.$GLOBALS['path']);
     }
+
+    /**
+     * Carica dal database un array di immobili attivi, seleziona 3 agenti e passa i dati al SenderAdapter
+     * @param bool $api
+     */
     public static function aboutUs(bool $api)
     {
         if(VReceiver::getRequest())
@@ -34,8 +48,9 @@ class CHome
             }
             else VHome::aboutUs(VSmartyFactory::basicSmarty(),$immobili, $agenti );
         }
-        // ipotetico else
+        else header('Location: '.$GLOBALS['path']);
     }
+
     /*funzione che serve a testare i templates di prova (da rimuovere)*/
     public static function provatpl()
     {

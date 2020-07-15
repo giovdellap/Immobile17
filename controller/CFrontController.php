@@ -1,6 +1,12 @@
 <?php
 
 require_once 'StartSmarty.php';
+
+/**
+ * Class CFrontController
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package controller
+ */
 class CFrontController
 {
     public function main()

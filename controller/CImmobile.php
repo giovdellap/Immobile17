@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class CImmobile
+ * Cntiene metodi per le operazioni sugli immobili che riguardano l'utente(ricerca, visualizzazione e prenotazione di appuntamenti)
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package controller
+ */
 class CImmobile
 {
 
@@ -16,6 +21,7 @@ class CImmobile
      *  pmin = Prezzo Minimo
      *  pmax = Prezzo Massimo
      * @param array $parameters
+     * @param bool $api
      */
     public static function ricerca(array $parameters, bool $api)
     {
@@ -23,11 +29,11 @@ class CImmobile
         {
             $parameters = VReceiver::ricercaParametersFiller($parameters);
             $immobili = FPersistentManager::getImmobiliByParameters($parameters);
-            $senderProxy = VSenderAdapter::getInstance();
-            $senderProxy->setApi($api);
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
             if(CSessionManager::sessionExists())
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-            $senderProxy->ricerca($immobili, $parameters);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+            $sender->ricerca($immobili, $parameters);
         }
         else header('Location: '.$GLOBALS['path'].'Immobile/visualizzaImmobili');
 
@@ -35,33 +41,35 @@ class CImmobile
 
     /**
      * Visualizza tutti gli immobili presenti nel DB
+     * @param bool $api
      */
     public static function visualizzaImmobili(bool $api)
     {
         if (VReceiver::getRequest()) {
             $immobili = FPersistentManager::visualizzaImmobili();
-            $senderProxy = VSenderAdapter::getInstance();
-            $senderProxy->setApi($api);
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
             if (CSessionManager::sessionExists())
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-            $senderProxy->visualizzaImmobili($immobili);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+            $sender->visualizzaImmobili($immobili);
         }
     }
 
     /**
      * Visualizza la pagina del singolo immobile
      * @param string $id ID Immobile
+     * @param bool $api
      */
     public static function visualizza(string $id, bool $api)
     {
         if(VReceiver::getRequest())
         {
             $immobile= FPersistentManager::visualizzaImmobile($id);
-            $senderProxy = VSenderAdapter::getInstance();
-            $senderProxy->setApi($api);
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
             if(CSessionManager::sessionExists())
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-            $senderProxy->visualizzaImmobile($immobile);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+            $sender->visualizzaImmobile($immobile);
         }
     }
 
@@ -74,7 +82,7 @@ class CImmobile
      *  - fine = data fine
      *  - le date sono in formato yyyy-mm--dd
      * @param array $parameters
-     * @throws SmartyException
+     * @param bool $api
      */
     public static function calendario(array $parameters, bool $api)
     {
@@ -91,10 +99,10 @@ class CImmobile
                     CSessionManager::getUtenteLoggato()->getId(), $inizio, $fine);
                 $utenteApp = FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId());
                 $appLiberi = $fullAgenzia->checkDisponibilità($utenteApp, $immobile, $inizio, $fine);
-                $senderProxy = VSenderAdapter::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->setUtente(CSessionManager::getUtenteLoggato());
-                $senderProxy->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
             }
             else CImmobile::visualizza($parameters["id"]);
         }
@@ -143,18 +151,18 @@ class CImmobile
                     $immobile = FPersistentManager::visualizzaAppImmobile(VReceiver::prenotaImmobile());
                     $appLiberi = $fullAgenzia->checkDisponibilità($utente, $immobile, $inizio, $fine);
 
-                    $senderProxy = VSenderAdapter::getInstance();
-                    $senderProxy->setApi($api);
-                    $senderProxy->setUtente($utente);
-                    $senderProxy->setError($error);
-                    $senderProxy->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
+                    $sender = VSenderAdapter::getInstance();
+                    $sender->setApi($api);
+                    $sender->setUtente($utente);
+                    $sender->setError($error);
+                    $sender->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
                 }
             } else
             {
                 $immobile = FPersistentManager::visualizzaAppImmobile(VReceiver::prenotaImmobile());
-                $senderProxy = VSenderAdapter::getInstance();
-                $senderProxy->setApi($api);
-                $senderProxy->visualizzaImmobile($immobile);
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->visualizzaImmobile($immobile);
             }
         } else header('Location: '.$GLOBALS['path']);
     }

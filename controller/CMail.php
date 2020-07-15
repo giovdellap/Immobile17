@@ -3,9 +3,18 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require "PHPMailer/src/PHPMailer.php";
 require "PHPMailer/src/SMTP.php";
+
+/**
+ * Class CMail
+ * Contiene funzioni per l'invio di mail preimpostate in caso di attivazione account, password dimenticata e modifica calendario utente
+ * Utilizza PHPMailer e gestisce le impostazione dell'Account GMail
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package controller
+ */
 class CMail
 {
     /**
+     * Invia la mail con l'url di attivazione account all'utente
      * @param MCliente $cliente
      * @param string $code
      * @return bool
@@ -23,6 +32,7 @@ class CMail
     }
 
     /**
+     * Invia la mail con la nuova password all'utente
      * @param MCliente $cliente
      * @param string $password
      * @return bool
@@ -38,6 +48,11 @@ class CMail
         return self::send($mail);
     }
 
+    /**
+     * Invia all'utente una mail di notifica che il suo calendario appuntamenti è stato modificato
+     * @param MCliente $cliente
+     * @throws Exception
+     */
     public static function modificaAppuntamentoMail(MCliente $cliente)
     {
         $name = $cliente->getFullName();
@@ -50,6 +65,7 @@ class CMail
     }
 
     /**
+     * Metodo per l'invio di un'oggetto MMail tramite PHPMailer e l'account email impostato
      * @param MMail $email
      * @return bool
      * @throws Exception

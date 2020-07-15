@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class CUtente
+ * Contiene metodi per le operazioni che riguardano l'utente(visualizzazione profilo, modifica profilo, visualizzazione calendario appuntamenti)
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package controller
+ */
 class CUtente
 {
     /**
