@@ -17,7 +17,7 @@
         }
         url= url + "/pmin/100/pmax/" + parameters.pmax.value;
 
-        url= url + "/gmin/0/gmax/" + parameters.gmax.value;
+        url= url + "/gmin/"+parameters.gmin.value+"/gmax/2000";
         //alert(url);
         window.location.href=url;
     }
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="webkit-slider-runnable-track" >
-                                        <input type="range"  min="{$pmin}" max="1000000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
+                                        <input type="range"  min="0" max="1000000" value="{$pmax}" class="slider" name="pmax" id="prezzo">
                                     </div>
                                 </div>
 
@@ -91,7 +91,7 @@
                                 <div class="row">
                                     <div class="myslider">
 
-                                        <input  type="range" min="{$gmin}" max="2000" value="{$gmax}" class="" name="gmax" id="grandezza">
+                                        <input  type="range" min="0" max="2000" value="{$gmin}" class="" name="gmin" id="grandezza">
                                     </div>
                                 </div>
                             </div>
