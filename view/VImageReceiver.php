@@ -92,7 +92,7 @@ class VImageReceiver
             return $immagini;
         }
     }
-    private static function isImage($typefile): bool
+    private static function isImage($typefile) :bool
     {
         $estensione = strtolower(strrchr($typefile, '/'));
 
