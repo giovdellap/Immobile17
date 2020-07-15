@@ -91,7 +91,9 @@
                                         <img src="{$path}Smarty/img/icons/new.png" alt="">
                                     {/if}
 
+
                                 </div>
+                                </a>
                                 <div class="space">
                                     <img src="{$path}Smarty/img/icons/space.png" alt="">
                                     <span>{$item->getGrandezza()} mq</span>
