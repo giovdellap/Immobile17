@@ -3,6 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require "PHPMailer/src/PHPMailer.php";
 require "PHPMailer/src/SMTP.php";
+require "PHPMailer/src/Exception.php";
 
 /**
  * Class CMail
@@ -18,7 +19,7 @@ class CMail
      * @param MCliente $cliente
      * @param string $code
      * @return bool
-     * @throws Exception
+     * @throws \PHPMailer\PHPMailer\Exception
      */
     public static function sendConfermationEmail(MCliente $cliente, string $code): bool
     {
@@ -36,7 +37,7 @@ class CMail
      * @param MCliente $cliente
      * @param string $password
      * @return bool
-     * @throws Exception
+     * @throws \PHPMailer\PHPMailer\Exception
      */
     public static function sendForgotPasswordEmail(MCliente $cliente, string $password): bool
     {
@@ -51,7 +52,7 @@ class CMail
     /**
      * Invia all'utente una mail di notifica che il suo calendario appuntamenti è stato modificato
      * @param MCliente $cliente
-     * @throws Exception
+     * @throws \PHPMailer\PHPMailer\Exception
      */
     public static function modificaAppuntamentoMail(MCliente $cliente)
     {
@@ -68,7 +69,7 @@ class CMail
      * Metodo per l'invio di un'oggetto MMail tramite PHPMailer e l'account email impostato
      * @param MMail $email
      * @return bool
-     * @throws Exception
+     * @throws \PHPMailer\PHPMailer\Exception
      */
     private static function send(MMail $email): bool {
         $mailer = new PHPMailer(true);
@@ -94,7 +95,6 @@ class CMail
         try {
             return $mailer->send();
         } catch (Exception $e) {
-            echo $mailer->ErrorInfo();
             return false;
         }
     }

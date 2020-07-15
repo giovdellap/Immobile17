@@ -78,11 +78,11 @@
                                 src="{$path}Smarty/img/icons/avatar.png"
                             {/if}
                             class="profile-image" id="profileImg"  title="clicca qui per cambiare la foto"/></a>
-                    <form  action="{$path}Utente/cambiaImmagineProfilo" method="POST" enctype="multipart/form-data">
+                    <form action="{$path}Utente/cambiaImmagineProfilo" method="POST" enctype="multipart/form-data">
                         <div class="panel single-accordion">
 
                             <div id="collapseOne" class="accordion-content collapse ">
-                                <input type="file" name="propic">
+                                <input type="file" name="propic" required>
                                 <button type="submit" name="submit">Carica</button>
                             </div>
                         </div>

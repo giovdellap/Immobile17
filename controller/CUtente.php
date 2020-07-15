@@ -119,6 +119,7 @@ class CUtente
     /**
      * Mostra all'utente il suo profilo se è loggato e la richiesta HTTP è POST
      * Mostra la login form altrimenti
+     * @param bool $api
      */
     public static function visualizzaProfilo(bool $api)
     {
@@ -139,7 +140,6 @@ class CUtente
         {
             if(CSessionManager::sessionExists())
             {
-
                 if((CSessionManager::getUtenteLoggato()->getImmagine()) !=null)
                     if(VImageReceiver::imgIsUploaded())
                         $oldImgId=CSessionManager::getUtenteLoggato()->getId();
@@ -154,6 +154,7 @@ class CUtente
 
     /**
      * Carica dal DB la lista appuntamenti dell'utente e gliela mostra
+     * @param bool $api
      */
     public static function calendario(bool $api)
     {
