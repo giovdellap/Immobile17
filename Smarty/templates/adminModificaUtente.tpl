@@ -25,7 +25,7 @@
                         <th style="width: 20%"> Cognome </th>
                         <th style="width: 20%"> Email </th>
                         <th style="width: 15%"> Data di nascita </th>
-                        <th style="width: 20%">Password </th>
+                        <th style="width: 20%"> </th>
                         <th style="width: 40%"> </th>
 
                     </tr>
@@ -58,7 +58,7 @@
 
                         <td>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="password" value="{$utente->getPassword()}">
+
                             </div>
                         </td>
 
