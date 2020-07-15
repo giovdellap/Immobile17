@@ -110,7 +110,7 @@
     <hr class="divider">
     <h5>I miei Appuntamenti</h5>
 
-    <a href="{$path}Utente/calendario"> <img src="{$path}Smarty/img/icons/calendario_app2.jpg" height="90" width="110" title="clicca qui per vedere il tuo calendario"> </a>
+    <a href="{$path}Utente/calendario"> <img src="{$path}Smarty/img/icons/calendar.gif" height="90" width="90" title="clicca qui per vedere il tuo calendario"> </a>
 
     <hr class="divider" />
     <h5>Impostazioni&nbsp;</h5>

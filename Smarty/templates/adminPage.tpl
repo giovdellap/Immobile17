@@ -208,11 +208,13 @@
 {include file = $toAppend}}
 
   <footer class="main-footer">
-    <span style=" fill-opacity: 1%">Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</span>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.5
+
+    <div class="copywrite-text d-flex  justify-content-center">
+      <img src={$path}/Smarty/img/icons/cr.png style="height: 20px;  width: 20px" >
+      <p>Template realizzato da: </p>
+      <a href="http://adminlte.io" class="txt2"><small>AdminLTE.io</small></a>
     </div>
+
   </footer>
 
   <!-- Control Sidebar -->

@@ -10,13 +10,14 @@
                     <div class="footer-widget-area mb-100">
                         <!-- Widget Title -->
                         <div class="widget-title">
-                            <h6>About Us</h6>
+                            <h6>Chi Siamo</h6>
                         </div>
-
-                        <img src={$path}Smarty/img/bg-img/img_agenzia.png alt="">
                         <div class="footer-logo my-4">
-                            <img src={$path}Smarty/img/core-img/logo_1.png alt="">
+                            <img src={$path}Smarty/img/core-img/newlogo.png alt="" style="width: 250px; ">
                         </div>
+                        <img src={$path}Smarty/img/bg-img/img_agenzia.png alt="" style="height: 150px">
+                        <span> <br> </span>
+                        <span> <br> </span>
                         <p>Giovanni Nicola Della Pelle</p>
                         <p>Marco Di Domenica</p>
                         <p>Gabriele Foderà</p>
@@ -44,6 +45,7 @@
                             <h6><img src={$path}/Smarty/img/icons/phone-call.png alt=""> +39 0862 433812</h6>
                             <h6><img src={$path}/Smarty/img/icons/envelope.png alt=""> admin@admin.it</h6>
                             <h6><img src={$path}/Smarty/img/icons/location.png alt=""> L'Aquila(AQ), 67100, Via Enrico De Nicola 17&nbsp; &nbsp;</h6>
+
                         </div>
                     </div>
                 </div>
@@ -51,11 +53,19 @@
         </div>
     </div>
 
-    <!-- Copywrite Text -->
     <div class="copywrite-text d-flex align-items-center justify-content-center">
-        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"> </i> by <a href="https://colorlib.com" >Colorlib</a>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        <img src={$path}/Smarty/img/icons/cr.png style="height: 10px;  width: 10px" >
+        <p>Template realizzato da: </p> <span><br> </span>
+        <a href="https://colorlib.com" class="txt2"><small>Colorlib</small></a>
+
     </div>
+
+
+    <!-- Copywrite Text -->
+    <!-- <div class="copywrite-text d-flex align-items-center justify-content-center"> -->
+    <!--     <p>Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. </p>-->
+    <!--  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"> </i> by <a href="https://colorlib.com" >Colorlib</a> -->
+     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    <!--</div> -->
 </footer>
-<!-- ##### Footer Area End ##### -->
+<!-- ##### Footer Area Ewnd ##### -->
