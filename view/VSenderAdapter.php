@@ -20,7 +20,7 @@ class VSenderAdapter
 
     /**
      * Singleton Instance
-     * @return FDataBase
+     * @return VSenderAdapter
      */
     public static function getInstance()
     {

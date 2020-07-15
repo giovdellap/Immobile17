@@ -1,8 +1,18 @@
 <?php
 
-
+/**
+ * Class VImageReceiver
+ * Si occupa della trasformazione delle immagini ricevute tramite richiesta HTTP POST in oggetti MMedia
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package view
+ */
 class VImageReceiver
 {
+    /**
+     * Converte l'immagine ricevuta tramite richiesta HTTP POST in un MMediaCliente
+     * @param $utente
+     * @return MMediaUtente
+     */
     public static function uploadImage($utente): MMediaUtente
     {
         //print_r($_FILES);
@@ -32,6 +42,12 @@ class VImageReceiver
         }
 
     }
+
+    /**
+     * Converte l'immagine ricevuta tramite richiesta HTTP POST in un MMediaImmobile
+     * @param $immobile
+     * @return MMediaImmobile
+     */
     public static function uploadImageImmobili($immobile): MMediaImmobile
     {
         $nomeFile = 'propic';
@@ -58,7 +74,12 @@ class VImageReceiver
         }
     }
 
-        public static function uploadMultipleImages($immobile):array
+    /**
+     * Converte l'immagine ricevuta tramite richiesta HTTP POST in un array di MMediaImmobile
+     * @param $immobile
+     * @return array
+     */
+    public static function uploadMultipleImages($immobile):array
     {
         //print_r($_FILES);
         if (isset($_FILES['my_file'])) {
@@ -92,6 +113,12 @@ class VImageReceiver
             return $immagini;
         }
     }
+
+    /**
+     * Controlla che il file caricato sia un'immagine
+     * @param $typefile
+     * @return bool
+     */
     private static function isImage($typefile) :bool
     {
         $estensione = strtolower(strrchr($typefile, '/'));
@@ -106,6 +133,11 @@ class VImageReceiver
                 return false;
         }
     }
+
+    /**
+     * Controlla che sia stata caricata un'immagine
+     * @return bool
+     */
     public static function imgIsUploaded()
     {
         return  is_uploaded_file($_FILES["propic"]["tmp_name"]);
