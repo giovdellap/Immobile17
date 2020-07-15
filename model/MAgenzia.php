@@ -155,7 +155,8 @@ class MAgenzia
      * @param MCliente $Cliente
      * @return bool esito dell'operazione
      */
-    public function addCliente(MCliente $Cliente):bool{
+    public function addCliente(MCliente $Cliente):bool
+    {
 
         if(!in_array($Cliente, $this ->list_Clienti) ) {
             $this->list_Clienti[] = $Cliente;
@@ -168,7 +169,8 @@ class MAgenzia
      * Elimina il Cliente dalla lista Clienti
      * @param MCliente $Cliente
      */
-    public function removeCliente(MCliente $Cliente):void{
+    public function removeCliente(MCliente $Cliente):void
+    {
 
         if(in_array($Cliente, $this ->list_Clienti) )
         {
@@ -181,7 +183,8 @@ class MAgenzia
      * @param MAgenteImmobiliare $AgenteImmobiliare
      * @return bool esito dell'operazione
      */
-    public function addAgenteImmobiliare(MAgenteImmobiliare $AgenteImmobiliare):bool{
+    public function addAgenteImmobiliare(MAgenteImmobiliare $AgenteImmobiliare):bool
+    {
 
         if(!in_array($AgenteImmobiliare, $this ->list_AgentiImmobiliari) )
         {
@@ -210,7 +213,8 @@ class MAgenzia
      * @param MImmobile $Immobile
      * @return bool esito dell'operazione
      */
-    public function addImmobile(MImmobile $Immobile):bool{
+    public function addImmobile(MImmobile $Immobile):bool
+    {
         if(!in_array($Immobile, $this ->list_Immobili) )
         {
             $this->list_Immobili[] = $Immobile;
@@ -225,7 +229,8 @@ class MAgenzia
      * Elimina l'Immobile dalla lista degli Immobili
      * @param MImmobile $Immobile
      */
-    public function removeImmobile(MImmobile $Immobile):void{
+    public function removeImmobile(MImmobile $Immobile):void
+    {
 
         if(in_array($Immobile, $this->list_Immobili))
         {

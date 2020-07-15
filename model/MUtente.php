@@ -192,7 +192,8 @@ class MUtente
      * @param MAppuntamento $appuntamento
      * @return bool esito dell'operazione
      */
-    public function addAppuntamento(MAppuntamento $appuntamento): bool{
+    public function addAppuntamento(MAppuntamento $appuntamento) :bool
+    {
 
         if(!in_array($appuntamento , $this->list_Appuntamenti))
         {
@@ -215,7 +216,8 @@ class MUtente
      * Se l'appuntamento è nella lista appuntamenti, lo elimina
      * @param MAppuntamento $appuntamento
      */
-    public function deleteAppuntamento(MAppuntamento $appuntamento): void{
+    public function deleteAppuntamento(MAppuntamento $appuntamento): void
+    {
         if(in_array($appuntamento, $this ->list_Appuntamenti) )
         {
             unset($this->list_Appuntamenti[array_search($appuntamento, $this->list_Appuntamenti)]);
