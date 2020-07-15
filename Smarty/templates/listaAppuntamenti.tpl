@@ -35,7 +35,7 @@
 
                         <td> {$appuntamento->getId()} </td>
                         <td> <a>{$appuntamento->getOrarioInizio()->getDateFormat()}</a> </td>
-                        <td> <a>{$appuntamento->getOrarioInizio()->getOrario()}/{$appuntamento->getOrarioFine()->getOrario()}</a> </td>
+                        <td> <a>{$appuntamento->getOrarioInizio()->getTimeFormat()}/{$appuntamento->getOrarioFine()->getTimeFormat()}</a> </td>
                         <td > <a>{$appuntamento->getCliente()->getFullName()}<br></a>
                             <small>{$appuntamento->getCliente()->getId()}</small>
                         </td>
