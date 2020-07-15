@@ -1,6 +1,11 @@
 <?php
 
-
+/**
+ * Class VSenderAdapter
+ * Adapter che passa i dati ottenuti come parametro dai controller alle classi view a seconda del parametro api
+ * @author Della Pelle - Di Domenica - Foderà
+ * @package view
+ */
 class VSenderAdapter
 {
     private static $instance;
@@ -91,6 +96,11 @@ class VSenderAdapter
 
     // ---- HOMEPAGE ----
 
+    /**
+     * Passa i dati della homepage ai metodi della view
+     * @param MAgenzia $agenzia
+     * @param array $immobili
+     */
     public function homepage(MAgenzia $agenzia, array $immobili)
     {
         if($this->api == true)
@@ -103,6 +113,10 @@ class VSenderAdapter
 
     // ---- IMMOBILE ----
 
+    /**
+     * Passa l'oggetto MImmobile alla view che permette di visualizzarlo
+     * @param MImmobile $immobile
+     */
     public function visualizzaImmobile(MImmobile $immobile)
     {
         if($this->api == true)
@@ -121,6 +135,10 @@ class VSenderAdapter
 
     }
 
+    /**
+     * Passa un array di immobili alla view
+     * @param array $immobili
+     */
     public function visualizzaImmobili(array $immobili)
     {
         if($this->api == true)
@@ -130,6 +148,14 @@ class VSenderAdapter
         else VImmobile::visualizzaImmobili($this->getSmarty(), $immobili);
     }
 
+    /**
+     * Passa i dati necessari a visualizzare il calendario per la prenotazione appuntamento alla View
+     * @param array $appLiberi
+     * @param Mdata $inizio
+     * @param MData $fine
+     * @param MImmobile $immobile
+     * @throws SmartyException
+     */
     public function immobileCalendario(array $appLiberi, Mdata $inizio, MData $fine, MImmobile $immobile)
     {
         if($this->api == true)
@@ -139,6 +165,11 @@ class VSenderAdapter
         else VImmobile::calendario($this->getSmarty(), $appLiberi, $inizio, $fine, $immobile);
     }
 
+    /**
+     * Passa gli immobili e i parametri della ricerca alla view
+     * @param array $immobili
+     * @param array $parameters
+     */
     public function ricerca(array $immobili, array $parameters)
     {
         if($this->api == true)
@@ -150,7 +181,9 @@ class VSenderAdapter
 
     // ---- UTENTE ----
 
-
+    /**
+     * Chiama la funzione di visualizzazione della login form
+     */
     public function loginForm()
     {
         if($this->api == true)
@@ -160,6 +193,9 @@ class VSenderAdapter
         else VUtente::loginForm($this->getSmarty());
     }
 
+    /**
+     * Chiama la funzione di visualizzazione della form di registrazione
+     */
     public function registrationForm()
     {
         if($this->api == true)
@@ -169,6 +205,9 @@ class VSenderAdapter
         else VUtente::showRegistrationForm($this->getSmarty());
     }
 
+    /**
+     * Chiama la funzione di notifica della registrazione avvenuta con successo
+     */
     public function registrationOK()
     {
         if($this->api == true)
@@ -178,6 +217,9 @@ class VSenderAdapter
         else VUtente::registrationOK($this->getSmarty());
     }
 
+    /**
+     * Chiama la funzione di visualizzazione del profilo utente nella view
+     */
     public function visualizzaProfilo()
     {
         if($this->api == true)
@@ -187,6 +229,10 @@ class VSenderAdapter
         else VUtente::visualizzaProfilo($this->getSmarty());
     }
 
+    /**
+     * Chiama la funzione di visualizzazione del calendario utente passandogli gli appuntamenti
+     * @param array $appuntamenti
+     */
     public function showCalendario(array $appuntamenti)
     {
         if($this->api == true)
@@ -196,6 +242,9 @@ class VSenderAdapter
         else VUtente::showCalendario($this->getSmarty(), $appuntamenti);
     }
 
+    /**
+     * Chiama la funzione di visualizzazione del form di eliminazione account
+     */
     public function eliminaAccount()
     {
         if($this->api == true)
@@ -205,6 +254,10 @@ class VSenderAdapter
         else VUtente::eliminaAccount($this->getSmarty());
     }
 
+    /**
+     * Chiama la funzione di visualizzazione dell'appuntamento nelle view
+     * @param MAppuntamento $appuntamento
+     */
     public function visualizzaAppuntamento(MAppuntamento $appuntamento)
     {
         if($this->api == true)
@@ -219,6 +272,9 @@ class VSenderAdapter
         }
     }
 
+    /**
+     * Visualizza il form di modifica password
+     */
     public function modificaPassword()
     {
         if($this->api == true)
@@ -228,6 +284,9 @@ class VSenderAdapter
         else VUtente::showModificaPassword($this->getSmarty());
     }
 
+    /**
+     * Visualizza la notifica di password modificata
+     */
     public function forgotPassword()
     {
         if($this->api == true)
@@ -237,6 +296,9 @@ class VSenderAdapter
         else VUtente::showForgotPassword($this->getSmarty());
     }
 
+    /**
+     * Visualizza la form per la password dimenticata
+     */
     public function forgotPasswordForm()
     {
         if ($this->api == true) {
@@ -245,6 +307,10 @@ class VSenderAdapter
         else VUtente::formForgotPassword($this->getSmarty());
     }
 
+    /**
+     * Passa il token alla view API dopo un login avvenuto con successo
+     * @param $token
+     */
     public function sendToken($token)
     {
         if($this->api)
@@ -254,6 +320,10 @@ class VSenderAdapter
 
     }
 
+    /**
+     * Ritorna un oggetto Smarty con già assegnati i parametri del VSenderAdapter
+     * @return Smarty
+     */
     private function getSmarty():Smarty
     {
         if(isset($this->utente))

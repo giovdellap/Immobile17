@@ -2,7 +2,7 @@
 
 /**
  * Class VReceiver
- *
+ * Fornisce metodi per il completamento di query incomplete e per ottenere dal server informazioni sul tipo di richiesta HTTP e sui parametri della stessa
  * @author Della Pelle - Di Domenica - Foderà
  * @package view
  */
@@ -11,11 +11,17 @@ class VReceiver
 
     // ---- GENERAL METHODS ----
 
+    /**
+     * @return bool richiesta HTTP GET
+     */
     public static function getRequest():bool
     {
         return $_SERVER['REQUEST_METHOD'] == 'GET';
     }
 
+    /**
+     * @return bool richiesta HTTP POST
+     */
     public static function postRequest(): bool
     {
         return $_SERVER['REQUEST_METHOD'] == 'POST';
@@ -23,6 +29,10 @@ class VReceiver
 
     // ---- UTENTE ----
 
+    /**
+     * Ritorna un Mutente con gli attributi email e password ottenuti dalla richiesta HTTP POST
+     * @return MUtente
+     */
     public static function loginUser()
     {
         $utente = new MUtente();
@@ -31,6 +41,9 @@ class VReceiver
         return $utente;
     }
 
+    /**
+     * @return bool eistsenza del parametro POST 'remember'
+     */
     public static function rememberMe():bool
     {
         if(!empty($_POST['remember']))
@@ -38,6 +51,10 @@ class VReceiver
         else return false;
     }
 
+    /**
+     * Ritorna un MCliente con gli attributi impostati con i parametri della richiesta HTTP POST della registrazione
+     * @return MCliente
+     */
     public static function registrationUser(): MCliente
     {
         $utente = new MCliente();
@@ -51,12 +68,20 @@ class VReceiver
         return $utente;
     }
 
+    /**
+     * Ritorna un MData ottenuto dai parametri della richiesta HTTP POST della registrazione
+     * @return MData
+     */
     private static function getDateFromRegistrazione(): MData
     {
         $date=explode("-", $_POST["date"]);
         return new MData($date[0],$date[1],$date[2], 0);
     }
 
+    /**
+     * Modifica l'utente passato come parametro con i parametri della richiesta POST di modifica utente
+     * @param MUtente $utente
+     */
     public static function utenteByPostRequest(MUtente $utente)
     {
         $utente->setNome($_POST['nome']);
@@ -68,6 +93,10 @@ class VReceiver
         $utente->setAttivato(true);
     }
 
+    /**
+     * Ritorna un MUtente ottenuto tramite i parametri della richiesta POST dell'aggiunta utente dell'Admin
+     * @return MUtente
+     */
     public static function aggiuntaUtente(): MUtente
     {
         if($_POST['tipologia'] == 'Cliente')
@@ -77,6 +106,11 @@ class VReceiver
         return $utente;
     }
 
+    /**
+     * Ritorna true se sono presenti i parametri id e codice
+     * @param array $parameters
+     * @return bool
+     */
     public static function confermaAccountValidator(array $parameters)
     {
         if(key_exists('id', $parameters) && key_exists('codice', $parameters))
@@ -84,36 +118,64 @@ class VReceiver
         else return false;
     }
 
+    /**
+     * Ritorna il parametro 'email' della richiesta HTTP POST
+     * @return string
+     */
     public static function getEmail(): string
     {
         return $_POST['email'];
     }
 
+    /**
+     * Ritorna il parametro 'id' della lista parametri ottenuta dall'URL
+     * @param array $parameters
+     * @return string
+     */
     public static function getParametersId(array $parameters): string
     {
         return $parameters['id'];
     }
 
+    /**
+     * Ritorna il parametro 'codice' della lista parametri ottenuta dall'URL
+     * @param array $parameters
+     * @return string
+     */
     public static function getParametersCode(array $parameters): string
     {
         return $parameters['codice'];
     }
 
-    public static function getOldPW()
+    /**
+     * Ritorna il parametro 'oldPassword' della richiesta HTTP POST
+     * @return mixed
+     */
+    public static function getOldPW(): string
     {
         return $_POST['oldPassword'];
     }
 
-    public static function getNewPW()
+    /**
+     * Ritorna il parametro 'password' della richiesta HTTP POST
+     * @return mixed
+     */
+    public static function getNewPW(): string
     {
         return $_POST['password'];
     }
 
+    /**
+     * @return bool esistenza del cookie 'token'
+     */
     public static function isSetCookie(): bool
     {
         return isset($_COOKIE['token']);
     }
 
+    /**
+     * @return string valore del cookie 'token'
+     */
     public static function getCookieToken(): string
     {
         return $_COOKIE['token'];
@@ -121,6 +183,11 @@ class VReceiver
 
     // ---- IMMOBILE ----
 
+    /**
+     * Aggiunge i parametri assenti per la ricerca immobili
+     * @param array $parameters
+     * @return array
+     */
     public static function ricercaParametersFiller(array $parameters): array
     {
         if(!key_exists('pmin', $parameters))
@@ -134,6 +201,13 @@ class VReceiver
         return $parameters;
     }
 
+    /**
+     * Aggiunge i parametri assenti per il calendario immobile
+     * Imposta la data di inizio a oggi se è domenica, a domani se è sabato, alla scorsa domenica se oggi è un giorno feriale
+     * @param array $parameters
+     * @return array
+     * @throws Exception
+     */
     public static function calendarioParametersFiller(array $parameters):array
     {
         if(!key_exists('inizio', $parameters))
@@ -162,6 +236,11 @@ class VReceiver
         return $parameters;
     }
 
+    /**
+     * Trasforma il parametro 'inizio' dell'URL in un MData
+     * @param array $parameters
+     * @return MData
+     */
     public static function calendarioInizio(array $parameters):MData
     {
         $data = MData::getMDataFromString($parameters['inizio']);
@@ -169,6 +248,11 @@ class VReceiver
         return $data;
     }
 
+    /**
+     * Trasforma il parametro 'fine' dell'URL in un MData
+     * @param array $parameters
+     * @return MData
+     */
     public static function calendarioFine(array $parameters):MData
     {
         $data = MData::getMDataFromString($parameters['fine']);
@@ -176,6 +260,10 @@ class VReceiver
         return $data;
     }
 
+    /**
+     * Trasforma il parametro 'agInizio' dell'URL in un MData
+     * @return MData
+     */
     public static function prenotaInizioAgenzia()
     {
         $data = MData::getMDataFromString($_POST['agInizio']);
@@ -183,6 +271,10 @@ class VReceiver
         return $data;
     }
 
+    /**
+     * Trasforma il parametro 'agFine' dell'URL in un MData
+     * @return MData
+     */
     public static function prenotaFineAgenzia()
     {
         $data = MData::getMDataFromString($_POST['agFine']);
@@ -190,31 +282,58 @@ class VReceiver
         return $data;
     }
 
+    /**
+     * Ritorna il parametro 'idAg' della richiesta HTTP POST
+     * @return mixed
+     */
     public static function prenotaAgente()
     {
         return $_POST['idAg'];
     }
 
+    /**
+     * Ritorna il parametro 'idIm' della richiesta HTTP POST
+     * @return mixed
+     */
     public static function prenotaImmobile()
     {
         return $_POST['idIm'];
     }
 
+    /**
+     * Ritorna il parametro 'idCl' della richiesta HTTP POST
+     * @return mixed
+     */
     public static function prenotaCliente()
     {
         return $_POST['idCl'];
     }
 
-    public static function prenotaAppuntamentoInizio()
+    /**
+     * Trasforma il parametro 'inizio' della richiesta HTTP POST in un MData
+     * Utilizzato per gli orari ricavati dagli eventi di FullCalendar
+     * @return MData
+     */
+    public static function prenotaAppuntamentoInizio(): MData
     {
         return self::calendarDataConverter($_POST['inizio']);
     }
 
+    /**
+     * Trasforma il parametro 'fine' della richiesta HTTP POST in un MData
+     * Utilizzato per gli orari ricavati dagli eventi di FullCalendar
+     * @return MData
+     */
     public static function prenotaAppuntamentoFine()
     {
         return self::calendarDataConverter($_POST['fine']);
     }
 
+    /**
+     * Converte le stringhe data/ora ottenute dagli eventi di FullCalendar in oggetti MData
+     * @param string $received
+     * @return MData
+     */
     private static function calendarDataConverter(string $received): MData
     {
         $timeString = str_split($received, 24)[0];
@@ -222,6 +341,10 @@ class VReceiver
         return MData::getMdataFromTimestamp($timeStamp);
     }
 
+    /**
+     * Ritorna un oggetto MImmobile dai parametri della richiesta HTTP POST dell'aggiunta immobile
+     * @return MImmobile
+     */
     public static function immobileByPostRequest(): MImmobile
     {
         $immobile = new MImmobile();
@@ -238,7 +361,7 @@ class VReceiver
     }
 
     /**
-     * Può essere true o false
+     * Ritorna il valore del parametro 'attiva' della richiesta HTTP POST
      * @return bool
      */
     public static function getAttivaorNot(): bool
@@ -250,16 +373,30 @@ class VReceiver
 
     // ---- ADMIN ----
 
+    /**
+     * Ritorna il valore del parametro 'id' della richiesta HTTP POST
+     * @return string
+     */
     public static function generalId(): string
     {
         return $_POST['id'];
     }
 
+    /**
+     * Ritorna il parametro 'cliente' della lista parametri ottenuta dall'URL
+     * @param array $parameters
+     * @return mixed
+     */
     public static function getIdCliente(array $parameters)
     {
         return $parameters['cliente'];
     }
 
+    /**
+     * Ritorna il parametro 'immobile' della lista parametri ottenuta dall'URL
+     * @param array $parameters
+     * @return mixed
+     */
     public static function getIdImmobile(array $parameters)
     {
         return $parameters['immobile'];
@@ -267,26 +404,45 @@ class VReceiver
 
     // --- INSTALLATION ----
 
+    /**
+     * Ritorna il valore del parametro 'nomeDB' della richiesta HTTP POST
+     * @return string
+     */
     public static function getNomeDB(): string
     {
         return $_POST['nomeDB'];
     }
 
+    /**
+     * Ritorna il valore del parametro 'passwordDB' della richiesta HTTP POST
+     * @return string
+     */
     public static function getPasswordDB(): string
     {
         return $_POST['passwordDB'];
     }
 
+    /**
+     * Ritorna il valore del parametro 'usernameDB' della richiesta HTTP POST
+     * @return string
+     */
     public static function getUsernameDB(): string
     {
         return $_POST['usernameDB'];
     }
 
+    /**
+     * Ritorna il valore del parametro 'passwordAdmin' della richiesta HTTP POST
+     * @return string
+     */
     public static function getPasswordAdmin(): string
     {
         return $_POST['passwordAdmin'];
     }
 
+    /**
+     * @return bool esistenza del parametro 'populate' della richiesta HTTP POST
+     */
     public static function populateDB(): bool
     {
         if(key_exists('populate', $_POST))
