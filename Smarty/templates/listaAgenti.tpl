@@ -60,17 +60,17 @@
                                 {if $agente->isAttivato()}
                                     <button class="btn btn-dark btn-xs"
                                             onclick="disattiva('{$agente->getId()}')">
-                                        <i class="fas fa-ban" > </i>
+                                        <i class="fas fa-ban" title="Disattiva"> </i>
                                     </button>
                                 {else}
                                     <button class="btn btn-dark btn-xs"
                                             onclick="attiva('{$agente->getId()}')">
-                                        <i class="fas fa-smile" > </i>
+                                        <i class="fas fa-smile" title="Attiva" > </i>
                                     </button>
                                 {/if}
                             <a href="{$path}Admin/modificaUtente/{$agente->getId()}">
                                 <button class="btn btn-primary btn-xs">
-                                    <i class="fas fa-pen"> </i>
+                                    <i class="fas fa-pen" title="Modifica"> </i>
                                 </button>
                             </a>
                         </td>

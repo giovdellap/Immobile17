@@ -51,7 +51,7 @@
 
                             </a>
                             <button class="btn btn-danger btn-xs" onclick="eliminaAppuntamento('{$appuntamento->getId()}');">
-                                <i class="fas fa-trash">
+                                <i class="fas fa-trash" table="Elimina">
                                 </i>
 
                             </button>

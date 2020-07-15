@@ -60,21 +60,21 @@
 
                             {if $cliente->isAttivato()}
                                 <button class="btn btn-dark btn-xs" onclick="disattiva('{$cliente->getId()}')">
-                                    <i class="fas fa-ban" > </i>
+                                    <i class="fas fa-ban" title="Disattiva"> </i>
                                 </button>
 
                             {else}
                                 <button class="btn btn-dark btn-xs" onclick="attiva('{$cliente->getId()}')">
-                                    <i class="fas fa-smile" > </i>
+                                    <i class="fas fa-smile" title="Attiva"> </i>
                                 </button>
                             {/if}
                             <a href="{$path}Admin/modificaUtente/{$cliente->getId()}">
                                 <button class="btn btn-primary btn-xs">
-                                    <i class="fas fa-pen"> </i>
+                                    <i class="fas fa-pen" title="Modifica"> </i>
                                 </button>
                             </a>
                             <button class="btn btn-danger btn-xs" onclick="elimina('{$cliente->getId()}')">
-                                <i class="fas fa-trash"> </i>
+                                <i class="fas fa-trash" title="Elimina"> </i>
                             </button>
                         </td>
                     </tr>
