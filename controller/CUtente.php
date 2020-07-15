@@ -135,12 +135,10 @@ class CUtente
             if(CSessionManager::sessionExists())
             {
 
-                if(CSessionManager::getUtenteLoggato()->getImmagine() !=null)
+                if((CSessionManager::getUtenteLoggato()->getImmagine()) !=null)
                     if(VImageReceiver::imgIsUploaded())
-                        $oldImgId=CSessionManager::getUtenteLoggato()->getImmagine()->getId();
-                        FMediaCliente::removeMedia($oldImgId); //o così o non funziona e non so manco perchè
-                         //$db=FDataBase::getInstance();
-                         //$db->deleteDB("FMediaCliente","id",$oldImgId);
+                        $oldImgId=CSessionManager::getUtenteLoggato()->getId();
+                        FPersistentManager::removeMedia($oldImgId);
                         FPersistentManager::addMedia(VImageReceiver::uploadImage(CSessionManager::getUtenteLoggato()));
 
             }
