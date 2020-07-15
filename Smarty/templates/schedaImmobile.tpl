@@ -48,14 +48,14 @@
 <!-- ##### Listings Content Area Start ##### -->
 <section class="listings-content-wrapper section-padding-100">
     <div class="container">
-        <div class="row">
+        <div class="row" >
             <div class="col-12">
                 <!-- Single Listings Slides -->
                 <div class="single-listings-sliders owl-carousel">
 
                     {foreach $immobile->getImmagini() as $imgs}
                     <!-- Single Slide -->
-                        <img src="{$imgs->viewImageHTML()}" alt="PIPPA">
+                        <img src="{$imgs->viewImageHTML()}" style="height: 750px" >
                    {/foreach}
                 </div>
             </div>

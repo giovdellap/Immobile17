@@ -70,19 +70,24 @@
         <div class="col-sm-6">
             <div class="row">
                 <div class="col-md-4">
+                    <a role="button" class="" aria-expanded="false" aria-controls="collapseOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" >
                     <img
                             {if isset($utente->getImmagine())}
                                 src="{$utente->getImmagine()->viewImageHTML()}"
                             {else}
                                 src="{$path}Smarty/img/icons/avatar.png"
                             {/if}
-                            class="profile-image" id="profileImg" />
+                            class="profile-image" id="profileImg"  title="clicca qui per cambiare la foto"/></a>
                     <form  action="{$path}Utente/cambiaImmagineProfilo" method="POST" enctype="multipart/form-data">
-                        <p></p>
-                        <h6>Cambia Immagine</h6>
-                        <input type="file" name="propic" style="text-emphasis-color: white">
-                        <button type="submit" name="submit">Carica</button>
+                        <div class="panel single-accordion">
+
+                            <div id="collapseOne" class="accordion-content collapse ">
+                                <input type="file" name="propic">
+                                <button type="submit" name="submit">Carica</button>
+                            </div>
+                        </div>
                     </form>
+
                 </div>
                 <div class="col-md- top-col">
                     <h2 class="">{$utente->getFullName()}</h2>
@@ -105,7 +110,7 @@
     <hr class="divider">
     <h5>I miei Appuntamenti</h5>
 
-    <a href="{$path}Utente/calendario"> <img src="{$path}Smarty/img/icons/calendario_app2.jpg" height="90" width="110"> </a>
+    <a href="{$path}Utente/calendario"> <img src="{$path}Smarty/img/icons/calendario_app2.jpg" height="90" width="110" title="clicca qui per vedere il tuo calendario"> </a>
 
     <hr class="divider" />
     <h5>Impostazioni&nbsp;</h5>
@@ -113,8 +118,8 @@
     <div class="row">
         <div class="col-sm-6">
 
-                <a href="{$path}Utente/modificaPassword"  class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">Modifica Password </a>
-                <a href="{$path}Utente/eliminaAccount"  class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30"> Elimina Account&nbsp; </a>
+                <a href="{$path}Utente/modificaPassword"  class="dis-block txt3 hov1 p-r-12 p-t-10 p-b-10 p-l-12">Modifica Password </a>
+                <a href="{$path}Utente/eliminaAccount"  class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-12"> Elimina Account&nbsp; </a>
 
         </div>
 

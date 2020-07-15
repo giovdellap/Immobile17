@@ -144,7 +144,7 @@
                 <p>Visualizza</p>
               </a>
               <a href="{$path}Admin/modificaPassword" class="nav-link">
-                <i class="fas fa-info-circle nav-icon"> </i>
+                <i class="fas fa-box-open nav-icon"> </i>
                 <p>Modifica Admin</p>
               </a>
 

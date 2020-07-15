@@ -62,7 +62,7 @@
             <!-- Property Thumbnail -->
             <a href="{$path}Immobile/visualizza/{$immobile->getId()}">
             <div class="property-thumb">
-                <img src="{$immobile->getPresentationImg()}" alt="">
+                <img src="{$immobile->getPresentationImg()}" style=" height: 578px">
 
                 <div class="tag">
                     <span>{$immobile->getTipoAnnuncio()}</span>
@@ -99,7 +99,7 @@
                         {if $userType === 'AGENTE'}
                             <div class="property-thumb">
                             {if isset ($cliente->getImmagine())}
-                                <img src="{$cliente->getImmagine()->viewImageHTML()}" >
+                                <img src="{$cliente->getImmagine()->viewImageHTML()}" style="width: 450px; height: 270px">
                             {else}
                                 <img src="{$path}Smarty/img/icons/avatar.png">
                             {/if}
@@ -109,11 +109,13 @@
                         <div class="property-content">
                             <h5>{$cliente->getFullName()}</h5>
                             <p>Cliente</p>
+                            <p>Contatto: <small>{$cliente->getEmail()}</small> </p>
+
                         </div>
                         {else}
                             <div class="property-thumb">
                                 {if isset ($agente->getImmagine())}
-                                    <img src="{$agente->getImmagine()->viewImageHTML()}" >
+                                    <img src="{$agente->getImmagine()->viewImageHTML()}" style="width: 450px; height: 270px" >
                                 {else}
                                     <img src="{$path}Smarty/img/icons/avatar.png">
                                 {/if}
@@ -123,6 +125,8 @@
                             <div class="property-content">
                                 <h5>{$agente->getFullName()}</h5>
                                 <p>Agente Immobiliare</p>
+                                <p>Contatto: <small>{$agente->getEmail()}</small></p>
+
                             </div>
                         {/if}
                         <div class="property-content">

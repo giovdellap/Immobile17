@@ -142,9 +142,9 @@ class FPersistentManager
      * @param string $id
      * @param string $token
      */
-    public static function storeToken(string $id, string $token)
+    public static function storeToken(string $id, string $token, string $type)
     {
-        FToken::addToken($id, $token);
+        FToken::addToken($id, $token, $type);
     }
 
     /**
@@ -152,9 +152,9 @@ class FPersistentManager
      * @param string $token
      * @return string|null
      */
-    public static function verifyToken(string $token) :?string
+    public static function verifyToken(string $token, string $type) :?string
     {
-        return FToken::verifyToken();
+        return FToken::verifyToken($token, $type);
     }
 
     // -------CODICE -------
