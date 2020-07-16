@@ -28,7 +28,8 @@
     "require": {
         "php": ">=7.4",
         "ext-ctype": "*",
-        "ext-filter": "*"
+        "ext-filter": "*",
+      "ext-pdo": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.2",

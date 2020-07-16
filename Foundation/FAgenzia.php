@@ -14,7 +14,7 @@ class FAgenzia extends FObject
 
     /**
      * @param PDOStatement $stmt
-     * @param oggetto $obj
+     * @param $obj
      * @param string $newId
      */
     public static function bind(PDOStatement $stmt, $obj, string $newId): void
