@@ -118,7 +118,7 @@
 						<span class="btn-show-pass">
 							<i class="fa fa-eye"> </i>
 						</span>
-                    <input class="input100" type="password" required name="password" placeholder="**********">
+                    <input class="input100" type="password" required name="password" placeholder="**********" minlength="8">
                     <span class="focus-input100"> </span>
                 </div>
 
