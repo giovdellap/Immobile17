@@ -6,7 +6,7 @@
  * @author Della Pelle - Di Domenica - Foderà
  * @package model
  */
-class MUtente
+class MUtente implements JsonSerializable
 {
     private string $nome;
     private string $cognome;
@@ -225,4 +225,20 @@ class MUtente
     }
 
 
+    public function jsonSerialize()
+    {
+        return
+            [
+                'nome' => $this->getNome(),
+                'cognome' => $this->getCognome(),
+                'id' => $this->getId(),
+                'mail' => $this->getEmail(),
+                'password' => $this->getPassword(),
+                'attivato' => $this->isAttivato(),
+                'appuntamenti' => $this->getListAppuntamenti(),
+                'immagine' => $this->getImmagine()->viewImageHTML(),
+                'dataNascita' => $this->getDataNascita()->getFullDataString(),
+                'iscrizione' => $this->getIscrizione()->getFullDataString()
+            ];
+    }
 }

@@ -7,7 +7,7 @@ ini<?php
  * @author Della Pelle - Di Domenica - Foderà
  * @package model
  */
-class MAppuntamento
+class MAppuntamento implements JsonSerializable
 {
     private string $id;
     private MData $orario_inizio;
@@ -131,4 +131,16 @@ class MAppuntamento
     }
 
 
+    public function jsonSerialize()
+    {
+        return
+            [
+                'id' => $this->getId(),
+                'agente' => $this->getAgenteImmobiliare(),
+                'cliente' => $this->getCliente(),
+                'immobile' => $this->getImmobile(),
+                'orarioInizio' => $this->getOrarioInizio()->getFullDataString(),
+                'orarioFine' => $this->getOrarioFine()->getFullDataString()
+            ];
+    }
 }

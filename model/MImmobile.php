@@ -6,7 +6,7 @@
  * @author Della Pelle - Di Domenica - Foderà
  * @package model
  */
-class MImmobile
+class MImmobile implements JsonSerializable
 {
     private string $id;
     private string $indirizzo;
@@ -288,6 +288,29 @@ class MImmobile
     public function setListAppuntamenti(array $list_appuntamenti): void
     {
         $this->list_appuntamenti = $list_appuntamenti;
+    }
+
+    public function jsonSerialize(): array
+    {
+        $immagini = [];
+        foreach ($this->getImmagini() as $item)
+        {
+            $immagini[] = $item->viewImageHTML();
+        }
+        return
+        [
+            'id' => $this->getId(),
+            'indirizzo' => $this->getIndirizzo(),
+            'comune' => $this->getComune(),
+            'nome' => $this->getNome(),
+            'tipologia' => $this->getTipologia(),
+            'tipoAnnuncio' => $this->getTipoAnnuncio(),
+            'descrizione' => $this->getDescrizione(),
+            'immagini' => $immagini,
+            'prezzo' => $this->getPrezzo(),
+            'grandezza' => $this->getGrandezza(),
+            'attivo' => $this->isAttivo(),
+        ];
     }
 
 
