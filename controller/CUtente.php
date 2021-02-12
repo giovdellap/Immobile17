@@ -54,6 +54,7 @@ class CUtente
                 {
                     $token = self::tokenCreator("API");
                     FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token, "API");
+                    CSessionManager::tokenValidation($token, "API");
                     $sender = VSenderAdapter::getInstance();
                     $sender->setApi($api);
                     $sender->setUtente(CSessionManager::getUtenteLoggato());

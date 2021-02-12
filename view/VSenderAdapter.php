@@ -105,7 +105,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            VJSONSender::homepage($immobili);
         }
         else VHome::homepage($this->getSmarty(), $agenzia, $immobili);
     }
@@ -188,7 +188,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            VJSONSender::loginError($this->getError());
         }
         else VUtente::loginForm($this->getSmarty());
     }
@@ -315,7 +315,7 @@ class VSenderAdapter
     {
         if($this->api)
         {
-
+            VJSONSender::sendToken($token, $this->getUtente());
         }
 
     }
