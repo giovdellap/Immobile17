@@ -15,6 +15,7 @@ class VHome
      */
     public static function homepage (Smarty $smarty, MAgenzia $agenzia, array $immobili)
     {
+        VJSONSender::headerMaker();
         $smarty->assign("path"          , $GLOBALS["path"]);
         $smarty->assign("agenzia"       , $agenzia);
         $smarty->assign("immobili"     , $immobili);

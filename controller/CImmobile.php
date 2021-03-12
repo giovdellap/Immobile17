@@ -67,6 +67,9 @@ class CImmobile
             $immobile= FPersistentManager::visualizzaImmobile($id);
             $sender = VSenderAdapter::getInstance();
             $sender->setApi($api);
+            if($api && $immobile === null) {
+                $sender->setError($id);
+            }
             if(CSessionManager::sessionExists())
                 $sender->setUtente(CSessionManager::getUtenteLoggato());
             $sender->visualizzaImmobile($immobile);
@@ -90,18 +93,19 @@ class CImmobile
         {
             if(CSessionManager::sessionExists())
             {
+                $utente = CSessionManager::getUserAndDestroy($api);
                 $parameters = VReceiver::calendarioParametersFiller($parameters);
                 $inizio = VReceiver::calendarioInizio($parameters);
                 $fine = VReceiver::calendarioFine($parameters);
                 $fine->nextDay();
                 $immobile = FPersistentManager::visualizzaAppImmobile($parameters["id"]);
                 $fullAgenzia = FPersistentManager::getBusyWeek($parameters["id"],
-                    CSessionManager::getUtenteLoggato()->getId(), $inizio, $fine);
-                $utenteApp = FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId());
+                    $utente->getId(), $inizio, $fine);
+                $utenteApp = FPersistentManager::visualizzaAppUtente($utente->getId());
                 $appLiberi = $fullAgenzia->checkDisponibilità($utenteApp, $immobile, $inizio, $fine);
                 $sender = VSenderAdapter::getInstance();
                 $sender->setApi($api);
-                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->setUtente($utente);
                 $sender->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
             }
             else CImmobile::visualizza($parameters["id"]);
@@ -125,24 +129,43 @@ class CImmobile
     public static function prenota(bool $api)
     {
         if (VReceiver::postRequest()) {
+            VJSONSender::headerMaker();
 
             if (CSessionManager::sessionExists()) {
                 $inizio = VReceiver::prenotaInizioAgenzia();
                 $fine = VReceiver::prenotaFineAgenzia();
-                $utente = CSessionManager::getUtenteLoggato();
+                $utente = CSessionManager::getUserAndDestroy($api);
                 $fullAgenzia = FPersistentManager::getBusyWeek(VReceiver::prenotaImmobile(), $utente->getId(),
                     $inizio, $fine);
 
                 $appuntamento = new MAppuntamento();
-                $appuntamento->setCliente(FPersistentManager::visualizzaAppUtente(CSessionManager::getUtenteLoggato()->getId()));
+                $appuntamento->setCliente(FPersistentManager::visualizzaAppUtente($utente->getId()));
                 $appuntamento->setAgenteImmobiliare(FPersistentManager::visualizzaAppUtente(VReceiver::prenotaAgente()));
                 $appuntamento->setImmobile(FPersistentManager::visualizzaAppImmobile(VReceiver::prenotaImmobile()));
                 $appuntamento->setOrarioInizio(VReceiver::prenotaAppuntamentoInizio());
                 $appuntamento->setOrarioFine(VReceiver::prenotaAppuntamentoFine());
+
+                $sender = VSenderAdapter::getInstance();
+                $sender->setApi($api);
+                $sender->setUtente($utente);
                 //print_r($appuntamento);
                 if ($fullAgenzia->getCalendario()->addAppuntamento($appuntamento)) {
                     FPersistentManager::addAppuntamento($appuntamento);
-                    header('Location: '.$GLOBALS['path'].'Utente/calendario');
+                    if($api) {
+                        $appuntamenti = FPersistentManager::visualizzaAppUtente($utente->getId())->getListAppuntamenti();
+                        //echo("len: ".count($appuntamenti));
+                        foreach ($appuntamenti as $item) {
+                            //echo(" uno: ".$item->getOrarioInizio()->getFullDataString());
+                            //echo(" due: ".$appuntamento->getOrarioInizio()->getFullDataString());
+                            if($item->getOrarioInizio()->getFullDataString() === $appuntamento->getOrarioInizio()->getFullDataString())
+                            {
+                                $sender->confermaAppuntamento($item);
+                            }
+                        }
+
+                    } else {
+                        header('Location: ' . $GLOBALS['path'] . 'Utente/calendario');
+                    }
 
                 }
                 else
@@ -150,12 +173,13 @@ class CImmobile
                     $error = "Appuntamento non disponibile";
                     $immobile = FPersistentManager::visualizzaAppImmobile(VReceiver::prenotaImmobile());
                     $appLiberi = $fullAgenzia->checkDisponibilità($utente, $immobile, $inizio, $fine);
-
-                    $sender = VSenderAdapter::getInstance();
-                    $sender->setApi($api);
-                    $sender->setUtente($utente);
                     $sender->setError($error);
-                    $sender->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
+                    if($api) {
+
+                        $sender->confermaAppuntamento($appuntamento);
+                    } else {
+                        $sender->immobileCalendario($appLiberi, $inizio, $fine, $immobile);
+                    }
                 }
             } else
             {
@@ -165,6 +189,28 @@ class CImmobile
                 $sender->visualizzaImmobile($immobile);
             }
         } else header('Location: '.$GLOBALS['path']);
+    }
+
+    // ------ API FUNCTIONS ------
+
+    public static function getImmobili(string $parameters, bool $api)
+    {
+        if(VReceiver::getRequest())
+        {
+            $ids = VReceiver::getImmobiliURLDecoder($parameters);
+            $immobili = [];
+            foreach ($ids as $id) {
+                $immobile = FPersistentManager::visualizzaImmobile($id);
+                $error = "";
+                if ($immobile === null) {
+                    $error = $error . $id . "/";
+                } else $immobili[] = $immobile;
+            }
+            $sender = VSenderAdapter::getInstance();
+            $sender->setApi($api);
+            if($error !== "") $sender->setError($error);
+            $sender->visualizzaImmobili($immobili);
+        }
     }
 
 

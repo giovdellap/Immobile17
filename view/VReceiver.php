@@ -371,6 +371,11 @@ class VReceiver
         else return false;
     }
 
+    public static function getImmobiliURLDecoder(string $parameters)
+    {
+        return explode('-', $parameters);
+    }
+
     // ---- ADMIN ----
 
     /**

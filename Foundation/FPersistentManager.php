@@ -225,7 +225,7 @@ class FPersistentManager
      * @param string $id
      * @return MImmobile
      */
-    public static function visualizzaImmobile(string $id):MImmobile {
+    public static function visualizzaImmobile(string $id): ?MImmobile {
         return FImmobile::getImmobile($id);
     }
 

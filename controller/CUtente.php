@@ -55,9 +55,10 @@ class CUtente
                     $token = self::tokenCreator("API");
                     FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token, "API");
                     CSessionManager::tokenValidation($token, "API");
+                    $utente = CSessionManager::getUserAndDestroy($api);
                     $sender = VSenderAdapter::getInstance();
                     $sender->setApi($api);
-                    $sender->setUtente(CSessionManager::getUtenteLoggato());
+                    $sender->setUtente($utente);
                     $sender->sendToken($token);
                 }
                 else {
@@ -94,9 +95,9 @@ class CUtente
             $sender->registrationForm();
         }
         else if (VReceiver::postRequest()) {
+            VJSONSender::headerMaker();
             $utente = VReceiver::registrationUser();
             $db_result = FPersistentManager::registrazione($utente);
-
             if ($db_result === "OK") {
                 CSessionManager::createSession(FPersistentManager::loadIDbyEMail($utente->getEmail()));
                 if(VImageReceiver::imgIsUploaded())
@@ -105,8 +106,15 @@ class CUtente
 
                 $sender = VSenderAdapter::getInstance();
                 $sender->setApi($api);
-                $sender->setUtente(CSessionManager::getUtenteLoggato());
-                $sender->registrationOK();
+                if($api) {
+                    $token = self::tokenCreator("API");
+                    FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token, "API");
+                    CSessionManager::tokenValidation($token, "API");
+                }
+                $utente = CSessionManager::getUserAndDestroy($api);
+                $sender->setUtente($utente);
+                if($api) { $sender->sendToken($token);
+                } else $sender->registrationOK();
             } else {
                 $sender = VSenderAdapter::getInstance();
                 $sender->setApi($api);
@@ -125,11 +133,11 @@ class CUtente
     public static function visualizzaProfilo(bool $api)
     {
         if (VReceiver::getRequest()) {
-
             if (CSessionManager::sessionExists()) {
+                $utente = CSessionManager::getUserAndDestroy($api);
                 $sender = VSenderAdapter::getInstance();
                 $sender->setApi($api);
-                $sender->setUtente(CSessionManager::getUtenteLoggato());
+                $sender->setUtente($utente);
                 $sender->visualizzaProfilo();
             } else header('Location: '.$GLOBALS['path'].'Utente/login');
         } else header('Location: '.$GLOBALS['path']);
@@ -161,10 +169,9 @@ class CUtente
     {
         if (VReceiver::getRequest()) {
             if (CSessionManager::sessionExists()) {
-                $utente = CSessionManager::getUtenteLoggato();
+                $utente = CSessionManager::getUserAndDestroy($api);
                 $utente = FPersistentManager::visualizzaAppUtente($utente->getId());
                 $appuntamenti = $utente->getListAppuntamenti();
-
                 $sender = VSenderAdapter::getInstance();
                 $sender->setApi($api);
                 $sender->setUtente($utente);
@@ -303,12 +310,16 @@ class CUtente
             {
                 $oldPassword = VReceiver::getOldPW();
                 $newPassword = VReceiver::getNewPW();
-                $utente = CSessionManager::getUtenteLoggato();
+                $utente = CSessionManager::getUserAndDestroy($api);
                 if(password_verify($oldPassword, $utente->getPassword()))
                 {
                     $utente->setPassword($newPassword);
                     FPersistentManager::modificaUtente($utente);
-                    header('Location: ' . $GLOBALS['path'] . 'Utente/visualizzaProfilo');
+                    if($api) {
+                        VJSONSender::sendPassword($newPassword);
+                    } else {
+                        header('Location: ' . $GLOBALS['path'] . 'Utente/visualizzaProfilo');
+                    }
                 }
                 else
                 {
@@ -338,5 +349,9 @@ class CUtente
         FPersistentManager::storeToken(CSessionManager::getUtenteLoggato()->getId(), $token, "COOKIE");
         setcookie('token', $token, $expiration_time, $GLOBALS['path']);
     }
+
+    // ----- RESTful API functions -----
+
+
 
 }

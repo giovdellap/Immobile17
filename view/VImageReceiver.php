@@ -140,6 +140,8 @@ class VImageReceiver
      */
     public static function imgIsUploaded()
     {
-        return  is_uploaded_file($_FILES["propic"]["tmp_name"]);
+        if(array_key_exists("propic", $_FILES))
+            return  is_uploaded_file($_FILES["propic"]["tmp_name"]);
+        else return false;
     }
 }

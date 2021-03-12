@@ -117,11 +117,15 @@ class VSenderAdapter
      * Passa l'oggetto MImmobile alla view che permette di visualizzarlo
      * @param MImmobile $immobile
      */
-    public function visualizzaImmobile(MImmobile $immobile)
+    public function visualizzaImmobile($immobile)
     {
         if($this->api == true)
         {
-
+            if(isset($this->error)) {
+                VJSONSender::sendError($this->getError());
+            } else {
+                VJSONSender::sendImmobile($immobile);
+            }
         }
         else
         {
@@ -143,7 +147,8 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            if(isset($this->error)) $immobili["error"] = $this.$this->getError();
+            VJSONSender::sendImmobili($immobili);
         }
         else VImmobile::visualizzaImmobili($this->getSmarty(), $immobili);
     }
@@ -160,9 +165,19 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            VJSONSender::sendCalendario($appLiberi);
         }
         else VImmobile::calendario($this->getSmarty(), $appLiberi, $inizio, $fine, $immobile);
+    }
+
+    public function confermaAppuntamento(MAppuntamento $appuntamento)
+    {
+        if(isset($this->error))
+        {
+            VJSONSender::sendError($this->getError());
+        } else {
+            VJSONSender::sendAppuntamento($appuntamento);
+        }
     }
 
     /**
@@ -174,7 +189,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            VJSONSender::ricercaImmobili($immobili);
         }
         else VImmobile::ricerca($this->getSmarty(), $immobili, $parameters);
     }
@@ -188,7 +203,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-            VJSONSender::loginError($this->getError());
+            VJSONSender::sendError($this->getError());
         }
         else VUtente::loginForm($this->getSmarty());
     }
@@ -200,7 +215,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            VJSONSender::sendError($this->getError());
         }
         else VUtente::showRegistrationForm($this->getSmarty());
     }
@@ -224,7 +239,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            VJSONSender::visualizzaProfilo($this->getUtente());
         }
         else VUtente::visualizzaProfilo($this->getSmarty());
     }
@@ -237,7 +252,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            VJSONSender::sendAppuntamenti($appuntamenti);
         }
         else VUtente::showCalendario($this->getSmarty(), $appuntamenti);
     }
@@ -279,7 +294,7 @@ class VSenderAdapter
     {
         if($this->api == true)
         {
-
+            if(isset($this->error)) VJSONSender::sendError($this->getError());
         }
         else VUtente::showModificaPassword($this->getSmarty());
     }
@@ -317,7 +332,6 @@ class VSenderAdapter
         {
             VJSONSender::sendToken($token, $this->getUtente());
         }
-
     }
 
     /**

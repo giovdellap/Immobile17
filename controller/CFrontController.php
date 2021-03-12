@@ -28,9 +28,10 @@ class CFrontController
             {
                 $api = true;
                 array_shift($resource);
-                if(strpos($resource[0], 'token'))
+                if($resource[0] === 'token')
                 {
-                    $token = explode('=', $resource[1]);
+                    $token = $resource[1];
+                    array_shift($resource);
                     array_shift($resource);
                     CSessionManager::tokenValidation($token, "API");
                 }
@@ -71,7 +72,6 @@ class CFrontController
             }
             else $this->wrongUrl();
         }
-        //else api
 
 
     }

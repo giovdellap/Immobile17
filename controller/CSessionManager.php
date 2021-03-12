@@ -39,11 +39,12 @@ class CSessionManager
      */
     public static function createSession(string $id)
     {
-        ini_set('session.gc_maxlifetime', 3600);
-        session_set_cookie_params(3600);
         if (session_status() == PHP_SESSION_NONE) {
+            ini_set('session.gc_maxlifetime', 3600);
+            session_set_cookie_params(3600);
             session_start();
             $_SESSION['id'] = $id;
+
         }
     }
 
@@ -56,11 +57,13 @@ class CSessionManager
         if(session_status() == PHP_SESSION_NONE)
             session_start();
         $logged = false;
-        if (isset($_COOKIE["PHPSESSID"]))
+        //if (isset($_COOKIE["PHPSESSID"]))
             if (isset($_SESSION['id']))
                 $logged = true;
-        return $logged;
+            return $logged;
     }
+
+
 
     /**
      * Elimina la sessione
@@ -81,6 +84,13 @@ class CSessionManager
     {
         if(FPersistentManager::verifyToken($token, $type) != null)
             self::createSession(FPersistentManager::verifyToken($token, $type));
+    }
+
+    public static function getUserAndDestroy(bool $api): MUtente
+    {
+        $utente = self::getUtenteLoggato();
+        if($api) session_destroy();
+        return $utente;
     }
 
 }

@@ -1,4 +1,4 @@
-ini<?php
+<?php
 
 /**
  * Class MAppuntamento
